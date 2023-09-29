@@ -5,7 +5,7 @@
 1. [About](#about)
 2. [Project Goals: ](#project-goals)
     1. [UX Design - Strategy ](#ux-design-strategy) 
-    2. [UX Design - Strategy - Competitor Portals](#ux-design-strategy-analysis-of-competitor-offerings)
+    2. [UX Design - Strategy - Competitor Portals](#ux-design-strategy-analysis-of-competitors)
     3. [UX Design - Strategy - Target Audience](#ux-design-strategy-target-audience)
 3. [UX Design - Scope](#ux-design-scope)
     1. [UX Design - Scope - User Requirements and Expectations](#ux-design-scope-user-requirements-and-expectations)
@@ -98,12 +98,8 @@ To be described.
 But focus is on accessible content, for the naive or more sophisticated user.
 And abilty for the user to pickup content which is relevant to their needs.
 
-Philosophies, values:
-* Integrity
-* Empowerment
-<br>
-<br>
-### UX Design Strategy Analysis - Existing Financial Information websites
+
+### UX Design Strategy Analysis of Competitors
 Competitor/ similar site analysis was undertaken over a two-week period during September 2023 to analyse existing financial literacy education schemes and information resources, the target audience for same, and to identify gaps which might provide opportunities for a new solution.
 The research methodology was initially Google searches (ideally to be followed up by user interviews with thought leaders in the area of financial literacy education).
 
@@ -144,6 +140,31 @@ g. who wish to understand what financial information is relevant and important t
 
 ## UX Design Scope
 ----------------
+### Financial_Planner site Ethos & Values:
+* Integrity: - <br>
+Commencing an Internet search for Financial Planning advice, is akin to entering a tropical sea infested with sharks.  For the unwary, vulnerable or less knowledgable user, exposing their personal details (by initiating tracked searches on cookie-infested sites, searching for particular information or creating a user account) can have the same effect as bloodletting into the shark-infested waters, attracting predators who seek to target and exploit vulnerabilities.  When seeking information, it can be difficult to differentiate between opinions and fact.<br>
+More sophisticated users can be fearful of exposure to these sharks, and more vulnerable users may avoid information seeking due to fear.
+
+### Financial_Planner site authenticity - <br>
+Acting as a trusted source that offers reliable information to users - is paramount.  Financial_Planner must be a trusted source that offers reliable, verifiable information to users.<br>
+*  Information autenticity - information is primarily to be sourced from verifiable sources (primarily government or educational resources)
+*  Users are to be able to indicate individual content relevance (likes & shares)
+*  ??? User comments, actively moderated before publishing, may be permitted in a future release - however there is a risk of thereby introducing opinion-based content ???
+
+### Financial_Planner site integrity -<br> 
+The user is offered a tracking-free experience (errr check if this is actually a real possibility)
+*  The user is guaranteed that their information will not be redistributed, re-used elsewhere or otherwise by the site owners or moderators.
+*  The site owners apply appropriate methods to protect user registration information from hacking and security vulerabilities.
+*  (FUTURE) In the future, the Financial_Planner site would dearly like to offer financial calculators into which users could enter some of their financial decisions and receive feedback and guidance..maybe about opportunities they could take at different life stages to improve their financial control for present & future needs..ideally as a game-based interface...but need to be cautious as, if users enter their financial details and save to a shared portal, will they then become vulnerable to someone hacking their information?
+<br>     
+
+### User Empowerment
+A key objective of the Financial_Planner site is to make good-quality information readily available to users who wish to improve their financial awareness and decision-making.
+That is, to empower users to become aware of financial dimensions of decision-making
+Sites exist which are information-rich, however the information is 'buried' in a myriad of state portals.
+In designing the site, then, particular emphasis is placed on accessibility, navigability and ability to retrieve relevant information.  In many cases, making <br>
+<br>
+<br>
 
 ### UX Design Scope User Requirements and Expectations
 <br>
@@ -208,7 +229,7 @@ Written in the format 'As a **role** I want to **action** to achieve **desired o
 * SO_04 As site owner I want to provide straightforward, intuitive, consistent website navigation, (using graphical navigation where possible, even where the destination leads to text-based informataion)
 * SO_05 As site owner I want to allow users to 'chop and dice' complex information into small chunks 
 * SO_06 As site owner I want to provide a website, which meets current programming, performance and accessibility standards (html, css, javascript, responsive, accessibility, performance)
-* SO_07 As site owner I want to provide an opportunity for the user to provide feedback, including reporting issues, or suggesting improvements to the Humble Numble site
+* SO_07 As site owner I want to provide an opportunity for the user to provide feedback, including reporting issues, or suggesting improvements to the Financial Planner site
 * SO-08 As site owner I want to acknowledge to the user that their feedback has been received
 * SO-09 As site owner I would like to store a database of content to include url links, 
 * SO-10 As site owner, I would like to have the capability to organise the content by lifestage, theme, and other criteria (possibly hierarchical groupings, hashtags) to allow cross referncing of user needs to content 
@@ -251,19 +272,19 @@ Written in the format 'As a **role** I want to **action** to achieve **desired o
 
 ### Wireframes
 <details><summary>Landing Page</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/wf1_hn_landing.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf1_hn_landing.png">
 </details>
 
 <details><summary>How To Play</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/wf2_hn_howtoplay.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf2_hn_howtoplay.png">
 </details>
 
 <details><summary>Game screen</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/wf3_hn_game.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf3_hn_game.png">
 </details>
 
 <details><summary>Game screen in progress</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/wf4_hn_game_inprogress.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf4_hn_game_inprogress.png">
 </details>
 
   
@@ -277,17 +298,17 @@ Fallback fronts are used in both cases
 ### Colour Scheme 
 The colour combinations mimic Wordle's game (for consistency and to ease the user learning experience).
    
-The choice of colours for Humble Numble is very much in accordance with user stories S_02 (closely emulate the Wordle look & feel); FTU_02 (first-time user to easily navigate and learn the site) - consistent with Wordle so as to speed the learning process and encourage the focus on the game content, rather than on how to use it.
+The choice of colours for Financial Planner is very much in accordance with user stories S_02 (closely emulate the Wordle look & feel); FTU_02 (first-time user to easily navigate and learn the site) - consistent with Wordle so as to speed the learning process and encourage the focus on the game content, rather than on how to use it.
 
 <details><summary>Colours- similar to Wordle</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f07_game_grid_in_progress.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f07_game_grid_in_progress.jpg">
 </details>
 
 ### Design Images
 This site has very few images as the focus is on the game content.
 A 'Wordle-type' logo is used on the Intro page.
 <details><summary>'Wordle-type' logo</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/numble_icon.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/numble_icon.jpg">
 </details>
 
 ### Design Images - Icons and Symbols
@@ -338,16 +359,16 @@ A single template based on **user stories** was used from project outset, with t
  
 ### F01 Intro Screen
 <details><summary>Introduction screen</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f01_intro.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f01_intro.jpg"></details>
 <br>
-On first using the game an introduction window is shown, the user can choose 'Play' or 'How to Play' buttons.  The intro page shows the current date, the Humble Numble day number, and some copyright and acknowledgement notices.
+On first using the game an introduction window is shown, the user can choose 'Play' or 'How to Play' buttons.  The intro page shows the current date, the Financial Planner day number, and some copyright and acknowledgement notices.
 This addresses user stories SO_01, SO_02, FTU_01, FTU_02, FTU_03
 <br>
 <br>
 
 ### F02 'How To Play' Screen
 <details><summary>How To Play screen</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f02_help.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f02_help.jpg"></details>
 <br>
 A modal 'How to Play' explains how to play and some of the subtleties of the calculations.  Available from the 'how to play' button on the Intro screen, or from the navbar help icon on all screens.   The 'How to Play' window can be scrolled to see full text, and is closed by clicking on the X in top right hand corner, at which point it disappears from screen.
 <br>
@@ -360,7 +381,7 @@ The Play button ![Play button](./docs/readme_images/f03_play_button.jpg?raw=true
 
 ### F04 Randomly selected solution
 <details><summary>Array of potential solutions</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f04_solution_array.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f04_solution_array.jpg"></details>
 (Dont look too closely or you will ruin the surprise of playing the game!)<br>
 An array of solutions is maintained, and, when the game starts, an entry is randomly chosen from this array.  At the time of development this array contained approx 20 entries, which is sufficient for demo purposes, it is envisioned that this will be extended in the future.
 <br>
@@ -368,7 +389,7 @@ An array of solutions is maintained, and, when the game starts, an entry is rand
 
 ### F05 Uncluttered game screen
 <details><summary>Initialised game screen</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f05_uncluttered_game_screen.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f05_uncluttered_game_screen.jpg"></details>
 The game screen is presented to the user fully initialised (ie a target value has been set and populated to each grid row).  The screen is free of ads and supplemental displays, which allows the user to focus on the game.
 <br>
 <br>
@@ -381,7 +402,7 @@ The Navbar is consistent throughout the website, 404 and feedback pages.  (modal
 
 ### F07 Game grid
 <details><summary>Game panel</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f07_game_grid_in_progress.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f07_game_grid_in_progress.jpg"></details>
 Interactive and responsive game panel which allows the user to record one set of guess tiles per attempt (the current attempt # is shown at top of screen).  The game grid is initially blank, and will be populated with successive user guesses.
 Interactivity/feedback:  when the user presses ENTER to submit a guess, the guessed tiles update as green(correct); orange(present) or grey(absent).
 <br>
@@ -389,7 +410,7 @@ Interactivity/feedback:  when the user presses ENTER to submit a guess, the gues
 
 ### F08 Keyboard display
 <details><summary>Keyboard</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f08_keyboard_grid.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f08_keyboard_grid.jpg"></details>
 A pseudo-keyboard shows the permitted entries.  The user must click on the keys using a mouse pointer to select an entry.  When a keyboard key is pressed, its colour flickers to light blue, and the key value is loaded to the current guess row on the game grid.  So the keyboard is the main user control for the game, and each press of a keyboard key triggers an action.   (keys 1-20, */-+ populate the game grid).<br>
 When the user presses ENTER to submit a guess, the keyboard elements used within the guess also update as green(correct); orange(present) or grey(absent).
 <br>
@@ -413,7 +434,7 @@ When a guess is submitted, the equation which the user has submitted is parsed a
 
 ### F12  Individual guess element validation
 <details><summary>Feedback on keyboard re guessed solution</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f12_keyboard_interaction_feeback.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f12_keyboard_interaction_feeback.jpg"></details>
 Each element of the guess is compared to the solution, and its tile colour amended according to whether the guessed tile is:
 * correct (green)- tile value is at this position in the solution;
 * present (orange)- tile value is at a different position in the solution;
@@ -426,28 +447,28 @@ The corresponding keyboard grid value is coloured on the lower part of the scree
 
 ### F13 Success message
 <details><summary>Appropriate success message, content varies by # of attempts</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f13_attempt4_result.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f13_attempt4_result.jpg"></details>
  This displays when all elements correctly guessed.  A pop-up message with the appropriate text appears.  This text mimics the Wordle site, so depending on the  number of attempts the successful user can get (Genius, Magnificent, Impressive, Splendid, Great, Phew).
 <br>
 <br>
 
 ### F14 Solution display if exceeded 6 attempts
 <details><summary>Solution display if 6 unsuccessful guesses</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f14_exceeded_6attempts.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f14_exceeded_6attempts.jpg"></details>
 A pop-up message with the appropriate text appears if the user has matched the entire solution equation.  This text mimics the Wordle site, so depending on the  number of attempts the user can get (Genius, Magnificent, Impressive, Splendid, Great, Phew)
 <br>
 <br>
 
 ### F15 User Statistics 
 <details><summary>User statistics</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f15_user_statistics.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f15_user_statistics.jpg"></details>
 
 This screen is really a placeholder for future functionality as would like to display some of the statistics for a player over a number of games<br>
 <br>
 
 ### F16 Settings and Feedback
 <details><summary>User settings</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f16_settings_feedback.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f16_settings_feedback.jpg"></details>
 
 This allows the user to provide feedback and to choose to join a daily reminder mailing list.  There are placeholder questions here for future Limit to one game daily (preset to 'no limit');
 Difficulty levels: easy or difficult (preset to 'difficult').
@@ -461,7 +482,7 @@ The site is designed to be fully responsive so it can be played on a range of co
 ### Features in Scope 
 
 <details><summary>Mapping of user stories to features</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/user_stories_vs_features.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/user_stories_vs_features.jpg"></details>
 
 This website includes 3 pages and 16 features 
 The pages - which effectively bring the features lited in the previous section together - are:
@@ -473,7 +494,7 @@ The pages - which effectively bring the features lited in the previous section t
 This allows graceful failure, where the header and footer are preserved, allowing the user to navigate away from an error page using the site navigation (rather than the back button).
 
 <details><summary>404 error page</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/p03_error_404_page.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/p03_error_404_page.jpg"></details>
 
 ### Implementation Decisions
 Pre-defined calculations are stored in a multi-dimensional array as follows:
@@ -493,14 +514,14 @@ Break out of loop when success, or when 6 tries reached.
 <br>
 
 ### Features Left to Implement
-While Humble Numble, at the current version, provides the 'engine' for pattern matching and calculation, there are a number of desirable features which exist in the current version of Wordle and which would greatly add to the user experience for Numble.
+While Financial Planner, at the current version, provides the 'engine' for pattern matching and calculation, there are a number of desirable features which exist in the current version of Wordle and which would greatly add to the user experience for Numble.
 
 Choose difficulty level
 * Allow the user to choose difficulty level EASY (all numbers <= 10) or DIFFICULT (numbers <=20 included).  Note that this has been allowed for in the array of solutions, these are classified according to difficulty, so this may be an 'easy win' future feature.
 
 Allow the user to limit to one game daily
 * One of the beautiful features of wordle is its limited-release mode whereby only one puzzle is released daily ... this creates a sense of anticipation and the user wants more, they don't get the chance to become bored or tired with the game.  
-* Humble Numble at the current version, allows the user to play continuously by refreshing the browser.  This is useful when in testing and demonstration mode, but ideally the default would be one game per day.
+* Financial Planner at the current version, allows the user to play continuously by refreshing the browser.  This is useful when in testing and demonstration mode, but ideally the default would be one game per day.
 
 Preserve user statistics from one game to the next
 * This has been allowed for within the user interface by providing a statistics page, however the stats currently only relate to the latest game played.   Tracking of # of days 'winning streak' is very motivating to the user.
@@ -530,32 +551,32 @@ Share results
 ### HTML Validation 
 - HTML
   - No errors returned on the index html pages when checked in the W3C validator:
-  - [W3C validator - index page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP2_HumbleNumble%2Findex.html) 
-  - [W3C validator - 404 page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP2_HumbleNumble%2F404.html)
+  - [W3C validator - index page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Findex.html) 
+  - [W3C validator - 404 page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2F404.html)
   
-  - [W3C validator - settings page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP2_HumbleNumble%2Fsettings.html)
+  - [W3C validator - settings page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Fsettings.html)
 
 ### CSS Validation
-  - No errors returned when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https://deemccart.github.io/CI_PP2_HumbleNumble/&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) 
+  - No errors returned when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https://deemccart.github.io/CI_PP4_Financial_Planner/&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) 
 
 ### Javascript Validation
   - No errors returned, when javascript was pasted into the jshint validator - however 10 unused variables were identified, which are the function names.    
 <details><summary>jshint - no errors however the function names were identified as unused variables</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/jshint_result.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/jshint_result.jpg">
 </details>
 
 ### Accessibility
 The site was tested using the WAVE WebAIM accessibility evaluation tool.
 All pages pass with 0 errors 
-- [Accessibility: index page](https://wave.webaim.org/report#/https://deemccart.github.io/CI_PP2_HumbleNumble/)
-- [Accessibility: 404 page](https://wave.webaim.org/report#/https://deemccart.github.io/CI_PP2_HumbleNumble/404.html)
+- [Accessibility: index page](https://wave.webaim.org/report#/https://deemccart.github.io/CI_PP4_Financial_Planner/)
+- [Accessibility: 404 page](https://wave.webaim.org/report#/https://deemccart.github.io/CI_PP4_Financial_Planner/404.html)
 
 
 ### Performance
 Performance for all pages was tested using the Lighthouse tool within Google Chrome.  Performance was at 98% for the index page (intro modal).
 
 <details><summary>Performance: Index page</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/performance_lighthouse_intro_page_230602.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/performance_lighthouse_intro_page_230602.jpg">
 </details>
 
 
@@ -576,7 +597,7 @@ The website was tested on the following browsers:
 
 ### Bugs and issues
 <details><summary>issue tracker</summary>
-<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/issue_tracker.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/issue_tracker.jpg">
 </details>
 Quite a few calculation and display issues were encountered during development, the above lists the issues encountered and resolved.
 
@@ -587,7 +608,7 @@ Quite a few calculation and display issues were encountered during development, 
   - From the source section drop-down menu, select the Master Branch
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
 
-The live link can be found here - https://deemccart.github.io/CI_PP2_Humble_Numble/index.html
+The live link can be found here - https://deemccart.github.io/CI_PP4_Financial_Planner/index.html
 
 * To fork the repository:
 - Go to the GitHub repository
@@ -607,31 +628,23 @@ The live link can be found here - https://deemccart.github.io/CI_PP2_Humble_Numb
 Multiple sources were used in assembling this site.
 
 
-### Content - Humble Numble
-* Inspiration taken from wordle.com
+### Content - Financial Planner
+* Inspiration taken from many many sources
+* Existing sites and offerings towards financial literacy in Ireland:  (list below)
+* 
+### Financial Planner site ethos - authenticity
+https://nobsmarketplace.com/blog/how-do-you-know-if-website-authoritative/ offers a definition of an authoritative website as 'a trusted source that offers reliable information to users'
+https://nobsmarketplace.com/blog/how-do-you-know-if-website-authoritative/ factors to determine an authoritative website: site domain name/url; value offered to the user; reputable sources (with verifiable credentials); quality of inbound & outbound links; website UX, design & functionality; proven user trust & engagement (e.g. measured by organic comments, likes and shares given by customers/users, as well as the quality of the audience the website has attracted)
+
+### Agile implementation in github
+* https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-text-and-number-fields#adding-a-number-field to understand how story points might be represented in GitHub
  
-### Code - Humble Numble
+### Code - Financial Planner
 * https://laracasts.com/series/wordle-workshop/episodes/2 for tips on building a wordle-like grid (using HTML or JS)
 * https://www.youtube.com/watch?v=j7OhcuZQ-q8 Build a Wordle clone using HTML, CSS & Javascript! : used for tips on keyboard panel building (but thereafter preferred to code independently as found that coding shortcuts proposed were not always comprehensible to a new JS developer!)
 
 ### References
 The following sites were ued for research and better understanding while creating this website: 
-* https://stackoverflow.com/questions/13077923/how-can-i-convert-a-string-into-a-math-operator-in-javascript
-* https://www.w3schools.com/jsref/jsref_eval.asp Javascript eval() (Recommendation to not use due to security risk)
-* https://twitter.com/shannonical/status/1493430545614880771 Wordle Header Font - Shannon Loys, graphic designer
-* https://www.reddit.com/r/identifythisfont/comments/sdkxif/what_font_is_the_game_wordle/
-* https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_element_classlist_add2 Extensive use made of the W3Schools.com website
-* https://reactgo.com/javascript-find-is-not-a-function/
-* https://stackoverflow.com/questions/7364150/find-object-by-id-in-an-array-of-javascript-objects Extensive use made of the stackoverflow.com website
-* https://css-tricks.com/snippets/javascript/select-random-item-array/ Used to randomly select a solution for each game from an array of solutions
-* https://stackoverflow.com/questions/71658560/adding-class-to-div-element-using-javascript Used to colour the grid items and keys after guess
-* https://stackoverflow.com/questions/16189060/html-and-javascript-how-to-update-innerhtml Updating on-screen data using javascript
-* https://www.delftstack.com/howto/html/html-todays-date/?utm_content=cmp-true used to determine how to display and format todays date 
-* https://stackoverflow.com/questions/69565192/how-to-bring-the-popup-fully-displayed-in-front-of-everything used to get the results popup to display in a predictable on-screen position
-* https://stackoverflow.com/questions/42610369/javascript-classlist-remove-not-working-properly used to resolve issue #001 where not all classLists removing as expected
-* https://www.youtube.com/watch?v=uUCpopjPZdI HTML, CSS & JavaScript - How to Create a Pop-Up Modal ( Manual Version ) - Web Dev Tutorials @codefoxx used to help create a pop up help window
-* https://github.com/aleksandracodes/CI_PP2_SunshineGuessing (Aleksandra Haniok) was used for readme checklist and content, also for good code commenting structure
-* https://github.com/4n4ru/CI-P2-GuessingBee#deployment (Ana Runje) for instructions on forking and cloning a website
 
  
 ### Acknowledgements
@@ -639,118 +652,3 @@ The following sites were ued for research and better understanding while creatin
 * I would also like to thank Derek and my family for their personal support.
 
 
-
-
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome USER_NAME,
-
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
-
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
-
-
-https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-text-and-number-fields#adding-a-number-field

@@ -21,9 +21,9 @@
     2. [Surface - Fonts; ](#fonts-chosen)
     3. [Surface - Colours](#colour-scheme)
     4. [Surface - Imagery](#design-images)
-6. [Methology: ](#methodology)
-    1. [Agile Methodology; ](#agile)
-    2. [EPICs, User Stories, Tasks, Acceptance Criteria;](#issues-planning)
+6. [Agile Methology: ](#agile)
+    1. [EPICs, User Stories, Tasks, Acceptance Criteria;](#issues-planning)
+    2. [Designing an issues template](#issues-template)
     3. [MoSCoW Prioritisation;](#labels)
     4. [Sprint Management using Iterations](#iterations)
     5. [Level of Effort estimation - Story Points](#story-points)
@@ -147,7 +147,7 @@ g. who wish to understand what financial information is relevant and important t
 
 ### UX Design Scope User Requirements and Expectations
 <br>
-From the analysis of existing financial literacy/informational websites, a set of possible requirements was identified for a new portal.
+From the analysis of existing financial literacy/informational websites geared towards Ireland, a set of possible requirements was identified for a new portal.
 <br>
 The basic requirement is to provide a meta-portal which allows theme-based grouping of financial literacy resources.
 <br>    
@@ -200,48 +200,50 @@ Initial themes loaded and displayed will be based on ROI (Republic of Ireland) d
 
 ## User Goals/ User Stories
 ----------------
-    
-### Site owner Goals
-* SO_01 As site owner I want to provide a fun, satisfying game which is visually engaging and highly interactive
-* SO_02 As site owner I want to provide a familiar interface for Wordle consumers (to assist in user learning and ease of adoption for a large pre-existing user base)
-* SO_03 As site owner I want to provide an interface which is uncluttered, free from ads, and not behind a paywall
-* SO_04 As site owner I want to include a mathematical learning experience in this game
-* SO_05 As site owner I want to provide straightforward, intuitive, consistent website navigation
+Written in the format 'As a **role** I want to **action** to achieve **desired outcome**    
+### Site owner/moderator Goals
+* SO_01 As site owner I want to provide a platform where users can directly access useful resources to help with real-life financial decision making
+* SO_02 As site owner I want to largely (but not entirely) re-use/ connect to information from authoritative sources 
+* SO_03 As site owner I want to avoid connecting to information which is opinion- rather than fact-based (ie perhaps from a less authoritative source) or at least highlight that the source is less authorative, or offered by a biased source.
+* SO_04 As site owner I want to provide straightforward, intuitive, consistent website navigation, (using graphical navigation where possible, even where the destination leads to text-based informataion)
+* SO_05 As site owner I want to allow users to 'chop and dice' complex information into small chunks 
 * SO_06 As site owner I want to provide a website, which meets current programming, performance and accessibility standards (html, css, javascript, responsive, accessibility, performance)
 * SO_07 As site owner I want to provide an opportunity for the user to provide feedback, including reporting issues, or suggesting improvements to the Humble Numble site
 * SO-08 As site owner I want to acknowledge to the user that their feedback has been received
-* SO-09 (FUTURE) As site owner I would like to implement scarcity - so that user can only access one game per day
-* SO-10 (FUTURE) As site owner, I would like to auto-generate new equations
-* SO_11 (FUTURE) As site owner, I would like to be able to track equations already used
-* SO_12 (FUTURE) As site owner, I would like to be able to set difficulty levels
-* SO_13 (FUTURE) As site owner, I would like to provide player stats - user can track # of attempts to solve, number of days solved, success rates
-* SO_14 (FUTURE) As site owner, I would like to facilitate users to share their problem-solving pattern (without revealing any part of the solution) 
+* SO-09 As site owner I would like to store a database of content to include url links, 
+* SO-10 As site owner, I would like to have the capability to organise the content by lifestage, theme, and other criteria (possibly hierarchical groupings, hashtags) to allow cross referncing of user needs to content 
+* SO_11 As site owner, I would like to 
+* SO_12 As site owner, I would like to 
+* SO_13 As site owner, I would like to 
+* SO_14 As site owner, I would like to make the content of the database shareable and reusable to others (perhaps subject to signing a re-use agreement) by providing an API to the published database)
 
 ### First-time User Goals
-* FTU_01 As a first time user I am curious about what this site does, and may just want to quickly play a game
-* FTU_02 As a first time user I would like to be able to easily navigate the site and quickly learn its functionality (particularly if I am already a Wordle user)
-* FTU_03 As a first time user I would like to easily understand game rules
-* FTU_04 As a first-time user I want clear, timely and unambiguous feedback and interaction 
-* FTU_05 As a first-time user I expect links and functions that work as expected
-* FTU_06 As a first-time user who is curious about mathematical equations, I want to practice mental maths using a puzzle solving game
-* FTU_07 As a first time user I would like to see my score and receive feedback on my performance
-* FTU_08 As a first time user I would like to play on my device of choice (quite likely my mobile - reponsiveness)  
+* FTU_01 As a first time user I want to access relevant information to increase my financial understanding/literacy on a specific topic
+* FTU_02 As a first-time user I about what this site does, and want to quickly understand this site's relevance to me, so I don't waste my time on useless engagement 
+* FTU_03 As a first time user I would like to be able to easily navigate the site and quickly learn its functionality 
+* FTU_04 As a first time user I would like to understand the acountability and trustability of information presented on the site ('about page which clearly identifies information souces, information gathering/harvesting processes including moderation (flowchart would be good here), the role of user feedback and user reviews 'X users found this useful or relevant', and the part I can play in contributing to the body of knowledge')
+* FTU_05  
+* FTU_06 As a first-time user I  
+* FTU_07 (FUTURE) As a first time user I
+* FTU_08 (FUTURE) As a first time user I
+* FTU_09 (FUTURE) As a first time user I
+* FTU_10 (FUTURE) As a first time user I
 
 ### Returning User Goals
-* RU_01 As a returning user I wish to play the game, just because I enjoy it
-* RU_02 As a returning user I want to 'beat the computer' by guessing the solution within 6 tries
-* RU_03 no time-out - can fit into small pockets of time as game will remain on-screen until 6 guesses completed
-* RU_04 As a returning user I definitely want to be able to see any equation which I didn't guess within 6 tries
-* RU_05 As a returning user I would like to receive a 'fresh' challenge each time I play (ie not an equation thats been used before)
-* RU_06 As a returning user I want to feel that the game is 'fair' and that I can apply my skills to playing it
-* RU_07 As a returning user I would like to be able to contact the developer and to provide suggestions for game enhancement
-* RU_08 (FUTURE) As a returning user I would like to be able to share my results with my friends (graphic showing the pattern of result)
-* RU_09 (FUTURE) As a returning user I would like to receive only one challenge per day (to avoid being sucked into a timewarp of endless gaming)
-* RU_10 (FUTURE) As a returning user I would like to be able to track my statistics and to track/ maintain/ improve my winning streak
+* RU_01 As a returning user I want to mark information I find useful so I can quickly access it again (favourites)
+* RU_02 As a returning user I access my profile which spotlights information I've previously found useful (favourites)
+* RU_03 As a returning user want to build my knowledge in certain areas
+* RU_04 As a returning user I want to build the body of knowledge for other users (by adding credibility ratings).
+* RU_05 As a returning user I 
+* RU_06 As a returning user I
+* RU_07 As a returning user I 
+* RU_08 (FUTURE) As a returning user I 
+* RU_09 (FUTURE) As a returning user I 
+* RU_10 (FUTURE) As a returning user I 
 
 ### Other stakeholder Goals
-* OT_01 As an educator I might wish to suggest new equations to be solved by Humble Numble players 
-* OT_02 As an educator I might promote the use of this game amongst my students to increase their mathematical skills
+* OT_01 As an educator I  
+* OT_02 As The Department of Finance Ireland I want to use this site towards achieving financial literaccy objectives and address the deficit identified in report XXXXX of 20XX.
 
 
 ## UX Design Decisions

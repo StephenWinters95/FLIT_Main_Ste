@@ -1,3 +1,644 @@
+# Financial Planner 
+(Developer:  Deirdre McCarthy, Nov 2023)
+
+# Table of Contents:
+1. [About](#about)
+2. [Project Goals: ](#project-goals)
+    1. [UX Design - Strategy ](#ux-design-strategy) 
+    2. [UX Design - Strategy - Competitor Portals](#ux-design-strategy-analysis-of-competitor-offerings)
+    3. [UX Design - Strategy - Target Audience](#ux-design-strategy-target-audience)
+3. [UX Design - Scope](#ux-design-scope)
+    1. [UX Design - Scope - User Requirements and Expectations](#ux-design-scope-user-requirements-and-expectations)
+    2. [UX Design - Scope - Data](#ux-design-scope-data)
+    3. [UX Design - Scope - Viewing Device](#ux-design-scope-viewing-device)
+4. [User goals/ user stories: ](#user-goals-user-stories)
+    1. [Site Owner Goals](#site-owner-goals)
+    2. [First-time User Goals](#first-time-user-goals)
+    3. [Returning User Goals](#returning-user-goals)
+    4. [Other stakeholder Goals](#other-stakeholder-goals)
+5. [Further UX Design: ](#ux-design-decisions)
+    1. [Skeleton - Wireframes; ](#wireframes)
+    2. [Surface - Fonts; ](#fonts-chosen)
+    3. [Surface - Colours](#colour-scheme)
+    4. [Surface - Imagery](#design-images)
+6. [Methology: ](#methodology)
+    1. [Agile Methodology; ](#agile)
+    2. [EPICs, User Stories, Tasks, Acceptance Criteria;](#issues-planning)
+    3. [MoSCoW Prioritisation;](#labels)
+    4. [Sprint Management using Iterations](#iterations)
+    5. [Level of Effort estimation - Story Points](#story-points)
+    6. [Kanban board](#kanban)
+    7. [Backlog management and grooming](#backlog)
+    8. [Ongoing incorporation of issues into the workload](#issues)
+    9. [Observations and learnings](#learnings)    
+7. [Features](#features)
+    1. [Included](#features-in-scope)
+    2. [Future Development](#features-left-to-implement)
+8. [Technology](#technologies)
+    1. [Languages](#langugages)
+    2. [Frameworks and Tools](#frameworks--tools)
+9. [Validation](#validation)
+    1. [HTML Validation](#html-validation)
+    2. [CSS Validation](#css-validation)
+    3. [Javascript Validation](#javascript-validation)
+    4. [Accessibility](#accessibility)
+    5. [Performance](#performance)
+    6. [Multi-device Testing](#multi-device-testing)
+    7. [Multi-browser Testing](#multi-browser-testing)
+    8. [Testing user stories](#testing-user-stories)
+    9. [Unfixed Bugs](#unfixed-bugs)
+10. [Accessibility](#accessibility)
+11. [Performance](#performance)
+12. [Deployment](#deployment)
+13. [Credits](#credits)
+    1. [Content](#content)
+    2. [Media](#media)
+    3. [Code](#code)
+    4. [References](#references)
+    5. [Acknowledgements](#acknowledgements)
+
+## About
+---------
+Financial Planner is a system which aims to address the recognised gaps in financial literacy within Southern Irish society.
+Background statement of problem.
+Department of Finance initiatives commenced with survey of practitioners Sept 2023.
+Life experience of the developer, extensive reading and personal interest in the FIRE (Financial Independence Retire Early) community.
+Observation that seemingly small decisions taken at various life stages can have large consequences through out life.
+<br>
+Observaton that there are multiple sites in existence which address elements of financial planning, but a limited offering for whole-of-life planning, from cradle to grave  <br>
+Lots of individual useful websites but you need to work hard to link together the information.
+Difficult to get information specifically dealing with Irish government revenue and rules.
+
+<br>
+Ideally, by the time development is completed, this site will include:
+* life stage-themed links to useful information
+* content and theme management
+* ability for users to personalise their site experience by marking resources (articles and links) of interest as favourites, which are highlighted on their return (similar to bookmarks)
+* quiz?  confirmation of understanding?  Might be a bit patronising?  who the 
+* would absolutely love to have a game which takes the user from age 0 to their resting age and allows them to visualise the consequences of financial decisions
+   
+### Responsive Mockup
+https://ui.dev/amiresponsive?url=https://deemccart.github.io/CI_PP4_FinancePlanner/
+
+### Live webpage link
+https://deemccart.github.io/CI_PP4_Financial_Planner
+
+## Project Goals
+----------------
+1. To provide a portal for financial education content. 
+2. Initially loaded with information relevant to the republic of Ireland.
+3. Can be Organised into themes (life Stages) defined by an adminstrator.
+4. Can allow content to be stored and classified including links, videos.
+5. Where the user can tag items of interest/ further refernce.   
+6. Which uses the capabilities of Django, HTML, CSS and Javascript.
+7. And is accessible, responsive and relevant.
+  
+### UX Design Strategy
+To be described.
+But focus is on accessible content, for the naive or more sophisticated user.
+And abilty for the user to pickup content which is relevant to their needs.
+
+Philosophies, values:
+* Integrity
+* Empowerment
+<br>
+<br>
+### UX Design Strategy Analysis - Existing Financial Information websites
+Competitor/ similar site analysis was undertaken over a two-week period during September 2023 to analyse existing financial literacy education schemes and information resources, the target audience for same, and to identify gaps which might provide opportunities for a new solution.
+The research methodology was initially Google searches (ideally to be followed up by user interviews with thought leaders in the area of financial literacy education).
+
+Financial literarcy Content is, in many cases, rich, detailed and valualable.
+Government-funded websites such as CCPC, Citizens advice, Revenue offer clear and authoritive advice, and it is possible to determine when the advice was last updated.
+Consumer-led sites such as switcher.ie, bonkers.ie, cheapestoil.ie offer comparisons of specific services or products (electricity supplier, telecomms providers, fuel prices) . 
+However it is also quite dispersed, and topic searches can require considerable persistence to obtain a full picture.
+Truth verification can be difficult, opinion-based sources can appear to hold equal weight with authoritiative sources.  
+Vulnerable users researching can fall prey to information-gathering websites which then seek to market or target the customers for revenue-earning purposes, often recycling the customers own information as part of this exercise.
+Financial literacy programmes are taking shape in schools, however there does not seem to be entire-life financial educational focus
+Bank of Ireland in ther consumer study of XXXXXX, observed that many middle-class parents will gift their children, not only with financial resources, but with the knowledge and learning of how to manage and maintain these resources.
+People raised in humble circumstances neither benefit from inherited wealth, nor typically do they absorb this detailed knowledge within their home environment. 
+Retail banks, who traditionally prospered through relationship marketing, have since c. 2012 retreated into transactional processing, which reduces the opportunity for customers to learn from conversations with bank staff.  
+Post offices, offered as an alternative, are primarily transaction focussed, and reply on unqualified staff who can provide limited financial guidance to customers.
+People are being increasingly directed towards self-learning.
+
+But this is challenging because of the huge diversity of information sources and resources.
+
+Therefore, the gap to be adressed is navigational.... how does a user find information relevant to their needs? 
+.
+List of websites/pages analysed includes:
+..... to be listed here .......
+
+
+<details><summary>Summary of findings</summary>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/strategy_competitive_analysis.jpg"></details>
+
+### UX Design Strategy Target Audience
+This **first** release of the Financial Planner portal is aimed at:
+
+a. Individuals (rather than companies or organisations)<br>
+b. Who have financial agency (decision-making capacity)
+c. who reside or operate within the financial and legal boundaries of the Republic of Ireland (as financial content is specific to this territory)
+d. who are at various adult life stages (18 -> end of life) 
+3. who have internet access and the capacity to navigate a website
+f. with the ability to read engish-language content (some of the content may be translatable e.g. using Google translate, but this cannot be assumed or taken for granted)
+g. who wish to understand what financial information is relevant and important to a particular life stage/event.
+
+## UX Design Scope
+----------------
+
+### UX Design Scope User Requirements and Expectations
+<br>
+From the analysis of existing financial literacy/informational websites, a set of possible requirements was identified for a new portal.
+<br>
+The basic requirement is to provide a meta-portal which allows theme-based grouping of financial literacy resources.
+<br>    
+<ul>MVP Requirements:
+<li>Must be intuitive to use</li>
+<li>Must be easy to learn</li>
+<li>Good for first time or returning users</li>
+<li>Accessible - no ad display & no paywall</li>
+<li>Easy visbility of financial themes</li>
+<li> with ability to identify 'favourite' themes of interest and to hide themes not of interest (perhaps by have a 'my interests' page first and the main selection page second for returning users)</li>
+</ul>
+<br>
+<ul>Requirements - Desirable:
+<li>Should have administrator portal which allow for:</li>
+<li>  creation of themes/ catgories, with title and brief descriptor</li>
+<li>  ability to add resources to a theme, by resource type (link / tool / article/ blog post/ video clip)</li>
+<li> Ability to assign estimated reading time</li>
+  <li> ability to add one resoure to multiple themese?  Maybe using hashtags? </li>
+  
+<li>From a user perspective, should-haves and nice to haves include </li>li>
+<li> Ability to filter content to just items/articles of interest</li>
+<li> Distinguish between first time and returning user</li>li>
+<li> Ability to browse annonymously and only create a profile once trust has been established </li>li>
+<li> Guarantee of no ads or mis-use of information </li>li>
+<li> cookie-free? </li>
+<li> Ability to judge authenticity of informatio (possibly by upvotes?)</li>
+<li> Ability to comment? </li>li>
+<li> Ability to browse FAQ within a theme or topic? </li>
+
+
+<li>bility to </li>Would like to be able to track user statistics (cookies)</li>
+<li>Would like to be able to auto-generate new equations</li>
+<li>Would like to be able to track equations already used</li>
+<li>Would like to be able to set difficulty levels</li>
+</ul>
+<br>
+<ul>To incorporate as many of the Wordle characteristics below as possible:
+<li>Simple interface with uncluttered screen</li>
+<li>clearly understood rules</li>
+<li>scarcity - user can only access one game per day</li>
+<li>reponsiveness - ability to play on small screens (convenient for user)</li>
+<li>no time-out - can fit into small pockets of time as game will remain on-screen until 6 guesses completed</li>
+<li>feedback and interaction - user immediately gets feedback for each guess</li>
+<li>statistic tracking - user can track # of attempts to solve, number of days solved, success rates</li>
+<li>peer-group communication - user can share their problem-solving pattern (without revealing any part of the solution) to friends who may also play</li>
+</ul>
+
+### UX Design Scope - Data
+Initial themes loaded and displayed will be based on ROI (Republic of Ireland) datasets
+
+## User Goals/ User Stories
+----------------
+    
+### Site owner Goals
+* SO_01 As site owner I want to provide a fun, satisfying game which is visually engaging and highly interactive
+* SO_02 As site owner I want to provide a familiar interface for Wordle consumers (to assist in user learning and ease of adoption for a large pre-existing user base)
+* SO_03 As site owner I want to provide an interface which is uncluttered, free from ads, and not behind a paywall
+* SO_04 As site owner I want to include a mathematical learning experience in this game
+* SO_05 As site owner I want to provide straightforward, intuitive, consistent website navigation
+* SO_06 As site owner I want to provide a website, which meets current programming, performance and accessibility standards (html, css, javascript, responsive, accessibility, performance)
+* SO_07 As site owner I want to provide an opportunity for the user to provide feedback, including reporting issues, or suggesting improvements to the Humble Numble site
+* SO-08 As site owner I want to acknowledge to the user that their feedback has been received
+* SO-09 (FUTURE) As site owner I would like to implement scarcity - so that user can only access one game per day
+* SO-10 (FUTURE) As site owner, I would like to auto-generate new equations
+* SO_11 (FUTURE) As site owner, I would like to be able to track equations already used
+* SO_12 (FUTURE) As site owner, I would like to be able to set difficulty levels
+* SO_13 (FUTURE) As site owner, I would like to provide player stats - user can track # of attempts to solve, number of days solved, success rates
+* SO_14 (FUTURE) As site owner, I would like to facilitate users to share their problem-solving pattern (without revealing any part of the solution) 
+
+### First-time User Goals
+* FTU_01 As a first time user I am curious about what this site does, and may just want to quickly play a game
+* FTU_02 As a first time user I would like to be able to easily navigate the site and quickly learn its functionality (particularly if I am already a Wordle user)
+* FTU_03 As a first time user I would like to easily understand game rules
+* FTU_04 As a first-time user I want clear, timely and unambiguous feedback and interaction 
+* FTU_05 As a first-time user I expect links and functions that work as expected
+* FTU_06 As a first-time user who is curious about mathematical equations, I want to practice mental maths using a puzzle solving game
+* FTU_07 As a first time user I would like to see my score and receive feedback on my performance
+* FTU_08 As a first time user I would like to play on my device of choice (quite likely my mobile - reponsiveness)  
+
+### Returning User Goals
+* RU_01 As a returning user I wish to play the game, just because I enjoy it
+* RU_02 As a returning user I want to 'beat the computer' by guessing the solution within 6 tries
+* RU_03 no time-out - can fit into small pockets of time as game will remain on-screen until 6 guesses completed
+* RU_04 As a returning user I definitely want to be able to see any equation which I didn't guess within 6 tries
+* RU_05 As a returning user I would like to receive a 'fresh' challenge each time I play (ie not an equation thats been used before)
+* RU_06 As a returning user I want to feel that the game is 'fair' and that I can apply my skills to playing it
+* RU_07 As a returning user I would like to be able to contact the developer and to provide suggestions for game enhancement
+* RU_08 (FUTURE) As a returning user I would like to be able to share my results with my friends (graphic showing the pattern of result)
+* RU_09 (FUTURE) As a returning user I would like to receive only one challenge per day (to avoid being sucked into a timewarp of endless gaming)
+* RU_10 (FUTURE) As a returning user I would like to be able to track my statistics and to track/ maintain/ improve my winning streak
+
+### Other stakeholder Goals
+* OT_01 As an educator I might wish to suggest new equations to be solved by Humble Numble players 
+* OT_02 As an educator I might promote the use of this game amongst my students to increase their mathematical skills
+
+
+## UX Design Decisions
+----------------
+
+### Wireframes
+<details><summary>Landing Page</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/wf1_hn_landing.png">
+</details>
+
+<details><summary>How To Play</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/wf2_hn_howtoplay.png">
+</details>
+
+<details><summary>Game screen</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/wf3_hn_game.png">
+</details>
+
+<details><summary>Game screen in progress</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/wf4_hn_game_inprogress.png">
+</details>
+
+  
+### Fonts Chosen
+The fonts are deliberately chosen to mimic appearance of Wordle screen. 
+In real life, Wordle uses proprietary fonts (NYT Karnak Condensed), with Helventica Sans for the grid and button text.  A reasonably close match, which is widely available on a range of devices, was thought to be the Google bebas Neue font.
+
+However, when testing the site this did not present a good look, and so Roboto Slab was chosen as a better alternative.
+Fallback fronts are used in both cases
+
+### Colour Scheme 
+The colour combinations mimic Wordle's game (for consistency and to ease the user learning experience).
+   
+The choice of colours for Humble Numble is very much in accordance with user stories S_02 (closely emulate the Wordle look & feel); FTU_02 (first-time user to easily navigate and learn the site) - consistent with Wordle so as to speed the learning process and encourage the focus on the game content, rather than on how to use it.
+
+<details><summary>Colours- similar to Wordle</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f07_game_grid_in_progress.jpg">
+</details>
+
+### Design Images
+This site has very few images as the focus is on the game content.
+A 'Wordle-type' logo is used on the Intro page.
+<details><summary>'Wordle-type' logo</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/numble_icon.jpg">
+</details>
+
+### Design Images - Icons and Symbols
+
+Certain icons and symbols (again based on Wordle look & feel) are used for quicklinks e.g. ? for About page, graphy symbol for Stats page, cog symbol for settings page. 
+
+
+## Agile
+An Agile approach was followed in plannning this project.  This is somewhat in contrast to the developer's well-practised 'waterfall' habits and presented both a challenge and an opportunity to think in a different way about deliverables and incremental delivery.
+It was helpful that the developer participated in a hackathon during Sept 2023, and had an opportunity to observe experienced Agile developers, and their use of Github issue tracking.  
+This led to a much clearer understanding of User story and task breakdown, as well as how github can be tailored  to add value, rather than overhead(!), to programming work.
+* One precept which was difficult to master was respecting the timeboxing of each iteration.  Attempts to 'just finish' a task by extending the iteration by a day or two, needed to be curbed.  Instead, I had to (will have to) train myself to end the sprint, then assess which work had been completed or not.
+* Story points present another challenge.  A very natural interpretation of story points is to assign them a time value (rather than an 'effort' value).  So, at the outset, the most natural approach felt like assigning each task an estimated duration, and reflecting on story points as hours.  This allowed me to capacity plan the first couple of sprints/ iterations based on the time I had available..... I await to see if I will continue this as the project progresses, or whether I move to a more fluid interpretation of SPs.
+* However with the magic law of time (better check what magic law this is) creative tasks in which I am fully engaged make the time fly, meaning I can spend quite a bit of elapsed time but without feeling the straing, whereas less desirable tasks cause time to drag!  <- how does this reflect story points?
+* 
+## Issues-planning
+* Observation from hackathon - short user story names are best for visibility and tracking
+* Observation from hackathon - a user story is generally a fairly big block with a number of subtasks.  It is not advisable to have an entire user story which is longer than a sprint, as it will be carried forward in the 'to do' or 'in progress' bucket without clear visibilit.  Therefor likely to try breaking a complex user story into subtasks.  Both the user story and the sub tasks will be listed as issues, the user story will remain in the 'to do' bucket after grooming, and its tasks will be ticked off when their individual issues are completed.  The individual issues will move through the kanban board lifecycle of backlog -> to do -> in progress -> review -> done.  The 'parent' user story will remain at 'to do' (or possibly 'in progress'???)
+* Observation from hackathon - when merging of PR (pull requests) was performed in a distributed development environment, it was possible to link the PR to a kanban issue, and to automatically update the issue status based on the PR.   I would be interested in exploring how ths might be done for a solo developr (possibly workflows?)
+
+**Approach taken 
+* Setup an issue template specifically for user stories.
+*   Template body  start with a statement of the format ' As a **role** I want to **action** to acheive **goal**.
+*   Template body, Epic:  The general theme most closely assoicated with this user story (e.g. front-end)
+*   Template body:  Acceptance Criteria: List of conditions to demonstrate the issue has been satisfied/resolved
+*   Template body:  Tasks:  Checkbox-marked Tasks to satisfy this user story.
+
+A single template based on **user stories** was used from project outset, with the logic that un-needed sections could be removed for issues for specific **tasks**, or for **bugs** encountered within the development.
+(Alternatively separate templates could have been created for tasks and bugs but this seemed a bit like overkill when starting out).
+
+* Observation - the concept of starting with user stories intially for high level planning made sense, these initial issues were placed in the 'backlog' section of the kanban chart, with the 'rule' that they could not progress into 'to-do' until fully detailed
+* Observation - the 
+
+*   Setup initial issues = user stories.  Identify the tasks within each at a high level.  
+## 
+    3. [MoSCoW Prioritisation;](#labels)
+    4. [Sprint Management using Iterations](#iterations)
+    5. [Level of Effort estimation - Story Points](#story-points)
+    6. [Kanban board](#kanban)
+    7. [Backlog management and grooming](#backlog)
+    8. [Ongoing incorporation of issues into the workload](#issues)
+    9. [Observations and learnings](#learnings)    
+
+
+
+
+## Features 
+ 
+### F01 Intro Screen
+<details><summary>Introduction screen</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f01_intro.jpg"></details>
+<br>
+On first using the game an introduction window is shown, the user can choose 'Play' or 'How to Play' buttons.  The intro page shows the current date, the Humble Numble day number, and some copyright and acknowledgement notices.
+This addresses user stories SO_01, SO_02, FTU_01, FTU_02, FTU_03
+<br>
+<br>
+
+### F02 'How To Play' Screen
+<details><summary>How To Play screen</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f02_help.jpg"></details>
+<br>
+A modal 'How to Play' explains how to play and some of the subtleties of the calculations.  Available from the 'how to play' button on the Intro screen, or from the navbar help icon on all screens.   The 'How to Play' window can be scrolled to see full text, and is closed by clicking on the X in top right hand corner, at which point it disappears from screen.
+<br>
+<br>      
+
+### F03 Play button
+The Play button ![Play button](./docs/readme_images/f03_play_button.jpg?raw=true "Image of Play button") allows the user to go directly to a game screen, and immediately play a game ('call to action').
+<br>
+<br>
+
+### F04 Randomly selected solution
+<details><summary>Array of potential solutions</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f04_solution_array.jpg"></details>
+(Dont look too closely or you will ruin the surprise of playing the game!)<br>
+An array of solutions is maintained, and, when the game starts, an entry is randomly chosen from this array.  At the time of development this array contained approx 20 entries, which is sufficient for demo purposes, it is envisioned that this will be extended in the future.
+<br>
+<br>
+
+### F05 Uncluttered game screen
+<details><summary>Initialised game screen</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f05_uncluttered_game_screen.jpg"></details>
+The game screen is presented to the user fully initialised (ie a target value has been set and populated to each grid row).  The screen is free of ads and supplemental displays, which allows the user to focus on the game.
+<br>
+<br>
+
+### F06 Consistent Navbar<br>
+The Navbar is consistent throughout the website, 404 and feedback pages.  (modals/pop-ups are used to show intro and help pages, which don't show the navbar but when they are closed, the navbar can be seen on the underlying page)  Contains icons for Help, Stats and Settings.
+![Navbar](./docs/readme_images/f06_navbar.jpg?raw=true "Navbar image")
+<br>
+<br>
+
+### F07 Game grid
+<details><summary>Game panel</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f07_game_grid_in_progress.jpg"></details>
+Interactive and responsive game panel which allows the user to record one set of guess tiles per attempt (the current attempt # is shown at top of screen).  The game grid is initially blank, and will be populated with successive user guesses.
+Interactivity/feedback:  when the user presses ENTER to submit a guess, the guessed tiles update as green(correct); orange(present) or grey(absent).
+<br>
+<br>
+
+### F08 Keyboard display
+<details><summary>Keyboard</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f08_keyboard_grid.jpg"></details>
+A pseudo-keyboard shows the permitted entries.  The user must click on the keys using a mouse pointer to select an entry.  When a keyboard key is pressed, its colour flickers to light blue, and the key value is loaded to the current guess row on the game grid.  So the keyboard is the main user control for the game, and each press of a keyboard key triggers an action.   (keys 1-20, */-+ populate the game grid).<br>
+When the user presses ENTER to submit a guess, the keyboard elements used within the guess also update as green(correct); orange(present) or grey(absent).
+<br>
+<br>
+
+### F09 DEL key
+A backspace key is provided which allows the user to remove the last keyed entry on the current grid row.
+<br>
+<br>
+
+### F10 ENTER key
+The ENTER key submits the current guess row for validation. 
+<br>
+<br>
+
+### F11 Equation validation
+When a guess is submitted, the equation which the user has submitted is parsed and validated as follows - the entries at the second and fourth columns are assessed to ensure these contain an operator (plus minus multiply divide); the guessed equation is then validated to check if it equates to the target value.  If not, an error message is shown, however the game (at this version) will still progress to individual element valuation.
+![If equation has wrong total](./assets/readme_images/f11_wrong_total.jpg?raw=true "Equation calculates to incorrect total")
+<br>
+<br>
+
+### F12  Individual guess element validation
+<details><summary>Feedback on keyboard re guessed solution</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f12_keyboard_interaction_feeback.jpg"></details>
+Each element of the guess is compared to the solution, and its tile colour amended according to whether the guessed tile is:
+* correct (green)- tile value is at this position in the solution;
+* present (orange)- tile value is at a different position in the solution;
+* absent (grey) - tile value is not in the solution.
+![Feedback on game panel re guessed solution](./docs/readme_images/f12_game_interaction_feeback.jpg?raw=true "Image of guessed tiles changing colour")
+
+The corresponding keyboard grid value is coloured on the lower part of the screen, e.g. '5' guessed correct; will colour both the row tile and the keyboard key green.  A (hidden) count of the number of correct elements is maintained.
+<br>
+<br>
+
+### F13 Success message
+<details><summary>Appropriate success message, content varies by # of attempts</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f13_attempt4_result.jpg"></details>
+ This displays when all elements correctly guessed.  A pop-up message with the appropriate text appears.  This text mimics the Wordle site, so depending on the  number of attempts the successful user can get (Genius, Magnificent, Impressive, Splendid, Great, Phew).
+<br>
+<br>
+
+### F14 Solution display if exceeded 6 attempts
+<details><summary>Solution display if 6 unsuccessful guesses</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f14_exceeded_6attempts.jpg"></details>
+A pop-up message with the appropriate text appears if the user has matched the entire solution equation.  This text mimics the Wordle site, so depending on the  number of attempts the user can get (Genius, Magnificent, Impressive, Splendid, Great, Phew)
+<br>
+<br>
+
+### F15 User Statistics 
+<details><summary>User statistics</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f15_user_statistics.jpg"></details>
+
+This screen is really a placeholder for future functionality as would like to display some of the statistics for a player over a number of games<br>
+<br>
+
+### F16 Settings and Feedback
+<details><summary>User settings</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/f16_settings_feedback.jpg"></details>
+
+This allows the user to provide feedback and to choose to join a daily reminder mailing list.  There are placeholder questions here for future Limit to one game daily (preset to 'no limit');
+Difficulty levels: easy or difficult (preset to 'difficult').
+Share image of solution to clipboard (future)
+<br>
+<br>
+
+### F17 Responsiveness
+The site is designed to be fully responsive so it can be played on a range of convenient devices.
+
+### Features in Scope 
+
+<details><summary>Mapping of user stories to features</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/user_stories_vs_features.jpg"></details>
+
+This website includes 3 pages and 16 features 
+The pages - which effectively bring the features lited in the previous section together - are:
+* Landing Page (see feature F01 Intro Screen)
+* Settings page (see feature F16 Feedback and settings )
+* 404 error page 
+
+- __404 Error Page__ 
+This allows graceful failure, where the header and footer are preserved, allowing the user to navigate away from an error page using the site navigation (rather than the back button).
+
+<details><summary>404 error page</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/p03_error_404_page.jpg"></details>
+
+### Implementation Decisions
+Pre-defined calculations are stored in a multi-dimensional array as follows:
+Solution [
+[ 3, *,_ 7 * 2, 41_], // ie 3 * 7 * 2 = 41
+[2, + , 5 * 7, 41] //ie 2 + 5 * 7 = (7) * 7 = 41
+]
+Each day's equation can therefore be referenced as Solution[day#]
+Each days' elements can be referenced as solution[day#, element#]
+This is useful when comparing a user entry for a match.
+
+Daily user entries are stored in an array of 7 x 6 rows as follows:
+Attempt [(undef, green, orange), (undef/green/orange), (undef/green/orange), (underf/green/orange), (undef/green/orange), (success)]
+Attempt attempt#, element# can be compared to each of the entries in solution [day#, element#y] to search for a match - if found then if attempt.element# matches solution.element# then green, else orange.
+
+Break out of loop when success, or when 6 tries reached.
+<br>
+
+### Features Left to Implement
+While Humble Numble, at the current version, provides the 'engine' for pattern matching and calculation, there are a number of desirable features which exist in the current version of Wordle and which would greatly add to the user experience for Numble.
+
+Choose difficulty level
+* Allow the user to choose difficulty level EASY (all numbers <= 10) or DIFFICULT (numbers <=20 included).  Note that this has been allowed for in the array of solutions, these are classified according to difficulty, so this may be an 'easy win' future feature.
+
+Allow the user to limit to one game daily
+* One of the beautiful features of wordle is its limited-release mode whereby only one puzzle is released daily ... this creates a sense of anticipation and the user wants more, they don't get the chance to become bored or tired with the game.  
+* Humble Numble at the current version, allows the user to play continuously by refreshing the browser.  This is useful when in testing and demonstration mode, but ideally the default would be one game per day.
+
+Preserve user statistics from one game to the next
+* This has been allowed for within the user interface by providing a statistics page, however the stats currently only relate to the latest game played.   Tracking of # of days 'winning streak' is very motivating to the user.
+
+Share results
+* Wordle has a feature whereby a user can share their pattern matching results without revealing the underlying solution.
+<br>
+<br>
+               
+## Technologies
+
+### Langugages
+- HTML 
+- CSS
+- Javascript
+
+### Frameworks & Tools
+* Github:  used to maintain the code repository, and for some readme edits and commits
+* Git
+* Gitpod:  used for editing and for tracking code commits back to Github
+* Balsamiq:  used for wireframing
+* Google Fonts: used to locate suitable fonts for website
+
+
+## Validation 
+
+### HTML Validation 
+- HTML
+  - No errors returned on the index html pages when checked in the W3C validator:
+  - [W3C validator - index page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP2_HumbleNumble%2Findex.html) 
+  - [W3C validator - 404 page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP2_HumbleNumble%2F404.html)
+  
+  - [W3C validator - settings page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP2_HumbleNumble%2Fsettings.html)
+
+### CSS Validation
+  - No errors returned when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https://deemccart.github.io/CI_PP2_HumbleNumble/&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) 
+
+### Javascript Validation
+  - No errors returned, when javascript was pasted into the jshint validator - however 10 unused variables were identified, which are the function names.    
+<details><summary>jshint - no errors however the function names were identified as unused variables</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/jshint_result.jpg">
+</details>
+
+### Accessibility
+The site was tested using the WAVE WebAIM accessibility evaluation tool.
+All pages pass with 0 errors 
+- [Accessibility: index page](https://wave.webaim.org/report#/https://deemccart.github.io/CI_PP2_HumbleNumble/)
+- [Accessibility: 404 page](https://wave.webaim.org/report#/https://deemccart.github.io/CI_PP2_HumbleNumble/404.html)
+
+
+### Performance
+Performance for all pages was tested using the Lighthouse tool within Google Chrome.  Performance was at 98% for the index page (intro modal).
+
+<details><summary>Performance: Index page</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/performance_lighthouse_intro_page_230602.jpg">
+</details>
+
+
+### Device Testing
+The website was tested on the following devices:
+* HP laptop
+* Samsung Galaxy S10 tablet
+* Motorola G(7) android phone
+
+### Multi-browser Testing
+The website was tested on the following browsers:
+* Google Chrome v112.0.5615.138 (HP laptop)
+* Google Chrome v112.0.5615.136 (Samsung Galaxy tablet)
+* Mozilla Firefox v112.1.0 (Motorola g(7) phone)
+
+### Testing User Stories
+![User story testing](./assets/readme_images/user-stories-checked-against-features.jpg?raw=true "testing user stories")
+
+### Bugs and issues
+<details><summary>issue tracker</summary>
+<img src="https://deemccart.github.io/CI_PP2_HumbleNumble/docs/readme_images/issue_tracker.jpg">
+</details>
+Quite a few calculation and display issues were encountered during development, the above lists the issues encountered and resolved.
+
+## Deployment
+<br>
+* The site was deployed to GitHub pages. The steps to deploy are as follows: 
+  - In the GitHub repository, navigate to the Settings tab - pages 
+  - From the source section drop-down menu, select the Master Branch
+  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
+
+The live link can be found here - https://deemccart.github.io/CI_PP2_Humble_Numble/index.html
+
+* To fork the repository:
+- Go to the GitHub repository
+- Click on Fork button in the upper right hand corner
+
+* To clone the repository:
+- Go to the GitHub repository
+- Locate the Coe button above the list of files and click it
+- Select if you prefer to clone using HTTPS, SSH, or Github CLI and click the copy button to copy the URL to you clipboard
+- Open Git Bash
+- Change the current working directory to the one where you want the cloned directory
+- Type git clone and paste the URL from the clipboard($ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY)
+- Press Enter to create your local clone
+
+
+## Credits 
+Multiple sources were used in assembling this site.
+
+
+### Content - Humble Numble
+* Inspiration taken from wordle.com
+ 
+### Code - Humble Numble
+* https://laracasts.com/series/wordle-workshop/episodes/2 for tips on building a wordle-like grid (using HTML or JS)
+* https://www.youtube.com/watch?v=j7OhcuZQ-q8 Build a Wordle clone using HTML, CSS & Javascript! : used for tips on keyboard panel building (but thereafter preferred to code independently as found that coding shortcuts proposed were not always comprehensible to a new JS developer!)
+
+### References
+The following sites were ued for research and better understanding while creating this website: 
+* https://stackoverflow.com/questions/13077923/how-can-i-convert-a-string-into-a-math-operator-in-javascript
+* https://www.w3schools.com/jsref/jsref_eval.asp Javascript eval() (Recommendation to not use due to security risk)
+* https://twitter.com/shannonical/status/1493430545614880771 Wordle Header Font - Shannon Loys, graphic designer
+* https://www.reddit.com/r/identifythisfont/comments/sdkxif/what_font_is_the_game_wordle/
+* https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_element_classlist_add2 Extensive use made of the W3Schools.com website
+* https://reactgo.com/javascript-find-is-not-a-function/
+* https://stackoverflow.com/questions/7364150/find-object-by-id-in-an-array-of-javascript-objects Extensive use made of the stackoverflow.com website
+* https://css-tricks.com/snippets/javascript/select-random-item-array/ Used to randomly select a solution for each game from an array of solutions
+* https://stackoverflow.com/questions/71658560/adding-class-to-div-element-using-javascript Used to colour the grid items and keys after guess
+* https://stackoverflow.com/questions/16189060/html-and-javascript-how-to-update-innerhtml Updating on-screen data using javascript
+* https://www.delftstack.com/howto/html/html-todays-date/?utm_content=cmp-true used to determine how to display and format todays date 
+* https://stackoverflow.com/questions/69565192/how-to-bring-the-popup-fully-displayed-in-front-of-everything used to get the results popup to display in a predictable on-screen position
+* https://stackoverflow.com/questions/42610369/javascript-classlist-remove-not-working-properly used to resolve issue #001 where not all classLists removing as expected
+* https://www.youtube.com/watch?v=uUCpopjPZdI HTML, CSS & JavaScript - How to Create a Pop-Up Modal ( Manual Version ) - Web Dev Tutorials @codefoxx used to help create a pop up help window
+* https://github.com/aleksandracodes/CI_PP2_SunshineGuessing (Aleksandra Haniok) was used for readme checklist and content, also for good code commenting structure
+* https://github.com/4n4ru/CI-P2-GuessingBee#deployment (Ana Runje) for instructions on forking and cloning a website
+
+ 
+### Acknowledgements
+* I would like to sincerely thank my mentor, Mo Shami for his enthusiasm and support throughout.
+* I would also like to thank Derek and my family for their personal support.
+
+
+
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome USER_NAME,

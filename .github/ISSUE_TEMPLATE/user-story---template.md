@@ -11,13 +11,15 @@ EPIC:  <epic>
 
 As a **role** I can **capability** so that **received benefit**
 
-**Assumptions:**
+###Assumptions:
 
-**Acceptance Criteria**
+
+###Acceptance Criteria
+
 * 
 * 
 
-**Tasks**
+###Tasks
 - [ ] 
 - [ ] 
 - [ ] 

@@ -52,9 +52,11 @@ class Action(models.Model):
                                 related_name="actions")
     action_seq = models.IntegerField(default=10)
     action_desc = models.CharField(max_length=200, default='Action:  ')
+    created_on = models.DateTimeField(auto_now_add=True)
+  
 
     class Meta:
         ordering = ['action_seq']
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name}"
+        return f"Action {self.action_seq} {self.action_desc} "

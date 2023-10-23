@@ -352,12 +352,16 @@ A single template based on **user stories** was used from project outset, with t
     8. [Ongoing incorporation of issues into the workload](#issues)
     9. [Observations and learnings](#learnings)    
 
+### Observations and learnings(#learnings)    
+Use of EPIC as a label rather than as an issue - this was an early decisiion, although when reviewing our cohort leader Alan B's PP4 project, he showed how he had used Issues within Github to represent EPICS.  This seemed to work really well as it was possible to demonstrate a hierarchy of EPIC -> issues by including a link to the sub-issues within the EPIC 'issue' body.  Thus it was possible to click on the issues within the EPIC, check their status, then return to the EPIC.
+At the time of seeing this I had already committed to using labels to represent EPICs, so I stayed with my original approach just to see how it would work in practice.
 
+Use of a public project repo - I made the repo public early on, as I had assumed this was needed for assessment.  And about half way through I was surprised to see some comments on my tasks from another (unknown) github user offering assistance with development - kind of like an open source approach.  So they had commented on a couple of tasks.  I kept the repo public, but changed the settings so that only users who had previously committed to the repo could comment, and I blocked that particular user from the 
 
 
 ## Features 
  
-### F01 Intro Screen
+### F01 
 <details><summary>Introduction screen</summary>
 <img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f01_intro.jpg"></details>
 <br>

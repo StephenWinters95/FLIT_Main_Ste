@@ -36,13 +36,13 @@ class Comment(models.Model):
     article = models.ForeignKey('Article', on_delete=models.CASCADE, 
                                 related_name="comments")
     email = models.EmailField()
-    body = models. TextField()
+    body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['created_on']
-    
+
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
 
@@ -51,11 +51,11 @@ class Action(models.Model):
     article = models.ForeignKey('Article', on_delete=models.CASCADE, 
                                 related_name="actions")
     action_seq = models.IntegerField(default=10)
-    action_desc = models.CharField(max_length=200,default='Action:  ')
+    action_desc = models.CharField(max_length=200, default='Action:  ')
 
     class Meta:
         ordering = ['action_seq']
-    
+
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
 

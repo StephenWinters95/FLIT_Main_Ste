@@ -30,6 +30,20 @@
                 <p class="card-text ">
                     {{ article.content | safe }}
                 </p>
+                    <!-- want to view actions associated with the article before viewing comments -->
+                <!-- div class="col-md-8 card mb-4  mt-3 " -->
+                    <h2>Actions:</h2>
+                    <!-- div class="card-body" -->
+                        <!-- We want a for loop inside the tags to iterate through each action in actions -->
+                        {% for action in actions %}
+                        <p><strong class="text-secondary"><i class="fa-check-circle"></i></strong>  
+                        &nbsp &nbsp {{action.action_desc | safe}} </p>
+                        <!-- Our for loop ends here -->
+                        {% endfor %}
+                        <br>
+                    <!-- /div -->
+                <!-- /div -->
+            
                 <div class="row">
 
                     <div class="col-1">
@@ -53,25 +67,6 @@
         </div>
     </div>
     <div class="row">
-        <!-- want to view actions associated with the article before viewing comments -->
-        <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Actions:</h3>
-            <div class="card-body">
-                <!-- We want a for loop inside the tags to iterate through each action in actions -->
-                {% for action in actions %}
-                <div class="actions" style="padding: 10px;">
-                    <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        <span> {{ action.seq }}  </span>
-                        <span class=" text-muted font-weight-normal">
-                            {{ action.desc }}
-                        </span> 
-                    </p>
-                </div>
-                <!-- Our for loop ends here -->
-                {% endfor %}
-           </div>
-        </div>
     
         <div class="col-md-8 card mb-4  mt-3 ">
             <h3>Comments:</h3>

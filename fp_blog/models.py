@@ -19,8 +19,10 @@ class Article(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    likes = models.ManyToManyField(User, related_name='article_likes', blank=True)
-    favourites = models.ManyToManyField(User, related_name='article_favourite', blank=True)
+    likes = models.ManyToManyField(User, related_name='article_likes',
+                                   blank=True)
+    favourites = models.ManyToManyField(User, related_name='article_favourite',
+                                        blank=True)
 
     class Meta:
         ordering = ['-created_on']
@@ -33,7 +35,7 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
-    article = models.ForeignKey('Article', on_delete=models.CASCADE, 
+    article = models.ForeignKey(Article, on_delete=models.CASCADE,
                                 related_name="comments")
     email = models.EmailField()
     body = models.TextField()
@@ -48,12 +50,11 @@ class Comment(models.Model):
 
 
 class Action(models.Model):
-    article = models.ForeignKey('Article', on_delete=models.CASCADE, 
+    article = models.ForeignKey(Article, on_delete=models.CASCADE,
                                 related_name="actions")
     action_seq = models.IntegerField(default=10)
     action_desc = models.CharField(max_length=200, default='Action:  ')
     created_on = models.DateTimeField(auto_now_add=True)
-  
 
     class Meta:
         ordering = ['action_seq']

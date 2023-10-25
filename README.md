@@ -318,26 +318,37 @@ Certain icons and symbols (again based on Wordle look & feel) are used for quick
 
 ## Agile
 An Agile approach was followed in plannning this project.  This is somewhat in contrast to the developer's well-practised 'waterfall' habits and presented both a challenge and an opportunity to think in a different way about deliverables and incremental delivery.
-It was helpful that the developer participated in a hackathon during Sept 2023, and had an opportunity to observe experienced Agile developers, and their use of Github issue tracking.  
+It was helpful that the developer participated in a hackathon during Sept 2023, and had an opportunity to observe experienced Agile developers, and their use of Github issue tracking in a team environment.
 This led to a much clearer understanding of User story and task breakdown, as well as how github can be tailored  to add value, rather than overhead(!), to programming work.
 * One precept which was difficult to master was respecting the timeboxing of each iteration.  Attempts to 'just finish' a task by extending the iteration by a day or two, needed to be curbed.  Instead, I had to (will have to) train myself to end the sprint, then assess which work had been completed or not.
 * Story points present another challenge.  A very natural interpretation of story points is to assign them a time value (rather than an 'effort' value).  So, at the outset, the most natural approach felt like assigning each task an estimated duration, and reflecting on story points as hours.  This allowed me to capacity plan the first couple of sprints/ iterations based on the time I had available..... I await to see if I will continue this as the project progresses, or whether I move to a more fluid interpretation of SPs.
 * However with the magic law of time (better check what magic law this is) creative tasks in which I am fully engaged make the time fly, meaning I can spend quite a bit of elapsed time but without feeling the straing, whereas less desirable tasks cause time to drag!  <- how does this reflect story points?
 * 
-## Issues-planning
+## Issues-planning (EPICs, user stories, tasks, acceptance criteria)
 * Observation from hackathon - short user story names are best for visibility and tracking
-* Observation from hackathon - a user story is generally a fairly big block with a number of subtasks.  It is not advisable to have an entire user story which is longer than a sprint, as it will be carried forward in the 'to do' or 'in progress' bucket without clear visibilit.  Therefor likely to try breaking a complex user story into subtasks.  Both the user story and the sub tasks will be listed as issues, the user story will remain in the 'to do' bucket after grooming, and its tasks will be ticked off when their individual issues are completed.  The individual issues will move through the kanban board lifecycle of backlog -> to do -> in progress -> review -> done.  The 'parent' user story will remain at 'to do' (or possibly 'in progress'???)
+* Observation from hackathon - a user story is generally a fairly big block with a number of subtasks.  It is not advisable to have an entire user story which is longer than a sprint, as it will be carried forward in the 'to do' or 'in progress' bucket without clear visibility.  Therefore likely to try breaking a complex user story into subtasks.  Both the user story and the sub tasks will be listed as issues, the user story will remain in the 'to do' bucket after grooming, and its tasks will be ticked off when their individual issues are completed.  The individual issues will move through the kanban board lifecycle of backlog -> to do -> in progress -> review -> done.  The 'parent' user story will remain at 'to do' (or possibly 'in progress'???)
 * Observation from hackathon - when merging of PR (pull requests) was performed in a distributed development environment, it was possible to link the PR to a kanban issue, and to automatically update the issue status based on the PR.   I would be interested in exploring how ths might be done for a solo developr (possibly workflows?)
+<details><summary>Main Project Setup</summary>
+<img src="./docs/readme_images/flowchart_overview_with_authentication.jpg">
 
-**Approach taken 
-* Setup an issue template specifically for user stories.
+**EPICs**
+Initially, I decided to use a limited number of 'large' epcis in building the MVP.  
+These were:
+UX - used for both UX design and UX implementation tasks
+MVP - initial user stories and tasks required to build first usable site
+
+## issue template
+<details><summary>Issue template - User Story</summary>
+<img src="./docs/readme_images/agile-issues-template.png">
+    
+I created an issue template specifically for user stories.
 *   Template body  start with a statement of the format ' As a **role** I want to **action** to acheive **goal**.
 *   Template body, Epic:  The general theme most closely assoicated with this user story (e.g. front-end)
 *   Template body:  Acceptance Criteria: List of conditions to demonstrate the issue has been satisfied/resolved
 *   Template body:  Tasks:  Checkbox-marked Tasks to satisfy this user story.
 
-A single template based on **user stories** was used from project outset, with the logic that un-needed sections could be removed for issues for specific **tasks**, or for **bugs** encountered within the development.
-(Alternatively separate templates could have been created for tasks and bugs but this seemed a bit like overkill when starting out).
+This template based on **user stories** was used from project outset, with the logic that un-needed sections could be removed for issues for specific **tasks**, or for **bugs** encountered within the development.
+(separate templates may be created for tasks and bugs as the project progresses).
 
 * Observation - the concept of starting with user stories intially for high level planning made sense, these initial issues were placed in the 'backlog' section of the kanban chart, with the 'rule' that they could not progress into 'to-do' until fully detailed
 * Observation - the 

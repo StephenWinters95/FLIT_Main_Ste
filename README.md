@@ -23,16 +23,17 @@
     4. [Surface - Imagery](#design-images)
 6. [Agile Methology: ](#agile)
     1. [Project setup] (#project)
-    2. [Issue Template] (#issue-template)
-    3. [EPICs, User Stories, Tasks, Acceptance Criteria;](#issues-planning)
-    4. [Designing an issues template](#issues-template)
-    5. [MoSCoW Prioritisation;](#labels)
-    6. [Sprint Management using Iterations](#iterations)
-    7. [Level of Effort estimation - Story Points](#story-points)
-    8. [Kanban board](#kanban)
-    9. [Backlog management and grooming](#backlog)
-    10. [Ongoing incorporation of issues into the workload](#issues)
-    11. [Observations and learnings](#learnings)    
+    2. [Designing an Issue Template] (#issue-template)
+    3. [Creating project issues](#project-issues)
+    4. [EPICs ](#epics)
+    5. [MoSCoW Prioritisation;](#moscow-prioritisation)
+    6. [Level of Effort estimation - Story Points](#story-points)
+    7. [Project Milestones](#milestones)
+    8. [Project Sprints](#sprints-and-iterations)
+    9. [Issue Lifecycle](#issue-lifecycle)
+    10. [Project tabular view](#tabular-projects-view)
+    11. [Kanban board](#kanban-board)
+    12. [Observations and learnings](#agile-observations-and-learnings)    
 7. [Features](#features)
     1. [Included](#features-in-scope)
     2. [Future Development](#features-left-to-implement)
@@ -329,13 +330,16 @@ This led to a much clearer understanding of User story and task breakdown, as we
 
    
 ## Project
+A github project was created within the Financial_Plannr repo.  At a high level the project details are very simple really just a name and description.
 <details><summary>GitHub Project Setup</summary>
 <img src="./docs/readme_images/agile-overview-of-project2.png">
+</details>
 
 
 ## Issue Template
 <details><summary>Issue template - User Story</summary>
 <img src="./docs/readme_images/agile-issues-template.png">
+</details>
     
 At the outset, an issue template was created specifically for user stories.  This holds 5 sections:  
 * EPIC:  The parent functional theme for this user story
@@ -347,23 +351,26 @@ At the outset, an issue template was created specifically for user stories.  Thi
 Mid-way through the project, I created a template to capture project bugs to facilitate separate tracking/reporting.
 
 
-## Issues
-Project Issues were created to track planned end-to-end work in Financial_Planner, using the issue template for consistent appearance and content.   
+## Project Issues
+Issues were created to track planned end-to-end work in Financial_Planner, using the issue template for consistent appearance and content.   
 Financial_Planner project scope includes UX design tasks, agile project setup, development tasks, documentation,  and testing.
 <details><summary>Example issue - user story</summary>
 <img src="./docs/readme_images/agile-issue-example-user-story.png">
+</details>
 
 Some of the issues created were in fact tasks, which underpinned several user stories:
 <details><summary>Example issue - task</summary>
 <img src="./docs/readme_images/agile-issue-example-task.png">
+</details>
 
 
-## EPIC
+## EPICs
 An epic in agile is a large body of work that can be broken down into a number of smaller stories, which are represented as github Issues.
 The Financial_Planner project uses custom fields to hold the epic name, some initial high-level epics:  Agile, UX, Docs, MVP.
 For clarity EPIC is also listed at the top of each issue.
 <details><summary>EPICs</summary>
 <img src="./docs/readme_images/agile-epics.png">
+</details>
 
 
 ## MoSCoW prioritisation
@@ -375,6 +382,7 @@ For prioritising user stories and known tasks, I assigned a label to each issue,
 To make selection easier (ensure that these appeared at top of label list in the order above) I preceded each label with a number as shown:
 <details><summary>MoSCow labels</summary>
 <img src="./docs/readme_images/agile-issues-moscow-prioritization.png">
+</details>
 
 
 ## Story Points
@@ -391,6 +399,7 @@ When creating the milestone a due date is needed, initially I set a due date of 
 This approach ensured, it would be possible to deliver a working, functional system, even if difficulties were encountered with implementing some of the 'could-have' features..
 <details><summary>Milestones</summary>
 <img src="./docs/readme_images/agile-milestones.png">
+</details>
 
 ## Sprints and Iterations
 In Agile methodology, effort is timeboxed into Srints, with a kickoff at the start of each Sprint time period, in which items from the product backlog are made ready for work (groomed) by ensuring all the details are completed on the user-story/issue card (task details, acceptance criteria, priority, dependencies, Story Point estimate ) before a developer starts working on it.  At the end of a sprint a retrospective should be undertaken to determine what worked well or not during that sprint.
@@ -435,7 +444,7 @@ An improved kanban view (developed mid-way through the project) is shown here, n
 * The storypoints for each individual issue, as well as the total storypoints at each lifecycle status (e.g. highlighted in green for 'Todo' column)
 * The EPIC associated with each issue (e.g. highlighted in pink within the 'Done' column)
 
-![Projects - Tabular view](./docs/readme_images/agile-issues-kanban-view-sp-epic-num-issues-per-col.png?raw=true "Improved tabular view with lots of information")
+![Projects - Rich Kanban board](./docs/readme_images/agile-issues-kanban-view-sp-epic-num-issues-per-col.png?raw=true "Improved kanban board with lots of information")
 
  
 ## Agile Observations and learnings

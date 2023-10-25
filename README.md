@@ -22,8 +22,8 @@
     3. [Surface - Colours](#colour-scheme)
     4. [Surface - Imagery](#design-images)
 6. [Agile Methology: ](#agile)
-    1. [Project setup] (#project)
-    2. [Designing an Issue Template] (#issue-template)
+    1. [Project setup](#project)
+    2. [Designing an Issue Template](#issue-template)
     3. [Creating project issues](#project-issues)
     4. [EPICs ](#epics)
     5. [MoSCoW Prioritisation;](#moscow-prioritisation)
@@ -329,14 +329,14 @@ This led to a much clearer understanding of User story and task breakdown, as we
 * Agile representation using github tools
 
    
-## Project
+### Project
 A github project was created within the Financial_Plannr repo.  At a high level the project details are very simple really just a name and description.
 <details><summary>GitHub Project Setup</summary>
 <img src="./docs/readme_images/agile-overview-of-project2.png">
 </details>
 
 
-## Issue Template
+### Issue Template
 <details><summary>Issue template - User Story</summary>
 <img src="./docs/readme_images/agile-issues-template.png">
 </details>
@@ -351,7 +351,7 @@ At the outset, an issue template was created specifically for user stories.  Thi
 Mid-way through the project, I created a template to capture project bugs to facilitate separate tracking/reporting.
 
 
-## Project Issues
+### Project Issues
 Issues were created to track planned end-to-end work in Financial_Planner, using the issue template for consistent appearance and content.   
 Financial_Planner project scope includes UX design tasks, agile project setup, development tasks, documentation,  and testing.
 <details><summary>Example issue - user story</summary>
@@ -364,7 +364,7 @@ Some of the issues created were in fact tasks, which underpinned several user st
 </details>
 
 
-## EPICs
+### EPICs
 An epic in agile is a large body of work that can be broken down into a number of smaller stories, which are represented as github Issues.
 The Financial_Planner project uses custom fields to hold the epic name, some initial high-level epics:  Agile, UX, Docs, MVP.
 For clarity EPIC is also listed at the top of each issue.
@@ -373,7 +373,7 @@ For clarity EPIC is also listed at the top of each issue.
 </details>
 
 
-## MoSCoW prioritisation
+### MoSCoW prioritisation
 For prioritising user stories and known tasks, I assigned a label to each issue, one of:
 * Must-have
 * Should-have
@@ -385,13 +385,13 @@ To make selection easier (ensure that these appeared at top of label list in the
 </details>
 
 
-## Story Points
+### Story Points
 Story points are intended as a 'level of required effort' measure.  I used a custom issue category field to represent these. 
 While at the beginning it was easiest to think of story points in terms of 'hours', as the sprints passed it became easier to assess relative to work already completed.
 An observation would be that interpreting story points as 'hours' is somewhat one-dimensional, as sometimes the elapsed hours can be greater or lesser depending on mood, state of flow etc.
 
 
-## Milestones
+### Milestones
 While this is a relatively short project (developed over 2 months duration), there was sufficient opportunity to set milestones for MVP (mostly consisting of must-have issues) and releases.
 The use of MVP milestone encouraged a 'deploy-early' mindset whereby the software could be delivered incrementally, with successive releases building on proven, working software.  
 When creating the milestone a due date is needed, initially I set a due date of 3 weeks prior to deadline for MVP, with additional release dates scheduled up to the project deadline.
@@ -401,18 +401,19 @@ This approach ensured, it would be possible to deliver a working, functional sys
 <img src="./docs/readme_images/agile-milestones.png">
 </details>
 
-## Sprints and Iterations
+### Sprints and Iterations
 In Agile methodology, effort is timeboxed into Srints, with a kickoff at the start of each Sprint time period, in which items from the product backlog are made ready for work (groomed) by ensuring all the details are completed on the user-story/issue card (task details, acceptance criteria, priority, dependencies, Story Point estimate ) before a developer starts working on it.  At the end of a sprint a retrospective should be undertaken to determine what worked well or not during that sprint.
 For Financial_Planner a time-period of weekly sprints was chosen.  Loosely (given that the developer consisted of a one-person team), the sprint ran from Monday-Sunday inclusive, and the aim was to complete certain agreed user stories during a particular sprint.
 
 <details><summary>Sprints/ github Iterations</summary>
 <img src="./docs/readme_images/agile-sprint-iteration-weekly.png">
+</details>
 
 Initially when performing the design tasks (effectively the first four sprints), the timeboxing aspects were not fully respected.
 However from sprint5 onwards (the first programming sprint), it became easier to decide clearly what was to be included at the outset of each sprint, and to pull specific issues from the backlog and ensure that they were progressed during the planned sprint. 
 
 
-## Issue Lifeycle
+### Issue Lifeycle
 An issue is set to progress through a number of stages, each represented by a status during its lifecycle.  A issue can be closed or deleted at any time, however best practise is to progress through:
 * Backlog 
 * To-do
@@ -423,21 +424,24 @@ An issue is set to progress through a number of stages, each represented by a st
 (Might be worth discssing status of Wont_have here also).
 
 
-## Tabular Projects View
+### Tabular Projects View
 The tabular view of projects was very useful at the backlog grooming stage, as it shows open issues, and gives easy visiblity of associated fields, e.g. story points, epic, assigned sprint, etc 
 <details><summary>Projects - Tabular view</summary>
 <img src="./docs/readme_images/agile-overview-of-project.png">
+</details>
 
 <details><summary>Projects - Tabular view2</summary>
 <img src="./docs/readme_images/agile-issues-tabular-view.png">
+</details>
 
     
-## Kanban board
+### Kanban board
 Within a sprint, the kanban board provides invaluable visual tracking.  
 In the Financial_Planner kanban board, issues progress from leftmost column (backlog) to rightmost (done)
 Note that each column holds a descriptor to tell you what is happening to issues within the column.
 <details><summary>Projects - Kanban (simple)</summary>
 <img src="./docs/readme_images/agile-issues-kanban-view.png">
+</details>
 
 An improved kanban view (developed mid-way through the project) is shown here, note that this shows:
 * the number of issues at each kanban board state (e.g. highlighted in blue for InProgress column)
@@ -447,7 +451,7 @@ An improved kanban view (developed mid-way through the project) is shown here, n
 ![Projects - Rich Kanban board](./docs/readme_images/agile-issues-kanban-view-sp-epic-num-issues-per-col.png?raw=true "Improved kanban board with lots of information")
 
  
-## Agile Observations and learnings
+### Agile Observations and learnings
 * Observation from hackathon - short user story names are best for visibility and tracking
 * Observation from hackathon - a user story is generally a fairly big block with a number of subtasks.  It is not advisable to have an entire user story which is longer than a sprint, as it will be carried forward in the 'to do' or 'in progress' bucket without clear visibility.  Therefore likely to try breaking a complex user story into subtasks.  Both the user story and the sub tasks will be listed as issues, the user story will remain in the 'to do' bucket after grooming, and its tasks will be ticked off when their individual issues are completed.  The individual issues will move through the kanban board lifecycle of backlog -> to do -> in progress -> review -> done.  The 'parent' user story will remain at 'to do' (or possibly 'in progress'???)
 * Observation from hackathon - when merging of PR (pull requests) was performed in a distributed development environment, it was possible to link the PR to a kanban issue, and to automatically update the issue status based on the PR.   I would be interested in exploring how ths might be done for a solo developr (possibly workflows?)

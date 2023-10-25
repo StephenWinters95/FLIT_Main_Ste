@@ -128,7 +128,7 @@ List of websites/pages analysed includes:
 
 
 <details><summary>Summary of findings</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/strategy_competitive_analysis.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/strategy_competitive_analysis.jpg"></details>
 
 ### UX Design Strategy Target Audience
 This **first** release of the Financial Planner portal is aimed at:
@@ -275,19 +275,19 @@ Written in the format 'As a **role** I want to **action** to achieve **desired o
 
 ### Wireframes
 <details><summary>Landing Page</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf1_hn_landing.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf1_hn_landing.png">
 </details>
 
 <details><summary>How To Play</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf2_hn_howtoplay.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf2_hn_howtoplay.png">
 </details>
 
 <details><summary>Game screen</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf3_hn_game.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf3_hn_game.png">
 </details>
 
 <details><summary>Game screen in progress</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf4_hn_game_inprogress.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf4_hn_game_inprogress.png">
 </details>
 
   
@@ -304,14 +304,14 @@ The colour combinations mimic Wordle's game (for consistency and to ease the use
 The choice of colours for Financial Planner is very much in accordance with user stories S_02 (closely emulate the Wordle look & feel); FTU_02 (first-time user to easily navigate and learn the site) - consistent with Wordle so as to speed the learning process and encourage the focus on the game content, rather than on how to use it.
 
 <details><summary>Colours- similar to Wordle</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f07_game_grid_in_progress.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f07_game_grid_in_progress.jpg">
 </details>
 
 ### Design Images
 This site has very few images as the focus is on the game content.
 A 'Wordle-type' logo is used on the Intro page.
 <details><summary>'Wordle-type' logo</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/numble_icon.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/numble_icon.jpg">
 </details>
 
 ### Design Images - Icons and Symbols
@@ -330,15 +330,15 @@ This led to a much clearer understanding of User story and task breakdown, as we
 
    
 ### Project
-A github project was created within the Financial_Plannr repo.  At a high level the project details are very simple really just a name and description.
+A github project was created within the Financial_Planner repo.  At a high level the project details are very simple really just a name and description.
 <details><summary>GitHub Project Setup</summary>
-<img src="./docs/readme_images/agile-overview-of-project2.png">
+<img src="./django_financial_planner/docs/readme_images/agile-overview-of-project2.png">
 </details>
 
 
 ### Issue Template
 <details><summary>Issue template - User Story</summary>
-<img src="./docs/readme_images/agile-issues-template.png">
+<img src="./django_financial_planner/docs/readme_images/agile-issues-template.png">
 </details>
     
 At the outset, an issue template was created specifically for user stories.  This holds 5 sections:  
@@ -355,12 +355,12 @@ Mid-way through the project, I created a template to capture project bugs to fac
 Issues were created to track planned end-to-end work in Financial_Planner, using the issue template for consistent appearance and content.   
 Financial_Planner project scope includes UX design tasks, agile project setup, development tasks, documentation,  and testing.
 <details><summary>Example issue - user story</summary>
-<img src="./docs/readme_images/agile-issue-example-user-story.png">
+<img src="./django_financial_planner/docs/readme_images/agile-issue-example-user-story.png">
 </details>
 
 Some of the issues created were in fact tasks, which underpinned several user stories:
 <details><summary>Example issue - task</summary>
-<img src="./docs/readme_images/agile-issue-example-task.png">
+<img src="./django_financial_planner/docs/readme_images/agile-issue-example-task.png">
 </details>
 
 
@@ -369,7 +369,7 @@ An epic in agile is a large body of work that can be broken down into a number o
 The Financial_Planner project uses custom fields to hold the epic name, some initial high-level epics:  Agile, UX, Docs, MVP.
 For clarity EPIC is also listed at the top of each issue.
 <details><summary>EPICs</summary>
-<img src="./docs/readme_images/agile-epics.png">
+<img src="./django_financial_planner/docs/readme_images/agile-epics.png">
 </details>
 
 
@@ -381,7 +381,7 @@ For prioritising user stories and known tasks, I assigned a label to each issue,
 * Won't have (perhaps its a never, or perhaps this just means 'not at this release')
 To make selection easier (ensure that these appeared at top of label list in the order above) I preceded each label with a number as shown:
 <details><summary>MoSCow labels</summary>
-<img src="./docs/readme_images/agile-issues-moscow-prioritization.png">
+<img src="./django_financial_planner/docs/readme_images/agile-issues-moscow-prioritization.png">
 </details>
 
 
@@ -398,7 +398,7 @@ When creating the milestone a due date is needed, initially I set a due date of 
 
 This approach ensured, it would be possible to deliver a working, functional system, even if difficulties were encountered with implementing some of the 'could-have' features..
 <details><summary>Milestones</summary>
-<img src="./docs/readme_images/agile-milestones.png">
+<img src="./django_financial_planner/docs/readme_images/agile-milestones.png">
 </details>
 
 ### Sprints and Iterations
@@ -406,7 +406,7 @@ In Agile methodology, effort is timeboxed into Srints, with a kickoff at the sta
 For Financial_Planner a time-period of weekly sprints was chosen.  Loosely (given that the developer consisted of a one-person team), the sprint ran from Monday-Sunday inclusive, and the aim was to complete certain agreed user stories during a particular sprint.
 
 <details><summary>Sprints/ github Iterations</summary>
-<img src="./docs/readme_images/agile-sprint-iteration-weekly.png">
+<img src="./django_financial_planner/docs/readme_images/agile-sprint-iteration-weekly.png">
 </details>
 
 Initially when performing the design tasks (effectively the first four sprints), the timeboxing aspects were not fully respected.
@@ -427,11 +427,11 @@ An issue is set to progress through a number of stages, each represented by a st
 ### Tabular Projects View
 The tabular view of projects was very useful at the backlog grooming stage, as it shows open issues, and gives easy visiblity of associated fields, e.g. story points, epic, assigned sprint, etc 
 <details><summary>Projects - Tabular view</summary>
-<img src="./docs/readme_images/agile-overview-of-project.png">
+<img src="./django_financial_planner/docs/readme_images/agile-overview-of-project.png">
 </details>
 
 <details><summary>Projects - Tabular view2</summary>
-<img src="./docs/readme_images/agile-issues-tabular-view.png">
+<img src="./django_financial_planner/docs/readme_images/agile-issues-tabular-view.png">
 </details>
 
     
@@ -440,7 +440,7 @@ Within a sprint, the kanban board provides invaluable visual tracking.
 In the Financial_Planner kanban board, issues progress from leftmost column (backlog) to rightmost (done)
 Note that each column holds a descriptor to tell you what is happening to issues within the column.
 <details><summary>Projects - Kanban (simple)</summary>
-<img src="./docs/readme_images/agile-issues-kanban-view.png">
+<img src="./django_financial_planner/docs/readme_images/agile-issues-kanban-view.png">
 </details>
 
 An improved kanban view (developed mid-way through the project) is shown here, note that this shows:
@@ -448,7 +448,7 @@ An improved kanban view (developed mid-way through the project) is shown here, n
 * The storypoints for each individual issue, as well as the total storypoints at each lifecycle status (e.g. highlighted in green for 'Todo' column)
 * The EPIC associated with each issue (e.g. highlighted in pink within the 'Done' column)
 
-![Projects - Rich Kanban board](./docs/readme_images/agile-issues-kanban-view-sp-epic-num-issues-per-col.png?raw=true "Improved kanban board with lots of information")
+![Projects - Rich Kanban board](./django_financial_planner/docs/readme_images/agile-issues-kanban-view-sp-epic-num-issues-per-col.png?raw=true "Improved kanban board with lots of information")
 
  
 ### Agile Observations and learnings
@@ -465,7 +465,7 @@ At the time of seeing this I had already committed to using labels to represent 
  
 ### F01 
 <details><summary>Introduction screen</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f01_intro.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f01_intro.jpg"></details>
 <br>
 On first using the game an introduction window is shown, the user can choose 'Play' or 'How to Play' buttons.  The intro page shows the current date, the Financial Planner day number, and some copyright and acknowledgement notices.
 This addresses user stories SO_01, SO_02, FTU_01, FTU_02, FTU_03
@@ -474,20 +474,20 @@ This addresses user stories SO_01, SO_02, FTU_01, FTU_02, FTU_03
 
 ### F02 'How To Play' Screen
 <details><summary>How To Play screen</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f02_help.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f02_help.jpg"></details>
 <br>
 A modal 'How to Play' explains how to play and some of the subtleties of the calculations.  Available from the 'how to play' button on the Intro screen, or from the navbar help icon on all screens.   The 'How to Play' window can be scrolled to see full text, and is closed by clicking on the X in top right hand corner, at which point it disappears from screen.
 <br>
 <br>      
 
 ### F03 Play button
-The Play button ![Play button](./docs/readme_images/f03_play_button.jpg?raw=true "Image of Play button") allows the user to go directly to a game screen, and immediately play a game ('call to action').
+The Play button ![Play button](./django_financial_planner/docs/readme_images/f03_play_button.jpg?raw=true "Image of Play button") allows the user to go directly to a game screen, and immediately play a game ('call to action').
 <br>
 <br>
 
 ### F04 Randomly selected solution
 <details><summary>Array of potential solutions</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f04_solution_array.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f04_solution_array.jpg"></details>
 (Dont look too closely or you will ruin the surprise of playing the game!)<br>
 An array of solutions is maintained, and, when the game starts, an entry is randomly chosen from this array.  At the time of development this array contained approx 20 entries, which is sufficient for demo purposes, it is envisioned that this will be extended in the future.
 <br>

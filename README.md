@@ -22,15 +22,18 @@
     3. [Surface - Colours](#colour-scheme)
     4. [Surface - Imagery](#design-images)
 6. [Agile Methology: ](#agile)
-    1. [EPICs, User Stories, Tasks, Acceptance Criteria;](#issues-planning)
-    2. [Designing an issues template](#issues-template)
-    3. [MoSCoW Prioritisation;](#labels)
-    4. [Sprint Management using Iterations](#iterations)
-    5. [Level of Effort estimation - Story Points](#story-points)
-    6. [Kanban board](#kanban)
-    7. [Backlog management and grooming](#backlog)
-    8. [Ongoing incorporation of issues into the workload](#issues)
-    9. [Observations and learnings](#learnings)    
+    1. [Project setup](#project)
+    2. [Designing an Issue Template](#issue-template)
+    3. [Creating project issues](#project-issues)
+    4. [EPICs ](#epics)
+    5. [MoSCoW Prioritisation;](#moscow-prioritisation)
+    6. [Level of Effort estimation - Story Points](#story-points)
+    7. [Project Milestones](#milestones)
+    8. [Project Sprints](#sprints-and-iterations)
+    9. [Issue Lifecycle](#issue-lifecycle)
+    10. [Project tabular view](#tabular-projects-view)
+    11. [Kanban board](#kanban-board)
+    12. [Observations and learnings](#agile-observations-and-learnings)    
 7. [Features](#features)
     1. [Included](#features-in-scope)
     2. [Future Development](#features-left-to-implement)
@@ -125,7 +128,7 @@ List of websites/pages analysed includes:
 
 
 <details><summary>Summary of findings</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/strategy_competitive_analysis.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/strategy_competitive_analysis.jpg"></details>
 
 ### UX Design Strategy Target Audience
 This **first** release of the Financial Planner portal is aimed at:
@@ -272,19 +275,19 @@ Written in the format 'As a **role** I want to **action** to achieve **desired o
 
 ### Wireframes
 <details><summary>Landing Page</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf1_hn_landing.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf1_hn_landing.png">
 </details>
 
 <details><summary>How To Play</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf2_hn_howtoplay.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf2_hn_howtoplay.png">
 </details>
 
 <details><summary>Game screen</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf3_hn_game.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf3_hn_game.png">
 </details>
 
 <details><summary>Game screen in progress</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/wf4_hn_game_inprogress.png">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf4_hn_game_inprogress.png">
 </details>
 
   
@@ -301,14 +304,14 @@ The colour combinations mimic Wordle's game (for consistency and to ease the use
 The choice of colours for Financial Planner is very much in accordance with user stories S_02 (closely emulate the Wordle look & feel); FTU_02 (first-time user to easily navigate and learn the site) - consistent with Wordle so as to speed the learning process and encourage the focus on the game content, rather than on how to use it.
 
 <details><summary>Colours- similar to Wordle</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f07_game_grid_in_progress.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f07_game_grid_in_progress.jpg">
 </details>
 
 ### Design Images
 This site has very few images as the focus is on the game content.
 A 'Wordle-type' logo is used on the Intro page.
 <details><summary>'Wordle-type' logo</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/numble_icon.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/numble_icon.jpg">
 </details>
 
 ### Design Images - Icons and Symbols
@@ -318,52 +321,151 @@ Certain icons and symbols (again based on Wordle look & feel) are used for quick
 
 ## Agile
 An Agile approach was followed in plannning this project.  This is somewhat in contrast to the developer's well-practised 'waterfall' habits and presented both a challenge and an opportunity to think in a different way about deliverables and incremental delivery.
-It was helpful that the developer participated in a hackathon during Sept 2023, and had an opportunity to observe experienced Agile developers, and their use of Github issue tracking.  
+It was helpful that the developer participated in a hackathon during Sept 2023, and had an opportunity to observe experienced Agile developers, and their use of Github issue tracking in a team environment.
 This led to a much clearer understanding of User story and task breakdown, as well as how github can be tailored  to add value, rather than overhead(!), to programming work.
 * One precept which was difficult to master was respecting the timeboxing of each iteration.  Attempts to 'just finish' a task by extending the iteration by a day or two, needed to be curbed.  Instead, I had to (will have to) train myself to end the sprint, then assess which work had been completed or not.
 * Story points present another challenge.  A very natural interpretation of story points is to assign them a time value (rather than an 'effort' value).  So, at the outset, the most natural approach felt like assigning each task an estimated duration, and reflecting on story points as hours.  This allowed me to capacity plan the first couple of sprints/ iterations based on the time I had available..... I await to see if I will continue this as the project progresses, or whether I move to a more fluid interpretation of SPs.
 * However with the magic law of time (better check what magic law this is) creative tasks in which I am fully engaged make the time fly, meaning I can spend quite a bit of elapsed time but without feeling the straing, whereas less desirable tasks cause time to drag!  <- how does this reflect story points?
-* 
-## Issues-planning
+* Agile representation using github tools
+
+   
+### Project
+A github project was created within the Financial_Planner repo.  At a high level the project details are very simple really just a name and description.
+<details><summary>GitHub Project Setup</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-overview-of-project2.png">
+</details>
+
+
+### Issue Template
+<details><summary>Issue template - User Story</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-issues-template.png">
+</details>
+    
+At the outset, an issue template was created specifically for user stories.  This holds 5 sections:  
+* EPIC:  The parent functional theme for this user story
+* A statement of what is to be achieved in the format 'As a **role** I want to **action** to achieve **goal**'.
+* Assumptions made when creating this isssue (e.g. pre-requisites)
+* Acceptance Criteria: List of conditions to demonstrate the issue has been satisfied/resolved
+* Tasks:  Checkbox-marked list of tasks to address this user story.
+
+Mid-way through the project, I created a template to capture project bugs to facilitate separate tracking/reporting.
+
+
+### Project Issues
+Issues were created to track planned end-to-end work in Financial_Planner, using the issue template for consistent appearance and content.   
+Financial_Planner project scope includes UX design tasks, agile project setup, development tasks, documentation,  and testing.
+<details><summary>Example issue - user story</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-issue-example-user-story.png">
+</details>
+
+Some of the issues created were in fact tasks, which underpinned several user stories:
+<details><summary>Example issue - task</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-issue-example-task.png">
+</details>
+
+
+### EPICs
+An epic in agile is a large body of work that can be broken down into a number of smaller stories, which are represented as github Issues.
+The Financial_Planner project uses custom fields to hold the epic name, some initial high-level epics:  Agile, UX, Docs, MVP.
+For clarity EPIC is also listed at the top of each issue.
+<details><summary>EPICs</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-epics.png">
+</details>
+
+
+### MoSCoW prioritisation
+For prioritising user stories and known tasks, I assigned a label to each issue, one of:
+* Must-have
+* Should-have
+* Could-have (or nice-to-have)
+* Won't have (perhaps its a never, or perhaps this just means 'not at this release')
+To make selection easier (ensure that these appeared at top of label list in the order above) I preceded each label with a number as shown:
+<details><summary>MoSCow labels</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-issues-moscow-prioritization.png">
+</details>
+
+
+### Story Points
+Story points are intended as a 'level of required effort' measure.  I used a custom issue category field to represent these. 
+While at the beginning it was easiest to think of story points in terms of 'hours', as the sprints passed it became easier to assess relative to work already completed.
+An observation would be that interpreting story points as 'hours' is somewhat one-dimensional, as sometimes the elapsed hours can be greater or lesser depending on mood, state of flow etc.
+
+
+### Milestones
+While this is a relatively short project (developed over 2 months duration), there was sufficient opportunity to set milestones for MVP (mostly consisting of must-have issues) and releases.
+The use of MVP milestone encouraged a 'deploy-early' mindset whereby the software could be delivered incrementally, with successive releases building on proven, working software.  
+When creating the milestone a due date is needed, initially I set a due date of 3 weeks prior to deadline for MVP, with additional release dates scheduled up to the project deadline.
+
+This approach ensured, it would be possible to deliver a working, functional system, even if difficulties were encountered with implementing some of the 'could-have' features..
+<details><summary>Milestones</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-milestones.png">
+</details>
+
+### Sprints and Iterations
+In Agile methodology, effort is timeboxed into Srints, with a kickoff at the start of each Sprint time period, in which items from the product backlog are made ready for work (groomed) by ensuring all the details are completed on the user-story/issue card (task details, acceptance criteria, priority, dependencies, Story Point estimate ) before a developer starts working on it.  At the end of a sprint a retrospective should be undertaken to determine what worked well or not during that sprint.
+For Financial_Planner a time-period of weekly sprints was chosen.  Loosely (given that the developer consisted of a one-person team), the sprint ran from Monday-Sunday inclusive, and the aim was to complete certain agreed user stories during a particular sprint.
+
+<details><summary>Sprints/ github Iterations</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-sprint-iteration-weekly.png">
+</details>
+
+Initially when performing the design tasks (effectively the first four sprints), the timeboxing aspects were not fully respected.
+However from sprint5 onwards (the first programming sprint), it became easier to decide clearly what was to be included at the outset of each sprint, and to pull specific issues from the backlog and ensure that they were progressed during the planned sprint. 
+
+
+### Issue Lifeycle
+An issue is set to progress through a number of stages, each represented by a status during its lifecycle.  A issue can be closed or deleted at any time, however best practise is to progress through:
+* Backlog 
+* To-do
+* In-progress
+* Review
+* Done
+(Can possibly add a flowchart here for visibility of lifecycle)
+(Might be worth discssing status of Wont_have here also).
+
+
+### Tabular Projects View
+The tabular view of projects was very useful at the backlog grooming stage, as it shows open issues, and gives easy visiblity of associated fields, e.g. story points, epic, assigned sprint, etc 
+<details><summary>Projects - Tabular view</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-overview-of-project.png">
+</details>
+
+<details><summary>Projects - Tabular view2</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-issues-tabular-view.png">
+</details>
+
+    
+### Kanban board
+Within a sprint, the kanban board provides invaluable visual tracking.  
+In the Financial_Planner kanban board, issues progress from leftmost column (backlog) to rightmost (done)
+Note that each column holds a descriptor to tell you what is happening to issues within the column.
+<details><summary>Projects - Kanban (simple)</summary>
+<img src="./django_financial_planner/docs/readme_images/agile-issues-kanban-view.png">
+</details>
+
+An improved kanban view (developed mid-way through the project) is shown here, note that this shows:
+* the number of issues at each kanban board state (e.g. highlighted in blue for InProgress column)
+* The storypoints for each individual issue, as well as the total storypoints at each lifecycle status (e.g. highlighted in green for 'Todo' column)
+* The EPIC associated with each issue (e.g. highlighted in pink within the 'Done' column)
+
+![Projects - Rich Kanban board](./django_financial_planner/docs/readme_images/agile-issues-kanban-view-sp-epic-num-issues-per-col.png?raw=true "Improved kanban board with lots of information")
+
+ 
+### Agile Observations and learnings
 * Observation from hackathon - short user story names are best for visibility and tracking
-* Observation from hackathon - a user story is generally a fairly big block with a number of subtasks.  It is not advisable to have an entire user story which is longer than a sprint, as it will be carried forward in the 'to do' or 'in progress' bucket without clear visibilit.  Therefor likely to try breaking a complex user story into subtasks.  Both the user story and the sub tasks will be listed as issues, the user story will remain in the 'to do' bucket after grooming, and its tasks will be ticked off when their individual issues are completed.  The individual issues will move through the kanban board lifecycle of backlog -> to do -> in progress -> review -> done.  The 'parent' user story will remain at 'to do' (or possibly 'in progress'???)
+* Observation from hackathon - a user story is generally a fairly big block with a number of subtasks.  It is not advisable to have an entire user story which is longer than a sprint, as it will be carried forward in the 'to do' or 'in progress' bucket without clear visibility.  Therefore likely to try breaking a complex user story into subtasks.  Both the user story and the sub tasks will be listed as issues, the user story will remain in the 'to do' bucket after grooming, and its tasks will be ticked off when their individual issues are completed.  The individual issues will move through the kanban board lifecycle of backlog -> to do -> in progress -> review -> done.  The 'parent' user story will remain at 'to do' (or possibly 'in progress'???)
 * Observation from hackathon - when merging of PR (pull requests) was performed in a distributed development environment, it was possible to link the PR to a kanban issue, and to automatically update the issue status based on the PR.   I would be interested in exploring how ths might be done for a solo developr (possibly workflows?)
-
-**Approach taken 
-* Setup an issue template specifically for user stories.
-*   Template body  start with a statement of the format ' As a **role** I want to **action** to acheive **goal**.
-*   Template body, Epic:  The general theme most closely assoicated with this user story (e.g. front-end)
-*   Template body:  Acceptance Criteria: List of conditions to demonstrate the issue has been satisfied/resolved
-*   Template body:  Tasks:  Checkbox-marked Tasks to satisfy this user story.
-
-A single template based on **user stories** was used from project outset, with the logic that un-needed sections could be removed for issues for specific **tasks**, or for **bugs** encountered within the development.
-(Alternatively separate templates could have been created for tasks and bugs but this seemed a bit like overkill when starting out).
-
-* Observation - the concept of starting with user stories intially for high level planning made sense, these initial issues were placed in the 'backlog' section of the kanban chart, with the 'rule' that they could not progress into 'to-do' until fully detailed
-* Observation - the 
-
-*   Setup initial issues = user stories.  Identify the tasks within each at a high level.  
-## 
-    3. [MoSCoW Prioritisation;](#labels)
-    4. [Sprint Management using Iterations](#iterations)
-    5. [Level of Effort estimation - Story Points](#story-points)
-    6. [Kanban board](#kanban)
-    7. [Backlog management and grooming](#backlog)
-    8. [Ongoing incorporation of issues into the workload](#issues)
-    9. [Observations and learnings](#learnings)    
-
-### Observations and learnings(#learnings)    
-Use of EPIC as a label rather than as an issue - this was an early decisiion, although when reviewing our cohort leader Alan B's PP4 project, he showed how he had used Issues within Github to represent EPICS.  This seemed to work really well as it was possible to demonstrate a hierarchy of EPIC -> issues by including a link to the sub-issues within the EPIC 'issue' body.  Thus it was possible to click on the issues within the EPIC, check their status, then return to the EPIC.
+* Observation - if I reference the issue # on a commit (but must be in the format #8 ) then I can hyperlink from that commit message back to the relevant user story or issue.
+* Use of EPIC as a label rather than as an issue - this was an early decisiion, although when reviewing our cohort leader Alan B's PP4 project, he showed how he had used Issues within Github to represent EPICS.  This seemed to work really well as it was possible to demonstrate a hierarchy of EPIC -> issues by including a link to the sub-issues within the EPIC 'issue' body.  Thus it was possible to click on the issues within the EPIC, check their status, then return to the EPIC.
 At the time of seeing this I had already committed to using labels to represent EPICs, so I stayed with my original approach just to see how it would work in practice.
-
-Use of a public project repo - I made the repo public early on, as I had assumed this was needed for assessment.  And about half way through I was surprised to see some comments on my tasks from another (unknown) github user offering assistance with development - kind of like an open source approach.  So they had commented on a couple of tasks.  I kept the repo public, but changed the settings so that only users who had previously committed to the repo could comment, and I blocked that particular user from the 
+* Use of a public project repo - I made the repo public early on, as I had assumed this was needed for assessment.  And about half way through I was surprised to see some comments on my tasks from another (unknown) github user offering assistance with development - kind of like an open source approach.  So they had commented on a couple of tasks.  I kept the repo public, but changed the settings so that only users who had previously committed to the repo could comment, and I blocked that particular user from the workspace....
 
 
 ## Features 
  
 ### F01 
 <details><summary>Introduction screen</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f01_intro.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f01_intro.jpg"></details>
 <br>
 On first using the game an introduction window is shown, the user can choose 'Play' or 'How to Play' buttons.  The intro page shows the current date, the Financial Planner day number, and some copyright and acknowledgement notices.
 This addresses user stories SO_01, SO_02, FTU_01, FTU_02, FTU_03
@@ -372,20 +474,20 @@ This addresses user stories SO_01, SO_02, FTU_01, FTU_02, FTU_03
 
 ### F02 'How To Play' Screen
 <details><summary>How To Play screen</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f02_help.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f02_help.jpg"></details>
 <br>
 A modal 'How to Play' explains how to play and some of the subtleties of the calculations.  Available from the 'how to play' button on the Intro screen, or from the navbar help icon on all screens.   The 'How to Play' window can be scrolled to see full text, and is closed by clicking on the X in top right hand corner, at which point it disappears from screen.
 <br>
 <br>      
 
 ### F03 Play button
-The Play button ![Play button](./docs/readme_images/f03_play_button.jpg?raw=true "Image of Play button") allows the user to go directly to a game screen, and immediately play a game ('call to action').
+The Play button ![Play button](./django_financial_planner/docs/readme_images/f03_play_button.jpg?raw=true "Image of Play button") allows the user to go directly to a game screen, and immediately play a game ('call to action').
 <br>
 <br>
 
 ### F04 Randomly selected solution
 <details><summary>Array of potential solutions</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f04_solution_array.jpg"></details>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f04_solution_array.jpg"></details>
 (Dont look too closely or you will ruin the surprise of playing the game!)<br>
 An array of solutions is maintained, and, when the game starts, an entry is randomly chosen from this array.  At the time of development this array contained approx 20 entries, which is sufficient for demo purposes, it is envisioned that this will be extended in the future.
 <br>

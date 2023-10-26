@@ -4,6 +4,7 @@ from django_summernote.admin import SummernoteModelAdmin
 from .models import Action
 from .models import Comment
 
+
 @admin.register(Article)
 class ArticleAdmin(SummernoteModelAdmin):
     summernote_fields = ('content')
@@ -25,7 +26,8 @@ class ArticleAdmin(SummernoteModelAdmin):
 
 @admin.register(Action)
 class ActionAdmin(SummernoteModelAdmin):
-    
-    list_filter = ('article', 'created_on')
-    list_display = ('article', 'action_seq', 'action_desc', 'created_on')
+    list_filter = ('article', 'action_seq', 'created_on')
+    list_display = ('article', 'action_seq', 'action_desc', 'author', 
+                    'created_on')
+    sortable_by = ['article', 'action_seq']
     search_fields = ['article', 'action_desc']

@@ -54,10 +54,12 @@ class Action(models.Model):
                                 related_name="actions")
     action_seq = models.IntegerField(default=10)
     action_desc = models.CharField(max_length=200, default='Action:  ')
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name="action_created_by")
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['action_seq']
+        ordering = ['article', 'action_seq']
 
     def __str__(self):
         return f"Action {self.action_seq} {self.action_desc} "

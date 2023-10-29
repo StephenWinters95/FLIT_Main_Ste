@@ -16,11 +16,10 @@
         To personalise your experience - article bookmarking, tracking action logs, please <a href="{{ signup_url }}">create an account</a>.<br>  
         Return to <a href="{{ login_url }}">this page</a> to sign in.{% endblocktrans %}
         </p>
-        </div>
-<div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
-
-
+        </div> <!-- end div class ="col-md-8 mt-3 offset-md-2"-->
+    </div> <!-- end div class="row" -->
+    <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2">
         {% url 'account_login' as login_url %}
         {% element form form=form method="post" action=login_url tags="entrance,login" %}
             {% slot body %}
@@ -40,6 +39,7 @@
             {% endslot %}
         {% endelement %}
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    </div>
-</div>
+        </div> <!-- end div class ="col-md-8 mt-3 offset-md-2"-->
+    </div> <!-- end div class="row" -->
+</div> <!-- end div class="container"-->
 {% endblock content %}

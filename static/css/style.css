@@ -2,6 +2,11 @@ body {
     background-color: #F9FAFC;
 }
 
+.nav-link, nav-item
+{
+    justify-self: right;
+}
+
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;

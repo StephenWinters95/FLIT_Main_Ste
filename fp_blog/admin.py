@@ -31,3 +31,14 @@ class ActionAdmin(SummernoteModelAdmin):
                     'created_on')
     sortable_by = ['article', 'action_seq']
     search_fields = ['article', 'action_desc']
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'body', 'article', 'created_on', 'approved')
+    list_filter = ('approved', 'created_on')
+    search_field = ('name', 'email', 'body')
+    actions = ['approve_comments']
+
+    def approve_comments(self, request, queryset):
+        queryset.update(approved=True)

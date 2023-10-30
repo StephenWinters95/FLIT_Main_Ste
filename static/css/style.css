@@ -2,16 +2,16 @@ body {
     background-color: #F9FAFC;
 }
 
-.nav-link, nav-item
-{
-    justify-self: right;
-}
-
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: #4A4A4F;
+}
+
+#navbarText {
+    justify-content: end;
+    flex-grow: 0;
 }
 
 .red-o {

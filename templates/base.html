@@ -24,24 +24,26 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white justify-content-end">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'home' %}"><span class="brand"><span class="red-o">F</span>inancial<span
                 ><span class="red-o">P</span>lanner</span></span></span></a><span class="navbar-text text-muted">
-                gathering Irish financial planning resources in one place
+                gathering Irish financial planning resources in one place    
             </span>
-            
+            {% if user.is_authenticated %}
+                <span class="navbar-text text-muted "> Welcome, {{user.username}}!</span>
+            {% endif %}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-right">
+                    <li class="nav-item navbar-right">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
+                    <li class="nav-item navbar-right">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                     </li>
                     {% else %}

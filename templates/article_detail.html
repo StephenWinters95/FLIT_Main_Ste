@@ -35,13 +35,13 @@
                 <!-- div class="col-md-8 card mb-4  mt-3 " -->
                     <h2>Actions:</h2>
                     <!-- div class="card-body" -->
-                        <!-- We want a for loop inside the tags to iterate through each action in actions -->
-                        {% for action in actions %}
-                        <p><strong class="text-secondary"><i class="fa-check-circle"></i></strong>  
-                        &nbsp &nbsp {{action.action_desc | safe}} </p>
-                        <!-- Our for loop ends here -->
-                        {% endfor %}
-                        <br>
+                    <!-- We want a for loop inside the tags to iterate through each action in actions -->
+                    {% for action in actions %}
+                    <p><strong class="text-secondary"><i class="fa-check-circle"></i></strong>  
+                    &nbsp &nbsp {{action.action_desc | safe}} </p>
+                    <!-- Our for loop ends here -->
+                    {% endfor %}
+                    <br>
                     <!-- /div -->
                 <!-- /div -->
             
@@ -98,15 +98,15 @@
                     </div>
                 {% else %}
                 <!-- Allow a authenticated user to leave a comment -->
-                    {% if user.is_authenticated %}
-                    <h3>Leave a comment:</h3>
-                    <p>Posting as: {{user.username}}</p>
-                    <form method="post" style="margin-top:1.3em";>
+                {% if user.is_authenticated %}
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{user.username}}</p>
+                <form method="post" style="margin-top:1.3em";>
                     {{ comment_form| crispy }}
                     {% csrf_token %}
                     <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-                    </form>
-                    {% endif %}
+                </form>
+                {% endif %}
                 {% endif %}
 
             </div>

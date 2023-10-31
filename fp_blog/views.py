@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from .models import Article
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .forms import CommentForm
 
 
@@ -22,12 +22,20 @@ class ArticleDetail(View):
         liked = False
         if article.likes.filter(id=self.request.user.id).exists():
             liked = True
+        commented = False
+        print('User ', self.request.user.id)
+        if article.comments.filter(id=self.request.user.id,
+                                   approved=False).exists():
+            print('Unapproved comments exist for this user!')
+            commented = True
+
         return render(
             request,
             "article_detail.html",
             {
              "article": article,
              "comments": comments,
+             "commented": commented,
              "actions": actions,
              "liked": liked,
              "comment_form": CommentForm()
@@ -52,7 +60,7 @@ class ArticleDetail(View):
             comment.save()
         else:
             comment_form = CommentForm()
-    
+
         return render(
                     request,
                     "article_detail.html",
@@ -66,3 +74,12 @@ class ArticleDetail(View):
                     },
                     )
 
+
+class ArticleLike(View):
+    def article(self, request, slug):
+        article = get_object_or_404(Post, slug=slug)
+        if article.likes.filter(id=request.user.id).exists():
+            article.like.remove(request.user)
+        else:
+            article.likes.add(request.user)
+        return HttpResponseRedirect(reverse('article_detail', args=[slug]))

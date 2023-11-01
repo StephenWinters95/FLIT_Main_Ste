@@ -33,9 +33,7 @@
                 {% endif %}
             {% endslot %}
             {% slot actions %}
-                {% element button class="btn btn-signup right" type="submit" tags="prominent,login" %}
-                    {% trans "Sign In" %}
-                {% endelement %}
+            <button class="btn btn-signup right" type="submit">{% trans "Sign In" %} &raquo;</button>
             {% endslot %}
         {% endelement %}
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}

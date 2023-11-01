@@ -44,6 +44,8 @@
                 <div class="row">
                     <div class="col-1">
                         <strong>
+                            <i class = "far fa-heart"></i>
+                            <span class="text-secondary">{{ article.number_of_likes }}</span>
                             {% if user.is_authenticated %}
                             <form class="d-inline" action="{% url 'article_like' article.slug %}" method="POST">
                                 {% csrf_token %}
@@ -53,13 +55,12 @@
                                 {% else %}
                                 <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
                                 <i class = "far fa-heart"></i></button>
+                                <span class="text-secondary">{{ article.number_of_likes }}</span>
                                 {% endif %}
                             </form>
-                            {% else %} <!-- else if user not authenticated just display the standard heart outline -->
-                            <span class="text-secondary"><i class = "far fa-heart"></i></span>
                             {% endif %} <!-- end if user is authenticated -->    
-                        <!-- The number of likes gos before th closing strong tag -->
-                        <span class="text-secondary">{{ article.number_of_likes }}</span>
+                        <!-- The number of likes goes before the closing strong tag -->
+                        
                         </strong>
                     </div> <!-- end div class col-1 -->
                 
@@ -71,6 +72,10 @@
                         {% endwith %}
                     </div> <!-- end div class col-1 -->
                 </div> <!-- end div class row -->
+                <div class="row"><strong>
+                    <div class="alert alert-warning" role="alert">
+                        To comment or like an article, you need to <a href="{% url 'account_login' %}">Login</a></div></strong>
+                </div>
             </div> <!-- end div card-body -->   
         </div> <!-- end div class col card mb-4  mt-3 left  top -->
     </div> <!-- end div class row -->

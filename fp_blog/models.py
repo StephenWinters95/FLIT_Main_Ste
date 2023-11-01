@@ -19,7 +19,7 @@ class Article(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    likes = models.ManyToManyField(User, related_name='article_likes',
+    likes = models.ManyToManyField(User, related_name='article_like',
                                    blank=True)
     favourites = models.ManyToManyField(User, related_name='article_favourite',
                                         blank=True)

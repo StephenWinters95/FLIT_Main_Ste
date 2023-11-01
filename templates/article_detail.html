@@ -7,12 +7,12 @@
             <div class="col-md-6 masthead-text">
                 <!-- Article title goes in these h1 tags -->
                 <h1 class="article-title">{{ article.title }}</h1>
-                <!-- Post author goes before the | the post's created date goes after -->
+                <!-- Article author goes before the | the article's created date goes after -->
                 <p class="article-subtitle">{{ article.author }} | {{ article.created_on }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
-                {% if "placeholder" in post.featured_image.url %}
+                {% if "placeholder" in article.featured_image.url %}
                 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
                 {% else %}
                 <img src="{{ article.featured_image.url }}" width="100%">
@@ -26,76 +26,88 @@
     <div class="row">
         <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
-                <!-- The post content goes inside the card-text. -->
+                <!-- The article content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text ">
-                    {{ article.content | safe }}
-                </p>
-                    <!-- want to view actions associated with the article before viewing comments -->
+                <p class="card-text ">{{ article.content | safe }}</p>
+                <!-- want to view actions associated with the article before viewing comments -->
                 <!-- div class="col-md-8 card mb-4  mt-3 " -->
-                    <h2>Actions:</h2>
-                    <!-- div class="card-body" -->
-                    <!-- We want a for loop inside the tags to iterate through each action in actions -->
-                    {% for action in actions %}
-                    <p><strong class="text-secondary"><i class="fa-check-circle"></i></strong>  
-                    &nbsp &nbsp {{action.action_desc | safe}} </p>
-                    <!-- Our for loop ends here -->
-                    {% endfor %}
-                    <br>
-                    <!-- /div -->
-                <!-- /div -->
-            
+                <h2>Actions:</h2>
+                <!-- div class="card-body" -->
+                <!-- We want a for loop inside the tags to iterate through each action in actions -->
+                {% for action in actions %}
+                <p><strong class="text-secondary"><i class="fa-check-circle"></i></strong>  
+                &nbsp &nbsp {{action.action_desc | safe}} </p>
+                <!-- Our for loop ends here -->
+                {% endfor %}
+                <br>
+                
                 <div class="row">
-
                     <div class="col-1">
-                        <!-- The number of likes goes before the closing strong tag -->
-                        <strong class="text-secondary"><i class="far fa-heart"></i> </strong>
-                    </div>
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'article_like' article.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if liked %}
+                                <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                <i class = "fas fa-heart"></i></button>
+                                {% else %}
+                                <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                <i class = "far fa-heart"></i></button>
+                                {% endif %}
+                            </form>
+                            {% else %} <!-- else if user not authenticated just display the standard heart outline -->
+                            <span class="text-secondary"><i class = "far fa-heart"></i></span>
+                            {% endif %} <!-- end if user is authenticated -->    
+                        <!-- The number of likes gos before th closing strong tag -->
+                        <span class="text-secondary">{{ article.number_of_likes }}</span>
+                        </strong>
+                    </div> <!-- end div class col-1 -->
+                
                     <div class="col-1">
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
                             <!-- Our total_comments variable goes before the closing strong tag -->
-                        {{ total_comments }}</strong>
+                            {{ total_comments }}</strong>
                         {% endwith %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </div> <!-- end div class col-1 -->
+                </div> <!-- end div class row -->
+            </div> <!-- end div card-body -->   
+        </div> <!-- end div class col card mb-4  mt-3 left  top -->
+    </div> <!-- end div class row -->
+        
     <div class="row">
         <div class="col">
             <hr>
-        </div>
-    </div>
+        </div> <!-- end div class col -->
+    </div> <!-- end div class row -->
+
     <div class="row">
-    
-        <div class="col-md-8 card mb-4  mt-3 ">
+        <div class="col-md-8 card mb-4 mt-3 ">
             <h3>Comments:</h3>
             <div class="card-body">
                 <!-- We want a for loop inside the tags to iterate through each comment in comments -->
                 {% for comment in comments %}
-                <div class="comments" style="padding: 10px;">
+                    <div class="comments" style="padding: 10px;">
                     <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
-                            {{ comment.created_on }}
-                        </span> wrote:
-                    </p>
+                    <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                    {{ comment.name }}
+                    <span class=" text-muted font-weight-normal">
+                    <!-- The comment's created date goes here -->
+                    {{ comment.created_on }} </span> wrote:</p>
                     <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}
-                </div>
+                    </div> <!-- end div class comments -->
                 <!-- Our for loop ends here -->
                 {% endfor %}
-            </div>
-        </div>
-        <div class="col-md-4 card mb-4  mt-3 ">
+            </div> <!-- end div class card-body -->
+        </div> <!-- end div class col-md-8 card mb-4 mt-3 -->
+
+        <div class="col-md-4 card mb-4 mt-3 ">
             <div class="card-body">
                 {% if commented %}
-                    <div class="alert alert-success" role="alert">
-                        Your comment is awaiting approval
-                    </div>
+                <div class="alert alert-success" role="alert">
+                    Your comment is awaiting approval
+                </div>
                 {% else %}
                 <!-- Allow a authenticated user to leave a comment -->
                 {% if user.is_authenticated %}
@@ -106,12 +118,11 @@
                     {% csrf_token %}
                     <button type="submit" class="btn btn-signup btn-lg">Submit</button>
                 </form>
-                {% endif %}
-                {% endif %}
-
-            </div>
-        </div>
-    </div>
-</div>
+                {% endif %} <!-- if user is authenticated -->
+                {% endif %} <!-- if commented -->
+            </div> <!-- end div card-body --> 
+        </div> <!-- end div col-md-4 card mb-4 mt-3 --> 
+    </div> <!-- end div class row -->
+</div> <!-- end div container -->
 
 {% endblock content %}

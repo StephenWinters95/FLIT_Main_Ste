@@ -24,8 +24,7 @@ class ArticleDetail(View):
             liked = True
         commented = False
         print('User ', self.request.user.id)
-        if article.comments.filter(id=self.request.user.id,
-                                   approved=False).exists():
+        if article.comments.filter(id=self.request.user.id).exists():
             print('Unapproved comments exist for this user!')
             commented = True
 

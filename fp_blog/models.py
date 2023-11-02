@@ -49,6 +49,9 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
 
+    def number_of_comments(self):
+        return self.body.count()
+
 
 class Action(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE,

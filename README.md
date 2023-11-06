@@ -255,7 +255,7 @@ Written in the format 'As a **role** I want to **action** to achieve **desired o
 
 ### Returning User Goals
 * RU_01 As a returning user I want to mark information I find useful so I can quickly access it again (favourites)
-* RU_02 As a returning user I access my profile which spotlights information I've previously found useful (favourites)
+* RU_02 As a returning user I want to create a user profile so that I can personalise my site experience (profile image, bookmarks, actions)
 * RU_03 As a returning user want to build my knowledge in certain areas
 * RU_04 As a returning user I want to build the body of knowledge for other users (by adding credibility ratings).
 * RU_05 As a returning user I 

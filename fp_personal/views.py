@@ -18,12 +18,17 @@ class UserProfileView(View):
             "my_planner.html",
             {
              "user": user_profile.user,
+             "first_name":  request.user.first_name,
+             "last_name": request.user.last_name,
+             "email": request.user.email,
              "profile_image": user_profile.profile_image,
              "birth_year": user_profile.birth_year,
              "age_approx":  user_profile.age_approx,
              "age_exact":  user_profile.age_exact,
              "created_on" : user_profile.created_on,
-             "email": request.user.email,
+#             "last_login" : request.user.last_login.day + (100 * request.user.last_login.month) + 10000 * (request.user.last_login.year)
+              "last_login" : request.user.last_login,
+             
              
             },
         )

@@ -18,7 +18,7 @@ class UserProfile(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return f"User: {self.user.first_name} {self.user.last_name},  UserId: {self.user},  Email: {self.user.email},  Last login: {self.user.last_login.day}/{self.user.last_login.month}/{self.user.last_login.year}"
+        return f"UserName: {self.user.first_name} {self.user.last_name},  User: {self.user},  Email: {self.user.email},  Last login: {self.user.last_login.day}/{self.user.last_login.month}/{self.user.last_login.year}"
 
 
 # Class UserAction, action that the user has copied from an article

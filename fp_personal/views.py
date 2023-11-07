@@ -18,7 +18,13 @@ class UserProfileView(View):
             "my_planner.html",
             {
              "user": user_profile.user,
+             "profile_image": user_profile.profile_image,
              "birth_year": user_profile.birth_year,
+             "age_approx":  user_profile.age_approx,
+             "age_exact":  user_profile.age_exact,
+             "created_on" : user_profile.created_on,
+             "email": request.user.email,
+             
             },
         )
 

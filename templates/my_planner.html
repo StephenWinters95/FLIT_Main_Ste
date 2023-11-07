@@ -1,67 +1,31 @@
-{% extends "base.html" %}
+{% extends 'base.html' %} {% block content %}
+{% load crispy_forms_tags %}
 
-{% block content %}
-
-<div class="container-fluid">
-    <div class="row">
-
-        <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for article in article_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                {% if "placeholder" in article.featured_image.url %}
-                                <img class="card-img-top"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
-                                {% else %}
-                                <img class="card-img-top" src=" {{ article.featured_image.url }}">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <p class="author">Author: {{ article.author }}</p>
-                                </div> <!-- end div image-flash -->
-                            </div> <!-- end div image-container -->
-                            <a href=" {% url 'article_detail' article.slug %}" class="article-link">
-                                <h2 class="card-title">{{ article.title }}</h2>
-                                <p class="card-text">{{ article.excerpt }}</p>
-                            </a>
-                            <hr />
-                            <p class="card-text text-muted h6">{{ article.created_on}} <i class="far fa-heart"></i>
-                                {{ article.number_of_likes }}
-                                <!-- want to see # of comments at the index page level also.. -->
-                                <i class="far fa-comments"></i>
-                                <!-- {% with comments.count as total_comments %}
-                                    {{ total_comments }}
-                                {% endwith %} -->
-                            </p> 
-            
-                        </div>
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:3 %}
-                </div>
-                <div class = "row">
-                    {% endif %}
-                    {% endfor %}
-                    
+<div class="container bg-grey">
+    <div class="row g-0">
+        <div class="row d-flex justify-content-center">
+            <div class = "col-md-10 mt-5 pt-5">
+                <div class = "row z-depth-3">
+                    <div class="col-sm-4 bg-info rounded-left">
+                        <div class ="card-block text-center text-white ">
+                            <img class="fas fa-user-tie fa-7x mt-5" src=" {{ profile_image.url }}">
+                            <h2 class="font-weight-bold mt-4">User:  {{user}}</h2>
+                            <p>{{birth_year}}</p>
+                        </div> <!-- end class card-block -->
+                    </div> <!-- end class col -->
+                    <div class="col-sm-8 bg-info rounded-right">
+                        <h3 class="mt-3 text-center">User Profile</h3>
+                        <hr class="badge-primary mt-0 w-25">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p class="font-weight-bold">Email:</p>
+                                <h6 class="text-muted">{{email}}</h6> 
+                            </div> <!-- end class col-sm-6 -->
+                        </div> <!-- end class row -->
+                    </div> <!-- end class col-sm-8 -->    
                 </div>
             </div>
         </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
-</div>    
-
-{%endblock%}
+    </div>
+</div>
+{% endblock content %}

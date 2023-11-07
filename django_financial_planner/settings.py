@@ -28,6 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu105.gitpod.io',
+                 '8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu106.gitpod.io',
                  'financial-planner-6a030328a9ac.herokuapp.com',
                  ]
 

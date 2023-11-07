@@ -11,28 +11,45 @@ class UserProfileView(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             # Do something for authenticated users.
-            queryset = UserProfile.objects.filter(user=request.user.id)
-            user_profile = get_object_or_404(UserProfile, user=request.user.id)
-            return render(
-            request,
-            "my_planner.html",
-            {
-             "user": user_profile.user,
-             "first_name":  request.user.first_name,
-             "last_name": request.user.last_name,
-             "email": request.user.email,
-             "profile_image": user_profile.profile_image,
-             "birth_year": user_profile.birth_year,
-             "age_approx":  user_profile.age_approx,
-             "age_exact":  user_profile.age_exact,
-             "created_on" : user_profile.created_on,
-#             "last_login" : request.user.last_login.day + (100 * request.user.last_login.month) + 10000 * (request.user.last_login.year)
-              "last_login" : request.user.last_login,
-             
-             
-            },
-        )
-
+            if (UserProfile.objects.filter(user=request.user.id).exists()):
+                queryset = UserProfile.objects.filter(user=request.user.id)
+                user_profile = get_object_or_404(UserProfile, user=request.user.id)
+                return render(
+                request,
+                "my_planner.html",
+                {
+                "user": user_profile.user,
+                "first_name":  request.user.first_name,
+                "last_name": request.user.last_name,
+                "email": request.user.email,
+                "profile_image": user_profile.profile_image,
+                "birth_year": user_profile.birth_year,
+                "age_approx":  user_profile.age_approx,
+                "age_exact":  user_profile.age_exact,
+                "created_on" : user_profile.created_on,
+    #             "last_login" : request.user.last_login.day + (100 * request.user.last_login.month) + 10000 * (request.user.last_login.year)
+                "last_login" : request.user.last_login,
+                },
+                )
+            else:
+                return render(
+                request,
+                "my_planner.html",
+                {
+                "user": request.user,
+                "first_name":  request.user.first_name,
+                "last_name": request.user.last_name,
+                "email": request.user.email,
+                "profile_image": "static/images/placeholder.png",
+                "birth_year": 1900,
+                "age_approx":  0,
+                "age_exact":  0,
+                "created_on" : '01/01/1900',
+    #             "last_login" : request.user.last_login.day + (100 * request.user.last_login.month) + 10000 * (request.user.last_login.year)
+                "last_login" : request.user.last_login,
+                },
+                )
+            endif
         else:
             # Do something for anonymous users.
             console.log("User not logged in")

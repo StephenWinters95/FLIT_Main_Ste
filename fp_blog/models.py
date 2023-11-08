@@ -32,6 +32,9 @@ class Article(models.Model):
 
     def number_of_likes(self):
         return self.likes.count()
+    
+    def number_of_bookmarks(self):
+        return self.favourites.count()
 
 
 class Comment(models.Model):

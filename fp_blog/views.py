@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Article
+from .models import Article, Comment
 from .forms import CommentForm
-
 
 class ArticleList(generic.ListView):
     model = Article
@@ -22,6 +21,10 @@ class ArticleDetail(View):
         liked = False
         if article.likes.filter(id=self.request.user.id).exists():
             liked = True
+        bookmarked = False
+        if article.favourites.filter(id=self.request.user.id).exists():
+            bookmarked = True
+
         commented = False
         print('User ', self.request.user.id)
         if article.comments.filter(id=self.request.user.id).exists():
@@ -37,6 +40,7 @@ class ArticleDetail(View):
              "commented": commented,
              "actions": actions,
              "liked": liked,
+             "bookmarked": bookmarked,
              "comment_form": CommentForm()
              },
         )
@@ -50,6 +54,10 @@ class ArticleDetail(View):
         liked = False
         if article.likes.filter(id=self.request.user.id).exists():
             liked = True
+        bookmarked = False
+        if article.favourites.filter(id=self.request.user.id).exists():
+            bookmarked = True
+
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
@@ -69,6 +77,7 @@ class ArticleDetail(View):
                         "commented": True,
                         "comment_form": CommentForm(),
                         "liked": liked,
+                        "bookmarked" : bookmarked,
                         "actions": actions,
                     },
                     )
@@ -81,4 +90,13 @@ class ArticleLike(View):
             article.likes.remove(request.user)
         else:
             article.likes.add(request.user)
+        return HttpResponseRedirect(reverse('article_detail', args=[slug]))
+
+class ArticleBookmark(View):
+    def post(self, request, slug, *args, **kwargs):
+        article = get_object_or_404(Article, slug=slug)
+        if article.favourites.filter(id=request.user.id).exists():
+            article.favourites.remove(request.user)
+        else:
+            article.favourites.add(request.user)
         return HttpResponseRedirect(reverse('article_detail', args=[slug]))

@@ -42,6 +42,7 @@
                 <br>
                 
                 <div class="row">
+                    <!-- functionality for likes -->
                     <div class="col-1">
                         <strong>
                             {% if user.is_authenticated %}
@@ -64,6 +65,7 @@
                         </strong>
                     </div> <!-- end div class col-1 -->
 
+                    <!-- functionality for comments -->    
                     <div class="col-1">
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
@@ -71,11 +73,35 @@
                             {{ total_comments }}</strong>
                         {% endwith %}
                     </div> <!-- end div class col-1 -->
+
+                    <!-- functionality for bookmarks -->
+                    <div class="col-1">
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'article_bookmark' article.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if bookmarked %}
+                                <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                <i class = "fas fa-bookmark"></i></button>
+                                <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
+                                {% else %}
+                                <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                <i class = "far fa-bookmark"></i></button>
+                                <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
+                                {% endif %}
+                            </form>
+                            {% else %}
+                            <i class = "far fa-bookmark"></i>
+                            <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
+                            {% endif %} <!-- end if user is authenticated -->                         
+                        </strong>
+                    </div> <!-- end div class col-1 -->
+
                 </div> <!-- end div class row -->
                 <div class="row"><strong>
                     {% if not user.is_authenticated %}
                     <div class="alert alert-warning" role="alert">
-                        To comment or like an article, you need to <a href="{% url 'account_login' %}">Login</a>
+                        To comment, like or bookmark an article, you need to <a href="{% url 'account_login' %}">Login</a>
                     </div></strong>
                     {% endif %}
                 </div>

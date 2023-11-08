@@ -28,13 +28,11 @@
                                 <p class="card-text">{{ article.excerpt }}</p>
                             </a>
                             <hr />
-                            <p class="card-text text-muted h6">{{ article.created_on}} <i class="far fa-heart"></i>
-                                {{ article.number_of_likes }}
+                            <p class="card-text text-muted h6">{{ article.created_on }} 
+                                <i class="far fa-heart"></i> {{ article.number_of_likes }}
                                 <!-- want to see # of comments at the index page level also.. -->
-                                <i class="far fa-comments"></i>
-                                <!-- {% with comments.count as total_comments %}
-                                    {{ total_comments }}
-                                {% endwith %} -->
+                                <i class="far fa-comments"></i>  {{ comments.number_of_comments }}
+                                <i class="far fa-bookmark"></i> {{ article.number_of_bookmarks }}
                             </p> 
             
                         </div>

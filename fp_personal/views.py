@@ -116,7 +116,7 @@ class UserProfileView(View):
 #                    )
 
 
-class ArticleFavourite(View):
+class ArticleBookmark(View):
     def post(self, request, slug, *args, **kwargs):
         article = get_object_or_404(Article, slug=slug)
         if article.favourites.filter(id=request.user.id).exists():

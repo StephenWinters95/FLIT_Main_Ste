@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
 <div class="container-fluid">
@@ -29,10 +29,44 @@
                             </a>
                             <hr />
                             <p class="card-text text-muted h6">{{ article.created_on }} 
-                                <i class="far fa-heart"></i> {{ article.number_of_likes }}
+                                <!-- <i class="far fa-heart"></i> {{ article.number_of_likes }} -->
+                                <!-- would like to bring likes functionality through to this article summary section -->
+                                {% if user.is_authenticated %}
+                                <!-- allow/activate button push on likes for authenticated users -->
+                                <form class="d-inline" action="{% url 'article_summary_like' article.slug %}" method="POST">
+                                    {% csrf_token %}
+                                    {% if liked %}
+                                    <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                    <i class = "fas fa-heart"></i></button>{{article.number_of_likes}}
+                                    {% else %}
+                                    <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                    <i class = "far fa-heart"></i></button>{{article.number_of_likes}}
+                                    {% endif %}
+                               <!-- want to see # of comments at the index page level also.. -->
+                               <i class="far fa-comments"></i>  {{comments.number_of_comments}}
+ 
+                                <!-- If user is authenticated, allow button press on bookmarks -->
+                                <form class="d-inline" action="{% url 'article_bookmark' article.slug %}" method="POST">
+                                    {% csrf_token %}
+                                    {% if bookmarked %}
+                                    <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                    <i class = "fas fa-bookmark"></i></button>{{article.number_of_bookmarks}}
+                                    {% else %}
+                                    <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                    <i class = "far fa-bookmark"></i></button>{{article.number_of_bookmarks}}
+                                    {% endif %}
+                                </form>
+                        
+                                </form>
+                                {% else %}
+                                <i class = "far fa-heart"></i>{{article.number_of_likes}}
                                 <!-- want to see # of comments at the index page level also.. -->
-                                <i class="far fa-comments"></i>  {{ comments.number_of_comments }}
-                                <i class="far fa-bookmark"></i> {{ article.number_of_bookmarks }}
+                                <i class="far fa-comments"></i>  {{comments.number_of_comments}}
+                                <i class="far fa-bookmark"></i> {{article.number_of_bookmarks}}
+                                {% endif %} <!-- end if user is authenticated -->                         
+                            <!-- end inserted text -->
+
+                                
                             </p> 
             
                         </div>

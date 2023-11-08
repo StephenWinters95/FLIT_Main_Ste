@@ -92,6 +92,15 @@ class ArticleLike(View):
             article.likes.add(request.user)
         return HttpResponseRedirect(reverse('article_detail', args=[slug]))
 
+class ArticleSummaryLike(View):
+    def post(self, request, slug, *args, **kwargs):
+        article = get_object_or_404(Article, slug=slug)
+        if article.likes.filter(id=request.user.id).exists():
+            article.likes.remove(request.user)
+        else:
+            article.likes.add(request.user)
+        return HttpResponseRedirect(reverse('article_detail', args=[slug]))
+
 class ArticleBookmark(View):
     def post(self, request, slug, *args, **kwargs):
         article = get_object_or_404(Article, slug=slug)
@@ -100,3 +109,4 @@ class ArticleBookmark(View):
         else:
             article.favourites.add(request.user)
         return HttpResponseRedirect(reverse('article_detail', args=[slug]))
+

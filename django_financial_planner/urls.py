@@ -22,5 +22,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path(r'myplanner/', include('fp_personal.urls')),
     path('', include('fp_blog.urls')),
-    
+    path('bookmark/', include('fp_blog.urls')),
+    path('like/', include('fp_blog.urls')),
 ]

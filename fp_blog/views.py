@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Article, Comment
+from .models import Article, Comment, Action
 from .forms import CommentForm
 
 class ArticleList(generic.ListView):

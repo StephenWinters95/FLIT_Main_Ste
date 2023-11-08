@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Article
 from django_summernote.admin import SummernoteModelAdmin
+from .models import User
+from .models import Article
 from .models import Action
 from .models import Comment
 

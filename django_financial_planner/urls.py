@@ -20,8 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('accounts/', include('allauth.urls')),
-    path(r'myplanner/', include('fp_personal.urls')),
     path('', include('fp_blog.urls')),
-    path('bookmark/', include('fp_blog.urls')),
-    path('like/', include('fp_blog.urls')),
-]
+    path(r'myplanner/', include('fp_personal.urls')),
+    ]

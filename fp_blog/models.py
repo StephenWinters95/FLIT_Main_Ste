@@ -45,6 +45,7 @@ class Article(models.Model):
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE,
                                 related_name="comments")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_comments")
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -55,7 +56,7 @@ class Comment(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return f"Comment {self.body} by {self.name}"
+        return f"Comment {self.body} by user {self.user}, username {self.name}"
 
     def number_of_comments(self):
         return self.body.count()

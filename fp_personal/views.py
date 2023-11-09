@@ -9,8 +9,14 @@ from .forms import UserProfileForm, UserFavouriteForm, UserActionForm
 
 class UserProfileView(View):
     def get(self, request, *args, **kwargs):
+        
+ 
         if request.user.is_authenticated:
             # Do something for authenticated users.
+
+#        comments = article.comments.filter(approved=True).order_by(
+#            '-created_on')
+
             if (UserProfile.objects.filter(user=request.user.id).exists()):
                 queryset = UserProfile.objects.filter(user=request.user.id)
                 user_profile = get_object_or_404(UserProfile, user=request.user.id)
@@ -26,9 +32,13 @@ class UserProfileView(View):
                 "birth_year": user_profile.birth_year,
                 "age_approx":  user_profile.age_approx,
                 "age_exact":  user_profile.age_exact,
-                "created_on" : user_profile.created_on,
+                "created_on": user_profile.created_on,
     #             "last_login" : request.user.last_login.day + (100 * request.user.last_login.month) + 10000 * (request.user.last_login.year)
                 "last_login" : request.user.last_login,
+                "number_of_likes": user_profile.number_of_likes,
+                "number_of_bookmarks": user_profile.number_of_bookmarks,
+                "number_of_valid_comments": user_profile.number_of_valid_comments,
+                "number_of_actions": user_profile.number_of_actions,
                 },
                 )
             else:

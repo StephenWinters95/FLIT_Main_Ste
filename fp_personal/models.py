@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-from fp_blog.models import Article
-from fp_blog.models import Action
+from fp_blog.models import Article, Comment, Action
 
 # Create your models here.
 #User profile model extending allauth user model
@@ -17,9 +16,29 @@ class UserProfile(models.Model):
     class Meta:
         ordering = ['-created_on']
 
-    def __str__(self):
-        return f"UserName: {self.user.first_name} {self.user.last_name},  User: {self.user},  Email: {self.user.email},  Last login: {self.user.last_login.day}/{self.user.last_login.month}/{self.user.last_login.year}"
+    def number_of_likes(self):
+        return self.user.article_like.count()
+    
+    def number_of_bookmarks(self):
+        return self.user.article_favourite.count()
+    
+    def number_of_comments(self):
+        return self.user.user_comments.count()
+    
+    def number_of_valid_comments(self):
+        return (self.user.user_comments.filter(approved=True).count())
 
+    def number_of_actions(self):
+        return (self.user.user_actions.count())
+
+    def number_of_completed_actions(self):
+        return (self.user.user_actions.filter(completed=True).count())
+
+    def number_of_incomplete_actions(self):
+        return (self.user.user_actions.filter(completed=False).count())
+
+    def __str__(self):
+        return f"UserName: {self.user.first_name} {self.user.last_name}, User: {self.user}, Email: {self.user.email}, Last login: {self.user.last_login.day}/{self.user.last_login.month}/{self.user.last_login.year}"
 
 # Class UserAction, action that the user has copied from an article
 class UserAction(models.Model):

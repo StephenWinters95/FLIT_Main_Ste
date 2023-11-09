@@ -9,7 +9,7 @@
                     <div class="col-sm-4 bg-info rounded-left">
                         <div class ="card-block text-center text-white ">
                             <img class="fas fa-user-tie fa-7x mt-5 img-fluid" src=" {{ profile_image.url }}">
-                            <h2 class="font-weight-bold mt-4">{{user}}</h2>
+                            <h2 class="font-weight-bold mt-4" id="userid">{{user}}</h2>
                             <p>{{first_name}}  {{last_name}}</p>
                         </div> <!-- end class card-block -->
                     </div> <!-- end class col -->
@@ -27,7 +27,8 @@
                             </div> <!-- end class col-sm-6 -->
                             <div class="col-sm-6">
                                 <p class="font-weight-bold">Approx age:</p>
-                                <h6 class="text-muted" id="approx_age"><script>const d = new Date();
+                                <h6 class="text-muted" id="approx_age">
+                                    <script>const d = new Date();
                                     let curr_year= parseInt(d.getFullYear());
                                     console.log("Current year is " + (curr_year) + ", Next year is " + (curr_year+1));
                                     let int_birth_year = parseInt(document.getElementById("birth_year").innerHTML)
@@ -46,17 +47,21 @@
                         <h4 class="mt-3">Site Engagement</h4>
                         <hr class="bg-primary">
                         <div class="row">
-                            <div class="col-sm-6">
-                                <p class="font-weight-bold">Likes</p>
-                                <h6 class="text-muted">#Articles-liked</h6>
+                            <div class="col-sm-3">
+                                <i class = "text-muted fas fa-heart" data-bs-toggle="tooltip" title="# Likes"></i>
+                                <h6 class="text-muted">{{number_of_likes}}</h6>
                             </div>
-                            <div class="col-sm-6">
-                                <p class="font-weight-bold">Bookmarked Articles</p>
-                                <h6 class="text-muted">#Bookmarks</h6>
+                            <div class="col-sm-3">
+                                <i class = "text-muted fas fa-bookmark" data-bs-toggle="tooltip" title="Bookmarks"></i>
+                                <h6 class="text-muted">{{number_of_bookmarks}}</h6>
                             </div>
-                            <div class="col-sm-6">
-                                <p class="font-weight-bold">Personal Actions</p>
-                                <h6 class="text-muted">#Actions</h6>
+                            <div class="col-sm-3">
+                                <i class="text-muted far fa-comments" data-bs-toggle="tooltip" title="(Moderated) Comments"></i> 
+                                <h6 class="text-muted">{{ number_of_valid_comments }}</h6>
+                            </div>
+                            <div class="col-sm-3">
+                                <i class="text-muted fa fa-arrow-right" data-bs-toggle="tooltip" title="Personal Actions"></i> 
+                                <h6 class="text-muted">{{number_of_actions}}</h6>
                             </div>
                         </div>
                     </div> <!-- end class col-sm-8 -->    

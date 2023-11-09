@@ -37,33 +37,32 @@
                                         {% csrf_token %}
                                         {% if liked %}
                                             <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                            <i class = "fas fa-heart"></i></button>{{article.number_of_likes}}
+                                            <i class = "text-muted fas fa-heart" data-bs-toggle="tooltip" title="# Likes"></i></button>{{article.number_of_likes}}
                                         {% else %}
                                             <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                            <i class = "far fa-heart"></i></button>{{article.number_of_likes}}
+                                            <i class = "text-muted far fa-heart" data-bs-toggle="tooltip" title="# Likes"></i></button>{{article.number_of_likes}}
                                         {% endif %}
                                     </form>
-                                    <!-- want to see # of comments at the index page level also.. -->
-                                    <i class="far fa-comments"></i>  {{comments.number_of_comments}}
-        
-                                    <!-- If user is authenticated, allow button press on bookmarks -->
+                                    <!-- Number of valid comments  -->
+                                    <i class="text-muted far fa-comments" data-bs-toggle="tooltip" title="# Comments"></i> {{ article.number_of_valid_comments }}
+                                    
+                                    <!-- If user is authenticated, activate bookmarks button -->
                                     <form class="d-inline" action="{% url 'article_bookmark' article.slug %}" method="POST">
                                         {% csrf_token %}
                                         {% if bookmarked %}
                                             <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                            <i class = "fas fa-bookmark"></i></button>{{article.number_of_bookmarks}}
+                                            <i class = "text-muted fas fa-bookmark" data-bs-toggle="tooltip" title="# Comments"></i></button>{{article.number_of_bookmarks}}
                                         {% else %}
                                             <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                            <i class = "far fa-bookmark"></i></button>{{article.number_of_bookmarks}}
+                                            <i class = "text-muted far fa-bookmark" data-bs-toggle="tooltip" title="# Bookmarks"></i></button>{{article.number_of_bookmarks}}
                                         {% endif %}
                                     </form>
                             
                                 {% else %}
                                 <!-- user not authenticated just show neutral images for likes comments bookmarks -->
-                                    <i class = "far fa-heart"></i>{{article.number_of_likes}}
-                                    <!-- want to see # of comments at the index page level also.. -->
-                                    <i class="far fa-comments"></i>  {{comments.number_of_comments}}
-                                    <i class="far fa-bookmark"></i> {{article.number_of_bookmarks}}
+                                    <i class = "text-muted far fa-heart" data-bs-toggle="tooltip" title="# Likes"></i>{{article.number_of_likes}}
+                                    <i class="text-muted far fa-comments" data-bs-toggle="tooltip" title="# Comments"></i> {{ article.number_of_valid_comments }}
+                                    <i class="text-muted far fa-bookmark" data-bs-toggle="tooltip" title="# Bookmarks"></i> {{article.number_of_bookmarks}}
                                 {% endif %} <!-- end if user is authenticated -->                                                        
                             </p> 
                         </div>

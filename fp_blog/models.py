@@ -35,7 +35,12 @@ class Article(models.Model):
     
     def number_of_bookmarks(self):
         return self.favourites.count()
-
+    
+    def number_of_comments(self):
+        return self.comments.count()
+    
+    def number_of_valid_comments(self):
+        return (self.comments.filter(approved=True).count())
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE,

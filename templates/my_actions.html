@@ -3,7 +3,7 @@
 
 <div class="container bg-grey">
     <script> console.log("Hello, world!") </script>
-                                
+
     <div class="row g-0">
         <div class="row d-flex justify-content-center">
             <div class = "col-md-10 mt-5 pt-5">
@@ -14,10 +14,12 @@
                                 <th>Seq</th>
                                 <th>Action</th>
                                 <script> console.log("In table header") </script>
-                               <p>Number of actions: {{ number_of_actions }} {{ user_actions.number_of_actions }}</p>
+                               <p>Number of actions: {{ number_of_actions }} {{ user_actions.number_of_actions }} </p>
+                               
                                {% for user_action in user_actions %} 
                                <hr/>
                                {{ user_action }}
+                                                              
                                <hr/>
                                 <script> console.log("In my_actions loop") </script>
                                 <script> console.log("Seq: " + user_action_seq); </script>

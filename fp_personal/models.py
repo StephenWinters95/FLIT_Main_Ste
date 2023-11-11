@@ -28,6 +28,9 @@ class UserProfile(models.Model):
     def number_of_valid_comments(self):
         return (self.user.user_comments.filter(approved=True).count())
 
+    def actions(self):
+        return (self.user.user_actions)
+
     def number_of_actions(self):
         return (self.user.user_actions.count())
 

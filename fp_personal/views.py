@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.models import User
 from fp_blog.models import Article, Action
 from .models import UserProfile, UserFavourite, UserAction
 from .forms import UserProfileForm, UserFavouriteForm, UserActionForm
@@ -19,7 +20,12 @@ class UserProfileView(View):
 
             if (UserProfile.objects.filter(user=request.user.id).exists()):
                 queryset = UserProfile.objects.filter(user=request.user.id)
-                user_profile = get_object_or_404(UserProfile, user=request.user.id)
+                user_profile = get_object_or_404(UserProfile, user=request.user)
+                user = get_object_or_404(User, id=request.user.id)
+
+                actions = user.user_actions.filter(user=request.user)
+                print(actions)
+
                 return render(
                 request,
                 "my_planner.html",
@@ -39,6 +45,7 @@ class UserProfileView(View):
                 "number_of_bookmarks": user_profile.number_of_bookmarks,
                 "number_of_valid_comments": user_profile.number_of_valid_comments,
                 "number_of_actions": user_profile.number_of_actions,
+                "actions": actions,
                 },
                 )
             else:
@@ -135,29 +142,32 @@ class ArticleBookmark(View):
             article.favourites.add(request.user)
         return HttpResponseRedirect(reverse('article_detail', args=[slug]))
 
-class UserActionList2(View):
-    model = UserAction
+class UserActionList(View):
     def get(self, request, *args, **kwargs):
-        queryset= request.user.user_actions
-        number_of_actions = queryset.count()
-        user_actions = queryset.order_by('user_action_seq',
-            'created_on')
-#       user_actions = UserAction.my_actions(self.request)
-        return render (
-                request,
-                "my_actions.html",
-                {
-                "number of actions ": number_of_actions,
-                "user_actions": user_actions}
-                )
-# the below no longer being activated due to struggles with composite dataset returned 11/11/23
+        if request.user.is_authenticated:
+            queryset= request.user.user_actions
+            number_of_actions = queryset.count()
+            user_actions = queryset.order_by('user_action_seq',
+                'created_on')
+    #       user_actions = UserAction.my_actions(self.request)
+            return render (
+                    request,
+                    "my_actions.html",
+                    {
+                    "number of actions ": number_of_actions,
+                    "user_actions": user_actions}
+                    )
+        else:
+            console.log("User not logged in")
+
+
 class UserActionList(View):
     model = UserAction
     def get(self, request, *args, **kwargs):
-        queryset= request.user.user_actions
-        number_of_actions = queryset.count()
-        user_actions = queryset.order_by('user_action_seq',
+        user_actions = request.user.user_actions.order_by('user_action_seq',
             'created_on')
+        number_of_actions = user_actions.count()
+            
 #       user_actions = UserAction.my_actions(self.request)
         return render (
                 request,
@@ -167,38 +177,37 @@ class UserActionList(View):
                 "user_actions": user_actions}
                 )
 
+# the below no longer being activated due to struggles with composite dataset returned 11/11/23
 class UserActionView(View):
     queryset = UserAction.objects.all()
 
     def get(self, request):
         user_actions = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on')
-        serializer = UserActionSerializer(user_actions, many=True)
-        return Response(serializer.data)
 
-class UserActionSerializer(ModelSerializer):
+    def get(self, request, *args, **kwargs):
+        if (UserAction.objects.filter(user=request.user.id).exists()):
+            queryset = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on') 
+            number_of_actions = queryset.count()
+            
+            return render(
+                request,
+                "my_actions.html",
+                {
+                "Seq": user_action_seq,
+                "Date Created": created_on,
+                "From article": parent_article,
+                "Action": user_action_desc,
+                "Done so far": user_action_taken,
+                "Result": observation,
+                "Completed": completed,
+                "Date": completed_on,
+                }
+                )
+            
+class UserActionSerializer(serializers.Serializer):
     class Meta:
         model = UserAction
         fields = ['user', 'user_action_seq', 'parent_article', 'user_action_desc', 'user_action_taken', 'observation', 'user_action_date', 'user_action_type', 'completed', 'created_on', 'completed_on']
-#    def get(self, request, *args, **kwargs):
-#        if (UserAction.objects.filter(user=request.user.id).exists()):
-#            queryset = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on') 
-#            number_of_actions = queryset.count()
-            
-#            return render(
-#                request,
-#                "my_actions.html",
-#                {
-#                "Seq": user_action_seq,
-#                "Date Created": created_on,
-#                "From article": parent_article,
-#                "Action": user_action_desc,
-#                "Done so far": user_action_taken,
-#                "Result": observation,
-#                "Completed": completed,
-#                "Date": completed_on,
-#                }
-#                )
-            
 
 
 

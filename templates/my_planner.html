@@ -64,31 +64,38 @@
                                 <h6 class="text-muted">{{number_of_actions}}</h6>
                             </div> <!-- end class col-sm-8 -->
                         </div> <!-- end class row -->
-                        <p>I think I am below the actions now</p>
-                        <script>console.log("action seq is " + action.seq)</script>
-                        <form method="post" style="margin-top:1.3em";>
-                            <table>
-                                <th>Seq</th>
-                                <th>Action</th>
-                                {% for user_action in my_actions %}
-                                <tr> {{user_action.user}}</tr>
-                                <tr> {{user_action.seq}}</tr>
-                                <tr> {{user_action.created_on}}</tr>
-                                <tr> {{user_action.parent_article}}</tr>
-                                <tr> {{user_action.user_action_desc}}</tr>
-                                <tr> {{user_action.user_action_taken}}</tr>
-                                <tr> {{user_action.obsrvation}}</tr>
-                                <tr> {{user_action.completed}}</tr>
-                                <tr> {{user_action.completd_on}}</tr>
-                                <tr> </tr>
-                                {% endfor %}
-                            </table>
-                        </form>
-
                  
                     </div> <!-- end div class col-sm-8 bg-info rounded-right -->    
                     
                 </div> <!-- end div class row z-depth-3 -->
+                <table class="table-bordered table-striped table-hover table-responsive">
+                    <tr>
+                        <th>User</th>
+                        <th>Seq</th>
+                        <th>Added Date</th>
+                        <th>Parent Article</th>
+                        <th>Action</th>
+                        <th>Done so Far</th>
+                        <th>Results</th>
+                        <th>Done?</th>
+                        <th>Date Completed</th>
+                    </tr>
+                    <form method="post" style="margin-top:1.3em";>
+                        {% for action in actions %}
+                        <tr>
+                            <td>{{action.user}}</td>
+                            <td>{{action.user_action_seq}}</td>
+                            <td>{{action.created_on}}</td>
+                            <td>{{action.parent_article}}</td>
+                            <td>{{action.user_action_desc}}</td>
+                            <td>{{action.user_action_taken}}</td>
+                            <td>{{action.observation}}</td>
+                            <td>{{action.completed}}</td>
+                            <td>{{action.completd_on}}</td>
+                        </tr>
+                        {% endfor %}
+                    </form>
+                </table>
                 
             </div> <!-- end div class col-md-10 mt-5 pt-5-->
             

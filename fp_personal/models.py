@@ -44,10 +44,10 @@ class UserProfile(models.Model):
 class UserAction(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_actions" )
     user_action_seq = models.IntegerField(default=10)
-    parent_article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="article_personal_actions")
-    user_action_desc = models.CharField(max_length=200, default='Action:  ')
-    user_action_taken = models.CharField(max_length=200, default='Taken:  ')
-    observation = models.CharField(max_length=200, default='Notes:  ')
+    parent_article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="parent_article")
+    user_action_desc = models.ForeignKey(Action, on_delete=models.CASCADE, related_name="parent_action")
+    user_action_taken = models.CharField(max_length=200, default='Done so far:  ')
+    observation = models.CharField(max_length=200, default='Results:  ')
     completed = models.BooleanField(null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
     completed_on = models.DateTimeField(blank=True, null=True)
@@ -55,8 +55,12 @@ class UserAction(models.Model):
     class Meta:
         ordering = ['user', 'user_action_seq', 'created_on']
 
+    def my_actions(request):
+        my_actions = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on')
+        return my_actions
+    
     def __str__(self):
-        return f"Action {self.user_action_seq} {self.user_action_desc}"
+        return f"{self.user} {self.user_action_seq} {self.user_action_desc} {self.completed} {self.completed_on} "
 
 # Class UserFavourite, a set of Favourite Articles for the user
 # 11/11/23 check if this is still needed
@@ -69,4 +73,4 @@ class UserFavourite(models.Model):
         ordering = ['user', 'created_on']
 
     def __str__(self):
-        return f"User {self.user} {self.favourite_article} "
+        return f"User {self.user} {self.favourite_article}"

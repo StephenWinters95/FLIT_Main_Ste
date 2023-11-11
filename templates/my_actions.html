@@ -2,6 +2,8 @@
 {% load crispy_forms_tags %}
 
 <div class="container bg-grey">
+    <script> console.log("Hello, world!") </script>
+                                
     <div class="row g-0">
         <div class="row d-flex justify-content-center">
             <div class = "col-md-10 mt-5 pt-5">
@@ -11,17 +13,24 @@
                             <table>
                                 <th>Seq</th>
                                 <th>Action</th>
-                                <script>console.log("user_action_list is " + my_actions.seq)</script>
-                                {% for user_action in my_actions %}
-                                <tr> {{user_action.user}}</tr>
-                                <tr> {{user_action.seq}}</tr>
-                                <tr> {{user_action.created_on}}</tr>
-                                <tr> {{user_action.parent_article}}</tr>
-                                <tr> {{user_action.user_action_desc}}</tr>
-                                <tr> {{user_action.user_action_taken}}</tr>
-                                <tr> {{user_action.obsrvation}}</tr>
-                                <tr> {{user_action.completed}}</tr>
-                                <tr> {{user_action.completd_on}}</tr>
+                                <script> console.log("In table header") </script>
+                               <p>Number of actions: {{ number_of_actions }} {{ user_actions.number_of_actions }}</p>
+                               {% for user_action in user_actions %} 
+                               <hr/>
+                               {{ user_action }}
+                               <hr/>
+                                <script> console.log("In my_actions loop") </script>
+                                <script> console.log("Seq: " + user_action_seq); </script>
+                                <p> User: {{user_action.user}}</p>
+                                <p> Sequence: {{action.user_action_seq}}</p>
+                                <p> Created On: {{action.created_on}}</p>
+                                <p> Parent article: {{user_action.parent_article}}</p>
+                                <p> Parent action: {{user_action.parent_action}}</p>
+                                <p> user_action_desc: {{action.user_action_desc}}</p>
+                                <p> user_action_taken: {{action.user_action_taken}}</p>
+                                <p> observation: {{action.observation}}</p>
+                                <p> completed: {{action.completed}}</p>
+                                <p> completed_on: {{action.completd_on}}</p>  
                                 {% endfor %}
                             </table>
                         </form>
@@ -39,19 +48,6 @@
 </div> <!-- end div class container bg-grey -->
 
 
-<script>
-    function calc_age() {
-        const d = new Date();
-        let curr_year= parseInt(d.getFullYear());
-        console.log("Current year is " + (curr_year) + ", Next year is " + (curr_year+1));
-        let int_birth_year = parseInt(document.getElementById("birth_year").innerHTML)
-        console.log("Birth year is " + int_birth_year + ", Next year is " + (int_birth_year+1));
-        let approx_age_calc = curr_year - int_birth_year;
-        console.log("Approx age is " + approx_age_calc);                            
-        document.getElementById("approx_age").innerHTML = approx_age_calc;
-        };
-</script>
-
-        
+      
                                 
 {% endblock content %}

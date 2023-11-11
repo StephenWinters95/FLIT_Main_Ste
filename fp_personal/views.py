@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponse, HttpResponseRedirect
-from fp_blog.models import Article
+from fp_blog.models import Article, Action
 from .models import UserProfile, UserFavourite, UserAction
 from .forms import UserProfileForm, UserFavouriteForm, UserActionForm
+from rest_framework import serializers
+
 
 # Create your views here.
 
@@ -133,32 +135,69 @@ class ArticleBookmark(View):
             article.favourites.add(request.user)
         return HttpResponseRedirect(reverse('article_detail', args=[slug]))
 
-class UserActionList(generic.ListView):
-    model=UserAction
-    queryset = UserAction.objects.order_by('user_action_seq', 'created_on')
-    template_name = "my_actions.html"
-    paginate_by = 25
-
+class UserActionList2(View):
+    model = UserAction
+    def get(self, request, *args, **kwargs):
+        queryset= request.user.user_actions
+        number_of_actions = queryset.count()
+        user_actions = queryset.order_by('user_action_seq',
+            'created_on')
+#       user_actions = UserAction.my_actions(self.request)
+        return render (
+                request,
+                "my_actions.html",
+                {
+                "number of actions ": number_of_actions,
+                "user_actions": user_actions}
+                )
+# the below no longer being activated due to struggles with composite dataset returned 11/11/23
+class UserActionList(View):
+    model = UserAction
+    def get(self, request, *args, **kwargs):
+        queryset= request.user.user_actions
+        number_of_actions = queryset.count()
+        user_actions = queryset.order_by('user_action_seq',
+            'created_on')
+#       user_actions = UserAction.my_actions(self.request)
+        return render (
+                request,
+                "my_actions.html",
+                {
+                "number of actions ": number_of_actions,
+                "user_actions": user_actions}
+                )
 
 class UserActionView(View):
-    def get(self, request, *args, **kwargs):
-        if (UserAction.objects.filter(user=request.user.id).exists()):
-            queryset = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on') 
-            user_actions = get_object_or_404(UserAction, user=request.user.id)
-            return render(
-                request,
-                "my_planner.html",
-                {
-                "Seq": user_action_seq,
-                "From article": parent_article,
-                "Action": user_action_desc,
-                "Done so far": user_action_taken,
-                "Notes": observation,
-                "Completed": completed,
-                "Date": completed_on,
-                "Date Created": created_on,
-                }
-                )
+    queryset = UserAction.objects.all()
+
+    def get(self, request):
+        user_actions = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on')
+        serializer = UserActionSerializer(user_actions, many=True)
+        return Response(serializer.data)
+
+class UserActionSerializer(ModelSerializer):
+    class Meta:
+        model = UserAction
+        fields = ['user', 'user_action_seq', 'parent_article', 'user_action_desc', 'user_action_taken', 'observation', 'user_action_date', 'user_action_type', 'completed', 'created_on', 'completed_on']
+#    def get(self, request, *args, **kwargs):
+#        if (UserAction.objects.filter(user=request.user.id).exists()):
+#            queryset = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on') 
+#            number_of_actions = queryset.count()
+            
+#            return render(
+#                request,
+#                "my_actions.html",
+#                {
+#                "Seq": user_action_seq,
+#                "Date Created": created_on,
+#                "From article": parent_article,
+#                "Action": user_action_desc,
+#                "Done so far": user_action_taken,
+#                "Result": observation,
+#                "Completed": completed,
+#                "Date": completed_on,
+#                }
+#                )
             
 
 

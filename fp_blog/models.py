@@ -75,7 +75,7 @@ class Action(models.Model):
         ordering = ['article', 'action_seq']
 
     def __str__(self):
-        return f"Action {self.action_seq} {self.action_desc} "
+        return f"Action {self.action_seq} {self.action_desc}"
 
 
 

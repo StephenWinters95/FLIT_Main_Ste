@@ -7,7 +7,7 @@
             <div class = "col-md-10 mt-5 pt-5">
                 <div class = "row z-depth-3">
                     <div class="col-sm-4 bg-info rounded-left">
-                        <div class ="card-block text-center text-white ">
+                        <div class ="card-block text-center text-white">
                             <img class="fas fa-user-tie fa-7x mt-5 img-fluid" src=" {{ profile_image.url }}">
                             <h2 class="font-weight-bold mt-4" id="userid">{{user}}</h2>
                             <p>{{first_name}}  {{last_name}}</p>
@@ -62,14 +62,41 @@
                             <div class="col-sm-3">
                                 <i class="text-muted fa fa-arrow-right" data-bs-toggle="tooltip" title="Personal Actions"></i> 
                                 <h6 class="text-muted">{{number_of_actions}}</h6>
-                            </div>
-                        </div>
-                    </div> <!-- end class col-sm-8 -->    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                            </div> <!-- end class col-sm-8 -->
+                        </div> <!-- end class row -->
+                        <p>I think I am below the actions now</p>
+                        <script>console.log("action seq is " + action.seq)</script>
+                        <form method="post" style="margin-top:1.3em";>
+                            <table>
+                                <th>Seq</th>
+                                <th>Action</th>
+                                {% for user_action in my_actions %}
+                                <tr> {{user_action.user}}</tr>
+                                <tr> {{user_action.seq}}</tr>
+                                <tr> {{user_action.created_on}}</tr>
+                                <tr> {{user_action.parent_article}}</tr>
+                                <tr> {{user_action.user_action_desc}}</tr>
+                                <tr> {{user_action.user_action_taken}}</tr>
+                                <tr> {{user_action.obsrvation}}</tr>
+                                <tr> {{user_action.completed}}</tr>
+                                <tr> {{user_action.completd_on}}</tr>
+                                <tr> </tr>
+                                {% endfor %}
+                            </table>
+                        </form>
+
+                 
+                    </div> <!-- end div class col-sm-8 bg-info rounded-right -->    
+                    
+                </div> <!-- end div class row z-depth-3 -->
+                
+            </div> <!-- end div class col-md-10 mt-5 pt-5-->
+            
+        </div> <!-- end div class row d-flex justify-content-center -->
+        
+    </div> <!-- end div class row g-0 -->
+     
+</div> <!-- end div class container bg-grey -->
 
 
 <script>

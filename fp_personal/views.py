@@ -9,8 +9,6 @@ from .forms import UserProfileForm, UserFavouriteForm, UserActionForm
 
 class UserProfileView(View):
     def get(self, request, *args, **kwargs):
-        
- 
         if request.user.is_authenticated:
             # Do something for authenticated users.
 
@@ -134,3 +132,36 @@ class ArticleBookmark(View):
         else:
             article.favourites.add(request.user)
         return HttpResponseRedirect(reverse('article_detail', args=[slug]))
+
+class UserActionList(generic.ListView):
+    model=UserAction
+    queryset = UserAction.objects.order_by('user_action_seq', 'created_on')
+    template_name = "my_actions.html"
+    paginate_by = 25
+
+
+class UserActionView(View):
+    def get(self, request, *args, **kwargs):
+        if (UserAction.objects.filter(user=request.user.id).exists()):
+            queryset = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on') 
+            user_actions = get_object_or_404(UserAction, user=request.user.id)
+            return render(
+                request,
+                "my_planner.html",
+                {
+                "Seq": user_action_seq,
+                "From article": parent_article,
+                "Action": user_action_desc,
+                "Done so far": user_action_taken,
+                "Notes": observation,
+                "Completed": completed,
+                "Date": completed_on,
+                "Date Created": created_on,
+                }
+                )
+            
+
+
+
+
+        

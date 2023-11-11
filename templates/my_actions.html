@@ -1,0 +1,57 @@
+{% extends 'base.html' %} {% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container bg-grey">
+    <div class="row g-0">
+        <div class="row d-flex justify-content-center">
+            <div class = "col-md-10 mt-5 pt-5">
+                <div class = "row z-depth-3">
+                    <div class="col-sm-4 bg-info rounded-left">
+                        <form method="post" style="margin-top:1.3em";>
+                            <table>
+                                <th>Seq</th>
+                                <th>Action</th>
+                                <script>console.log("user_action_list is " + my_actions.seq)</script>
+                                {% for user_action in my_actions %}
+                                <tr> {{user_action.user}}</tr>
+                                <tr> {{user_action.seq}}</tr>
+                                <tr> {{user_action.created_on}}</tr>
+                                <tr> {{user_action.parent_article}}</tr>
+                                <tr> {{user_action.user_action_desc}}</tr>
+                                <tr> {{user_action.user_action_taken}}</tr>
+                                <tr> {{user_action.obsrvation}}</tr>
+                                <tr> {{user_action.completed}}</tr>
+                                <tr> {{user_action.completd_on}}</tr>
+                                {% endfor %}
+                            </table>
+                        </form>
+                        
+                    </div> <!-- end class col -->
+                    
+                </div> <!-- end div class row z-depth-3 -->
+                
+            </div> <!-- end div class col-md-10 mt-5 pt-5-->
+            
+        </div> <!-- end div class row d-flex justify-content-center -->
+        
+    </div> <!-- end div class row g-0 -->
+     
+</div> <!-- end div class container bg-grey -->
+
+
+<script>
+    function calc_age() {
+        const d = new Date();
+        let curr_year= parseInt(d.getFullYear());
+        console.log("Current year is " + (curr_year) + ", Next year is " + (curr_year+1));
+        let int_birth_year = parseInt(document.getElementById("birth_year").innerHTML)
+        console.log("Birth year is " + int_birth_year + ", Next year is " + (int_birth_year+1));
+        let approx_age_calc = curr_year - int_birth_year;
+        console.log("Approx age is " + approx_age_calc);                            
+        document.getElementById("approx_age").innerHTML = approx_age_calc;
+        };
+</script>
+
+        
+                                
+{% endblock content %}

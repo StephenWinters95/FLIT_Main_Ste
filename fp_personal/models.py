@@ -19,8 +19,14 @@ class UserProfile(models.Model):
     def number_of_likes(self):
         return self.user.article_like.count()
     
+    def bookmarks(self):
+        return self.user.article_favourite()
+
     def number_of_bookmarks(self):
         return self.user.article_favourite.count()
+    
+    def comments(self):
+        return (self.user.user_comments)
     
     def number_of_comments(self):
         return self.user.user_comments.count()
@@ -67,13 +73,13 @@ class UserAction(models.Model):
 
 # Class UserFavourite, a set of Favourite Articles for the user
 # 11/11/23 check if this is still needed
-class UserFavourite(models.Model):
-    user=models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_favourite" )
-    favourite_article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="article_favourite")
-    created_on = models.DateTimeField(auto_now_add=True)
+#class UserFavourite(models.Model):
+#    user=models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_favourite" )
+#    favourite_article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="article_favourite")
+#    created_on = models.DateTimeField(auto_now_add=True)
     
-    class Meta:
-        ordering = ['user', 'created_on']
+#    class Meta:
+#        ordering = ['user', 'created_on']
 
-    def __str__(self):
-        return f"User {self.user} {self.favourite_article}"
+#    def __str__(self):
+#        return f"User {self.user} {self.favourite_article}"

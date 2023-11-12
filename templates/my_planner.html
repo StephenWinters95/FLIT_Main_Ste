@@ -68,9 +68,8 @@
                     </div> <!-- end div class col-sm-8 bg-info rounded-right -->    
                     
                 </div> <!-- end div class row z-depth-3 -->
-                <table class="table-bordered table-striped table-hover table-responsive">
-                    <tr>
-                        <th>User</th>
+                <strong>User Actions:</strong><table class="table-bordered table-striped table-hover table-responsive">
+                    <tr><h6>
                         <th>Seq</th>
                         <th>Added Date</th>
                         <th>Parent Article</th>
@@ -79,13 +78,40 @@
                         <th>Results</th>
                         <th>Done?</th>
                         <th>Date Completed</th>
+                    </h6>
                     </tr>
                     <form method="post" style="margin-top:1.3em";>
                         {% for action in actions %}
-                        <tr>
-                            <td>{{action.user}}</td>
+                        <tr class="text-muted">
                             <td>{{action.user_action_seq}}</td>
-                            <td>{{action.created_on}}</td>
+                            <td class="date">{{action.created_on}}</td>
+                            <td>{{action.parent_article}}</td>
+                            <td>{{action.user_action_desc}}</td>
+                            <td>{{action.user_action_taken}}</td>
+                            <td>{{action.observation}}</td>
+                            <td>{{action.completed}}</td>
+                            <td>{{action.completd_on}}</td>
+                        </tr>
+                        {% endfor %}
+                    </form>
+                </table>
+                <strong>Bookmarks:</strong><table class="table-bordered table-striped table-hover table-responsive">
+                    <tr><h6>
+                        <th>Seq</th>
+                        <th>Added Date</th>
+                        <th>Parent Article</th>
+                        <th>Action</th>
+                        <th>Done so Far</th>
+                        <th>Results</th>
+                        <th>Done?</th>
+                        <th>Date Completed</th>
+                    </h6>
+                    </tr>
+                    <form method="post" style="margin-top:1.3em";>
+                        {% for bookmark in bookmarks %}
+                        <tr class="text-muted">
+                            <td>{{action.user_action_seq}}</td>
+                            <td class="date">{{action.created_on}}</td>
                             <td>{{action.parent_article}}</td>
                             <td>{{action.user_action_desc}}</td>
                             <td>{{action.user_action_taken}}</td>

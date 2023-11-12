@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Article, Comment, Action
-from .forms import CommentForm
+from .forms import CommentForm, UserCommentForm
 
 class ArticleList(generic.ListView):
     model = Article
@@ -162,3 +162,13 @@ class ArticleComment(View):
                 "bookmarked": bookmarked,
                 },
             )
+
+# class UserBookmarkForm(forms.ModelForm):
+#    class Meta:
+#        model = Article
+#        fields = ('user', 'favourite_article')
+
+#class UserCommentForm(forms.ModelForm):
+#    class Meta:
+#        model = Comments
+#        fields = ('user', 'user_comments')

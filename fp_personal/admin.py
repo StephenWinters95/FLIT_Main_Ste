@@ -5,7 +5,7 @@ from .models import Article
 from .models import User
 from .models import UserProfile
 from .models import UserAction
-from .models import UserFavourite
+# from .models import UserFavourite
 
 
 # Register your models here.
@@ -29,10 +29,10 @@ class ActionAdmin(SummernoteModelAdmin):
         queryset.update(completed=True, completed_on=datetime.now())
     
     
-@admin.register(UserFavourite)
-class FavouriteAdmin(admin.ModelAdmin):
-    list_display = ('user', 'favourite_article', 'created_on')
-    list_filter = ('created_on', 'user', 'favourite_article')
-    sortable_by = ['user', 'favourite_article']
-    search_fields = ['user', 'favourite_article']
+#@admin.register(UserFavourite)
+#class FavouriteAdmin(admin.ModelAdmin):
+#    list_display = ('user', 'favourite_article', 'created_on')
+#    list_filter = ('created_on', 'user', 'favourite_article')
+#    sortable_by = ['user', 'favourite_article']
+#    search_fields = ['user', 'favourite_article']
         

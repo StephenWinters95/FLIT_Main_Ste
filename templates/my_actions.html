@@ -8,8 +8,13 @@
         <div class="row d-flex justify-content-center">
             <div class = "col-md-10 mt-5 pt-5">
                 <div class = "row z-depth-3">
-                    <div class="col-sm-4 bg-info rounded-left">
-                        <form method="post" style="margin-top:1.3em";>
+                    <div class="col-sm-9 bg-info rounded-left">
+                        <h1> Add/ edit a personal action</h1>
+                        <form method="post" style="margin-top:1.3em" action="">
+                            {% csrf_token %} 
+                            {{form.as_p}}
+                            <input type = "submit" value = "Submit">
+
                             <table>
                                 <th>Seq</th>
                                 <th>Action</th>

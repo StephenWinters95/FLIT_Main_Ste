@@ -68,10 +68,13 @@
                     </div> <!-- end div class col-sm-8 bg-info rounded-right -->    
                     
                 </div> <!-- end div class row z-depth-3 -->
-                <strong>User Actions:</strong><table class="table-bordered table-striped table-hover table-responsive">
+                <strong>User Actions:</strong>
+                <table class="table-bordered table-striped table-hover table-responsive">
                     <tr><h6>
+                        <th></th>
+                        <th></th>
                         <th>Seq</th>
-                        <th>Added Date</th>
+                        <th>Date added</th>
                         <th>Parent Article</th>
                         <th>Action</th>
                         <th>Done so Far</th>
@@ -83,6 +86,8 @@
                     <form method="post" style="margin-top:1.3em";>
                         {% for action in actions %}
                         <tr class="text-muted">
+                            <td><a href="{% url 'update_action' action.id %}">Edit</a></td>
+                            <td><a href="{% url 'delete_action' action.id %}">Delete</a></td>
                             <td>{{action.user_action_seq}}</td>
                             <td class="date">{{action.created_on}}</td>
                             <td>{{action.parent_article}}</td>
@@ -95,29 +100,42 @@
                         {% endfor %}
                     </form>
                 </table>
-                <strong>Bookmarks:</strong><table class="table-bordered table-striped table-hover table-responsive">
+                <a href="{% url 'create_action' %}">Add new action</a>
+                <p></p>
+
+                
+                <strong>Bookmarks:</strong>
+                {{ bookmarks }}
+                <script>console.log("Bookmarks " + (bookmarks));</script>
+                <table class="table-striped table-bordered table-hover table-responsive">
                     <tr><h6>
-                        <th>Seq</th>
-                        <th>Added Date</th>
                         <th>Parent Article</th>
-                        <th>Action</th>
-                        <th>Done so Far</th>
-                        <th>Results</th>
-                        <th>Done?</th>
-                        <th>Date Completed</th>
+                        <th>Added Date</th>
                     </h6>
                     </tr>
                     <form method="post" style="margin-top:1.3em";>
                         {% for bookmark in bookmarks %}
                         <tr class="text-muted">
-                            <td>{{action.user_action_seq}}</td>
-                            <td class="date">{{action.created_on}}</td>
-                            <td>{{action.parent_article}}</td>
-                            <td>{{action.user_action_desc}}</td>
-                            <td>{{action.user_action_taken}}</td>
-                            <td>{{action.observation}}</td>
-                            <td>{{action.completed}}</td>
-                            <td>{{action.completd_on}}</td>
+                            <td>{{bookmark.article}}</td>
+                            <td class="date">{{bookmark.created_on}}</td>
+                        </tr>
+                        {% endfor %}
+                    </form>
+                </table>
+                <strong>Comments:</strong>
+                {{ comments }}
+                <script>console.log("Comments " + (comments));</script>
+                <table class="table-striped table-bordered table-hover table-responsive">
+                    <tr><h6>
+                        <th>Parent Article</th>
+                        <th>Added Date</th>
+                    </h6>
+                    </tr>
+                    <form method="post" style="margin-top:1.3em";>
+                        {% for comment in comments %}
+                        <tr class="text-muted">
+                            <td>{{comment.parent_article}}</td>
+                            <td class="date">{{comment.created_on}}</td>
                         </tr>
                         {% endfor %}
                     </form>

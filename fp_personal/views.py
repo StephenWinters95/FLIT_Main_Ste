@@ -1,10 +1,12 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
-from fp_blog.models import Article, Action
-from .models import UserProfile, UserFavourite, UserAction
-from .forms import UserProfileForm, UserFavouriteForm, UserActionForm
+from fp_blog.models import Article, Action, Comment
+from .models import UserProfile, UserAction
+# from .models import UserFavourite
+from .forms import UserProfileForm, UserActionForm
+# from .forms import UserProfileForm, UserFavouriteForm, UserActionForm
 from rest_framework import serializers
 
 
@@ -15,16 +17,23 @@ class UserProfileView(View):
         if request.user.is_authenticated:
             # Do something for authenticated users.
 
-#        comments = article.comments.filter(approved=True).order_by(
-#            '-created_on')
-
             if (UserProfile.objects.filter(user=request.user.id).exists()):
                 queryset = UserProfile.objects.filter(user=request.user.id)
                 user_profile = get_object_or_404(UserProfile, user=request.user)
                 user = get_object_or_404(User, id=request.user.id)
 
                 actions = user.user_actions.filter(user=request.user)
-                print(actions)
+
+                bookmarks = User.article_favourite
+                print(bookmarks)
+                
+                comments = User.user_comments
+                print(comments)
+#                queryset_comments = Article.comments.order_by(
+#                '-created_on')
+#                comments = queryset_comments.filter(user=request.user, approved=True)
+
+                print(comments)
 
                 return render(
                 request,
@@ -209,7 +218,44 @@ class UserActionSerializer(serializers.Serializer):
         model = UserAction
         fields = ['user', 'user_action_seq', 'parent_article', 'user_action_desc', 'user_action_taken', 'observation', 'user_action_date', 'user_action_type', 'completed', 'created_on', 'completed_on']
 
+# This next set of code developed in parallel with Dennis Ivy videos so remember to refer bakc to there =- Django 2021 Course Session #3 Models Forms & CRUD
+
+def createUserAction(request):
+    form=UserActionForm()
+
+    if request.method == 'POST':
+        form = UserActionForm(request.POST)
+        if form.is_valid(): 
+            form.save()
+            return redirect('my_planner')
+
+    context = {'form': form}
+    return render(request, 'my_actions.html', context)
+
+# Again this update User Action is adapted from Dennis Ivy training viedos:
+
+def updateUserAction(request, pk):
+    action = UserAction.objects.get(id=pk)
+    form = UserActionForm(instance=action)
+
+    if request.method == 'POST':
+        form = UserActionForm(request.POST, instance=action)
+        if form.is_valid(): 
+            form.save()
+            return redirect('my_planner')
+
+    context = {'form': form}
+    return render(request, 'my_actions.html', context)
 
 
+# Again this delete User Action is adapted from Dennis Ivy training viedos:
+
+def deleteUserAction(request, pk):
+    action = UserAction.objects.get(id=pk)
+
+    if request.method == 'POST':
+        action.delete()
+        return redirect('my_planner')
+    return render(request, 'delete.html', {object: action})
 
         

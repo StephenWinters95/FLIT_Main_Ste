@@ -1,0 +1,12 @@
+{% extends 'base.html' %} 
+{% block content %}
+{% load crispy_forms_tags %}
+
+   <form action="" method="POST">
+        {% csrf_token %}
+        <p>Are you sure you want to delete !{{object}}"?</p>
+        <input type="submit" value="Delete"/>
+        <a href="{% url 'my_planner' %}">Go Back</a>
+   </form>   
+                                
+{% endblock content %}

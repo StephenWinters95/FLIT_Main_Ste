@@ -256,6 +256,7 @@ def deleteUserAction(request, pk):
     if request.method == 'POST':
         action.delete()
         return redirect('my_planner')
-    return render(request, 'delete.html', {object: action})
+    return render(request, 'delete.html', {'object': 'action ' + str(action.user_action_seq)})
 
         
+ 

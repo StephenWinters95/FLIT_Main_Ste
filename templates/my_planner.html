@@ -69,7 +69,7 @@
                     
                 </div> <!-- end div class row z-depth-3 -->
                 <strong id="actions">User Actions:</strong>
-                <table class="table table-bordered table-striped table-hover table-responsive">
+                <table class="table table-bordered table-hover table-responsive">
                     <tr><h6>
                         <th></th>
                         <th></th>
@@ -89,13 +89,13 @@
                             <td><a href="{% url 'update_action' action.id %}">Edit</a></td>
                             <td><a href="{% url 'delete_action' action.id %}">Delete</a></td>
                             <td>{{action.user_action_seq}}</td>
-                            <td class="date">{{action.created_on}}</td>
+                            <td class="date">{{action.created_on|date:"d/m/y"}}</td>
                             <td>{{action.parent_article}}</td>
                             <td>{{action.user_action_desc}}</td>
                             <td>{{action.user_action_taken}}</td>
                             <td>{{action.observation}}</td>
-                            <td>{{action.completed}}</td>
-                            <td>{{action.completed_on}}</td>
+                            <td>{{action.completed|yesno:"Y,N"}}</td>
+                            <td>{{action.completed_on|date:"d/m/y"}}</td>
                         </tr>
                         {% endfor %}
                     </form>
@@ -110,7 +110,7 @@
                     <tr><h6>
                         <th></th>
                         <th>Article</th>
-                        <th>Date Added</th>
+                        <th>Date</th>
                     </h6>
                     </tr>
                     <form method="post" style="margin-top:1.3em";>
@@ -119,18 +119,18 @@
                         <tr class="text-muted">
                             <td><a href="{% url 'delete_bookmark' bookmark.id %}">Delete</a></td>
                             <td>{{bookmark}}</td>
-                            <td class="date">{{bookmark.created_on}}</td>
+                            <td class="date">{{bookmark.created_on|date:"d/m/y"}}</td>
                         </tr>
                         {% endfor %}
                     </form>
                 </table>
                 <strong id="comments">Comments:</strong>
-                <table class="table table-striped table-bordered table-hover table-responsive">
+                <table class="table table-bordered table-hover table-responsive">
                     <tr><h6>
                         <th></th>
                         <th>Article</th>
                         <th>Comment</th>
-                        <th>Added Date</th>
+                        <th>Date</th>
                     </h6>
                     </tr>
                     {% for comment in comments %}
@@ -138,7 +138,7 @@
                         <td><a href="{% url 'delete_comment' comment.id %}">Delete</a></td>
                         <td>{{comment.article}}</td>
                         <td>{{comment.body}}</td>
-                        <td class="date">{{comment.created_on}}</td>
+                        <td class="date">{{comment.created_on|date:"d/m/y"}}</td>
                     </tr>
                     {% endfor %}
                 

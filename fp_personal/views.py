@@ -8,7 +8,7 @@ from .models import UserProfile, UserAction
 from .forms import UserProfileForm, UserActionForm
 # from .forms import UserProfileForm, UserFavouriteForm, UserActionForm
 from rest_framework import serializers
-
+from operator import attrgetter
 
 # Create your views here.
 # This is the main view for user profile n the my_planner link/ page
@@ -29,15 +29,15 @@ class UserProfileView(View):
                 
 #                bookmarks = Article.favourites.filter(id=self.request.user.id)
                 bookmarks = user.article_favourite.all()
-                print("Bookmarks: " , bookmarks)
+#                print("Bookmarks: " , bookmarks)
                 
                 comments = user.user_comments.all()
-                print("Comments: ", comments)
+#                print("Comments: ", comments)
 #                queryset_comments = Article.comments.order_by(
 #                '-created_on')
 #                comments = queryset_comments.filter(user=request.user, approved=True)
 
-                print(comments)
+#                print(comments)
 
                 return render(
                 request,
@@ -85,68 +85,6 @@ class UserProfileView(View):
         else:
             # Do something for anonymous users.
             console.log("User not logged in")
-
-# comment out this next lot of code while I have a think about it        
-#        if (UserProfile.objects.(id=request.user.id).exists())
-#        queryset = UserProfile.objects.filter(id=request.user.id)
-#        article = get_object_or_404(queryset, slug=slug)
-#        comments = article.comments.filter(approved=True).order_by(
-#            '-created_on')
-#        actions = article.actions.order_by('action_seq')
-#        liked = False
-#        if article.likes.filter(id=self.request.user.id).exists():
-#            liked = True
-#        commented = False
-#        print('User ', self.request.user.id)
-#        if article.comments.filter(id=self.request.user.id).exists():
-#            print('Unapproved comments exist for this user!')
-#            commented = True
-
-#        return render(
-#            request,
-#            "article_detail.html",
-#            {
-#             "article": article,
-#             "comments": comments,
-#             "commented": commented,
-#             "actions": actions,
-#             "liked": liked,
-#             "comment_form": CommentForm()
-#             },
-#        )
-
-#    def post(self, request, slug, *args, **kwargs):
-#        queryset = Article.objects.filter(status=1)
-#        article = get_object_or_404(queryset, slug=slug)
-#        comments = article.comments.filter(approved=True).order_by(
-#            '-created_on')
-#        actions = article.actions.order_by('action_seq')
-#        liked = False
-#        if article.likes.filter(id=self.request.user.id).exists():
-#            liked = True
-#        comment_form = CommentForm(data=request.POST)
-#        if comment_form.is_valid():
-#            comment_form.instance.email = request.user.email
-#            comment_form.instance.name = request.user.username
-#            comment = comment_form.save(commit=False)
-#            comment.article = article
-#            comment.save()
-#        else:
-#            comment_form = CommentForm()
-#
-#        return render(
-#                    request,
-#                    "article_detail.html",
-#                    {
-#                        "article": article,
-#                        "comments": comments,
-#                        "commented": True,
-#                        "comment_form": CommentForm(),
-#                        "liked": liked,
-#                        "actions": actions,
-#                    },
-#                    )
-
 
 class ArticleBookmark(View):
     def post(self, request, slug, *args, **kwargs):
@@ -199,6 +137,17 @@ class UserActionView(View):
     def get(self, request):
         user_actions = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on')
 
+    def next_seq(request):
+        queryset = UserAction.objects.filter(user=request.user.id).order_by('-user_action_seq')
+        latest_rec = UserAction.objects.order_by('-user_action_seq').filter(user_action_seq__in=queryset[:0])
+        print("Queryset : ", queryset)
+        print("Latest rec : ", queryset[0])
+
+        max_seq = queryset[0].user_action_seq
+        next_seq = max_seq + 10
+        print('Max sequence is ', max_seq, '.  Next sequence is ', next_seq)
+        return next_seq
+
     def get(self, request, *args, **kwargs):
         if (UserAction.objects.filter(user=request.user.id).exists()):
             queryset = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on') 
@@ -228,7 +177,9 @@ class UserActionSerializer(serializers.Serializer):
 # note this is function-baed rather than class-cased coding so will probably need to be repa=laced with class-based equivalent 
 
 def createUserAction(request):
-    form=UserActionForm(initial={"user":request.user.id})
+    next_seq = UserActionView.next_seq(request)
+    print('In CreateUserAction():  next_seq returned from function is: ', next_seq)
+    form=UserActionForm(initial={"user":request.user.id, "user_action_seq": next_seq})
 
     if request.method == 'POST':
         form = UserActionForm(request.POST)

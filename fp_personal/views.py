@@ -11,6 +11,8 @@ from rest_framework import serializers
 
 
 # Create your views here.
+# This is the main view for user profile n the my_planner link/ page
+# it includes logic to summarise # of likes, bokmarks. actions etc 
 
 class UserProfileView(View):
     def get(self, request, *args, **kwargs):
@@ -23,12 +25,14 @@ class UserProfileView(View):
                 user = get_object_or_404(User, id=request.user.id)
 
                 actions = user.user_actions.filter(user=request.user)
-
-                bookmarks = User.article_favourite
-                print(bookmarks)
                 
-                comments = User.user_comments
-                print(comments)
+                
+#                bookmarks = Article.favourites.filter(id=self.request.user.id)
+                bookmarks = user.article_favourite.all()
+                print("Bookmarks: " , bookmarks)
+                
+                comments = user.user_comments.all()
+                print("Comments: ", comments)
 #                queryset_comments = Article.comments.order_by(
 #                '-created_on')
 #                comments = queryset_comments.filter(user=request.user, approved=True)
@@ -55,6 +59,8 @@ class UserProfileView(View):
                 "number_of_valid_comments": user_profile.number_of_valid_comments,
                 "number_of_actions": user_profile.number_of_actions,
                 "actions": actions,
+                "bookmarks": bookmarks,
+                "comments": comments,
                 },
                 )
             else:
@@ -219,9 +225,10 @@ class UserActionSerializer(serializers.Serializer):
         fields = ['user', 'user_action_seq', 'parent_article', 'user_action_desc', 'user_action_taken', 'observation', 'user_action_date', 'user_action_type', 'completed', 'created_on', 'completed_on']
 
 # This next set of code developed in parallel with Dennis Ivy videos so remember to refer bakc to there =- Django 2021 Course Session #3 Models Forms & CRUD
+# note this is function-baed rather than class-cased coding so will probably need to be repa=laced with class-based equivalent 
 
 def createUserAction(request):
-    form=UserActionForm()
+    form=UserActionForm(initial={"user":request.user.id})
 
     if request.method == 'POST':
         form = UserActionForm(request.POST)
@@ -258,5 +265,19 @@ def deleteUserAction(request, pk):
         return redirect('my_planner')
     return render(request, 'delete.html', {'object': 'action ' + str(action.user_action_seq)})
 
+def deleteComment(request, pk):
+    comment = Comment.objects.get(id=pk)
+
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('my_planner')
+    return render(request, 'delete.html', {'object': 'comment ' + str(comment.body)})
         
+def deleteBookmark(request, pk):
+    bookmark = article_favourite.objects.get(id=pk)
+
+    if request.method == 'POST':
+        bookmark.delete()
+        return redirect('my_planner')
+    return render(request, 'delete.html', {'object': 'bookmark ' + str(bookmark.article)})
  

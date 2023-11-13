@@ -52,15 +52,15 @@
                                 <h6 class="text-muted">{{number_of_likes}}</h6>
                             </div>
                             <div class="col-sm-3">
-                                <i class = "text-muted fas fa-bookmark" data-bs-toggle="tooltip" title="Bookmarks"></i>
+                                <a href="#bookmarks"><i class = "text-muted fas fa-bookmark" data-bs-toggle="tooltip" title="Bookmarks"></i></a>
                                 <h6 class="text-muted">{{number_of_bookmarks}}</h6>
                             </div>
                             <div class="col-sm-3">
-                                <i class="text-muted far fa-comments" data-bs-toggle="tooltip" title="(Moderated) Comments"></i> 
+                                <a href="#comments"><i class="text-muted far fa-comments" data-bs-toggle="tooltip" title="(Moderated) Comments"></i></a> 
                                 <h6 class="text-muted">{{ number_of_valid_comments }}</h6>
                             </div>
                             <div class="col-sm-3">
-                                <i class="text-muted fa fa-arrow-right" data-bs-toggle="tooltip" title="Personal Actions"></i> 
+                                <a href="#actions"><i class="text-muted fa fa-arrow-right" data-bs-toggle="tooltip" title="Personal Actions"></i></a> 
                                 <h6 class="text-muted">{{number_of_actions}}</h6>
                             </div> <!-- end class col-sm-8 -->
                         </div> <!-- end class row -->
@@ -68,7 +68,7 @@
                     </div> <!-- end div class col-sm-8 bg-info rounded-right -->    
                     
                 </div> <!-- end div class row z-depth-3 -->
-                <strong>User Actions:</strong>
+                <strong id="actions">User Actions:</strong>
                 <table class="table-bordered table-striped table-hover table-responsive">
                     <tr><h6>
                         <th></th>
@@ -104,41 +104,44 @@
                 <p></p>
 
                 
-                <strong>Bookmarks:</strong>
-                {{ bookmarks }}
-                <script>console.log("Bookmarks " + (bookmarks));</script>
-                <table class="table-striped table-bordered table-hover table-responsive">
+                <strong id="bookmarks">Bookmarks:</strong>
+                
+                <table class="table-bordered table-hover table-responsive">
                     <tr><h6>
-                        <th>Parent Article</th>
-                        <th>Added Date</th>
+                        <th></th>
+                        <th>Article</th>
+                        <th>Date Added</th>
                     </h6>
                     </tr>
                     <form method="post" style="margin-top:1.3em";>
                         {% for bookmark in bookmarks %}
+                        
                         <tr class="text-muted">
-                            <td>{{bookmark.article}}</td>
+                            <td><a href="{% url 'delete_bookmark' bookmark.id %}">Delete</a></td>
+                            <td>{{bookmark}}</td>
                             <td class="date">{{bookmark.created_on}}</td>
                         </tr>
                         {% endfor %}
                     </form>
                 </table>
-                <strong>Comments:</strong>
-                {{ comments }}
-                <script>console.log("Comments " + (comments));</script>
+                <strong id="comments">Comments:</strong>
                 <table class="table-striped table-bordered table-hover table-responsive">
                     <tr><h6>
-                        <th>Parent Article</th>
+                        <th></th>
+                        <th>Article</th>
+                        <th>Comment</th>
                         <th>Added Date</th>
                     </h6>
                     </tr>
-                    <form method="post" style="margin-top:1.3em";>
-                        {% for comment in comments %}
-                        <tr class="text-muted">
-                            <td>{{comment.parent_article}}</td>
-                            <td class="date">{{comment.created_on}}</td>
-                        </tr>
-                        {% endfor %}
-                    </form>
+                    {% for comment in comments %}
+                    <tr class="text-muted">
+                        <td><a href="{% url 'delete_comment' comment.id %}">Delete</a></td>
+                        <td>{{comment.article}}</td>
+                        <td>{{comment.body}}</td>
+                        <td class="date">{{comment.created_on}}</td>
+                    </tr>
+                    {% endfor %}
+                
                 </table>
                 
             </div> <!-- end div class col-md-10 mt-5 pt-5-->

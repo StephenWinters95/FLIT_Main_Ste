@@ -20,7 +20,7 @@ class UserProfile(models.Model):
         return self.user.article_like.count()
     
     def bookmarks(self):
-        return (self.user.article_favourite)
+        return self.user.article_favourite.article
 
     def number_of_bookmarks(self):
         return self.user.article_favourite.count()

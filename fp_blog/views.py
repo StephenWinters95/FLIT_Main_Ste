@@ -9,40 +9,6 @@ class ArticleList(generic.ListView):
     queryset = Article.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
     paginate_by = 6
-#
-#    def get(self, request, *args, **kwargs):
-#        queryset = Article.objects.filter(status=1).order_by('-created_on')
-#        for individual in queryset:
-#            article = get_object_or_404(individual.id)
-#            comments = article.comments.filter(approved=True).order_by(
-#                '-created_on')
-#            actions = article.actions.order_by('action_seq')
-#            liked = False
-#            if article.likes.filter(id=self.request.user.id).exists():
-#                liked = True
-#            bookmarked = False
-#            if article.favourites.filter(id=self.request.user.id).exists():
-#                bookmarked = True
-
-#            commented = False
-#            print('User ', self.request.user.id)
-#            if article.comments.filter(id=self.request.user.id).exists():
-#                print('Unapproved comments exist for this user!')
-#                commented = True
-#            return render(
-#                    request,
-#                    "index.html",
-#                    {
-#                    "article": article,
-#                    "comments": comments,
-#                    "comment_count": comments.count,
-#                    "commented": commented,
-#                    "actions": actions,
-#                    "liked": liked,
-#                    "bookmarked": bookmarked,
-#                    },
-#                )
-            # end for
 
 class ArticleDetail(View):
     def get(self, request, slug, *args, **kwargs):

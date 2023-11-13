@@ -68,40 +68,47 @@
                     </div> <!-- end div class col-sm-8 bg-info rounded-right -->    
                     
                 </div> <!-- end div class row z-depth-3 -->
-                <strong id="actions">User Actions:</strong>
-                <table class="table table-bordered table-hover table-responsive">
-                    <tr><h6>
-                        <th></th>
-                        <th></th>
-                        <th>Seq</th>
-                        <th>Date added</th>
-                        <th>Parent Article</th>
-                        <th>Action</th>
-                        <th>Done so Far</th>
-                        <th>Results</th>
-                        <th>Done?</th>
-                        <th>Date Completed</th>
-                    </h6>
-                    </tr>
-                    <form method="post" style="margin-top:1.3em";>
-                        {% for action in actions %}
-                        <tr class="text-muted">
-                            <td><a href="{% url 'update_action' action.id %}">Edit</a></td>
-                            <td><a href="{% url 'delete_action' action.id %}">Delete</a></td>
-                            <td>{{action.user_action_seq}}</td>
-                            <td class="date">{{action.created_on|date:"d/m/y"}}</td>
-                            <td>{{action.parent_article}}</td>
-                            <td>{{action.user_action_desc}}</td>
-                            <td>{{action.user_action_taken}}</td>
-                            <td>{{action.observation}}</td>
-                            <td>{{action.completed|yesno:"Y,N"}}</td>
-                            <td>{{action.completed_on|date:"d/m/y"}}</td>
-                        </tr>
-                        {% endfor %}
-                    </form>
-                </table>
-                <a href="{% url 'create_action' %}">Add new action</a>
-                <p></p>
+                <div class = "container col-md-12" id="actions-container">
+                    <div class = "table-responsive">
+                        <strong id="actions"><h4>User Actions:</h4></strong>
+                        <table class="table table-bordered rounded-right table-hover ">
+                            <thead class="table-success">
+                                <tr><h6>
+                                <th></th>
+                                <th></th>
+                                <th>Seq</th>
+                                <th>Date added</th>
+                                <th>Parent Article</th>
+                                <th>Action</th>
+                                <th>Done so Far</th>
+                                <th>Results</th>
+                                <th>Done?</th>
+                                <th>Date Completed</th>
+                                </h6>
+                                </tr>
+                            </thead>
+                            <form method="post" style="margin-top:1.3em";>
+                                {% for action in actions %}
+                                <tr class="text-muted">
+                                    <td><a href="{% url 'update_action' action.id %}">Edit</a></td>
+                                    <td><a href="{% url 'delete_action' action.id %}">Delete</a></td>
+                                    <td>{{action.user_action_seq}}</td>
+                                    <td class="date">{{action.created_on|date:"d/m/y"}}</td>
+                                    <td>{{action.parent_article}}</td>
+                                    <td>{{action.user_action_desc}}</td>
+                                    <td>{{action.user_action_taken}}</td>
+                                    <td>{{action.observation}}</td>
+                                    <td>{{action.completed|yesno:"Y,N"}}</td>
+                                    <td>{{action.completed_on|date:"d/m/y"}}</td>
+                                </tr>
+                                {% endfor %}
+                            </form>
+                        </table>
+                    </div> <!-- class = "table-responsive"-->
+                    <a href="{% url 'create_action' %}">Add new action</a>
+                      
+                </div> <!-- class = container-->
+                        <p></p>
 
                 
                 <strong id="bookmarks">Bookmarks:</strong>

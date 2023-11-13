@@ -272,12 +272,13 @@ def deleteComment(request, pk):
         comment.delete()
         return redirect('my_planner')
     return render(request, 'delete.html', {'object': 'comment ' + str(comment.body)})
-        
-def deleteBookmark(request, pk):
-    bookmark = article_favourite.objects.get(id=pk)
 
+# watch ut aas the code below deletes the article, rather than the bookmark!!!!        
+def deleteBookmark(request, pk):
+    bookmark = request.user.article_favourite.get(id=pk)
     if request.method == 'POST':
         bookmark.delete()
         return redirect('my_planner')
-    return render(request, 'delete.html', {'object': 'bookmark ' + str(bookmark.article)})
- 
+    
+    return render(request, 'delete.html', {'object': 'bookmark to ' + str(bookmark)})
+    

@@ -31,25 +31,33 @@
                 <p class="card-text ">{{ article.content | safe }}</p>
                 <!-- want to view actions associated with the article before viewing comments -->
                 <!-- div class="col-md-8 card mb-4  mt-3 " -->
-                <h2>Actions:</h2>
-                <table class="table table-bordered table-hover table-responsive">
-                    <tr><h6>
-                        <th></th>
+                <strong id="actions">Actions:</strong>
+                <table class="table table-bordered table-hover table-responsive ">
+                    <thead class="table-success">
+                        <tr><h6>
                         <th>Copy to personal</th>
                         <th>Action</th>
-                    </h6>
-                    </tr>
-               
-                </table>
+                        </h6>
+                        </tr>
+                    </thead>
                 <!-- div class="card-body" -->
                 <!-- We want a for loop inside the tags to iterate through each action in actions -->
-                {% for action in actions %}
-                <p><strong class="text-secondary"><i class="fa-check-circle"></i></strong>  
-                &nbsp &nbsp {{action.action_desc | safe}} </p>
-                <!-- Our for loop ends here -->
-                {% endfor %}
-                <br>
-                
+                <form method="post" style="margin-top:1.3em";>
+                    {% for action in actions %}
+                    <tr class="text-muted">
+                    <td><a href="{% url 'copy_action' action.id %}">Copy</a></td>
+                    <td>{{action.action_desc| safe}}</td>  
+                    {% endfor %}
+                    <br>
+            
+                    
+                </table>
+            </div> <!-- class = "table-responsive"-->
+            
+
+
+
+
                 <div class="row">
                     <!-- functionality for likes -->
                     <div class="col-1">

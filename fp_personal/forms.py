@@ -18,4 +18,3 @@ class UserActionForm(forms.ModelForm):
         model = UserAction
         fields = ('user', 'user_action_seq', 'parent_article', 'user_action_desc', 'user_action_taken', 'observation', 'completed', 'completed_on')
 
-    

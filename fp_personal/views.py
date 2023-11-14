@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
+from fp_blog.forms import ActionForm
 from fp_blog.models import Article, Action, Comment
 from .models import UserProfile, UserAction
 # from .models import UserFavourite
@@ -134,12 +135,9 @@ class UserActionView(View):
     def next_seq(request):
         queryset = UserAction.objects.filter(user=request.user.id).order_by('-user_action_seq')
         latest_rec = UserAction.objects.order_by('-user_action_seq').filter(user_action_seq__in=queryset[:0])
-        print("Queryset : ", queryset)
-        print("Latest rec : ", queryset[0])
-
+        
         max_seq = queryset[0].user_action_seq
         next_seq = max_seq + 10
-        print('Max sequence is ', max_seq, '.  Next sequence is ', next_seq)
         return next_seq
 
     def get(self, request, *args, **kwargs):
@@ -180,6 +178,28 @@ def createUserAction(request):
         if form.is_valid(): 
             form.save()
             return redirect('my_planner')
+
+    context = {'form': form}
+    return render(request, 'my_actions.html', context)
+
+def copyUserAction(request, pk):
+    action = Action.objects.get(id=pk)
+    action_desc = action.action_desc
+    slug = action.article.slug
+    form = ActionForm(instance=action)
+    print('In copyUserAction():  copy-from article is ', action.article)
+    print('In copyUserAction():  slug is ', slug)
+    print('In copyUserAction():  copy-from action description is ', action.action_desc)
+    
+    next_seq = UserActionView.next_seq(request)
+    print('In copyUserAction():  next_seq returned from function is: ', next_seq)
+    form=UserActionForm(initial={"user":request.user.id, "user_action_seq": next_seq, "parent_article": action.article, "user_action_desc": action.action_desc, "user_action_taken": action_desc, })
+
+    if request.method == 'POST':
+        form = UserActionForm(request.POST)
+        if form.is_valid(): 
+            form.save()
+            return redirect(reverse('article_detail',args=[slug]) )
 
     context = {'form': form}
     return render(request, 'my_actions.html', context)

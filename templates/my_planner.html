@@ -11,7 +11,10 @@
                             <img class="fas fa-user-tie fa-7x mt-5 img-fluid" src=" {{ profile_image.url }}">
                             <h2 class="font-weight-bold mt-4" id="userid">{{user}}</h2>
                             <p>{{first_name}}  {{last_name}}</p>
-                            <p id="user_profile">{{user_profile}}</p>
+  <!-- intended to do a check if the user profile exists and othrwise restruit functionality -->
+<!-- however, the user only reaches this page if they are a rgistered user so better to ensure the user profile -->
+<!-- was auto created when they became a registered user, and to allow them to continue here -->
+<!--                          <p id="user_profile">{{user_profile}}</p>  -->
                         </div> <!-- end class card-block -->
                     </div> <!-- end class col -->
                     <div class="col-sm-8 bg-info rounded-right">
@@ -85,7 +88,7 @@
                     <th></th>
                     <th>Seq</th>
                     <th>Date added</th>
-                    <th>Parent Article</th>
+         <!--           <th>Parent Article</th>  -->
                     <th>Action</th>
                     <th>Done so Far</th>
                     <th>Results</th>
@@ -101,7 +104,7 @@
                         <td><a href="{% url 'delete_action' action.id %}">Delete</a></td>
                         <td>{{action.user_action_seq}}</td>
                         <td class="date">{{action.created_on|date:"d/m/y"}}</td>
-                        <td>{{action.parent_article}}</td>
+<!--                        <td>{{action.parent_article}}</td>  --> 
                         <td>{{action.user_action_desc}}</td>
                         <td>{{action.user_action_taken}}</td>
                         <td>{{action.observation}}</td>
@@ -124,7 +127,7 @@
     <table class="table table-bordered table-hover table-responsive">
         <thead class="table-success">
             <tr><h6>
-            <th></th>
+<!--            <th></th>  -->
             <th>Article</th>
             <th>Date</th>
             </h6>
@@ -134,8 +137,8 @@
             {% for bookmark in bookmarks %}
             
             <tr class="text-muted">
-                <td><a href="{% url 'delete_bookmark' bookmark.id %}">Delete</a></td>
-                <td>{{bookmark}}</td>
+<!--                <td><a href="{% url 'delete_bookmark' bookmark.id %}">Delete</a></td> -->
+                <td><a href="../{{bookmark.slug}}">{{bookmark}}</a></td> 
                 <td class="date">{{bookmark.created_on|date:"d/m/y"}}</td>
             </tr>
             {% endfor %}
@@ -145,7 +148,7 @@
     <table class="table table-bordered table-hover table-responsive">
         <thead class="table-success">
             <tr><h6>
-            <th></th>
+<!--            <th></th> -->
             <th>Article</th>
             <th>Comment</th>
             <th>Approved</th>
@@ -155,11 +158,12 @@
         </thead>
         {% for comment in comments %}
         <tr class="text-muted">
-            <td><a href="{% url 'delete_comment' comment.id %}">Delete</a></td>
-            <td>{{comment.article}}</td>
+<!--            <td><a href="{% url 'delete_comment' comment.id %}">Delete</a></td>  -->
+            <td><a href="../{{comment.article.slug}}">{{comment.article}}</a></td> 
             <td>{{comment.body}}</td>
             <td>{{comment.approved|yesno:"Y,N"}}</td>
             <td class="date">{{comment.created_on|date:"d/m/y"}}</td>
+            prev_article = {{comment.article}}
         </tr>
         {% endfor %}
     

@@ -239,7 +239,7 @@ Written in the format 'As a **role** I want to **action** to achieve **desired o
 * SO_11 As site owner, I would like to encourague users to engage with each article's content, by providing suggested actions and next steps for the user to take 
 * SO_12 As site owner, I would like to provide a personal database where users can store their own actions and record their progress in following the steps
 * SO_13 As site owner, I would like to 
-* SO_14 As site owner, I would like to make the content of the database shareable and reusable to others (perhaps subject to signing a re-use agreement) by providing an API to the published database)
+* SO_14 As site owner, I would like to make the content of the database shareable and reusable to others (perhaps subject to signing a re-use agreement) by providing an API to the published database
 
 ### First-time User Goals
 * FTU_01 As a first time user I want to access relevant information to increase my financial understanding/literacy on a specific topic
@@ -283,16 +283,16 @@ about page which clearly identifies information souces, information gathering/ha
 </details>
 
 <details><summary>Article detail - with suggested actions</summary>
-<img src="./django_financial_planner/docs/readme_images/wireframe03-article-detail.png">
+<img src="./django_financial_planner/docs/readme_images/wireframe-03-article-detail.png">
 </details>
 
 <details><summary>My Planner - personalised user profile/action tracker</summary>
-<img src="./django_financial_planner/docs/readme_images/wireframe04-my-planner.png">
+<img src="./django_financial_planner/docs/readme_images/wireframe-04-my-planner.png">
 </details>
 
 
 <details><summary>About/ Feedback page</summary>
-<img src="./django_financial_planner/docs/readme_images/wireframe05-about-feedback.png">
+<img src="./django_financial_planner/docs/readme_images/wireframe-05-about-feedback.png">
 </details>
   
 ### Fonts Chosen

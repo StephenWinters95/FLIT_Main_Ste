@@ -236,8 +236,8 @@ Written in the format 'As a **role** I want to **action** to achieve **desired o
 * SO-08 As site owner I want to acknowledge to the user that their feedback has been received
 * SO-09 As site owner I would like to store a database of content to include url links, 
 * SO-10 As site owner, I would like to have the capability to organise the content by lifestage, theme, and other criteria (possibly hierarchical groupings, hashtags) to allow cross referncing of user needs to content 
-* SO_11 As site owner, I would like to 
-* SO_12 As site owner, I would like to 
+* SO_11 As site owner, I would like to encourague users to engage with each article's content, by providing suggested actions and next steps for the user to take 
+* SO_12 As site owner, I would like to provide a personal database where users can store their own actions and record their progress in following the steps
 * SO_13 As site owner, I would like to 
 * SO_14 As site owner, I would like to make the content of the database shareable and reusable to others (perhaps subject to signing a re-use agreement) by providing an API to the published database)
 
@@ -245,20 +245,20 @@ Written in the format 'As a **role** I want to **action** to achieve **desired o
 * FTU_01 As a first time user I want to access relevant information to increase my financial understanding/literacy on a specific topic
 * FTU_02 As a first-time user I about what this site does, and want to quickly understand this site's relevance to me, so I don't waste my time on useless engagement 
 * FTU_03 As a first time user I would like to be able to easily navigate the site and quickly learn its functionality 
-* FTU_04 As a first time user I would like to understand the acountability and trustability of information presented on the site ('about page which clearly identifies information souces, information gathering/harvesting processes including moderation (flowchart would be good here), the role of user feedback and user reviews 'X users found this useful or relevant', and the part I can play in contributing to the body of knowledge')
-* FTU_05  
-* FTU_06 As a first-time user I  
-* FTU_07 (FUTURE) As a first time user I
-* FTU_08 (FUTURE) As a first time user I
-* FTU_09 (FUTURE) As a first time user I
-* FTU_10 (FUTURE) As a first time user I
+* FTU_04 As a first time user I would like to understand the acountability and trustability of information presented on the site - maybe via an 
+about page which clearly identifies information souces, information gathering/harvesting processes including moderation (flowchart would be good here).
+* FTU_05  As a first-time user I would like to undertand the role of user feedback and user reviews 'X users found this useful or relevant',
+* FTU_06 As a first-time user I want clear, timely and unambiguous feedback and interaction
+* FTU_07 As a first-time user I expect links and functions that work as expected
+* FTU_08 (FUTURE) As a first time user I would like to understand the part I can play in contributing to the body of knowledge
+
 
 ### Returning User Goals
 * RU_01 As a returning user I want to mark information I find useful so I can quickly access it again (favourites)
 * RU_02 As a returning user I want to create a user profile so that I can personalise my site experience (profile image, bookmarks, actions)
 * RU_03 As a returning user want to build my knowledge in certain areas
 * RU_04 As a returning user I want to build the body of knowledge for other users (by adding credibility ratings).
-* RU_05 As a returning user I 
+* RU_05 As a returning user I want to 
 * RU_06 As a returning user I
 * RU_07 As a returning user I 
 * RU_08 (FUTURE) As a returning user I 
@@ -274,20 +274,25 @@ Written in the format 'As a **role** I want to **action** to achieve **desired o
 ----------------
 
 ### Wireframes
-<details><summary>Landing Page</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf1_hn_landing.png">
+<details><summary>Landing Page - Articles</summary>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wireframe-01-articles.png">
 </details>
 
-<details><summary>How To Play</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf2_hn_howtoplay.png">
+<details><summary>Lifestage Planner - themed access to Articles</summary>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wireframe-02-themed-articles.png">
 </details>
 
-<details><summary>Game screen</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf3_hn_game.png">
+<details><summary>Article detail - with suggested actions</summary>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wireframe03-article-detail.png">
 </details>
 
-<details><summary>Game screen in progress</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wf4_hn_game_inprogress.png">
+<details><summary>My Planner - personalised user profile/action tracker</summary>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wireframe04-my-planner.png">
+</details>
+
+
+<details><summary>About/ Feedback page</summary>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/wireframe05-about-feedback.png">
 </details>
 
   

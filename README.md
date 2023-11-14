@@ -275,15 +275,15 @@ about page which clearly identifies information souces, information gathering/ha
 
 ### Wireframes
 <details><summary>Landing Page - Articles</summary>
-<img src="./django_financial_planner/tree/main/docs/readme_images/wireframe-01-articles.png">
+<img src="./django_financial_planner/docs/readme_images/wireframe-01-articles.png">
 </details>
 
 <details><summary>Lifestage Planner - themed access to Articles</summary>
-<img src="./django_financial_planner/tree/main/docs/readme_images/wireframe-02-themed-articles.png">
+<img src="./django_financial_planner/docs/readme_images/wireframe-02-themed-articles.png">
 </details>
 
 <details><summary>Article detail - with suggested actions</summary>
-<img src="./django_financial_planner/tree/main/docs/readme_images/wireframe03-article-detail.png">
+<img src="./django_financial_planner/docs/readme_images/wireframe03-article-detail.png">
 </details>
 
 <details><summary>My Planner - personalised user profile/action tracker</summary>
@@ -292,9 +292,8 @@ about page which clearly identifies information souces, information gathering/ha
 
 
 <details><summary>About/ Feedback page</summary>
-<img src="./django_financial_planner/tree/main/docs/readme_images/wireframe05-about-feedback.png">
+<img src="./django_financial_planner/docs/readme_images/wireframe05-about-feedback.png">
 </details>
-
   
 ### Fonts Chosen
 The fonts are deliberately chosen to mimic appearance of Wordle screen. 

@@ -63,6 +63,7 @@ class ArticleDetail(View):
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.article = article
+ #           comment.user.id = request.user.id
             comment.save()
         else:
             comment_form = CommentForm()

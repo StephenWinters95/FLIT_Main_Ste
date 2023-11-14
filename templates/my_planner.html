@@ -11,11 +11,12 @@
                             <img class="fas fa-user-tie fa-7x mt-5 img-fluid" src=" {{ profile_image.url }}">
                             <h2 class="font-weight-bold mt-4" id="userid">{{user}}</h2>
                             <p>{{first_name}}  {{last_name}}</p>
+                            <p id="user_profile">{{user_profile}}</p>
                         </div> <!-- end class card-block -->
                     </div> <!-- end class col -->
                     <div class="col-sm-8 bg-info rounded-right">
-                        <h3 class="mt-3 text-center">User Profile</h3>
-                        <hr class="bg-primary mt-0">
+                        <h3 class="mt-3 text-center">My Profile</h3>
+                        <hr class="mt-0 bg-info">
                         <div class="row">
                             <div class="col-sm-6">
                                 <p class="font-weight-bold">Email:</p>
@@ -52,15 +53,15 @@
                                 <h6 class="text-muted">{{number_of_likes}}</h6>
                             </div>
                             <div class="col-sm-3">
-                                <a href="#bookmarks"><i class = "text-muted fas fa-bookmark" data-bs-toggle="tooltip" title="Bookmarks"></i></a>
+                                <a href="#my-bookmarks"><i class = "text-muted fas fa-bookmark" data-bs-toggle="tooltip" title="Bookmarks"></i></a>
                                 <h6 class="text-muted">{{number_of_bookmarks}}</h6>
                             </div>
                             <div class="col-sm-3">
-                                <a href="#comments"><i class="text-muted far fa-comments" data-bs-toggle="tooltip" title="(Moderated) Comments"></i></a> 
+                                <a href="#my-comments"><i class="text-muted far fa-comments" data-bs-toggle="tooltip" title="(Moderated) Comments"></i></a> 
                                 <h6 class="text-muted">{{ number_of_valid_comments }}</h6>
                             </div>
                             <div class="col-sm-3">
-                                <a href="#actions"><i class="text-muted fa fa-arrow-right" data-bs-toggle="tooltip" title="Personal Actions"></i></a> 
+                                <a href="#my-actions"><i class="text-muted fa fa-arrow-right" data-bs-toggle="tooltip" title="Personal Actions"></i></a> 
                                 <h6 class="text-muted">{{number_of_actions}}</h6>
                             </div> <!-- end class col-sm-8 -->
                         </div> <!-- end class row -->
@@ -68,98 +69,118 @@
                     </div> <!-- end div class col-sm-8 bg-info rounded-right -->    
                     
                 </div> <!-- end div class row z-depth-3 -->
-                <div class = "container col-md-12" id="actions-container">
-                    <div class = "table-responsive">
-                        <strong id="actions"><h4>User Actions:</h4></strong>
-                        <table class="table table-bordered rounded-right table-hover ">
-                            <thead class="table-success">
-                                <tr><h6>
-                                <th></th>
-                                <th></th>
-                                <th>Seq</th>
-                                <th>Date added</th>
-                                <th>Parent Article</th>
-                                <th>Action</th>
-                                <th>Done so Far</th>
-                                <th>Results</th>
-                                <th>Done?</th>
-                                <th>Date Completed</th>
-                                </h6>
-                                </tr>
-                            </thead>
-                            <form method="post" style="margin-top:1.3em";>
-                                {% for action in actions %}
-                                <tr class="text-muted">
-                                    <td><a href="{% url 'update_action' action.id %}">Edit</a></td>
-                                    <td><a href="{% url 'delete_action' action.id %}">Delete</a></td>
-                                    <td>{{action.user_action_seq}}</td>
-                                    <td class="date">{{action.created_on|date:"d/m/y"}}</td>
-                                    <td>{{action.parent_article}}</td>
-                                    <td>{{action.user_action_desc}}</td>
-                                    <td>{{action.user_action_taken}}</td>
-                                    <td>{{action.observation}}</td>
-                                    <td>{{action.completed|yesno:"Y,N"}}</td>
-                                    <td>{{action.completed_on|date:"d/m/y"}}</td>
-                                </tr>
-                                {% endfor %}
-                            </form>
-                        </table>
-                    </div> <!-- class = "table-responsive"-->
-                    <a href="{% url 'create_action' %}">Add new action</a>
-                      
-                </div> <!-- class = container-->
-                        <p></p>
-
-                
-                <strong id="bookmarks">Bookmarks:</strong>
-                
-                <table class="table table-bordered table-hover table-responsive">
-                    <tr><h6>
-                        <th></th>
-                        <th>Article</th>
-                        <th>Date</th>
-                    </h6>
-                    </tr>
-                    <form method="post" style="margin-top:1.3em";>
-                        {% for bookmark in bookmarks %}
-                        
-                        <tr class="text-muted">
-                            <td><a href="{% url 'delete_bookmark' bookmark.id %}">Delete</a></td>
-                            <td>{{bookmark}}</td>
-                            <td class="date">{{bookmark.created_on|date:"d/m/y"}}</td>
-                        </tr>
-                        {% endfor %}
-                    </form>
-                </table>
-                <strong id="comments">Comments:</strong>
-                <table class="table table-bordered table-hover table-responsive">
-                    <tr><h6>
-                        <th></th>
-                        <th>Article</th>
-                        <th>Comment</th>
-                        <th>Date</th>
-                    </h6>
-                    </tr>
-                    {% for comment in comments %}
-                    <tr class="text-muted">
-                        <td><a href="{% url 'delete_comment' comment.id %}">Delete</a></td>
-                        <td>{{comment.article}}</td>
-                        <td>{{comment.body}}</td>
-                        <td class="date">{{comment.created_on|date:"d/m/y"}}</td>
-                    </tr>
-                    {% endfor %}
-                
-                </table>
                 
             </div> <!-- end div class col-md-10 mt-5 pt-5-->
             
         </div> <!-- end div class row d-flex justify-content-center -->
         
     </div> <!-- end div class row g-0 -->
-     
+    <div class = "container-fluid" id="actions-container">
+        <div class = "table-responsive">
+            <strong id="my-actions">My Actions:</strong>
+            <table class="table table-bordered rounded-right table-hover ">
+                <thead class="table-success">
+                    <tr><h6>
+                    <th></th>
+                    <th></th>
+                    <th>Seq</th>
+                    <th>Date added</th>
+                    <th>Parent Article</th>
+                    <th>Action</th>
+                    <th>Done so Far</th>
+                    <th>Results</th>
+                    <th>Done?</th>
+                    <th>Date Completed</th>
+                    </h6>
+                    </tr>
+                </thead>
+                <form method="post" style="margin-top:1.3em";>
+                    {% for action in actions %}
+                    <tr class="text-muted">
+                        <td><a href="{% url 'update_action' action.id %}">Edit</a></td>
+                        <td><a href="{% url 'delete_action' action.id %}">Delete</a></td>
+                        <td>{{action.user_action_seq}}</td>
+                        <td class="date">{{action.created_on|date:"d/m/y"}}</td>
+                        <td>{{action.parent_article}}</td>
+                        <td>{{action.user_action_desc}}</td>
+                        <td>{{action.user_action_taken}}</td>
+                        <td>{{action.observation}}</td>
+                        <td>{{action.completed|yesno:"Y,N"}}</td>
+                        <td>{{action.completed_on|date:"d/m/y"}}</td>
+                    </tr>
+                    {% endfor %}
+                </form>
+            </table>
+        </div> <!-- class = "table-responsive"-->
+        <a href="{% url 'create_action' %}">
+        <button class="btn btn-signup right" type="submit">Add new action</button></a>
+            
+    </div> <!-- end id=actions-container -->
+            <p></p>
+
+    
+    <strong id="my-bookmarks">My Bookmarks:</strong>
+    
+    <table class="table table-bordered table-hover table-responsive">
+        <thead class="table-success">
+            <tr><h6>
+            <th></th>
+            <th>Article</th>
+            <th>Date</th>
+            </h6>
+            </tr>
+        </thead>
+        <form method="post" style="margin-top:1.3em";>
+            {% for bookmark in bookmarks %}
+            
+            <tr class="text-muted">
+                <td><a href="{% url 'delete_bookmark' bookmark.id %}">Delete</a></td>
+                <td>{{bookmark}}</td>
+                <td class="date">{{bookmark.created_on|date:"d/m/y"}}</td>
+            </tr>
+            {% endfor %}
+        </form>
+    </table>
+    <strong id="my-comments">My Comments:</strong>
+    <table class="table table-bordered table-hover table-responsive">
+        <thead class="table-success">
+            <tr><h6>
+            <th></th>
+            <th>Article</th>
+            <th>Comment</th>
+            <th>Approved</th>
+            <th>Date</th>
+            </h6>
+            </tr>
+        </thead>
+        {% for comment in comments %}
+        <tr class="text-muted">
+            <td><a href="{% url 'delete_comment' comment.id %}">Delete</a></td>
+            <td>{{comment.article}}</td>
+            <td>{{comment.body}}</td>
+            <td>{{comment.approved|yesno:"Y,N"}}</td>
+            <td class="date">{{comment.created_on|date:"d/m/y"}}</td>
+        </tr>
+        {% endfor %}
+    
+    </table>
+
 </div> <!-- end div class container bg-grey -->
 
+<script>
+    function display_actions() {
+        console.log("in function display_actions()");
+        let show_actions = document.getElementById("user_profile").innerHTML;
+        console.log("show_actions evaluates to " + show_actions);    
 
+        if (show_actions) 
+        {
+        document.getElementById("actions-container").style.display ='none';
+        }
+        else 
+        {console.log("ELSE:  document.getElementById(user_profile) evaluates to " + document.getElementById("user_profile"));}
+    };
+</script>
 <script>
     function calc_age() {
         const d = new Date();
@@ -172,6 +193,7 @@
         document.getElementById("approx_age").innerHTML = approx_age_calc;
         };
 </script>
+
 
         
                                 

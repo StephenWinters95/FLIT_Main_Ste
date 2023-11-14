@@ -30,15 +30,18 @@ class UserProfileView(View):
                 age_approx = user_profile.age_approx
                 age_exact = user_profile.age_exact
                 created_on = user_profile.created_on
+                profile_image = user_profile.profile_image
                 number_of_likes = user_profile.number_of_likes
                 number_of_bookmarks=user_profile.number_of_bookmarks
                 number_of_actions = user_profile.number_of_actions
                 number_of_valid_comments = user_profile.number_of_valid_comments
+                user_profile = True
             else:
                 birth_year = 1900
                 age_approx = 0
                 age_exact = 0
                 created_on = '01/01/1900'
+                profile_image = "/static/images/placeholder.png"
                 actions =[]
                 comments = []
                 bookmarks = []     
@@ -46,17 +49,18 @@ class UserProfileView(View):
                 number_of_bookmarks = 0          
                 number_of_actions = 0
                 number_of_valid_comments = 0
+                user_profile = False
 #            endif
             
             return render(
                 request,
                 "my_planner.html",
                 {
-                "user": user_profile.user,
+                "user": request.user,
                 "first_name":  request.user.first_name,
                 "last_name": request.user.last_name,
                 "email": request.user.email,
-                "profile_image": user_profile.profile_image,
+                "profile_image": profile_image,
                 "birth_year": birth_year,
                 "age_approx":  age_approx,
                 "age_exact":  age_exact,
@@ -69,6 +73,7 @@ class UserProfileView(View):
                 "actions": actions,
                 "bookmarks": bookmarks,
                 "comments": comments,
+                "user_profile": user_profile,
                 },
                 )
         else:

@@ -11,7 +11,7 @@ class CommentForm(forms.ModelForm):
 class UserCommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('user', 'article', 'body', 'approved')
+        fields = ('user', 'article', 'body', 'approved', )
 
     
 class ActionForm(forms.ModelForm):

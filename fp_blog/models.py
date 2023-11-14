@@ -46,7 +46,7 @@ class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE,
                                 related_name="comments")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_comments")
-    name = models.CharField(max_length=80)
+  #  name = models.CharField(max_length=80) removed field 'name' from the comments as this can be derived from user
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)

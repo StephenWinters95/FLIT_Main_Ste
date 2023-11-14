@@ -63,7 +63,8 @@ class ArticleDetail(View):
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.article = article
- #           comment.user.id = request.user.id
+ # this next line is significant as it is saying that comment has no user
+            comment.user = request.user
             comment.save()
         else:
             comment_form = CommentForm()

@@ -133,11 +133,16 @@ class UserActionView(View):
         user_actions = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on')
 
     def next_seq(request):
-        queryset = UserAction.objects.filter(user=request.user.id).order_by('-user_action_seq')
-        latest_rec = UserAction.objects.order_by('-user_action_seq').filter(user_action_seq__in=queryset[:0])
+        existing_actions = queryset = UserAction.objects.filter(user=request.user.id).exists()
+        if existing_actions:
+            queryset = UserAction.objects.filter(user=request.user.id).order_by('-user_action_seq')
+            latest_rec = UserAction.objects.order_by('-user_action_seq').filter(user_action_seq__in=queryset[:0])
         
-        max_seq = queryset[0].user_action_seq
-        next_seq = max_seq + 10
+            max_seq = queryset[0].user_action_seq
+            next_seq = max_seq + 10
+        else:
+            next_seq = 10
+        
         return next_seq
 
     def get(self, request, *args, **kwargs):

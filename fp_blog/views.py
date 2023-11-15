@@ -83,7 +83,7 @@ class ArticleDetail(View):
                     },
                     )
 
-
+# This is used when article is liked/unliked from within the article detail page
 class ArticleLike(View):
     def post(self, request, slug, *args, **kwargs):
         article = get_object_or_404(Article, slug=slug)
@@ -93,6 +93,8 @@ class ArticleLike(View):
             article.likes.add(request.user)
         return HttpResponseRedirect(reverse('article_detail', args=[slug]))
 
+# This is used when article is liked/unliked from within the index/article summary page
+# DMcC 15/11/23 this still needs some work as the user is currently returned to the article detail page after like/unlike
 class ArticleSummaryLike(View):
     def post(self, request, slug, *args, **kwargs):
         article = get_object_or_404(Article, slug=slug)
@@ -102,6 +104,8 @@ class ArticleSummaryLike(View):
             article.likes.add(request.user)
         return HttpResponseRedirect(reverse('article_detail', args=[slug]))
 
+# This is used when article is bookmarked/unbookmarked from within the index/article summary OR article detail page
+# DMcC 15/11/23 this still needs some work as the user is currently returned to the article detail page after bookmarking
 class ArticleBookmark(View):
     def post(self, request, slug, *args, **kwargs):
         article = get_object_or_404(Article, slug=slug)

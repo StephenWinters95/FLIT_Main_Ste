@@ -90,6 +90,7 @@
                     <th>Date added</th>
          <!--           <th>Parent Article</th>  -->
                     <th>Action</th>
+                    <th>URL</th>
                     <th>Done so Far</th>
                     <th>Results</th>
                     <th>Done?</th>
@@ -106,6 +107,7 @@
                         <td class="date">{{action.created_on|date:"d/m/y"}}</td>
 <!--                        <td>{{action.parent_article}}</td>  --> 
                         <td>{{action.user_action_desc}}</td>
+                        <td><a href="{{action.user_action_url}}">{{action.user_action_url}}</a></td>
                         <td>{{action.user_action_taken}}</td>
                         <td>{{action.observation}}</td>
                         <td>{{action.completed|yesno:"Y,N"}}</td>

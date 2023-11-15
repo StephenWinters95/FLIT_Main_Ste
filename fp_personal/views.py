@@ -161,6 +161,7 @@ class UserActionView(View):
                 "Date Created": created_on,
                 "From article": parent_article,
                 "Action": user_action_desc,
+                "URL": user_action_url,
                 "Done so far": user_action_taken,
                 "Result": observation,
                 "Completed": completed,
@@ -171,7 +172,7 @@ class UserActionView(View):
 class UserActionSerializer(serializers.Serializer):
     class Meta:
         model = UserAction
-        fields = ['user', 'user_action_seq', 'parent_article', 'user_action_desc', 'user_action_taken', 'observation', 'user_action_date', 'user_action_type', 'completed', 'created_on', 'completed_on']
+        fields = ['user', 'user_action_seq', 'parent_article', 'user_action_desc', 'user_action_url', 'user_action_taken', 'observation', 'user_action_date', 'user_action_type', 'completed', 'created_on', 'completed_on']
 
 # This next set of code developed in parallel with Dennis Ivy videos so remember to refer bakc to there =- Django 2021 Course Session #3 Models Forms & CRUD
 # note this is function-baed rather than class-cased coding so will probably need to be repa=laced with class-based equivalent 
@@ -205,7 +206,7 @@ def copyUserAction(request, pk):
     
     next_seq = UserActionView.next_seq(request)
     print('In copyUserAction():  next_seq returned from function is: ', next_seq)
-    form=UserActionForm(initial={"user":request.user.id, "user_action_seq": next_seq, "parent_article": action.article, "user_action_desc": action.action_desc, "user_action_taken": action_desc, })
+    form=UserActionForm(initial={"user":request.user.id, "user_action_seq": next_seq, "parent_article": action.article, "user_action_desc": action_desc, "user_action_url": action.action_url, "user_action_taken": action_desc })
 
     if request.method == 'POST':
         form = UserActionForm(request.POST)

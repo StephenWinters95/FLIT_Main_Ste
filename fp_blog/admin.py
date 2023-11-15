@@ -12,7 +12,7 @@ class ArticleAdmin(SummernoteModelAdmin):
 
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on', 'updated_on')
-    list_display = ('title', 'slug', 'status', 'created_on')
+    list_display = ('title', 'slug', 'status', 'updated_on', 'created_on')
     search_fields = ['title', 'content']
     actions = ['approve_draft']
 

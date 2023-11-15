@@ -17,7 +17,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 @admin.register(UserAction)
 class ActionAdmin(SummernoteModelAdmin):
-    list_display = ('user', 'user_action_seq', 'parent_article', 'user_action_desc', 'user_action_taken', 
+    list_display = ('user', 'user_action_seq', 'parent_article', 'user_action_desc', 'user_action_url', 'user_action_taken', 
                     'observation', 'created_on', 'completed_on')
     list_filter = ('completed','user', 'user_action_seq', 'parent_article', 'created_on', )
     sortable_by = ['user', 'user_action_seq']

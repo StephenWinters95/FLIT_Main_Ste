@@ -55,6 +55,7 @@ class UserAction(models.Model):
     user_action_seq = models.IntegerField(default=10)
     parent_article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="parent_article")
     user_action_desc = models.ForeignKey(Action, on_delete=models.CASCADE, related_name="parent_action")
+    user_action_url = models.URLField(blank=True)
     user_action_taken = models.CharField(max_length=200, default='Done so far:  ')
     observation = models.CharField(max_length=200, default='Results:  ')
     completed = models.BooleanField(null=False, blank=False)

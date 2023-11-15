@@ -16,10 +16,10 @@
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in article.featured_image.url %}
-                                <img class="card-img-top"
+                                <img class="card-img-top rounded"
                                     src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ article.featured_image.url }}">
+                                <img class="card-img-top rounded" src=" {{ article.featured_image.url }}">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ article.author }}</p>

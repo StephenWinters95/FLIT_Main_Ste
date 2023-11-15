@@ -6,16 +6,20 @@
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
                 <!-- Article title goes in these h1 tags -->
-                <h1 class="article-title">{{ article.title }}</h1>
+                <!-- DMcC 15/11/23 need to add javascrpt functionality if the 'new' badge is to conditionally display based on article updated date -->
+                <!-- note this requires change to Article model & views also to add the updated_on field -->
+                <h1 class="article-title">{{ article.title }}  <span class="badge bg-secondary">New</span></h1>
+                <!-- Add badge if article is recently created -->
+                <h2></h2>
                 <!-- Article author goes before the | the article's created date goes after -->
                 <p class="article-subtitle">{{ article.author }} | {{ article.created_on }}</p>
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in article.featured_image.url %}
-                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%" class="rounded">
                 {% else %}
-                <img src="{{ article.featured_image.url }}" width="100%">
+                <img src="{{ article.featured_image.url }}" width="100%" class="rounded">
                 {% endif %}
             </div>
         </div>

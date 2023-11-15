@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponse, HttpResponseRedirect
+from django. contrib import messages 
 from django.contrib.auth.models import User
 from fp_blog.forms import ActionForm
 from fp_blog.models import Article, Action, Comment
@@ -184,7 +185,11 @@ def createUserAction(request):
         form = UserActionForm(request.POST)
         if form.is_valid(): 
             form.save()
+            messages.add_message(request, messages.SUCCESS, "Personal Action # " + str(next_seq) + " created")
             return redirect('my_planner')
+        else:
+            messages.add_message(request, messages.ERROR, "Error on new action form")
+
 
     context = {'form': form}
     return render(request, 'my_actions.html', context)
@@ -206,6 +211,8 @@ def copyUserAction(request, pk):
         form = UserActionForm(request.POST)
         if form.is_valid(): 
             form.save()
+            # DMcC 15/11/23 Add success message to confirm action is added
+            messages.add_message(request, messages.SUCCESS, "Personal Action # " + str(next_seq) + " created")
             return redirect(reverse('article_detail',args=[slug]) )
 
     context = {'form': form}
@@ -221,6 +228,9 @@ def updateUserAction(request, pk):
         form = UserActionForm(request.POST, instance=action)
         if form.is_valid(): 
             form.save()
+            # Add success message to confirm action is updated
+            messages.add_message(request, messages.SUCCESS, "Personal Action: #" + str(action.user_action_seq) + " -  " + str(action.user_action_desc) + " updated")
+
             return redirect('my_planner')
 
     context = {'form': form}
@@ -235,8 +245,11 @@ def deleteUserAction(request, pk):
     if request.method == 'POST':
         action.delete()
         return redirect('my_planner')
-    return render(request, 'delete.html', {'object': 'action ' + str(action.user_action_seq)})
+        # Add success message to confirm action is updated
+        messages.add_message(request, messages.SUCCESS, "Personal Action # " + str(action.user_action_seq) + " deleted")
 
+    return render(request, 'delete.html', {'object': 'action ' + str(action.user_action_seq)})
+ 
 def deleteComment(request, pk):
     comment = Comment.objects.get(id=pk)
 

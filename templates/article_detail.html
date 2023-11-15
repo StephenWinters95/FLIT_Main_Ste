@@ -35,12 +35,15 @@
                 <p class="card-text ">{{ article.content | safe }}</p>
                 <!-- want to view actions associated with the article before viewing comments -->
                 <!-- div class="col-md-8 card mb-4  mt-3 " -->
+                <!-- Need to allow for no actions, don't want to display table headings if so -->
+                {% if actions %}
                 <strong id="actions">Actions:</strong>
                 <table class="table table-bordered table-hover table-responsive ">
                     <thead class="table-success">
                         <tr><h6>
                         <th>Copy to personal</th>
                         <th>Action</th>
+                        <th>Url</th>
                         </h6>
                         </tr>
                     </thead>
@@ -50,10 +53,13 @@
                     {% for action in actions %}
                     <tr class="text-muted">
                     <td><a href="{% url 'copy_action' action.id %}">Copy</a></td>
-                    <td>{{action.action_desc| safe}}</td>  
+                    <td>{{action.action_desc| safe}}</td>
+                    <td>{{action.action_url| safe}}</td>  
                     {% endfor %}
                     <br>
-            
+                {% else %}
+                <strong id="actions">No Actions for this article:</strong>
+                {% endif %}
                     
                 </table>
             </div> <!-- class = "table-responsive"-->

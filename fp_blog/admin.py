@@ -11,7 +11,7 @@ class ArticleAdmin(SummernoteModelAdmin):
     summernote_fields = ('content')
 
     prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('status', 'created_on')
+    list_filter = ('status', 'created_on', 'updated_on')
     list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'content']
     actions = ['approve_draft']
@@ -28,7 +28,7 @@ class ArticleAdmin(SummernoteModelAdmin):
 @admin.register(Action)
 class ActionAdmin(SummernoteModelAdmin):
     list_filter = ('article', 'action_seq', 'created_on')
-    list_display = ('article', 'action_seq', 'action_desc', 'author', 
+    list_display = ('article', 'action_seq', 'action_desc', 'action_url', 'author', 
                     'created_on')
     sortable_by = ['article', 'action_seq']
     search_fields = ['article', 'action_desc']

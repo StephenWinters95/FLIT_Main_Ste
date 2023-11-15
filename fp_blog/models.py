@@ -67,9 +67,11 @@ class Action(models.Model):
                                 related_name="actions")
     action_seq = models.IntegerField(default=10)
     action_desc = models.CharField(max_length=200, default='Action:  ')
+    action_url = models.URLField(blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name="action_created_by")
     created_on = models.DateTimeField(auto_now_add=True)
+
 
     class Meta:
         ordering = ['article', 'action_seq']

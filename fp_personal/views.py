@@ -245,11 +245,12 @@ def deleteUserAction(request, pk):
     if request.method == 'POST':
         action.delete()
         return redirect('my_planner')
-        # Add success message to confirm action is updated
+        # DMcC 15/11/23 Add success message to confirm action is updated
         messages.add_message(request, messages.SUCCESS, "Personal Action # " + str(action.user_action_seq) + " deleted")
-
+    #hmmm DMcC 15/11/23 what is the below line doing, surely I've already done the return redirect above?
     return render(request, 'delete.html', {'object': 'action ' + str(action.user_action_seq)})
  
+# DMcC 15/11/23 The below no longer used 
 def deleteComment(request, pk):
     comment = Comment.objects.get(id=pk)
 
@@ -258,7 +259,8 @@ def deleteComment(request, pk):
         return redirect('my_planner')
     return render(request, 'delete.html', {'object': 'comment ' + str(comment.body)})
 
-# watch ut aas the code below deletes the article, rather than the bookmark!!!!        
+# DMcC 13/11/23 watch out aas the code below deletes the article, rather than the bookmark!!!!
+# Removed from active functionality, bookmark is now deleted via the article in the fp_blog app        
 def deleteBookmark(request, pk):
     bookmark = request.user.article_favourite.get(id=pk)
     if request.method == 'POST':

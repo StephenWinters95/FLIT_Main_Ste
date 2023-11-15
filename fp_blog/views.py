@@ -8,7 +8,7 @@ class ArticleList(generic.ListView):
     model = Article
     queryset = Article.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
-    paginate_by = 6
+    paginate_by = 8
 
 class ArticleDetail(View):
     def get(self, request, slug, *args, **kwargs):
@@ -63,7 +63,7 @@ class ArticleDetail(View):
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.article = article
- # this next line is significant as it is saying that comment has no user
+ # DMcC 14/11/23 this next line is significant as it was saying that comment has no user
             comment.user = request.user
             comment.save()
         else:

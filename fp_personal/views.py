@@ -17,9 +17,10 @@ from rest_framework import serializers
 class UserProfileView(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            # Do something for authenticated users.
+        # this option is only valid for registered users not annonymous user 
 
             if (UserProfile.objects.filter(user=request.user.id).exists()):
+            # Can pickup user profile fields from database for authenticated users 
                 queryset = UserProfile.objects.filter(user=request.user.id)
                 user_profile = get_object_or_404(UserProfile, user=request.user)
                 user = get_object_or_404(User, id=request.user.id)
@@ -38,11 +39,12 @@ class UserProfileView(View):
                 number_of_valid_comments = user_profile.number_of_valid_comments
                 user_profile = True
             else:
+                # user has User but no UserProfile
                 birth_year = 1900
                 age_approx = 0
                 age_exact = 0
                 created_on = '01/01/1900'
-                profile_image = "/static/images/placeholder.png"
+                profile_image = "../static/images/placeholder.png"
                 actions =[]
                 comments = []
                 bookmarks = []     

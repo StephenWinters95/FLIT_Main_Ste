@@ -8,10 +8,10 @@
                 <div class = "row z-depth-3">
                     <div class="col-sm-4 bg-info rounded-left">
                         <div class ="card-block text-center text-white">
-                            <img class="fas fa-user-tie fa-7x mt-5 img-fluid" src=" {{ profile_image.url }}">
+                            <img class="mt-5 img-fluid" src=" {{ profile_image.url }}">
                             <h2 class="font-weight-bold mt-4" id="userid">{{user}}</h2>
                             <p>{{first_name}}  {{last_name}}</p>
-  <!-- intended to do a check if the user profile exists and othrwise restruit functionality -->
+  <!-- intended to do a check if the user profile exists and restrict functionality (e.g. adding actions) if not -->
 <!-- however, the user only reaches this page if they are a rgistered user so better to ensure the user profile -->
 <!-- was auto created when they became a registered user, and to allow them to continue here -->
 <!--                          <p id="user_profile">{{user_profile}}</p>  -->

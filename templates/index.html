@@ -9,8 +9,10 @@
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for article in article_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
+                <!-- DMcC 15/11/23 Testing with col-md-3 rather than 4 to fit more articles onto a page -->
+                <div class="col-md-3">
+                    <!-- similarly card mb-3 rather than md-4 -->
+                    <div class="card mb-3">
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in article.featured_image.url %}
@@ -68,7 +70,8 @@
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
+                <!-- DMcC 15/11/23 change the default row break to divisible by 4 rather than by 3 -->
+                {% if forloop.counter|divisibleby:4 %}
                 </div>
                 <div class = "row">
                     {% endif %}

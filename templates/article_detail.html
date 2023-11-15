@@ -54,7 +54,7 @@
                     <tr class="text-muted">
                     <td><a href="{% url 'copy_action' action.id %}">Copy</a></td>
                     <td>{{action.action_desc| safe}}</td>
-                    <td>{{action.action_url| safe}}</td>  
+                    <td><a href="{{action.action_url}}">{{action.action_url| safe}}</a></td>
                     {% endfor %}
                     <br>
                 {% else %}

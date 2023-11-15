@@ -40,6 +40,10 @@ body {
     background-color: transparent;
 }
 
+.card-img-top {
+    opacity: 75%;
+}
+
 .image-container {
     position: relative;
 }

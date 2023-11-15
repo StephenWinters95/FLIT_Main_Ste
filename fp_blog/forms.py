@@ -13,7 +13,12 @@ class UserCommentForm(forms.ModelForm):
         model = Comment
         fields = ('user', 'article', 'body', 'approved', )
 
-    
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = ('title', 'slug', 'status', 'updated_on' )
+
+
 class ActionForm(forms.ModelForm):
     class Meta:
         model = Action

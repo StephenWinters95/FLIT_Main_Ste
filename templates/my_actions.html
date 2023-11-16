@@ -15,6 +15,7 @@
                             
                             {% csrf_token %} 
                             
+<!-- DMcC 16/11/23:  want to avoid using this next block of code, as would really prefer to have a simple, single form  
                             <label for="user">User: </label>
                             <input type="text" readonly="readonly" id="user" name="user" value="{{user}}">
                             <br>
@@ -40,10 +41,10 @@
                             <input type="checkbox" id="completed" name="completed" value={{form.completed}}>
                             <label for="completed_on">Completed date</label>
                             <input type="date" id="completed_on" name="completed_on" value={{form.completed_on}}>
-                            <br><br>
+                            <br><br> -->
                             
 <!-- DMcC 16/11/23 change from displaying entire form to just certain fields -->
-                            <h1> Add/ edit a personal action using form.as_p</h1>
+                         <!--  <h1> Add/ edit a personal action using form.as_p</h1>  --> 
                             {{form.as_p}}
                             <p></p>
                             <input type = "submit" value = "Submit">
@@ -62,20 +63,29 @@
     </div> <!-- end div class row g-0 -->
      
 </div> <!-- end div class container bg-grey -->
+<!-- DMcC 16/11/23 the below javascript is a corrector/workaround for Bug Issue #20 -->
 <script>
+    function correct_action_desc() {
+        const action_taken = document.getElementById("id_user_action_taken");
+        let action_description = action_taken.innerHTML;
+        console.log("In function correct_action_desc, the correct value for action_desc should be " + action_description);
+        const user_action_desc = document.getElementByID("id_user_action_desc");
+        console.log("In function correct_action_desc, current action_desc is " + user_action_desc.innerHTML );
+        user_action_desc = action_description;
+        action_taken.innerHTML = "Action taken: ";
+    }
+    correct_action_desc();
+
     function correct_user() {
         const curr_user = new Date();
         let curr_year= parseInt(d.getFullYear());
         console.log("Current year is " + (curr_year) + ", Next year is " + (curr_year+1));
-        let int_birth_year = parseInt(document.getElementById("birth_year").innerHTML)
+        let int_birth_year = parseInt(document.getElementById("birth_year").innerHTML);
         console.log("Birth year is " + int_birth_year + ", Next year is " + (int_birth_year+1));
         let approx_age_calc = curr_year - int_birth_year;
         console.log("Approx age is " + approx_age_calc);                            
         document.getElementById("approx_age").innerHTML = approx_age_calc;
         };
-</script>
-
-
-      
-                                
+    
+</script>             
 {% endblock content %}

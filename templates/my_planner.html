@@ -173,18 +173,16 @@
 </div> <!-- end div class container bg-grey -->
 
 <script>
-    function display_actions() {
-        console.log("in function display_actions()");
-        let show_actions = document.getElementById("user_profile").innerHTML;
-        console.log("show_actions evaluates to " + show_actions);    
+    console.log("in function display_actions()");
+    let show_actions = document.getElementById("user_profile").innerHTML;
+    console.log("show_actions evaluates to " + show_actions);    
 
-        if (show_actions) 
-        {
-        document.getElementById("actions-container").style.display ='none';
-        }
-        else 
-        {console.log("ELSE:  document.getElementById(user_profile) evaluates to " + document.getElementById("user_profile"));}
-    };
+    if (show_actions) 
+    {
+    document.getElementById("actions-container").style.display ='none';
+    }
+    else 
+    {console.log("ELSE:  document.getElementById(user_profile) evaluates to " + document.getElementById("user_profile"));}
 </script>
 <script>
     function calc_age() {

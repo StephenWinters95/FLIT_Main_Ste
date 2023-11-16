@@ -36,38 +36,8 @@
                 <!-- want to view actions associated with the article before viewing comments -->
                 <!-- div class="col-md-8 card mb-4  mt-3 " -->
                 <!-- Need to allow for no actions, don't want to display table headings if so -->
-                {% if actions %}
-                <strong id="actions">Actions:</strong>
-                <table class="table table-bordered table-hover table-responsive ">
-                    <thead class="table-success">
-                        <tr><h6>
-                        <th>Copy to personal</th>
-                        <th>Action</th>
-                        <th>Url</th>
-                        </h6>
-                        </tr>
-                    </thead>
-                <!-- div class="card-body" -->
-                <!-- We want a for loop inside the tags to iterate through each action in actions -->
-                <form method="post" style="margin-top:1.3em";>
-                    {% for action in actions %}
-                    <tr class="text-muted">
-                    <td><a href="{% url 'copy_action' action.id %}">Copy</a></td>
-                    <td>{{action.action_desc| safe}}</td>
-                    <td><a href="{{action.action_url}}">{{action.action_url| safe}}</a></td>
-                    {% endfor %}
-                    <br>
-                {% else %}
-                <strong id="actions">No Actions for this article:</strong>
-                {% endif %}
-                    
-                </table>
-            </div> <!-- class = "table-responsive"-->
-            
 
-
-
-
+                <!--  DMcC 16/11/23 switcheroo put the icon functionality before the article actions (instead of after) -->
                 <div class="row">
                     <!-- functionality for likes -->
                     <div class="col-1">
@@ -93,59 +63,109 @@
                             {% endif %} <!-- end if user is authenticated -->                         
                         </strong>
                     </div> <!-- end div class col-1 -->
+              <!-- functionality for comments/Responses -->    
+              <div class="col-1">
+                <strong class="text-secondary"><i class="far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="Responses"></i>
+                    <!-- Our total_comments variable goes before the closing strong tag -->
+                    {{ article.number_of_valid_comments }}</strong>
+            </div> <!-- end div class col-1 -->
 
-                    <!-- functionality for comments/Responses -->    
-                    <div class="col-1">
-                        <strong class="text-secondary"><i class="far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="Responses"></i>
-                            <!-- Our total_comments variable goes before the closing strong tag -->
-                            {{ article.number_of_valid_comments }}</strong>
-                    </div> <!-- end div class col-1 -->
-
-                    <!-- functionality for bookmarks -->
-                    <div class="col-1">
-                        <strong>
-                            {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'article_bookmark' article.slug %}" method="POST">
-                                {% csrf_token %}
-                                {% if bookmarked %}
-                                <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                <i class = "fas fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i></button>
-                                <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
-                                {% else %}
-                                <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                <i class = "far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i></button>
-                                <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
-                                {% endif %}
-                            </form>
-                            {% else %}
-                            <i class = "far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i>
-                            <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
-                            {% endif %} <!-- end if user is authenticated -->                         
-                        </strong>
-                    </div> <!-- end div class col-1 -->
-
-                </div> <!-- end div class row -->
-                <div class="row"><strong>
-                    {% if not user.is_authenticated %}
-                    <div class="alert alert-warning" role="alert">
-                        To Like, Save or Respond to an article, or to create personal Actions, you must <a href="{% url 'account_login' %}">Login</a>
-                    </div></strong>
-                    {% endif %}
-                </div>
+            <!-- functionality for bookmarks -->
+            <div class="col-1">
+                <strong>
+                    {% if user.is_authenticated %}
+                    <form class="d-inline" action="{% url 'article_bookmark' article.slug %}" method="POST">
+                        {% csrf_token %}
+                        {% if bookmarked %}
+                        <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                        <i class = "fas fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i></button>
+                        <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
+                        {% else %}
+                        <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                        <i class = "far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i></button>
+                        <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
+                        {% endif %}
+                    </form>
+                    {% else %}
+                    <i class = "far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i>
+                    <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
+                    {% endif %} <!-- end if user is authenticated -->                         
+                </strong>
+            </div> <!-- end div class col-1 -->
+        </div> <!-- end div class row -->
+        <div class="row"><strong>
+            {% if not user.is_authenticated %}
+            <div class="alert alert-warning" role="alert">
+                To Like, Save or Respond to an article, or to create personal Actions, you must <a href="{% url 'account_login' %}">Login</a>
+            </div></strong>
+            {% endif %}
+        </div> <!-- end div class row -->
+        
+                
+              
+                {% if actions %}
+                <!-- DMcC 16/11/23 no need for this title <strong id="actions">Actions:</strong> -->
+                <table class="table table-bordered table-hover table-responsive ">
+                    <thead class="table-success">
+                        <tr><h6>
+                        <th>Copy to personal</th>
+                        <th>Suggested Action</th>
+                        <th>Url</th>
+                        </h6>
+                        </tr>
+                    </thead>
+                <!-- div class="card-body" -->
+                <!-- We want a for loop inside the tags to iterate through each action in actions -->
+                <form method="post" style="margin-top:1.3em";>
+                    {% for action in actions %}
+                    <tr class="text-muted">
+                    <td><a href="{% url 'copy_action' action.id %}">Copy</a></td>
+                    <td>{{action.action_desc| safe}}</td>
+                    <td><a href="{{action.action_url}}">{{action.action_url| safe}}</a></td>
+                    {% endfor %}
+                    <br>
+                {% else %}
+                <strong id="actions">No Actions for this article:</strong>
+                {% endif %}
+                    
+                </table>
+            </div> <!-- class = "table-responsive"-->
+                            
             </div> <!-- end div card-body -->   
         </div> <!-- end div class col card mb-4  mt-3 left  top -->
     </div> <!-- end div class row -->
-        
+
     <div class="row">
         <div class="col">
             <hr>
         </div> <!-- end div class col -->
-    </div> <!-- end div class row -->
+    </div> <!-- end div class row -->      
+    
 
     <div class="row">
         <div class="col-md-8 card mb-4 mt-3 ">
             <h3>Responses:</h3>
             <div class="card-body">
+                <div class="col-md-6 card mb-4 mt-3">
+                    <div class="card-body">
+                        {% if commented_unapproved %}
+                        <div class="alert alert-success" role="alert">
+                            Your response is awaiting approval
+                        </div>
+                        {% else %}
+                        <!-- Allow a authenticated user to leave a comment -->
+                        {% if user.is_authenticated %}
+                        <p>Posting as: {{user.username}}</p>
+                        <form method="post" style="margin-top:1.3em";>
+                            {{ comment_form| crispy }}
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                        </form>
+                        {% endif %} <!-- if user is authenticated -->
+                        {% endif %} <!-- if commented -->
+                    </div> <!-- end div card-body --> 
+                </div> <!-- end div col-md-4 card mb-4 mt-3 --> 
+        
                 <!-- We want a for loop inside the tags to iterate through each comment in comments -->
                 {% for comment in comments %}
                     <div class="comments" style="padding: 10px;">
@@ -164,26 +184,6 @@
             </div> <!-- end div class card-body -->
         </div> <!-- end div class col-md-8 card mb-4 mt-3 -->
 
-        <div class="col-md-4 card mb-4 mt-3">
-            <div class="card-body">
-                {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Your response is awaiting approval
-                </div>
-                {% else %}
-                <!-- Allow a authenticated user to leave a comment -->
-                {% if user.is_authenticated %}
-                <h3>Respond to Article:</h3>
-                <p>Posting as: {{user.username}}</p>
-                <form method="post" style="margin-top:1.3em";>
-                    {{ comment_form| crispy }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-                </form>
-                {% endif %} <!-- if user is authenticated -->
-                {% endif %} <!-- if commented -->
-            </div> <!-- end div card-body --> 
-        </div> <!-- end div col-md-4 card mb-4 mt-3 --> 
     </div> <!-- end div class row -->
 </div> <!-- end div container -->
 

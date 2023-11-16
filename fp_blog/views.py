@@ -26,11 +26,16 @@ class ArticleDetail(View):
             bookmarked = True
 
         commented = False
+        commented_unapproved = False
         print('User ', self.request.user.id)
-        if article.comments.filter(id=self.request.user.id, approved=False).exists():
-            print('Unapproved responses exist for this user!')
+        if article.comments.filter(id=self.request.user.id).exists():
             commented = True
-
+            if article.comments.filter(id=self.request.user.id, approved=False).exists():
+                print('Unmoderated responses exist for this user')
+                commented_unapproved = True
+            endif
+        endif
+            
         return render(
             request,
             "article_detail.html",
@@ -38,6 +43,7 @@ class ArticleDetail(View):
              "article": article,
              "comments": comments,
              "commented": commented,
+             "commented_unapproved": commented_unapproved,
              "actions": actions,
              "liked": liked,
              "bookmarked": bookmarked,
@@ -77,6 +83,7 @@ class ArticleDetail(View):
                         "article": article,
                         "comments": comments,
                         "commented": True,
+                        "commented_unapproved": True,
                         "comment_form": CommentForm(),
                         "liked": liked,
                         "bookmarked" : bookmarked,

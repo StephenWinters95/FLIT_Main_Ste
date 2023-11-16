@@ -6,8 +6,8 @@
         <div class="row d-flex justify-content-center">
             <div class = "col-md-10 mt-5 pt-5">
                 <div class = "row z-depth-3">
-                    <div class="col-sm-4 bg-info rounded-left">
-                        <div class ="card-block text-center text-white">
+                    <div class="profile-card col-sm-4 rounded">
+                        <div class ="card-block text-center text-grey rounded-left">
                             <img class="mt-5 img-fluid" src=" {{ profile_image.url }}">
                             <h2 class="font-weight-bold mt-4" id="userid">{{user}}</h2>
                             <p>{{first_name}}  {{last_name}}</p>
@@ -17,7 +17,7 @@
 <!--                          <p id="user_profile">{{user_profile}}</p>  -->
                         </div> <!-- end class card-block -->
                     </div> <!-- end class col -->
-                    <div class="col-sm-8 bg-info rounded-right">
+                    <div class="profile-card col-sm-8 rounded">
                         <h3 class="mt-3 text-center">My Profile</h3>
                         <hr class="mt-0 bg-info">
                         <div class="row">
@@ -52,19 +52,19 @@
                         <hr class="bg-primary">
                         <div class="row">
                             <div class="col-sm-3">
-                                <i class = "text-muted fas fa-heart" data-bs-toggle="tooltip" title="# Likes"></i>
+                                <i class = "large fas fa-heart red-o" data-bs-toggle="tooltip" title="# Likes"></i>
                                 <h6 class="text-muted">{{number_of_likes}}</h6>
                             </div>
                             <div class="col-sm-3">
-                                <a href="#my-bookmarks"><i class = "text-muted fas fa-bookmark" data-bs-toggle="tooltip" title="Bookmarks"></i></a>
+                                <a href="#my-bookmarks"><i class = "fas fa-bookmark" data-bs-toggle="tooltip" title="Bookmarks"></i></a>
                                 <h6 class="text-muted">{{number_of_bookmarks}}</h6>
                             </div>
                             <div class="col-sm-3">
-                                <a href="#my-comments"><i class="text-muted far fa-comments" data-bs-toggle="tooltip" title="(Moderated) Comments"></i></a> 
+                                <a href="#my-comments"><i class="far fa-comments" data-bs-toggle="tooltip" title="(Moderated) Comments"></i></a> 
                                 <h6 class="text-muted">{{ number_of_valid_comments }}</h6>
                             </div>
                             <div class="col-sm-3">
-                                <a href="#my-actions"><i class="text-muted fa fa-arrow-right" data-bs-toggle="tooltip" title="Personal Actions"></i></a> 
+                                <a href="#my-actions"><i class="fa fa-arrow-right red-o " data-bs-toggle="tooltip" title="Personal Actions"></i></a> 
                                 <h6 class="text-muted">{{number_of_actions}}</h6>
                             </div> <!-- end class col-sm-8 -->
                         </div> <!-- end class row -->

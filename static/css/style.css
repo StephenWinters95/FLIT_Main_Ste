@@ -34,6 +34,9 @@ body {
     background-color: #F9FAFC;
 }
 
+.large {
+    font-stretch: ultra-expanded;
+}
 
 .card {
     border: none;
@@ -42,6 +45,10 @@ body {
 
 .card-img-top {
     opacity: 75%;
+}
+
+.profile-card {
+    background-color: rgb(209, 231, 221);
 }
 
 .image-container {

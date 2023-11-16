@@ -16,13 +16,13 @@ class UserCommentForm(forms.ModelForm):
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ('title', 'slug', 'status', 'updated_on' )
+        fields = ('title', 'slug', 'status', 'updated_on', )
 
 
 class ActionForm(forms.ModelForm):
     class Meta:
         model = Action
-        fields = ('article', 'action_desc')
+        fields = ('article', 'action_desc',)
 
 #class UserBookmarkForm(forms.ModelForm):
 #    class Meta:

@@ -33,8 +33,8 @@ class ArticleDetail(View):
             if article.comments.filter(id=self.request.user.id, approved=False).exists():
                 print('Unmoderated responses exist for this user')
                 commented_unapproved = True
-            endif
-        endif
+            
+        
             
         return render(
             request,

@@ -26,50 +26,52 @@
                                 <div class="image-flash">
                                     <p class="author">Author: {{ article.author }}</p>
                                 </div> <!-- end div image-flash -->
-                            </a>
+                                </a>
                             </div> <!-- end div image-container -->
                             <a href=" {% url 'article_detail' article.slug %}" class="article-link">
                                 <h2 class="card-title">{{ article.title }}</h2>
                                 <p class="card-text">{{ article.excerpt }}</p>
                             </a>
-                            <hr />
+                            <hr/>
                             <!-- DMcC 15/11/23 changed the below to show the last updated, rather than created, date for each article-->
                             <p class="card-text text-muted h6">{{ article.updated_on }} 
-                                <!-- <i class="far fa-heart"></i> {{ article.number_of_likes }} -->
-                                <!-- would like to bring likes functionality through to this article summary section -->
-                                {% if user.is_authenticated %}
-                                    <!-- allow/activate button push on likes for authenticated users -->
-                                    <form class="d-inline" action="{% url 'article_like' article.slug %}" method="POST">
-                                        {% csrf_token %}
-                                        {% if liked %}
-                                            <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                            <i class = "text-muted fas fa-heart" data-bs-toggle="tooltip" title="# Likes"></i></button>{{article.number_of_likes}}
-                                        {% else %}
-                                            <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                            <i class = "text-muted far fa-heart" data-bs-toggle="tooltip" title="Like"></i></button>{{article.number_of_likes}}
-                                        {% endif %}
-                                    </form>
-                                    <!-- Number of valid comments  -->
-                                    <i class="text-muted far fa-comments" data-bs-toggle="tooltip" title="Comment"></i> {{ article.number_of_valid_comments }}
-                                    
-                                    <!-- If user is authenticated, activate bookmarks button -->
-                                    <form class="d-inline" action="{% url 'article_bookmark' article.slug %}" method="POST">
-                                        {% csrf_token %}
-                                        {% if bookmarked %}
-                                            <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                            <i class = "text-muted fas fa-bookmark" data-bs-toggle="tooltip" title="Comment"></i></button>{{article.number_of_bookmarks}}
-                                        {% else %}
-                                            <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                            <i class = "text-muted far fa-bookmark" data-bs-toggle="tooltip" title="Bookmark"></i></button>{{article.number_of_bookmarks}}
-                                        {% endif %}
-                                    </form>
-                            
+                            <!-- <i class="far fa-heart"></i> {{ article.number_of_likes }} -->
+                            <!-- would like to bring likes functionality through to this article summary section -->
+                            {% if user.is_authenticated %}
+                            <!-- allow/activate button push on likes for authenticated users -->
+                            <form class="d-inline" action="{% url 'article_like' article.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if liked %}
+                                    <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                    <!-- DMcC 16/11/23 change heart icon to thumbs-up-->    
+                                    <i class = "text-muted fas fa-thumbs-up" data-bs-toggle="tooltip" data-bs-placement="top" title="# Likes"></i></button>{{article.number_of_likes}}
                                 {% else %}
-                                <!-- user not authenticated just show neutral images for likes comments bookmarks -->
-                                    <i class = "text-muted far fa-heart" data-bs-toggle="tooltip" title="Like"></i>{{article.number_of_likes}}
-                                    <i class="text-muted far fa-comments" data-bs-toggle="tooltip" title="Comment"></i> {{ article.number_of_valid_comments }}
-                                    <i class="text-muted far fa-bookmark" data-bs-toggle="tooltip" title="Bookmark"></i> {{article.number_of_bookmarks}}
-                                {% endif %} <!-- end if user is authenticated -->                                                        
+                                    <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                    <!-- DMcC 16/11/23 change heart icon to thumbs-up--> 
+                                    <i class = "text-muted far fa-thumbs-up" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"></i></button>{{article.number_of_likes}}
+                                {% endif %}
+                            </form>
+                            <!-- Number of valid comments  -->
+                                <i class="text-muted far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="Responses"></i> {{ article.number_of_valid_comments }}
+                                
+                                <!-- If user is authenticated, activate bookmarks button -->
+                                <form class="d-inline" action="{% url 'article_bookmark' article.slug %}" method="POST">
+                                    {% csrf_token %}
+                                    {% if bookmarked %}
+                                        <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                        <i class = "text-muted fas fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Comment"></i></button>{{article.number_of_bookmarks}}
+                                    {% else %}
+                                        <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                                        <i class = "text-muted far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Bookmark"></i></button>{{article.number_of_bookmarks}}
+                                    {% endif %}
+                                </form>
+                        
+                            {% else %}
+                            <!-- user not authenticated just show neutral images for likes comments bookmarks -->
+                                <i class = "text-muted far fa-thumbs-up" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"></i>{{article.number_of_likes}}
+                                <i class="text-muted far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="Comment"></i> {{ article.number_of_valid_comments }}
+                                <i class="text-muted far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Bookmark"></i> {{article.number_of_bookmarks}}
+                            {% endif %} <!-- end if user is authenticated -->                                                        
                             </p> 
                         </div>
                     </div>
@@ -97,6 +99,13 @@
         </ul>
     </nav>
     {% endif %}
-</div>    
+</div>
+<!-- DMcC 16/11/23 the following script needed to control tooltip display above the hovered element-->    
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 
 {%endblock%}

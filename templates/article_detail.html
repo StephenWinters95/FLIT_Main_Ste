@@ -77,24 +77,26 @@
                                 {% csrf_token %}
                                 {% if liked %}
                                 <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                <i class = "fas fa-heart" data-bs-toggle="tooltip" title="Like"></i></button>
+                                <!-- DMcC 16/11/23 Change heart button to thumbs-up -->
+                                <i class = "fas fa-thumbs-up" data-bs-toggle="tooltip" title="Like"></i></button>
                                 <span class="text-secondary">{{ article.number_of_likes }}</span>
                                 {% else %}
                                 <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                <i class = "far fa-heart" data-bs-toggle="tooltip" title="Like"></i></button>
+                                <!-- DMcC 16/11/23 Change heart button to thumbs-up -->
+                                <i class = "far fa-thumbs-up" data-bs-toggle="tooltip" title="Like"></i></button>
                                 <span class="text-secondary">{{ article.number_of_likes }}</span>
                                 {% endif %}
                             </form>
                             {% else %}
-                            <i class = "far fa-heart"></i>
+                            <i class = "far fa-thumbs-up"></i>
                             <span class="text-secondary">{{ article.number_of_likes }}</span>
                             {% endif %} <!-- end if user is authenticated -->                         
                         </strong>
                     </div> <!-- end div class col-1 -->
 
-                    <!-- functionality for comments -->    
+                    <!-- functionality for comments/Responses -->    
                     <div class="col-1">
-                        <strong class="text-secondary"><i class="far fa-comments" data-bs-toggle="tooltip" title="Comment"></i>
+                        <strong class="text-secondary"><i class="far fa-comments" data-bs-toggle="tooltip" title="Responses"></i>
                             <!-- Our total_comments variable goes before the closing strong tag -->
                             {{ article.number_of_valid_comments }}</strong>
                     </div> <!-- end div class col-1 -->
@@ -126,7 +128,7 @@
                 <div class="row"><strong>
                     {% if not user.is_authenticated %}
                     <div class="alert alert-warning" role="alert">
-                        To comment, like, bookmark an article, or to create personal actions, you need to <a href="{% url 'account_login' %}">Login</a>
+                        To like, bookmark, respond to article, create personal actions, you need to <a href="{% url 'account_login' %}">Login</a>
                     </div></strong>
                     {% endif %}
                 </div>
@@ -142,7 +144,7 @@
 
     <div class="row">
         <div class="col-md-8 card mb-4 mt-3 ">
-            <h3>Comments:</h3>
+            <h3>Responses:</h3>
             <div class="card-body">
                 <!-- We want a for loop inside the tags to iterate through each comment in comments -->
                 {% for comment in comments %}
@@ -166,7 +168,7 @@
             <div class="card-body">
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
+                    Your response is awaiting approval
                 </div>
                 {% else %}
                 <!-- Allow a authenticated user to leave a comment -->
@@ -184,5 +186,13 @@
         </div> <!-- end div col-md-4 card mb-4 mt-3 --> 
     </div> <!-- end div class row -->
 </div> <!-- end div container -->
+
+<!-- DMcC 16/11/23 the following script needed to control tooltip display above the hovered element-->    
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 
 {% endblock content %}

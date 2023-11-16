@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.contrib import messages 
 from .models import Article, Comment, Action
 from .forms import CommentForm, UserCommentForm
 
@@ -26,8 +27,8 @@ class ArticleDetail(View):
 
         commented = False
         print('User ', self.request.user.id)
-        if article.comments.filter(id=self.request.user.id).exists():
-            print('Unapproved comments exist for this user!')
+        if article.comments.filter(id=self.request.user.id, approved=False).exists():
+            print('Unapproved responses exist for this user!')
             commented = True
 
         return render(
@@ -84,6 +85,7 @@ class ArticleDetail(View):
                     )
 
 # This is used when article is liked/unliked from within the article detail page
+# DMcC 16/11/23 this needs more work as lik/unlike has stopped working from detail page???
 class ArticleLike(View):
     def post(self, request, slug, *args, **kwargs):
         article = get_object_or_404(Article, slug=slug)
@@ -111,8 +113,10 @@ class ArticleBookmark(View):
         article = get_object_or_404(Article, slug=slug)
         if article.favourites.filter(id=request.user.id).exists():
             article.favourites.remove(request.user)
+            messages.add_message(request, messages.SUCCESS, "Article removed from your Reading List")
         else:
             article.favourites.add(request.user)
+            messages.add_message(request, messages.SUCCESS, "Article added to your Reading List")
         return HttpResponseRedirect(reverse('article_detail', args=[slug]))
 
 class ArticleComment(View):

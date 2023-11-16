@@ -52,7 +52,9 @@
                         <hr class="bg-primary">
                         <div class="row">
                             <div class="col-sm-3">
-                                <i class = "large fas fa-heart red-o" data-bs-toggle="tooltip" title="# Likes"></i>
+                                <!-- DMcC 16/11/23 Replace 'Like' with 'handclap' icon (nopes didnt work, try thumbs-up) -->
+                                <!-- <i class = "large fa-solid fa-heart red-o" data-bs-toggle="tooltip" title="# Likes"></i> -->
+                                <i class="fas fa-thumbs-up btn-like" data-bs-toggle="tooltip" title="# Likes"></i> 
                                 <h6 class="text-muted">{{number_of_likes}}</h6>
                             </div>
                             <div class="col-sm-3">
@@ -197,6 +199,13 @@
         };
 </script>
 
+<!-- DMcC 16/11/23 the following script needed to control tooltip display above the hovered element-->    
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 
         
                                 

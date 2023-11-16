@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.http import HttpResponse, HttpResponseRedirect
-from django. contrib import messages 
+from django.contrib import messages 
 from django.contrib.auth.models import User
 from fp_blog.forms import ActionForm
 from fp_blog.models import Article, Action, Comment

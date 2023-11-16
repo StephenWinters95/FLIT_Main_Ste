@@ -198,6 +198,7 @@ def createUserAction(request):
 def copyUserAction(request, pk):
     action = Action.objects.get(id=pk)
     action_desc = action.action_desc
+    print('In copyUserAction():  source action_id is ', action.id, ' desc is ', action_desc)
     slug = action.article.slug
     form = ActionForm(instance=action)
     print('In copyUserAction():  copy-from article is ', action.article)
@@ -206,7 +207,7 @@ def copyUserAction(request, pk):
     
     next_seq = UserActionView.next_seq(request)
     print('In copyUserAction():  next_seq returned from function is: ', next_seq)
-    form=UserActionForm(initial={"user":request.user.id, "user_action_seq": next_seq, "parent_article": action.article, "user_action_desc": action_desc, "user_action_url": action.action_url, "user_action_taken": action_desc })
+    form=UserActionForm(initial={"user":request.user.id, "user_action_seq": next_seq, "parent_article": action.article, "user_action_desc": action.id, "user_action_url": action.action_url,  })
 
     if request.method == 'POST':
         form = UserActionForm(request.POST)

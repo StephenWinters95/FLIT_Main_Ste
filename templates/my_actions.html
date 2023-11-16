@@ -15,34 +15,7 @@
                             
                             {% csrf_token %} 
                             
-<!-- DMcC 16/11/23:  want to avoid using this next block of code, as would really prefer to have a simple, single form  
-                            <label for="user">User: </label>
-                            <input type="text" readonly="readonly" id="user" name="user" value="{{user}}">
-                            <br>
-                            <label for="user_action_seq">Action seq#:</label>
-                            <input type="number" id="user_action_seq" name="user_action_seq" placeholder={{form.user_action_seq}}>
-                            <label for="parent_article">Parent Article:</label>
-                            <input type="text" id="parent_article" name="parent_article" placeholder="{{form.parent_article.value}}"><br>
-                            <br>
-                            <label for="user_action_desc">Action Description:</label>
-                            <textarea class="form-control" id="user_action_desc" rows="4" cols="50" name="user_action_desc" 
-                                placeholder={{form.user_action_desc.value}}></textarea>
-                            <label for="user_action_url">URL:</label>
-                            <input type="url" id="user_action_url" name="user_action_url" value={{form.user_action_url}}><br>
-                            <br>
-                            <label for="user_action_taken">Done so far:</label>
-                            <input type="text" id="user_action_taken" name="user_action_taken" value={{form.user_action_taken}}><br>
-                            <br>
-                            <label for="observation">Results:</label>
-                            <input type="text" id="observation" name="observation" value={{form.observation}}>
-                            <br>
-                            <br>
-                            <label for="completed">Done:</label>
-                            <input type="checkbox" id="completed" name="completed" value={{form.completed}}>
-                            <label for="completed_on">Completed date</label>
-                            <input type="date" id="completed_on" name="completed_on" value={{form.completed_on}}>
-                            <br><br> -->
-                            
+                           
 <!-- DMcC 16/11/23 change from displaying entire form to just certain fields -->
                          <!--  <h1> Add/ edit a personal action using form.as_p</h1>  --> 
                             {{form.as_p}}
@@ -65,17 +38,18 @@
 </div> <!-- end div class container bg-grey -->
 <!-- DMcC 16/11/23 the below javascript is a corrector/workaround for Bug Issue #20 -->
 <script>
-    function correct_action_desc() {
-        const action_taken = document.getElementById("id_user_action_taken");
-        let action_description = action_taken.innerHTML;
-        console.log("In function correct_action_desc, the correct value for action_desc should be " + action_description);
-        const user_action_desc = document.getElementByID("id_user_action_desc");
-        console.log("In function correct_action_desc, current action_desc is " + user_action_desc.innerHTML );
-        user_action_desc = action_description;
-        action_taken.innerHTML = "Action taken: ";
+    function hide_action_user() {
+        const action_user = document.getElementById("id_user");
+        console.log("In function hide_action_user, who is " + action_user.value);
+        action_user.style.display = "none";
+        user_label = action_user.previousElementSibling
+        console.log("In function hide_action_user, label for hiding is  " + user_label);
+        user_label.style.display = "none"
+        
+        
     }
-    correct_action_desc();
-
+    hide_action_user();
+    
     function correct_user() {
         const curr_user = new Date();
         let curr_year= parseInt(d.getFullYear());

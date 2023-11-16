@@ -78,12 +78,12 @@
                                 {% if liked %}
                                 <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
                                 <!-- DMcC 16/11/23 Change heart button to thumbs-up -->
-                                <i class = "fas fa-thumbs-up" data-bs-toggle="tooltip" title="Like"></i></button>
+                                <i class = "fas fa-thumbs-up" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"></i></button>
                                 <span class="text-secondary">{{ article.number_of_likes }}</span>
                                 {% else %}
                                 <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
                                 <!-- DMcC 16/11/23 Change heart button to thumbs-up -->
-                                <i class = "far fa-thumbs-up" data-bs-toggle="tooltip" title="Like"></i></button>
+                                <i class = "far fa-thumbs-up" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"></i></button>
                                 <span class="text-secondary">{{ article.number_of_likes }}</span>
                                 {% endif %}
                             </form>
@@ -96,7 +96,7 @@
 
                     <!-- functionality for comments/Responses -->    
                     <div class="col-1">
-                        <strong class="text-secondary"><i class="far fa-comments" data-bs-toggle="tooltip" title="Responses"></i>
+                        <strong class="text-secondary"><i class="far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="Responses"></i>
                             <!-- Our total_comments variable goes before the closing strong tag -->
                             {{ article.number_of_valid_comments }}</strong>
                     </div> <!-- end div class col-1 -->
@@ -109,16 +109,16 @@
                                 {% csrf_token %}
                                 {% if bookmarked %}
                                 <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                <i class = "fas fa-bookmark" data-bs-toggle="tooltip" title="Bookmark"></i></button>
+                                <i class = "fas fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i></button>
                                 <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
                                 {% else %}
                                 <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                <i class = "far fa-bookmark" data-bs-toggle="tooltip" title="Bookmark"></i></button>
+                                <i class = "far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i></button>
                                 <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
                                 {% endif %}
                             </form>
                             {% else %}
-                            <i class = "far fa-bookmark" data-bs-toggle="tooltip" title="Bookmark"></i>
+                            <i class = "far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i>
                             <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
                             {% endif %} <!-- end if user is authenticated -->                         
                         </strong>
@@ -128,7 +128,7 @@
                 <div class="row"><strong>
                     {% if not user.is_authenticated %}
                     <div class="alert alert-warning" role="alert">
-                        To like, bookmark, respond to article, create personal actions, you need to <a href="{% url 'account_login' %}">Login</a>
+                        To Like, Save or Respond to an article, or to create personal Actions, you must <a href="{% url 'account_login' %}">Login</a>
                     </div></strong>
                     {% endif %}
                 </div>
@@ -173,7 +173,7 @@
                 {% else %}
                 <!-- Allow a authenticated user to leave a comment -->
                 {% if user.is_authenticated %}
-                <h3>Leave a comment:</h3>
+                <h3>Respond to Article:</h3>
                 <p>Posting as: {{user.username}}</p>
                 <form method="post" style="margin-top:1.3em";>
                     {{ comment_form| crispy }}

@@ -8,7 +8,12 @@
                 <div class = "row z-depth-3">
                     <div class="profile-card col-sm-4 rounded">
                         <div class ="card-block text-center text-grey rounded-left">
+                            {% if "placeholder" in profile_image.url %}
+                            <img class="card-img-top rounded"
+                                src="../static/images/placeholder.png">
+                            {% else %}
                             <img class="mt-5 img-fluid" src=" {{ profile_image.url }}">
+                            {% endif %}
                             <h2 class="font-weight-bold mt-4" id="userid">{{user}}</h2>
                             <p>{{first_name}}  {{last_name}}</p>
   <!-- intended to do a check if the user profile exists and restrict functionality (e.g. adding actions) if not -->
@@ -126,17 +131,17 @@
             <p></p>
 
     
+    {% if bookmarks %}
     <strong id="my-bookmarks">My Reading List:</strong>
     
     <table class="table table-bordered table-hover table-responsive">
         <thead class="table-success">
             <tr><h6>
-<!--            <th></th>  -->
             <th>Article</th>
             <th>Date</th>
-            </h6>
-            </tr>
+            </h6></tr>
         </thead>
+    
         <form method="post" style="margin-top:1.3em";>
             {% for bookmark in bookmarks %}
             
@@ -148,6 +153,9 @@
             {% endfor %}
         </form>
     </table>
+    {% endif %}
+    
+    {% if comments %}
     <strong id="my-comments">My Comments:</strong>
     <table class="table table-bordered table-hover table-responsive">
         <thead class="table-success">
@@ -169,9 +177,9 @@
             <td class="date">{{comment.created_on|date:"d/m/y"}}</td>
         </tr>
         {% endfor %}
-    
     </table>
-
+    {% endif %}
+  
 </div> <!-- end div class container bg-grey -->
 
 <script>

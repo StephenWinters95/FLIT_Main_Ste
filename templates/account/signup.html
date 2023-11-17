@@ -19,11 +19,21 @@
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
         {% url 'account_signup' as action_url %}
+        <h3>Financial Planner - New Account Creation</h3>
+        <h5>It's best not to use email as username, as username may be appear publicly e.g. on article responses</h5>
+        <br>
         {% element form form=form method="post" action=action_url tags="entrance,signup" %}
         {% slot body %}
             {% csrf_token %}
             {% element fields form=form unlabeled=True %}
             {% endelement %}
+            <p>Password:</p>
+            <p> .. can’t be too similar to username or email.</p>
+            <p> .. must contain at least 8 characters.</p>
+            <p> .. can’t be a commonly used password.</p>
+            <p> .. can’t be entirely numeric.</p>   
+            
+                <script>"change_display()"</script>
             {% if redirect_field_value %}
                 <input type="hidden"
                        name="{{ redirect_field_name }}"
@@ -34,8 +44,23 @@
             <button class="btn btn-signup right" type="submit">{% trans "Sign Up" %} &raquo;</button>
         {% endslot %}
         {% endelement %}
+        <!-- note that text inserted at this position will appar underneath submit button -->
+        
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
         </div><!-- end div class ="col-md-8 mt-3 offset-md-2"-->
     </div> <!-- end div class="row" -->
 </div> <!-- end div class="container"-->
+
+<script>
+// below is an attempt to amend the page payout for the register screen in order to avoid displaying the password rules //
+// in center of screen, would prefer to display at bottom of screen //
+function change_display() {
+    console.log("In script change_display()");
+    const second_password = document.getElementById("id_password2");
+    const prev_field = second_password.parentElement.previousElementSibling.previousElementSibling
+    console.log("Previous field is ", prev_field);
+    prev_field.classList.add("hide-field"); 
+}    
+change_display();
+</script>
 {% endblock content %}

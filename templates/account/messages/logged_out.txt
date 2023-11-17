@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}You have signed out.{% endblocktrans %}
+{% blocktrans %}You have signed out of Financial_Planner.  You may contrinue to browse as an unregistered user{% endblocktrans %}

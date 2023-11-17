@@ -16,8 +16,11 @@
                                 
                             {{form.as_p}}
                             <p></p>
-                            <input type = "submit" value = "Submit">
-                            <a href="{% url 'my_planner' %}">Cancel</a>
+                            <a href="{% url 'create_action' %}">
+                                <button class="btn btn-signup right" type="submit">Submit</button></a>
+                                
+                            <!-- <input type = "submit" value = "Submit"> -->
+                            <a class="cancel-link" href="{% url 'my_planner' %}" > Cancel </a>
                             <p>
                             </p>
                             </form>

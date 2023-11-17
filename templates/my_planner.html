@@ -117,7 +117,12 @@
                         <td>{{action.observation}}</td>
                         <td>{{action.completed|yesno:"Y,N"}}</td>
                         <td>{{action.completed_on|date:"d/m/y"}}</td>
-                        <td><a href="{{action.user_action_url}}">{{action.user_action_url}}</a></td>
+                        {% if action.user_action_url %}
+                        <td><a href="{{action.user_action_url}}">link</a></td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                        
                     
                     </tr>
                     {% endfor %}

@@ -166,6 +166,11 @@ body {
     text-decoration: none;
 }
 
+.cancel-link {
+    text-decoration: bold;
+}
+
+
 .link:hover,
 .link:active {
     color: #445261;
@@ -184,7 +189,10 @@ tbody {
     border-radius: 0px 0px 5px 5px;
 }
 
-.hide-input-field {
+/* Below are some classes used for the user action form */
+/* These are used in conjuntion with some js code to set/unset element classes to pickup display attributes */
+
+.hide-field {
     display: none;
 }
 
@@ -202,4 +210,18 @@ tbody {
     border-radius: 5px;
     background-color: rgb(209, 231, 221);
     padding: 20px;
+  }
+
+  /* Below are some settings for allauth fields.... the py code is not available so this is a workaround to highlight error messages which occur */
+  .errorlist {
+    color: red;
+    display: bold;
+  }
+
+  li > marker {
+    color: purple;
+  }
+
+  .allauth-listyle {
+    list-style-type:disc;
   }

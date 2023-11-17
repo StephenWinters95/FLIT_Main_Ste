@@ -1,6 +1,26 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 {% load crispy_forms_tags %}
-   
+
+<h1> Add/ edit a user profile</h1>
+<div class="input-form">
+    <form method="POST" style="margin-top:1.3em" action="" enctype="multipart/form-data"> 
+    {% csrf_token %} 
+    {{form.as_p}}
+    
+    <p>
+    <p>Form profile image is : {{form.profile_image}}</p>    
+    <a href="{% url 'create_user' %}">
+        <button class="btn btn-signup right" type="submit">Submit</button></a>
+        
+    <!-- <input type = "submit" value = "Submit"> -->
+    <a class="cancel-link" href="{% url 'my_planner' %}" > Cancel </a>
+<!--    <img class="profile-pic" src={{request.user.userprofile.profile_image.url}}> -->
+    </p>
+    </form>
+</div> <!-- end input form -->  
+
+
 <div class="container bg-grey">
     <div class="row g-0">
         <div class="row d-flex justify-content-center">
@@ -12,7 +32,7 @@
                             <img class="card-img-top rounded"
                                 src="../static/images/placeholder.png">
                             {% else %}
-                            <img class="mt-5 img-fluid" src=" {{ profile_image.url }}">
+                            <img class="mt-5 img-fluid" src="{{ profile_image.url }}">
                             {% endif %}
                             <h2 class="font-weight-bold mt-4" id="userid">{{user}}</h2>
                             <p>{{first_name}}  {{last_name}}</p>
@@ -36,16 +56,7 @@
                             </div> <!-- end class col-sm-6 -->
                             <div class="col-sm-6">
                                 <p class="font-weight-bold">Approx age:</p>
-                                <h6 class="text-muted" id="approx_age">
-                                    <script>const d = new Date();
-                                    let curr_year= parseInt(d.getFullYear());
-                                    console.log("Current year is " + (curr_year) + ", Next year is " + (curr_year+1));
-                                    let int_birth_year = parseInt(document.getElementById("birth_year").innerHTML)
-                                    console.log("Birth year is " + int_birth_year + ", Next year is " + (int_birth_year+1));
-                                    let approx_age_calc = curr_year - int_birth_year;
-                                    console.log("Approx age is " + approx_age_calc);                            
-                                    document.getElementById("approx_age").innerHTML = approx_age_calc;
-                                    </script></h6> 
+                                <h6 class="text-muted" id="approx_age"></h6> 
                             </div> <!-- end class col-sm-6 -->
                             <div class="col-sm-6">
                                 <p class="font-weight-bold">Last logged In:</p>
@@ -85,8 +96,12 @@
         </div> <!-- end div class row d-flex justify-content-center -->
         
     </div> <!-- end div class row g-0 -->
+
     <div class = "container-fluid" id="actions-container">
-        <div class = "table-responsive">
+    
+    <br>
+
+    {%if actions %}    <div class = "table-responsive">
             <strong id="my-actions">My Actions:</strong>
             <table class="table table-bordered table-hover ">
                 <thead class="table-success">
@@ -129,6 +144,7 @@
                 </form>
             </table>
         </div> <!-- class = "table-responsive"-->
+        {% endif %}
         <a href="{% url 'create_action' %}">
         <button class="btn btn-signup right" type="submit">Add new action</button></a>
             
@@ -188,7 +204,7 @@
 </div> <!-- end div class container bg-grey -->
 
 <script>
-    console.log("in function display_actions()");
+/*    console.log("in function display_actions()");
     let show_actions = document.getElementById("user_profile").innerHTML;
     console.log("show_actions evaluates to " + show_actions);    
 
@@ -197,7 +213,7 @@
     document.getElementById("actions-container").style.display ='none';
     }
     else 
-    {console.log("ELSE:  document.getElementById(user_profile) evaluates to " + document.getElementById("user_profile"));}
+    {console.log("ELSE:  document.getElementById(user_profile) evaluates to " + document.getElementById("user_profile"));} */
 </script>
 <script>
     function calc_age() {
@@ -219,7 +235,13 @@
       return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 </script>
-
+<script>
+    const d = new Date();
+    let curr_year= parseInt(d.getFullYear());
+    let int_birth_year = parseInt(document.getElementById("birth_year").innerHTML)
+    let approx_age_calc = curr_year - int_birth_year;
+    document.getElementById("approx_age").innerHTML = approx_age_calc;
+</script>
         
                                 
 {% endblock content %}

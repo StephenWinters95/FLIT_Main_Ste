@@ -10,7 +10,8 @@
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             <h3>Financial Planner - User {% trans "Sign Up" %}</h3>
-        <p>
+        <p> Please feel free to browse this site and read articles as a guest user.<br>  
+            To personalise your experience - creating a personal readlist, action tracking, you need to register here.
         {% blocktrans %}Already have an account? Then please
          <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
         </p>
@@ -19,15 +20,14 @@
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
         {% url 'account_signup' as action_url %}
-        <h5></h5>
-        <br>
+        
         {% element form form=form method="post" action=action_url tags="entrance,signup" %}
         {% slot body %}
             {% csrf_token %}
             {% element fields form=form unlabeled=True %}
             {% endelement %}
             <br>
-            <p> NB:  It's best not to use email as username, as username may be displayed publicly</p>
+            <p> Note:  It's best not to use email as username, as username may be displayed publicly</p>
             <p> Password must be at least 8 characters, can’t be a common word or similar to username or email, and can't be all numbers   </p>
                 <script>"change_display()"</script>
             {% if redirect_field_value %}

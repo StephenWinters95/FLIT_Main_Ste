@@ -3,11 +3,12 @@ from django.views import generic, View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages 
 from django.contrib.auth.models import User
-from fp_blog.forms import ActionForm
 from fp_blog.models import Article, Action, Comment
+from cloudinary.models import CloudinaryField
 from .models import UserProfile, UserAction
-# from .models import UserFavourite
+from fp_blog.forms import ActionForm
 from .forms import UserProfileForm, UserActionForm
+# from .models import UserFavourite
 # from .forms import UserProfileForm, UserFavouriteForm, UserActionForm
 from rest_framework import serializers
 
@@ -240,7 +241,6 @@ def updateUserAction(request, pk):
 
 
 # Again this delete User Action is adapted from Dennis Ivy training viedos:
-
 def deleteUserAction(request, pk):
     action = UserAction.objects.get(id=pk)
 
@@ -252,6 +252,58 @@ def deleteUserAction(request, pk):
     #hmmm DMcC 15/11/23 what is the below line doing, surely I've already done the return redirect above?
     return render(request, 'delete.html', {'object': 'action ' + str(action.user_action_seq)})
  
+# DMcC 17/11/23 update User Profile - adapted from Dennis Ivy training videos:
+def addUserProfile(request):
+    print('In addUserProfile():  user is: ', request.user)
+    profile_image = "././static/images/placeholder.png"
+    birth_year = 1900
+ #   user_profile = request.user.userprofile
+
+    form=UserProfileForm(initial={"user":request.user.id, "profile_image":profile_image, "birth_year": birth_year, })
+ #   form = UserProfileForm(instance=user_profile)
+    
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES)
+        print(request.FILES)
+        if form.is_valid(): 
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "User profile " + str(request.user) + " created")
+            return redirect('my_planner')
+        else:
+            messages.add_message(request, messages.ERROR, "Error on new user profile form")
+
+
+    context = {'form': form}
+    return render(request, 'my_planner.html', context)
+
+
+
+
+    context = {'form': form}
+    return render(request, 'my_planner.html', context)
+    
+
+# DMcC 17/11/23 update User Profile - adapted from Dennis Ivy training videos:
+def updateUserProfile(request, pk):
+    user_profile = UserProfile.objects.get(id=pk)
+    form = UserProfileForm(instance=user_profile)
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=user_profile)
+        if form.is_valid(): 
+            form.save()
+            # Add success message to confirm action is updated
+            messages.add_message(request, messages.SUCCESS, "User profile" + str(request.user)  + " updated")
+
+            return redirect('my_planner')
+
+    context = {'form': form}
+    return render(request, 'my_planner.html', context)
+
+
+
+
+
 # DMcC 15/11/23 The below no longer used 
 def deleteComment(request, pk):
     comment = Comment.objects.get(id=pk)
@@ -261,7 +313,7 @@ def deleteComment(request, pk):
         return redirect('my_planner')
     return render(request, 'delete.html', {'object': 'comment ' + str(comment.body)})
 
-# DMcC 13/11/23 watch out aas the code below deletes the article, rather than the bookmark!!!!
+# DMcC 13/11/23 watch out as the code below seems to deletes the article, rather than the bookmark!!!!
 # Removed from active functionality, bookmark is now deleted via the article in the fp_blog app        
 def deleteBookmark(request, pk):
     bookmark = request.user.article_favourite.get(id=pk)
@@ -270,4 +322,4 @@ def deleteBookmark(request, pk):
         return redirect('my_planner')
     
     return render(request, 'delete.html', {'object': 'bookmark to ' + str(bookmark)})
-    
+

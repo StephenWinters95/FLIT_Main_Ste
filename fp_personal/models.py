@@ -71,16 +71,3 @@ class UserAction(models.Model):
     
     def __str__(self):
         return f"{self.user} {self.user_action_seq} {self.user_action_desc} {self.completed} {self.completed_on} "
-
-# Class UserFavourite, a set of Favourite Articles for the user
-# 11/11/23 check if this is still needed
-#class UserFavourite(models.Model):
-#    user=models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_favourite" )
-#    favourite_article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="article_favourite")
-#    created_on = models.DateTimeField(auto_now_add=True)
-    
-#    class Meta:
-#        ordering = ['user', 'created_on']
-
-#    def __str__(self):
-#        return f"User {self.user} {self.favourite_article}"

@@ -56,7 +56,7 @@ class Comment(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return f"Comment {self.body} by user {self.user}, username {self.name}"
+        return f"Comment {self.body} by user {self.user}"
 
     def number_of_comments(self):
         return self.body.count()

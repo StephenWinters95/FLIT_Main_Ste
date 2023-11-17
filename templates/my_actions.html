@@ -2,35 +2,29 @@
 {% load crispy_forms_tags %}
 
 <div class="container bg-grey">
-    <script> console.log("Hello, world!") </script>
-
     <div class="row g-0">
         <div class="row d-flex justify-content-center">
-            <div class = "col-md-10 mt-5 pt-5">
+            <div class = "col-md-12 mt-5 pt-5">
                 <div class = "row z-depth-3">
-                    <div class="col-sm-10 rounded-left">
+                    <div class="col-sm-12 rounded-left"> 
                         <h1> Add/ edit a personal action</h1>
-                        <form method="post" style="margin-top:1.3em" action="">
-                            <br><br>
-                            
+                        <div class="input-form">
+                            <form method="post" style="margin-top:1.3em" action="">
+                            <br>
+                            <br>
                             {% csrf_token %} 
-                            
-                           
-<!-- DMcC 16/11/23 change from displaying entire form to just certain fields -->
-                         <!--  <h1> Add/ edit a personal action using form.as_p</h1>  --> 
+                                
                             {{form.as_p}}
                             <p></p>
                             <input type = "submit" value = "Submit">
                             <a href="{% url 'my_planner' %}">Cancel</a>
-                            <p></p>
-                        </form>
-                        
-                    </div> <!-- end class col -->
-                    
+                            <p>
+                            </p>
+                            </form>
+                        </div>    
+                    </div> <!-- end class col col-sm-12 rounded-left-->
                 </div> <!-- end div class row z-depth-3 -->
-                
             </div> <!-- end div class col-md-10 mt-5 pt-5-->
-            
         </div> <!-- end div class row d-flex justify-content-center -->
         
     </div> <!-- end div class row g-0 -->
@@ -38,28 +32,25 @@
 </div> <!-- end div class container bg-grey -->
 <!-- DMcC 16/11/23 the below javascript is a corrector/workaround for Bug Issue #20 -->
 <script>
-    function hide_action_user() {
+    function alter_form_field_display() {
+        console.log("In function alter_form_field_display()")
         const action_user = document.getElementById("id_user");
-        console.log("In function hide_action_user, who is " + action_user.value);
-        action_user.style.display = "none";
-        user_label = action_user.previousElementSibling
-        console.log("In function hide_action_user, label for hiding is  " + user_label);
-        user_label.style.display = "none"
-        
-        
-    }
-    hide_action_user();
+        action_user.classList.add("hide-input-field"); 
+        action_user.readOnly=true;
+        user_label = action_user.previousElementSibling;
+        user_label.classList.add("hide-input-field");
+        document.getElementById("id_user_action_seq").readonly=true;
+        document.getElementById("id_parent_article").readonly=true;
+        }
     
-    function correct_user() {
-        const curr_user = new Date();
-        let curr_year= parseInt(d.getFullYear());
-        console.log("Current year is " + (curr_year) + ", Next year is " + (curr_year+1));
-        let int_birth_year = parseInt(document.getElementById("birth_year").innerHTML);
-        console.log("Birth year is " + int_birth_year + ", Next year is " + (int_birth_year+1));
-        let approx_age_calc = curr_year - int_birth_year;
-        console.log("Approx age is " + approx_age_calc);                            
-        document.getElementById("approx_age").innerHTML = approx_age_calc;
-        };
-    
+/* the next function is a display corrector for very wide display of the user_action_desc field which throws out the remainder of the display */    
+   function action_desc_display() {
+        console.log("In function action_desc_display");
+        document.getElementById("id_user_action_desc").classList.add("long-text-input");
+        document.getElementById("id_parent_article").classList.add("long-text-input")
+        }
+        
+    alter_form_field_display(); 
+    action_desc_display();    
 </script>             
 {% endblock content %}

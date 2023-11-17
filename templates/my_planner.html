@@ -91,11 +91,12 @@
                     <th>Seq</th>
                     <th>Date added</th>
                     <th>Action</th>
-                    <th>URL</th>
                     <th>Done so Far</th>
                     <th>Results</th>
                     <th>Done?</th>
                     <th>Date Completed</th>
+                    <th>URL</th>
+                    
                     </h6>
                     </tr>
                 </thead>
@@ -107,11 +108,12 @@
                         <td>{{action.user_action_seq}}</td>
                         <td class="date">{{action.created_on|date:"d/m/y"}}</td>
                         <td>{{action.user_action_desc}}</td>
-                        <td><a href="{{action.user_action_url}}">{{action.user_action_url}}</a></td>
                         <td>{{action.user_action_taken}}</td>
                         <td>{{action.observation}}</td>
                         <td>{{action.completed|yesno:"Y,N"}}</td>
                         <td>{{action.completed_on|date:"d/m/y"}}</td>
+                        <td><a href="{{action.user_action_url}}">{{action.user_action_url}}</a></td>
+                    
                     </tr>
                     {% endfor %}
                 </form>

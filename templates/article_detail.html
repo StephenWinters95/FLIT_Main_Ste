@@ -5,7 +5,6 @@
     <div class="container">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
-                <!-- Article title goes in these h1 tags -->
                 <!-- DMcC 15/11/23 need to add javascrpt functionality if the 'new' badge is to conditionally display based on article updated date -->
                 <!-- note this requires change to Article model & views also to add the updated_on field -->
                 <h1 class="article-title">{{ article.title }}  <span class="badge bg-secondary">New</span></h1>
@@ -21,78 +20,77 @@
                 {% else %}
                 <img src="{{ article.featured_image.url }}" width="100%" class="rounded">
                 {% endif %}
-            </div>
-        </div>
-    </div>
-</div>
+            </div> <!-- end div col-md-6 masthead-text -->
+        </div> <!-- end div row g0 -->
+    </div> <!-- end div container -->
+</div> <!-- end div masthead -->
 
 <div class="container">
-    <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-            <div class="card-body">
-                <!-- The article content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text ">{{ article.content | safe }}</p>
-                <!-- want to view actions associated with the article before viewing comments -->
-                <!-- div class="col-md-8 card mb-4  mt-3 " -->
-                <!-- Need to allow for no actions, don't want to display table headings if so -->
+    <div class="col card mb-4  mt-3 left  top">
+        <div class="card-body">
+            <!-- The article content goes inside the card-text. -->
+            <!-- Use the | safe filter inside the template tags -->
+            <p class="card-text ">{{ article.content | safe }}</p>
+            <!-- want to view actions associated with the article before viewing comments -->
+            <!-- div class="col-md-8 card mb-4  mt-3 " -->
+            <!-- Need to allow for no actions, don't want to display table headings if so -->
 
-                <!--  DMcC 16/11/23 switcheroo put the icon functionality before the article actions (instead of after) -->
-                <div class="row">
-                    <!-- functionality for likes -->
-                    <div class="col-1">
-                        <strong>
-                            {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'article_like' article.slug %}" method="POST">
-                                {% csrf_token %}
-                                {% if liked %}
-                                <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                <!-- DMcC 16/11/23 Change heart button to thumbs-up -->
-                                <i class = "fas fa-thumbs-up" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"></i></button>
-                                <span class="text-secondary">{{ article.number_of_likes }}</span>
-                                {% else %}
-                                <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                                <!-- DMcC 16/11/23 Change heart button to thumbs-up -->
-                                <i class = "far fa-thumbs-up" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"></i></button>
-                                <span class="text-secondary">{{ article.number_of_likes }}</span>
-                                {% endif %}
-                            </form>
+            <!--  DMcC 16/11/23 switcheroo put the icon functionality before the article actions (instead of after) -->
+            <div class="row">
+                <!-- functionality for likes -->
+                <div class="col-1">
+                    <strong>
+                        {% if user.is_authenticated %}
+                        <form class="d-inline" action="{% url 'article_like' article.slug %}" method="POST">
+                            {% csrf_token %}
+                            {% if liked %}
+                            <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                            <!-- DMcC 16/11/23 Change heart button to thumbs-up -->
+                            <i class = "fas fa-thumbs-up" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"></i></button>
+                            <span class="text-secondary">{{ article.number_of_likes| safe}}</span>
                             {% else %}
-                            <i class = "far fa-thumbs-up"></i>
-                            <span class="text-secondary">{{ article.number_of_likes }}</span>
-                            {% endif %} <!-- end if user is authenticated -->                         
-                        </strong>
-                    </div> <!-- end div class col-1 -->
-              <!-- functionality for comments/Responses -->    
-              <div class="col-1">
-                <strong class="text-secondary"><i class="far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="Responses"></i>
-                    <!-- Our total_comments variable goes before the closing strong tag -->
-                    {{ article.number_of_valid_comments }}</strong>
-            </div> <!-- end div class col-1 -->
-
-            <!-- functionality for bookmarks -->
-            <div class="col-1">
-                <strong>
-                    {% if user.is_authenticated %}
-                    <form class="d-inline" action="{% url 'article_bookmark' article.slug %}" method="POST">
-                        {% csrf_token %}
-                        {% if bookmarked %}
-                        <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                        <i class = "fas fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i></button>
-                        <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
+                            <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                            <!-- DMcC 16/11/23 Change heart button to thumbs-up -->
+                            <i class = "far fa-thumbs-up" data-bs-toggle="tooltip" data-bs-placement="top" title="Like"></i></button>
+                            <span class="text-secondary">{{ article.number_of_likes| safe }}</span>
+                            {% endif %}
+                        </form>
                         {% else %}
-                        <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
-                        <i class = "far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i></button>
-                        <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
-                        {% endif %}
-                    </form>
+                        <i class = "far fa-thumbs-up"></i>
+                        <span class="text-secondary">{{ article.number_of_likes| safe }}</span>
+                        {% endif %} <!-- end if user is authenticated -->                         
+                    </strong>
+                </div> <!-- end div class col-1 -->
+            <!-- functionality for comments/Responses -->    
+            <div class="col-1">
+            <strong class="text-secondary"><i class="far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="Responses"></i>
+                <!-- Our total_comments variable goes before the closing strong tag -->
+                {{ article.number_of_valid_comments| safe }}</strong>
+        </div> <!-- end div class col-1 -->
+
+        <!-- functionality for bookmarks -->
+        <div class="col-1">
+            <strong>
+                {% if user.is_authenticated %}
+                <form class="d-inline" action="{% url 'article_bookmark' article.slug %}" method="POST">
+                    {% csrf_token %}
+                    {% if bookmarked %}
+                    <button type = "submit"  name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                    <i class = "fas fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i></button>
+                    <span class="text-secondary">{{ article.number_of_bookmarks| safe }}</span>
                     {% else %}
-                    <i class = "far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i>
-                    <span class="text-secondary">{{ article.number_of_bookmarks }}</span>
-                    {% endif %} <!-- end if user is authenticated -->                         
-                </strong>
-            </div> <!-- end div class col-1 -->
-        </div> <!-- end div class row -->
+                    <button type = "submit" name="blogarticle_id" value = "{{article.slug}}" class="btn-like">
+                    <i class = "far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i></button>
+                    <span class="text-secondary">{{ article.number_of_bookmarks| safe }}</span>
+                    {% endif %}
+                </form>
+                {% else %}
+                <i class = "far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i>
+                <span class="text-secondary">{{ article.number_of_bookmarks| safe }}</span>
+                {% endif %} <!-- end if user is authenticated -->                         
+            </strong>
+        </div> <!-- end div class col-1 -->
+    </div> <!-- end div class row -->
         <div class="row"><strong>
             {% if not user.is_authenticated %}
             <div class="alert alert-warning" role="alert">
@@ -103,32 +101,40 @@
         
                 
               
-                {% if actions %}
-                <!-- DMcC 16/11/23 no need for this title <strong id="actions">Actions:</strong> -->
-                <table class="table table-bordered table-hover table-responsive ">
-                    <thead class="table-success">
-                        <tr><h6>
-                        <th>Copy to personal</th>
-                        <th>Suggested Action</th>
-                        <th>Url</th>
-                        </h6>
-                        </tr>
-                    </thead>
-                <!-- div class="card-body" -->
-                <!-- We want a for loop inside the tags to iterate through each action in actions -->
-                <form method="post" style="margin-top:1.3em";>
-                    {% for action in actions %}
-                    <tr class="text-muted">
-                    <td><a href="{% url 'copy_action' action.id %}">Copy</a></td>
-                    <td>{{action.action_desc| safe}}</td>
-                    <td><a href="{{action.action_url}}">{{action.action_url| safe}}</a></td>
-                    {% endfor %}
-                    <br>
-                {% else %}
-                <strong id="actions">No Actions for this article:</strong>
+        {% if actions %}
+        <!-- DMcC 16/11/23 no need for this title <strong id="actions">Actions:</strong> -->
+        <table class="table table-bordered table-hover table-responsive ">
+            <thead class="table-success">
+                <tr><h6>
+                <!-- DMcC 17/11/23 issuelog #34 unauthenticated user should not be able to copy-->    
+                {% if user.is_authenticated %}
+                <th>Copy to personal</th>
                 {% endif %}
-                    
-                </table>
+                <th>Suggested Action</th>
+                <th>Url</th>
+                </h6>
+                </tr>
+            </thead>
+        <!-- div class="card-body" -->
+        <!-- We want a for loop inside the tags to iterate through each action in actions -->
+
+        <!-- DMcC 17/11/23 hmm not sure above the below line, appears to be opening a form which never gets closed, commenting out for now-->
+        <!-- <form method="post" style="margin-top:1.3em";> -->
+            {% for action in actions %}
+            <tr class="text-muted">
+            <!-- DMcC 17/11/23 issuelog #34 unauthenticated user should not be able to copy-->    
+            {% if user.is_authenticated %}
+            <td><a href="{% url 'copy_action' action.id %}">Copy</a></td>
+            {% endif %}
+            <td>{{action.action_desc| safe}}</td>
+            <td><a href="{{action.action_url}}">{{action.action_url| safe}}</a></td>
+            {% endfor %}
+            <br>
+        {% else %}
+        <strong id="actions">No Actions for this article:</strong>
+        {% endif %}
+            
+        </table>
             </div> <!-- class = "table-responsive"-->
                             
             </div> <!-- end div card-body -->   
@@ -184,7 +190,7 @@
             </div> <!-- end div class card-body -->
         </div> <!-- end div class col-md-8 card mb-4 mt-3 -->
 
-    </div> <!-- end div class row -->
+    
 </div> <!-- end div container -->
 
 <!-- DMcC 16/11/23 the following script needed to control tooltip display above the hovered element-->    

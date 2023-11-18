@@ -3,18 +3,12 @@
 {% load crispy_forms_tags %}
 <h1> Add/ edit a user profile</h1>
 <div class="input-form">
-    <form method="POST" style="margin-top:1.3em" action="" enctype="multipart/form-data"> 
+    <form method="POST" style="margin-top:1.3em" enctype="multipart/form-data"> 
     {% csrf_token %} 
     {{form.as_p}}
-    
-    <p>
-    <a href="{% url 'create_user' %}">
-        <button class="btn btn-signup right" type="submit">Submit</button></a>
-        
-    <!-- <input type = "submit" value = "Submit"> -->
+    <br>
+    <button class="btn btn-signup right" type="submit">Submit</button>
     <a class="cancel-link" href="{% url 'my_planner' %}" > Cancel </a>
-<!--    <img class="profile-pic" src={{request.user.userprofile.profile_image.url}}> -->
-    </p>
     </form>
 </div> <!-- end input form -->  
 

@@ -17,14 +17,9 @@
                                 {{form.as_p}}
                                 <p></p>
                                 <button class="btn btn-signup right" type="submit">Submit</button>
+                                <a class="cancel-link" href="{% url 'my_planner' %}" > Cancel </a>
                             </form>
-                            <!-- DMcC 18/11/23 replace the button-in-anchor structure below as not WC compliant -->
-                            <!-- would prefer to have Cancel as button rather than just a text link however form-in-form not permitted so it renders--> 
-                            <!-- below the submit button (not ideal)-->
                             <p></p>
-                            <form style="display: inline"  action="{% url 'my_planner' %}" method="get">
-                                <button class="btn btn-cancel right">Cancel</button>
-                            </form>
                             <br>
                         </div>    
                     </div> <!-- end class col col-sm-12 rounded-left-->

@@ -125,8 +125,8 @@
                 <form method="post" style="margin-top:1.3em";>
                     {% for action in actions %}
                     <tr class="text-muted">
-                        <td><a href="{% url 'update_action' action.id %}">Edit</a></td>
-                        <td><a href="{% url 'delete_action' action.id %}">Delete</a></td>
+                        <td><a href="{% url 'update_action' action.id %}"><i class="far fa-edit icon-edit"></i></a></td>
+                        <td><a href="{% url 'delete_action' action.id %}"><i class='far fa-trash-alt icon-delete'></i></a></td>
                         <td>{{action.user_action_seq}}</td>
                         <td class="date">{{action.created_on|date:"d/m/y"}}</td>
                         <td>{{action.user_action_desc}}</td>

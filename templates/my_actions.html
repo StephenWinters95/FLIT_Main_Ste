@@ -37,10 +37,10 @@
     function alter_form_field_display() {
         console.log("In function alter_form_field_display()")
         const action_user = document.getElementById("id_user");
-        action_user.classList.add("hide-input-field"); 
+        action_user.classList.add("hide-field"); 
         action_user.readOnly=true;
         user_label = action_user.previousElementSibling;
-        user_label.classList.add("hide-input-field");
+        user_label.classList.add("hide-field");
         document.getElementById("id_user_action_seq").readonly=true;
         document.getElementById("id_parent_article").readonly=true;
         }

@@ -108,7 +108,7 @@
                 <tr><h6>
                 <!-- DMcC 17/11/23 issuelog #34 unauthenticated user should not be able to copy-->    
                 {% if user.is_authenticated %}
-                <th>Copy to personal</th>
+                <th>Copy</th>
                 {% endif %}
                 <th>Suggested Action</th>
                 <th>Url</th>
@@ -124,7 +124,7 @@
             <tr class="text-muted">
             <!-- DMcC 17/11/23 issuelog #34 unauthenticated user should not be able to copy-->    
             {% if user.is_authenticated %}
-            <td><a href="{% url 'copy_action' action.id %}">Copy</a></td>
+            <td><a href="{% url 'copy_action' action.id %}"><i class='far fa-clone icon-copy'></i></a></td>
             {% endif %}
             <td>{{action.action_desc| safe}}</td>
             <td><a href="{{action.action_url}}">{{action.action_url| safe}}</a></td>
@@ -180,7 +180,6 @@
                     <!-- DMcC 14/11/23 got rid of field 'name' here and replaced with 'user' as its the username we wish to see...-->
                     {{ comment.user }}
                     <span class=" text-muted font-weight-normal">
-                    <!-- The comment's created date goes here -->
                     {{ comment.created_on }} </span> wrote:</p>
                     <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}

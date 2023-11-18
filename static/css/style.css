@@ -144,6 +144,18 @@ body {
     color: #fff;
 }
 
+.icon-delete {
+    color: red;
+}
+
+.icon-edit {
+    color: blue;
+}
+
+.icon-copy {
+    color: green;
+}
+
 .btn-cancel {
     background-color: gray;
     color: #fff;

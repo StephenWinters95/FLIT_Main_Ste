@@ -42,7 +42,10 @@
         {% endslot %}
         {% endelement %}
         <!-- note that text inserted at this position will appar underneath submit button -->
-        
+        <br>
+        <p> If you're already registered then you can add a profile image</p>
+        <a href="{% url 'create_user' %}"> 
+            <button class="btn btn-signup right" type="submit">Add profile pic</button></a>
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
         </div><!-- end div class ="col-md-8 mt-3 offset-md-2"-->
     </div> <!-- end div class="row" -->

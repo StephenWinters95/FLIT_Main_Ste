@@ -19,9 +19,9 @@
                                 <a href=" {% url 'article_detail' article.slug %}">
                                 {% if "placeholder" in article.featured_image.url %}
                                 <img class="card-img-top rounded"
-                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="Placeholder image for article">
                                 {% else %}
-                                <img class="card-img-top rounded" src=" {{ article.featured_image.url }}">
+                                <img class="card-img-top rounded" src=" {{ article.featured_image.url }}" alt="Article image">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ article.author }}</p>
@@ -72,10 +72,9 @@
                                 <i class="text-muted far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="Comment"></i> {{ article.number_of_valid_comments }}
                                 <i class="text-muted far fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Save"></i> {{article.number_of_bookmarks}}
                             {% endif %} <!-- end if user is authenticated -->                                                        
-                            </p> 
+                            </div>
                         </div>
                     </div>
-                </div>
                 <!-- DMcC 15/11/23 change the default row break to divisible by 4 rather than by 3 -->
                 {% if forloop.counter|divisibleby:4 %}
                 </div>

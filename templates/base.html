@@ -1,9 +1,11 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html class="h-100">
+<html class="h-100" lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FP | Financial Planner</title>    
     <link rel="icon" type="image/png" href="../static/euro-money.png" sizes="16x16 32x32"   title="Euro icons created by Icongeek26 - Flaticon" >
     
@@ -11,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
@@ -27,12 +29,17 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white justify-content-end">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand"><span class="red-o">F</span>inancial<span
-                ><span class="red-o">P</span>lanner</span></span></span></a><span class="navbar-text text-muted">
-                gathering Irish financial planning resources in one place    
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <span class="brand">
+                    <span class="red-o">F</span>inancial<span class="red-o">P</span>lanner</span>
+            </a>
+            <span class="navbar-text text-muted">gathering Irish financial planning resources in one place    
+
             </span>
             {% if user.is_authenticated %}
-                <span class="navbar-text text-muted "> Welcome, {{user.username}}!</span>
+            
+            <span class="navbar-text text-muted "><img class="navbar-image" src="{{request.user.userprofile.profile_image.url}}" alt="Users avatar logo"> Welcome, {{user.username}}!</span>
+            <!-- <img href="{{user.user_profile.profile_image.url}}"> -->
             {% endif %}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 {% load crispy_forms_tags %}
 
 <div class="container bg-grey">
@@ -9,8 +10,8 @@
                     <div class="col-sm-12 rounded-left"> 
                         <h1> Add/ edit a personal action</h1>
                         <div class="input-form">
+                            <!-- DMcC 18/11/23 removed action="" as it throws an error on W3C checking -->
                             <form method="post" style="margin-top:1.3em" action="">
-                            <br>
                             <br>
                             {% csrf_token %} 
                             {{form.as_p}}

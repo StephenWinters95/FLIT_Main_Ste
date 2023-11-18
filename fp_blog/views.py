@@ -111,7 +111,22 @@ class ArticleSummaryLike(View):
             article.likes.remove(request.user)
         else:
             article.likes.add(request.user)
-        return HttpResponseRedirect(reverse('article_detail', args=[slug]))
+        
+# DMcC 18/11/23 want to play around with a render rather than a retur statement at the endof this logic, 
+# could ths be used to retur to the index page when this option is taken from the index page to start with?
+            return render(
+            request,
+            "index.html",
+            {
+            "article": article,
+            "comments": comments,
+            "comment_count": comments.count,
+            "commented": commented,
+            "actions": actions,
+            "liked": liked,
+            "bookmarked": bookmarked,
+            },
+            )
 
 # This is used when article is bookmarked/unbookmarked from within the index/article summary OR article detail page
 # DMcC 15/11/23 this still needs some work as the user is currently returned to the article detail page after bookmarking
@@ -146,12 +161,3 @@ class ArticleComment(View):
                 },
             )
 
-# class UserBookmarkForm(forms.ModelForm):
-#    class Meta:
-#        model = Article
-#        fields = ('user', 'favourite_article')
-
-#class UserCommentForm(forms.ModelForm):
-#    class Meta:
-#        model = Comments
-#        fields = ('user', 'user_comments')

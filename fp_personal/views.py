@@ -181,8 +181,8 @@ class UserActionSerializer(serializers.Serializer):
 def createUserAction(request):
     next_seq = UserActionView.next_seq(request)
     print('In CreateUserAction():  next_seq returned from function is: ', next_seq)
-    form=UserActionForm(initial={"user":request.user.id, "user_action_seq": next_seq})
-
+    form=UserActionForm(initial={"user":request.user.id, "user_action_seq": next_seq,})
+    
     if request.method == 'POST':
         form = UserActionForm(request.POST)
         if form.is_valid(): 
@@ -191,7 +191,6 @@ def createUserAction(request):
             return redirect('my_planner')
         else:
             messages.add_message(request, messages.ERROR, "Error on new action form")
-
 
     context = {'form': form}
     return render(request, 'my_actions.html', context)
@@ -233,7 +232,6 @@ def updateUserAction(request, pk):
             form.save()
             # Add success message to confirm action is updated
             messages.add_message(request, messages.SUCCESS, "Personal Action: #" + str(action.user_action_seq) + " -  " + str(action.user_action_desc) + " updated")
-
             return redirect('my_planner')
 
     context = {'form': form}
@@ -299,10 +297,6 @@ def updateUserProfile(request, pk):
 
     context = {'form': form}
     return render(request, 'my_user.html', context)
-
-
-
-
 
 # DMcC 15/11/23 The below no longer used 
 def deleteComment(request, pk):

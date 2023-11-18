@@ -14,6 +14,13 @@ body {
     flex-grow: 0;
 }
 
+.navbar-image {
+    display: inline-block;
+    max-width: 150px;
+    max-height: 50px;
+    border-radius: 50%;
+
+}
 .red-o {
     color: #E84610;
 }

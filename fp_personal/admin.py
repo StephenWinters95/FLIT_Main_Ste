@@ -28,7 +28,13 @@ class ActionAdmin(SummernoteModelAdmin):
     def complete_actions(self, request, queryset):
         queryset.update(completed=True, completed_on=datetime.now())
     
-    
+
+@admin.register(UserFeedback)
+class UserFeedbackAdmin(admin.ModelAdmin):
+    list_display = ('user', 'email', 'created_on', 'completed')
+    search_fields = ['user', 'feedback', 'completed', 'completed_on']
+
+
 #@admin.register(UserFavourite)
 #class FavouriteAdmin(admin.ModelAdmin):
 #    list_display = ('user', 'favourite_article', 'created_on')

@@ -8,7 +8,7 @@
             <div class = "col-md-12 mt-5 pt-5">
                 <div class = "row z-depth-3">
                     <div class="col-sm-12 rounded-left"> 
-                        <h1> Add/ edit a personal action</h1>
+                        <h1> Add/ edit personal task</h1>
                         <div class="input-form">
                             <!-- DMcC 18/11/23 removed action="" as it throws an error on W3C checking -->
                             <form method="post" style="margin-top:1.3em">
@@ -35,11 +35,19 @@
     function alter_form_field_display() {
         console.log("In function alter_form_field_display()")
         const action_user = document.getElementById("id_user");
-        action_user.classList.add("hide-field"); 
+        document.getElementById("id_user").classList.add("hide-field");
         action_user.readOnly=true;
         user_label = action_user.previousElementSibling;
         user_label.classList.add("hide-field");
         document.getElementById("id_user_action_seq").readonly=true;
+        document.getElementById("id_user_action_seq").previousElementSibling.innerHTML="Seq:  ";
+        document.getElementById("id_user_action_desc").previousElementSibling.innerHTML="Task:  ";
+        document.getElementById("id_user_action_url").previousElementSibling.innerHTML = "Related URL:  ";
+        document.getElementById("id_user_action_taken").previousElementSibling.innerHTML = "Action taken:  ";
+        document.getElementById("id_observation").previousElementSibling.innerHTML = "Progress:  ";
+        document.getElementById("id_completed").previousElementSibling.innerHTML = "Done: ";
+        
+
         document.getElementById("id_parent_article").readonly=true;
         }
     

@@ -22,4 +22,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('myplanner/', include('fp_personal.urls')),
     path('', include('fp_blog.urls')),
+    path('about/', include('fp_personal.urls')),
     ]

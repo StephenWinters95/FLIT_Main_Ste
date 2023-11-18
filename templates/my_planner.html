@@ -14,7 +14,7 @@
                     <div class = "row z-depth-3">
                         <div class="profile-card col-sm-4 rounded">
                             <div class ="card-block text-center text-grey rounded-left">
-                                {% if "placeholder" in profile_image.url %}
+                                {% if "placeholder" in profile_image %}
                                 <img class="card-img-top rounded"
                                     src="../../static/images/placeholder.png">
                                 {% else %}
@@ -85,13 +85,14 @@
                                 <h6 class="text-muted">{{number_of_actions}}</h6>
                             </div> <!-- end class col-sm-8 -->
                         </div> <!-- end class row -->
-                    
-                            <!-- DMcC 18/11/23 replace the button-in-anchor structure below as not WC compliant -->
-                            <!-- <a href="{% url 'create_user' %}"> <button class="btn btn-signup right" type="submit">Add a profile photo</button></a> -->
-                            <form style="display: inline"  action="{% url 'create_user' %}" method="get">
-                                <button class="btn btn-signup right">Add a profile photo</button>
-                            </form>
-                            
+            
+                        
+                        {% if "placeholder" in profile_image %}
+                        <form style="display: inline"  action="{% url 'create_user' %}" method="get">
+                            <button class="btn btn-signup right">Add your profile photo</button>
+                        </form>
+                        {% endif %}
+                        
   <!--                      <a href="{% url 'update_user' request.user.id %}">  -->
 <!--                                <button class="btn btn-signup right" type="submit">Update user</button></a>  -->
                     </div> <!-- end div class col-sm-8 bg-info rounded-right -->    

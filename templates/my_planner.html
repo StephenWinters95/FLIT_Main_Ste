@@ -85,8 +85,12 @@
                                 <h6 class="text-muted">{{number_of_actions}}</h6>
                             </div> <!-- end class col-sm-8 -->
                         </div> <!-- end class row -->
-                    <a href="{% url 'create_user' %}"> 
-                            <button class="btn btn-signup right" type="submit">Add a profile photo</button></a>
+                    
+                            <!-- DMcC 18/11/23 replace the button-in-anchor structure below as not WC compliant -->
+                            <!-- <a href="{% url 'create_user' %}"> <button class="btn btn-signup right" type="submit">Add a profile photo</button></a> -->
+                            <form style="display: inline"  action="{% url 'create_user' %}" method="get">
+                                <button class="btn btn-signup right">Add a profile photo</button>
+                            </form>
                             
   <!--                      <a href="{% url 'update_user' request.user.id %}">  -->
 <!--                                <button class="btn btn-signup right" type="submit">Update user</button></a>  -->
@@ -101,11 +105,10 @@
     </div> <!-- end div class row g-0 -->
 
     <div class = "container-fluid" id="actions-container">
-    
-    <br>
-
-    {%if actions %}    <div class = "table-responsive">
-            <strong id="my-actions">My Actions:</strong>
+        <br>
+        {%if actions %}    
+        <div class = "table-responsive">
+                <strong id="my-actions">My Actions:</strong>
             <table class="table table-bordered table-hover ">
                 <thead class="table-success">
                     <tr>
@@ -149,8 +152,11 @@
         </div> <!-- class = "table-responsive"-->
         {% endif %}
         
-        <a href="{% url 'create_action' %}"><button class="btn btn-signup right" type="submit">Add new action</button></a>
-            
+        <!-- DMcC 18/11/23 need to replace the button within an anchor tag by something whether a mini form or just a link -->
+        <!-- <a href="{% url 'create_action' %}"><button class="btn btn-signup right" type="submit">Add new action</button></a>  -->
+        <form style="display: inline"  action="{% url 'create_action' %}" method="get">
+            <button class="btn btn-signup right">Add new Action</button>
+        </form>         
     </div> <!-- end id=actions-container -->
             <p></p>
 

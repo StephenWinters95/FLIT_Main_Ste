@@ -12,18 +12,20 @@
                         <div class="input-form">
                             <!-- DMcC 18/11/23 removed action="" as it throws an error on W3C checking -->
                             <form method="post" style="margin-top:1.3em">
-                            <br>
-                            {% csrf_token %} 
-                            {{form.as_p}}
-                            <p></p>
-                            <a href="{% url 'create_action' %}">
-                                <button class="btn btn-signup right" type="submit">Submit</button></a>
-                                
-                            <!-- <input type = "submit" value = "Submit"> -->
-                            <a class="cancel-link" href="{% url 'my_planner' %}" > Cancel </a>
-                            <p>
-                            </p>
+                                <br>
+                                {% csrf_token %} 
+                                {{form.as_p}}
+                                <p></p>
+                                <button class="btn btn-signup right" type="submit">Submit</button>
                             </form>
+                            <!-- DMcC 18/11/23 replace the button-in-anchor structure below as not WC compliant -->
+                            <!-- would prefer to have Cancel as button rather than just a text link however form-in-form not permitted so it renders--> 
+                            <!-- below the submit button (not ideal)-->
+                            <p></p>
+                            <form style="display: inline"  action="{% url 'my_planner' %}" method="get">
+                                <button class="btn btn-cancel right">Cancel</button>
+                            </form>
+                            <br>
                         </div>    
                     </div> <!-- end class col col-sm-12 rounded-left-->
                 </div> <!-- end div class row z-depth-3 -->

@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+{% block content %}
+{% load crispy_forms_tags %}
+<h1> Add/ edit a user profile</h1>
+<div class="input-form">
+    <form method="POST" style="margin-top:1.3em" action="" enctype="multipart/form-data"> 
+    {% csrf_token %} 
+    {{form.as_p}}
+    
+    <p>
+    <a href="{% url 'create_user' %}">
+        <button class="btn btn-signup right" type="submit">Submit</button></a>
+        
+    <!-- <input type = "submit" value = "Submit"> -->
+    <a class="cancel-link" href="{% url 'my_planner' %}" > Cancel </a>
+<!--    <img class="profile-pic" src={{request.user.userprofile.profile_image.url}}> -->
+    </p>
+    </form>
+</div> <!-- end input form -->  
+
+<script>
+    function calc_age() {
+        const d = new Date();
+        let curr_year= parseInt(d.getFullYear());
+        console.log("Current year is " + (curr_year) + ", Next year is " + (curr_year+1));
+        let int_birth_year = parseInt(document.getElementById("birth_year").innerHTML)
+        console.log("Birth year is " + int_birth_year + ", Next year is " + (int_birth_year+1));
+        let approx_age_calc = curr_year - int_birth_year;
+        console.log("Approx age is " + approx_age_calc);                            
+        document.getElementById("approx_age").innerHTML = approx_age_calc;
+        };
+</script>
+
+<!-- DMcC 16/11/23 the following script needed to control tooltip display above the hovered element-->    
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
+<script>
+    function alter_form_field_display() {
+        console.log("In function alter_form_field_display()")
+        const profile_user = document.getElementById("id_user");
+        profile_user.classList.add("hide-field"); 
+        profile_label = profile_user.previousElementSibling;
+        profile_label.classList.add("hide-field");
+        }
+    alter_form_field_display()
+</script>
+                                
+{% endblock content %}

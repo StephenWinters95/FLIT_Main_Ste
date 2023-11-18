@@ -2,68 +2,66 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<h1> Add/ edit a user profile</h1>
-<div class="input-form">
+
     <form method="POST" style="margin-top:1.3em" action="" enctype="multipart/form-data"> 
     {% csrf_token %} 
-    {{form.as_p}}
-    
-    <p>
-    <p>Form profile image is : {{form.profile_image}}</p>    
-    <a href="{% url 'create_user' %}">
-        <button class="btn btn-signup right" type="submit">Submit</button></a>
+
+    <div class="container bg-grey">
+        <div class="row g-0">
+            <div class="row d-flex justify-content-center">
+                <div class = "col-md-10 mt-5 pt-5">
+                    <div class = "row z-depth-3">
+                        <div class="profile-card col-sm-4 rounded">
+                            <div class ="card-block text-center text-grey rounded-left">
+                                {% if "placeholder" in profile_image.url %}
+                                <img class="card-img-top rounded"
+                                    src="../../static/images/placeholder.png">
+                                {% else %}
+                              <!--  <img class="mt-5 img-fluid" src="{{ profile_image.url }}"> -->
+                                <img class="mt-5 img-fluid" src="{{request.user.userprofile.profile_image.url}}">
+                                <p></p>
+                                {% endif %}
+
+                                <!-- Change the appearance of the default file upload button -->
+                                <!--- this image upload functionality moved onto profile add / update page for now -->
+                                <!-- <label for="profile_image" class="label-btn btn-signup">Choose profile Image</label>
+                                <input type="file" id="profile_image" accept="img/png, img/jpg" hidden/> -->
         
-    <!-- <input type = "submit" value = "Submit"> -->
-    <a class="cancel-link" href="{% url 'my_planner' %}" > Cancel </a>
-<!--    <img class="profile-pic" src={{request.user.userprofile.profile_image.url}}> -->
-    </p>
-    </form>
-</div> <!-- end input form -->  
+                                <h2 class="font-weight-bold mt-4" id="userid">{{user}}</h2>
+                                <p>{{request.user.first_name}}  {{request.user.last_name}}</p>
 
+                                
 
-<div class="container bg-grey">
-    <div class="row g-0">
-        <div class="row d-flex justify-content-center">
-            <div class = "col-md-10 mt-5 pt-5">
-                <div class = "row z-depth-3">
-                    <div class="profile-card col-sm-4 rounded">
-                        <div class ="card-block text-center text-grey rounded-left">
-                            {% if "placeholder" in profile_image.url %}
-                            <img class="card-img-top rounded"
-                                src="../static/images/placeholder.png">
-                            {% else %}
-                            <img class="mt-5 img-fluid" src="{{ profile_image.url }}">
-                            {% endif %}
-                            <h2 class="font-weight-bold mt-4" id="userid">{{user}}</h2>
-                            <p>{{first_name}}  {{last_name}}</p>
-  <!-- intended to do a check if the user profile exists and restrict functionality (e.g. adding actions) if not -->
-<!-- however, the user only reaches this page if they are a rgistered user so better to ensure the user profile -->
-<!-- was auto created when they became a registered user, and to allow them to continue here -->
-<!--                          <p id="user_profile">{{user_profile}}</p>  -->
-                        </div> <!-- end class card-block -->
-                    </div> <!-- end class col -->
-                    <div class="profile-card col-sm-8 rounded">
-                        <h3 class="mt-3 text-center">My Profile</h3>
-                        <hr class="mt-0 bg-info">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <p class="font-weight-bold">Email:</p>
-                                <h6 class="text-muted">{{email}}</h6> 
-                            </div> <!-- end class col-sm-6 -->
-                            <div class="col-sm-6">
-                                <p class="font-weight-bold">Birth Year:</p>
-                                <h6 class="text-muted" id="birth_year">{{birth_year}}</h6> 
-                            </div> <!-- end class col-sm-6 -->
-                            <div class="col-sm-6">
-                                <p class="font-weight-bold">Approx age:</p>
-                                <h6 class="text-muted" id="approx_age"></h6> 
-                            </div> <!-- end class col-sm-6 -->
-                            <div class="col-sm-6">
-                                <p class="font-weight-bold">Last logged In:</p>
-                                <h6 class="text-muted" id="last_login">{{last_login}}
-                                </h6> 
-                            </div> <!-- end class col-sm-6 -->
-                        </div> <!-- end class row -->
+    <!-- intended to do a check if the user profile exists and restrict functionality (e.g. adding actions) if not -->
+    <!-- however, the user only reaches this page if they are a rgistered user so better to ensure the user profile -->
+    <!-- was auto created when they became a registered user, and to allow them to continue here -->
+    <!--                          <p id="user_profile">{{user_profile}}</p>  -->
+                            </div> <!-- end class card-block -->
+                        </div> <!-- end class col -->
+                        <div class="profile-card col-sm-8 rounded">
+                            <h1 class="mt-3 text-center">My Profile</h1>
+                            <hr class="mt-0 bg-info">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">Email:</p>
+                                    <h6 class="text-muted">{{request.user.email}}</h6> 
+                                </div> <!-- end class col-sm-6 -->
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">Birth Year:</p>
+                                    <h6 class="text-muted" id="birth_year">{{form.birth_year}}</h6> 
+                                </div> <!-- end class col-sm-6 -->
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">Age:</p>
+                                    <h6 class="text-muted" id="age_approx">{{form.age_approx}}</h6> 
+                                </div> <!-- end class col-sm-6 -->
+                                <div class="col-sm-6">
+                                    <p class="font-weight-bold">Last logged In:</p>
+                                    <h6 class="text-muted" id="last_login">{{request.user.last_login}}
+                                    </h6> 
+                                </div> <!-- end class col-sm-6 -->
+                            </div> <!-- end class row -->    
+                        </form>
+
                         <h4 class="mt-3">Site Engagement</h4>
                         <hr class="bg-primary">
                         <div class="row">
@@ -86,7 +84,11 @@
                                 <h6 class="text-muted">{{number_of_actions}}</h6>
                             </div> <!-- end class col-sm-8 -->
                         </div> <!-- end class row -->
-                 
+                        <a href="{% url 'create_user' %}"> 
+                            <button class="btn btn-signup right" type="submit">Create user</button></a>
+                            
+  <!--                      <a href="{% url 'update_user' request.user.id %}">  -->
+<!--                                <button class="btn btn-signup right" type="submit">Update user</button></a>  -->
                     </div> <!-- end div class col-sm-8 bg-info rounded-right -->    
                     
                 </div> <!-- end div class row z-depth-3 -->
@@ -236,11 +238,17 @@
     })
 </script>
 <script>
+
     const d = new Date();
     let curr_year= parseInt(d.getFullYear());
-    let int_birth_year = parseInt(document.getElementById("birth_year").innerHTML)
-    let approx_age_calc = curr_year - int_birth_year;
-    document.getElementById("approx_age").innerHTML = approx_age_calc;
+    var birth_year = document.getElementById("birth_year");
+    birth_year.onchange = calc_dates()
+
+    function calc_dates() {
+        let int_birth_year = parseInt(birth_year.innerHTML)
+        let approx_age_calc = curr_year - int_birth_year;
+        document.getElementById("age_approx").innerHTML = approx_age_calc;
+    }
 </script>
         
                                 

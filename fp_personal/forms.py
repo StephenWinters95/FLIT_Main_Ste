@@ -8,12 +8,13 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('user', 'profile_image', 'birth_year', 'age_approx', 'age_exact', )
-#        exclude = ['user',]
+ # DMcC 18/11/23 hide user on html form display rather than on extract:
+ #        exclude = ['user',]
 
     birth_year = models.PositiveIntegerField()
     age_approx = models.PositiveIntegerField()
     age_exact = models.PositiveIntegerField()
-    profile_image = "././static/images/placeholder.png"
+    profile_image = "../../static/images/placeholder.png"
 
 class UserActionForm(forms.ModelForm):
     class Meta:

@@ -255,11 +255,14 @@ def deleteUserAction(request, pk):
 # DMcC 17/11/23 update User Profile - adapted from Dennis Ivy training videos:
 def addUserProfile(request):
     print('In addUserProfile():  user is: ', request.user)
-    profile_image = "././static/images/placeholder.png"
+    profile_image = "../../static/images/placeholder.png"
     birth_year = 1900
+    age_approx = 123
+    age_exact = 123
+
  #   user_profile = request.user.userprofile
 
-    form=UserProfileForm(initial={"user":request.user.id, "profile_image":profile_image, "birth_year": birth_year, })
+    form=UserProfileForm(initial={"user":request.user.id, "profile_image":profile_image, "birth_year": birth_year, "age_approx": age_approx, "age_exact": age_exact})
  #   form = UserProfileForm(instance=user_profile)
     
     if request.method == 'POST':
@@ -274,17 +277,15 @@ def addUserProfile(request):
 
 
     context = {'form': form}
-    return render(request, 'my_planner.html', context)
+    return render(request, 'my_user.html', context)
 
-
-
-
-    context = {'form': form}
-    return render(request, 'my_planner.html', context)
+#    context = {'form': form}
+#    return render(request, 'my_planner.html', context)
     
 
 # DMcC 17/11/23 update User Profile - adapted from Dennis Ivy training videos:
 def updateUserProfile(request, pk):
+    print('In addUserProfile():  user is: key ', pk, "user", request.user)
     user_profile = UserProfile.objects.get(id=pk)
     form = UserProfileForm(instance=user_profile)
 
@@ -294,11 +295,10 @@ def updateUserProfile(request, pk):
             form.save()
             # Add success message to confirm action is updated
             messages.add_message(request, messages.SUCCESS, "User profile" + str(request.user)  + " updated")
-
             return redirect('my_planner')
 
     context = {'form': form}
-    return render(request, 'my_planner.html', context)
+    return render(request, 'my_user.html', context)
 
 
 

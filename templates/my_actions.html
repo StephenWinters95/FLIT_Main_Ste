@@ -11,7 +11,7 @@
                         <h1> Add/ edit a personal action</h1>
                         <div class="input-form">
                             <!-- DMcC 18/11/23 removed action="" as it throws an error on W3C checking -->
-                            <form method="post" style="margin-top:1.3em" action="">
+                            <form method="post" style="margin-top:1.3em">
                             <br>
                             {% csrf_token %} 
                             {{form.as_p}}

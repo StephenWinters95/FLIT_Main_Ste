@@ -660,8 +660,16 @@ Share results
 
 ### HTML Validation 
 - HTML
-  - No errors returned on the index html pages when checked in the W3C validator:
-  - [W3C validator - index page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Findex.html) 
+HTML validation was performed for the various site pages as follows:  Render the page via the app, right click on the page contents and take option to copy (rendered) source.  Paste this into a file and subject that file to the W3C validator.  
+
+  - All errors returned from the validator were pursued and resolved.
+  
+  on the index html pages when checked in the W3C validator:
+  - [W3C validator - index page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Fvalidation-w3c-index-html.png) 
+  - [W3C validator - my_planner page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Fvalidation-w3c-myplanner-html.png) 
+  - [W3C validator - my_actions page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Fvalidation-w3c-myactions-html.png) 
+  
+  
   - [W3C validator - 404 page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2F404.html)
   
   - [W3C validator - settings page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Fsettings.html)

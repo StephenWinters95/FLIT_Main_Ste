@@ -19,17 +19,15 @@ class ArticleAdmin(SummernoteModelAdmin):
     def approve_draft(self, request, queryset):
         queryset.update(status='1')
 
-# This line replaced with @admin.register(Article)
-# admin.site.register(Article)
-# @admin.register(Article) registers both the artice model and the 
+# @admin.register(Article) registers both the artice model and the
 # ArticleAdmin class
 
 
 @admin.register(Action)
 class ActionAdmin(SummernoteModelAdmin):
     list_filter = ('article', 'action_seq', 'created_on')
-    list_display = ('article', 'action_seq', 'action_desc', 'action_url', 'author', 
-                    'created_on')
+    list_display = ('article', 'action_seq', 'action_desc', 'action_url',
+                    'author', 'created_on')
     sortable_by = ['article', 'action_seq']
     search_fields = ['article', 'action_desc']
 

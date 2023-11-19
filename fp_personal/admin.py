@@ -12,13 +12,15 @@ from .models import UserProfile, UserAction, Feedback
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'birth_year', 'profile_image', 'created_on')
     search_fields = ['user']
-    
+
 
 @admin.register(UserAction)
 class ActionAdmin(SummernoteModelAdmin):
-    list_display = ('user', 'user_action_seq', 'parent_article', 'user_action_desc', 'user_action_url', 'user_action_taken', 
+    list_display = ('user', 'user_action_seq', 'parent_article',
+                    'user_action_desc', 'user_action_url', 'user_action_taken',
                     'observation', 'created_on', 'completed_on')
-    list_filter = ('completed','user', 'user_action_seq', 'parent_article', 'created_on', )
+    list_filter = ('completed', 'user', 'user_action_seq', 'parent_article',
+                   'created_on', )
     sortable_by = ['user', 'user_action_seq']
     search_fields = ['user', 'user_action_desc']
 
@@ -26,18 +28,17 @@ class ActionAdmin(SummernoteModelAdmin):
 
     def complete_actions(self, request, queryset):
         queryset.update(completed=True, completed_on=datetime.now())
-    
 
-#@admin.register(Feedback)
-#class FeedbackAdmin(admin.ModelAdmin):
+
+# @admin.register(Feedback)
+# class FeedbackAdmin(admin.ModelAdmin):
 #    list_display = ('person', 'email', 'created_on', 'completed')
 #    search_fields = ['person', 'feedback', 'completed', 'completed_on']
 
 
-#@admin.register(UserFavourite)
-#class FavouriteAdmin(admin.ModelAdmin):
+# @admin.register(UserFavourite)
+# class FavouriteAdmin(admin.ModelAdmin):
 #    list_display = ('user', 'favourite_article', 'created_on')
-#    list_filter = ('created_on', 'user', 'favourite_article')
+#    list_filter = ('created_on', 'use r', 'favourite_article')
 #    sortable_by = ['user', 'favourite_article']
 #    search_fields = ['user', 'favourite_article']
-        

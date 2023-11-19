@@ -32,21 +32,22 @@ class Article(models.Model):
 
     def number_of_likes(self):
         return self.likes.count()
-    
+
     def number_of_bookmarks(self):
         return self.favourites.count()
-    
+
     def number_of_comments(self):
         return self.comments.count()
-    
+
     def number_of_valid_comments(self):
         return (self.comments.filter(approved=True).count())
+
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE,
                                 related_name="comments")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_comments")
-  #  name = models.CharField(max_length=80) removed field 'name' from the comments as this can be derived from user
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name="user_comments")
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -71,13 +72,9 @@ class Action(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name="action_created_by")
     created_on = models.DateTimeField(auto_now_add=True)
-    
-    
+
     class Meta:
         ordering = ['article', 'action_seq']
 
     def __str__(self):
         return self.action_desc
-
-
-

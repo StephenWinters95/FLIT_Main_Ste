@@ -127,7 +127,7 @@
             <td><a href="{% url 'copy_action' action.id %}"><i class='far fa-clone icon-copy'></i></a></td>
             {% endif %}
             <td>{{action.action_desc| safe}}</td>
-            <td><a href="{{action.action_url}}">{{action.action_url| safe}}</a></td>
+            <td><a href="{{action.action_url}}" target="_blank">{{action.action_url| safe}}</a></td>
             {% endfor %}
             <br>
         {% else %}

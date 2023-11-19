@@ -48,11 +48,10 @@ class UserProfile(models.Model):
         return (self.user.user_actions.filter(completed=False).count())
 
     def __str__(self):
-        return f"UserName: {self.user.first_name} {self.user.last_name},
-                 User: {self.user}, Email: {self.user.email},
-                 Last login: {self.user.last_login.day}/
-                             {self.user.last_login.month}/
-                             {self.user.last_login.year}"
+        return f"UserName: {self.user.first_name} {self.user.last_name},"
+        + f" User: {self.user}, Email: {self.user.email},"
+        + f" Last login: {self.user.last_login.day}/"
+        + f"{self.user.last_login.month}/{self.user.last_login.year}"
 
 
 # Class UserAction, action that the user has copied from an article
@@ -74,13 +73,12 @@ class UserAction(models.Model):
         ordering = ['user', 'user_action_seq', 'created_on']
 
     def my_actions(request):
-        my_actions = UserAction.objects.filter(user=request.user.id).
-                                            order_by('user_action_seq', 'created_on')
+        my_actions = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on')
         return my_actions
    
     def __str__(self):
-        return f"{self.user} {self.user_action_seq} {self.user_action_desc}
-                 {self.completed} {self.completed_on} "
+        return f"{self.user} {self.user_action_seq} {self.user_action_desc}"
+        +f" {self.completed} {self.completed_on} "
 
 STATUS = ((0, "Draft"), (1, "Published"))
 FTYPE = (("F", "Feedback"), ("T", "Testimonial"))
@@ -102,5 +100,5 @@ class Feedback(models.Model):
         ordering = ['person', '-created_on']
 
     def __str__(self):
-        return f"User: {self.person}, Email: {self.email},
-                 Created: {self.created_on} Completed: {self.completed}"
+        return f"User: {self.person}, Email: {self.email},"
+        + f"Created: {self.created_on} Completed: {self.completed}"

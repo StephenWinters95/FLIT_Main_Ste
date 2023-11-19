@@ -72,13 +72,17 @@ class UserAction(models.Model):
     def __str__(self):
         return f"{self.user} {self.user_action_seq} {self.user_action_desc} {self.completed} {self.completed_on} "
 
+STATUS = ((0, "Draft"), (1, "Published"))
+FTYPE = (("F", "Feedback"), ("T", "Testimonial"))
 
 class Feedback(models.Model):
     person = models.CharField(max_length=30, default="Console")
-    email = models.EmailField(default="your_email@gmail.com") 
+    email = models.EmailField(default="your_email@gmail.com")
+    type = models.TextField(max_length=1, default="F") 
     created_on = models.DateTimeField(auto_now_add=True)
     feedback = models.TextField(max_length=500, blank=True)
     followup = models.TextField(max_length=500, blank=True)
+    status = models.IntegerField(choices=STATUS, default=0)
     completed = models.BooleanField(null=False, blank=False)
     completed_on = models.DateTimeField(blank=True, null=True)
     

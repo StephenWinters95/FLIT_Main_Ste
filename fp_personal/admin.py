@@ -3,8 +3,7 @@ from datetime import datetime
 from django_summernote.admin import SummernoteModelAdmin
 from .models import Article
 from .models import User
-from .models import UserProfile
-from .models import UserAction
+from .models import UserProfile, UserAction, Feedback
 # from .models import UserFavourite
 
 
@@ -29,10 +28,10 @@ class ActionAdmin(SummernoteModelAdmin):
         queryset.update(completed=True, completed_on=datetime.now())
     
 
-@admin.register(UserFeedback)
-class UserFeedbackAdmin(admin.ModelAdmin):
-    list_display = ('user', 'email', 'created_on', 'completed')
-    search_fields = ['user', 'feedback', 'completed', 'completed_on']
+#@admin.register(Feedback)
+#class FeedbackAdmin(admin.ModelAdmin):
+#    list_display = ('person', 'email', 'created_on', 'completed')
+#    search_fields = ['person', 'feedback', 'completed', 'completed_on']
 
 
 #@admin.register(UserFavourite)

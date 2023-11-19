@@ -112,8 +112,8 @@ class ArticleSummaryLike(View):
         else:
             article.likes.add(request.user)
         
-# DMcC 18/11/23 want to play around with a render rather than a retur statement at the endof this logic, 
-# could ths be used to retur to the index page when this option is taken from the index page to start with?
+# DMcC 18/11/23 want to play around with a render rather than a return statement at the endof this logic, 
+# could ths be used to return to the index page when this option is taken from the index page to start with?
             return render(
             request,
             "index.html",

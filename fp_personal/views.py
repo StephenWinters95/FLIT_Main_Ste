@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from fp_blog.models import Article, Action, Comment
 from cloudinary.models import CloudinaryField
-from .models import UserProfile, UserAction
+from .models import UserProfile, UserAction, Feedback
 from fp_blog.forms import ActionForm
 from .forms import UserProfileForm, UserActionForm
 # from .models import UserFavourite
@@ -317,3 +317,8 @@ def deleteBookmark(request, pk):
     
     return render(request, 'delete.html', {'object': 'bookmark to ' + str(bookmark)})
 
+class FeedbackList(generic.ListView):
+    model = Feedback
+    queryset = Feedback.objects.order_by('-created_on')
+    template_name = 'about.html'
+    paginate_by = 8

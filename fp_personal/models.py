@@ -72,9 +72,10 @@ class UserAction(models.Model):
     def __str__(self):
         return f"{self.user} {self.user_action_seq} {self.user_action_desc} {self.completed} {self.completed_on} "
 
-class UserFeedback(models.Model):
-    user = models.CharField(max_length=30, default="Console")
-    user_email = models.EmailField(default="your_email@gmail.com") 
+
+class Feedback(models.Model):
+    person = models.CharField(max_length=30, default="Console")
+    email = models.EmailField(default="your_email@gmail.com") 
     created_on = models.DateTimeField(auto_now_add=True)
     feedback = models.TextField(max_length=500, blank=True)
     followup = models.TextField(max_length=500, blank=True)
@@ -82,7 +83,7 @@ class UserFeedback(models.Model):
     completed_on = models.DateTimeField(blank=True, null=True)
     
     class Meta:
-        ordering = ['user', '-created_on']
+        ordering = ['person', '-created_on']
 
     def __str__(self):
-        return f"User: {self.user}, Email: {self.user_email}, Created: {self.created_on} Completed: {self.completed}"
+        return f"User: {self.person}, Email: {self.email}, Created: {self.created_on} Completed: {self.completed}"

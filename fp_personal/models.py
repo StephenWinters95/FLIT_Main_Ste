@@ -19,7 +19,7 @@ class UserProfile(models.Model):
 
     def number_of_likes(self):
         return self.user.article_like.count()
-  
+
     def bookmarks(self):
         return self.user.article_favourite.article
 
@@ -56,14 +56,16 @@ class UserProfile(models.Model):
 
 # Class UserAction, action that the user has copied from an article
 class UserAction(models.Model):
-    user=models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_actions" )
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name="user_actions")
     user_action_seq = models.IntegerField(default=10)
-    parent_article = models.ForeignKey(Article, on_delete=models.CASCADE, 
+    parent_article = models.ForeignKey(Article, on_delete=models.CASCADE,
                                        related_name="parent_article")
-    user_action_desc = models.ForeignKey(Action, on_delete=models.CASCADE, 
+    user_action_desc = models.ForeignKey(Action, on_delete=models.CASCADE,
                                          related_name="parent_action")
     user_action_url = models.URLField(blank=True)
-    user_action_taken = models.CharField(max_length=200, default='Done so far:  ')
+    user_action_taken = models.CharField(max_length=200,
+                                         default='Done so far:  ')
     observation = models.CharField(max_length=200, default='Results:  ')
     completed = models.BooleanField(null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -73,12 +75,14 @@ class UserAction(models.Model):
         ordering = ['user', 'user_action_seq', 'created_on']
 
     def my_actions(request):
-        my_actions = UserAction.objects.filter(user=request.user.id).order_by('user_action_seq', 'created_on')
+        my_actions_unord = UserAction.objects.filter(user=request.user.id)
+        my_actions = my_actions_unord.order_by('user_action_seq', 'created_on')
         return my_actions
-   
+
     def __str__(self):
         return f"{self.user} {self.user_action_seq} {self.user_action_desc}"
         +f" {self.completed} {self.completed_on} "
+
 
 STATUS = ((0, "Draft"), (1, "Published"))
 FTYPE = (("F", "Feedback"), ("T", "Testimonial"))
@@ -87,14 +91,13 @@ FTYPE = (("F", "Feedback"), ("T", "Testimonial"))
 class Feedback(models.Model):
     person = models.CharField(max_length=30, default="Console")
     email = models.EmailField(default="your_email@gmail.com")
-    type = models.TextField(max_length=1, default="F") 
+    type = models.TextField(max_length=1, default="F")
     created_on = models.DateTimeField(auto_now_add=True)
     feedback = models.TextField(max_length=500, blank=True)
     followup = models.TextField(max_length=500, blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
     completed = models.BooleanField(null=False, blank=False)
     completed_on = models.DateTimeField(blank=True, null=True)
-   
 
     class Meta:
         ordering = ['person', '-created_on']

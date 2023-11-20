@@ -415,10 +415,18 @@ For Financial_Planner a time-period of weekly sprints was chosen.  Loosely (give
 
 Initially when performing the design tasks (effectively the first four sprints), the timeboxing aspects were not fully respected.
 However from sprint5 onwards (the first programming sprint), it became easier to decide clearly what was to be included at the outset of each sprint, and to pull specific issues from the backlog and ensure that they were progressed during the planned sprint. 
+I started doing formal sprint reviews with burndown charts, at end of:
+[Sprint 5 retrospective]([Issue #24](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/24) )
+[Sprint 6 retrospective]([Issue #33](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/33) )
+[Sprint 7 retrospective]([Issue #35](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/35) )
+[Sprint 8 retrospective]([Issue #47](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/47) )
+
+As each weekly sprint progressed, I became more fluent with the insights/ burndown charts and started to develop to include actual time logged, a useful metric
 
 
 ### Issue Lifeycle
-An issue is set to progress through a number of stages, each represented by a status during its lifecycle.  A issue can be closed or deleted at any time, however best practise is to progress through:
+An issue is set to progress through a number of stages, each represented by a status during its lifecycle.  
+Whilst an issue could be closed or deleted at any time, however best practice is to progress through:
 * Backlog 
 * To-do
 * In-progress

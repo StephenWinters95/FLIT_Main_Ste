@@ -67,6 +67,13 @@
                         <hr class="bg-primary">
                         <div class="row">
                             <div class="col-sm-3">
+                                <a href="#my-actions"><i class="fa fa-arrow-right red-o " data-bs-toggle="tooltip" data-bs-placement="top" title="My Tasks"></i></a> 
+                                <h6 class="text-muted">{{number_of_actions}}</h6>
+                                {% if actions %}
+                                <input type="button" class="btn btn-signup right" id="show-hide-actions-b" value = "Show" onclick="show_hide_actions()">
+                                {% endif %}
+                            </div> 
+                            <div class="col-sm-3">
                                 <!-- DMcC 16/11/23 Replace 'Like' with 'handclap' icon (nopes didnt work, try thumbs-up) -->
                                 <!-- <i class = "large fa-solid fa-heart red-o" data-bs-toggle="tooltip" title="# Likes"></i> -->
                                 <i class="fas fa-thumbs-up btn-like" data-bs-toggle="tooltip" data-bs-placement="top" title="# Likes"></i> 
@@ -75,15 +82,18 @@
                             <div class="col-sm-3">
                                 <a href="#my-bookmarks"><i class = "large fas fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Bookmarks"></i></a>
                                 <h6 class="text-muted">{{number_of_bookmarks}}</h6>
+                                {% if bookmarks %}
+                                <input type="button" class="btn btn-signup right" id="show-hide-reading-b" value = "Show" onclick="show_hide_reading()">
+                                {% endif %}
                             </div>
                             <div class="col-sm-3">
                                 <a href="#my-comments"><i class="far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="(Moderated) Comments"></i></a> 
                                 <h6 class="text-muted">{{ number_of_valid_comments }}</h6>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="#my-actions"><i class="fa fa-arrow-right red-o " data-bs-toggle="tooltip" data-bs-placement="top" title="Personal Actions"></i></a> 
-                                <h6 class="text-muted">{{number_of_actions}}</h6>
-                            </div> <!-- end class col-sm-8 -->
+                                {% if comments %}
+                                <input type="button" class="btn btn-signup right" id="show-hide-comments-b" value = "Show" onclick="show_hide_comments()">
+                                {% endif %}
+                             </div>
+                            
                         </div> <!-- end class row -->
             
                         
@@ -105,11 +115,11 @@
         
     </div> <!-- end div class row g-0 -->
 
-    <div class = "container-fluid" id="actions-container">
+    <div class = "container-fluid hide-div" id="actions-container">
         <br>
         {%if actions %}    
         <div class = "table-responsive">
-                <strong id="my-actions">My Actions:</strong>
+            <strong id="my-actions">My Tasks:</strong>
             <table class="table table-bordered table-hover ">
                 <thead class="table-success">
                     <tr>
@@ -117,7 +127,7 @@
                     <th></th>
                     <th>Seq</th>
                     <th>Date added</th>
-                    <th>Action</th>
+                    <th>Task</th>
                     <th>Done so Far</th>
                     <th>Results</th>
                     <th>Done?</th>
@@ -127,28 +137,24 @@
                 </thead>
                 <!-- DMcC 18/11/23 Remove reference to form below as dont believe it is needed -->
                 <!-- <form method="post" style="margin-top:1.3em";> -->
-                    {% for action in actions %}
-                    <tr class="text-muted">
-                        <td><a href="{% url 'update_action' action.id %}"><i class="far fa-edit icon-edit"></i></a></td>
-                        <td><a href="{% url 'delete_action' action.id %}"><i class='far fa-trash-alt icon-delete'></i></a></td>
-                        <td>{{action.user_action_seq}}</td>
-                        <td class="date">{{action.created_on|date:"d/m/y"}}</td>
-                        <td>{{action.user_action_desc}}</td>
-                        <td>{{action.user_action_taken}}</td>
-                        <td>{{action.observation}}</td>
-                        <td>{{action.completed|yesno:"Y,N"}}</td>
-                        <td>{{action.completed_on|date:"d/m/y"}}</td>
-                        {% if action.user_action_url %}
-                        <td><a href="{{action.user_action_url}}" target="_blank">link</a></td>
-                        {% else %}
-                        <td></td>
-                        {% endif %}
-                        
-                    
+                {% for action in actions %}
+                <tr class="text-muted">
+                    <td><a href="{% url 'update_action' action.id %}"><i class="far fa-edit icon-edit"></i></a></td>
+                    <td><a href="{% url 'delete_action' action.id %}"><i class='far fa-trash-alt icon-delete'></i></a></td>
+                    <td>{{action.user_action_seq}}</td>
+                    <td class="date">{{action.created_on|date:"d/m/y"}}</td>
+                    <td>{{action.user_action_desc}}</td>
+                    <td>{{action.user_action_taken}}</td>
+                    <td>{{action.observation}}</td>
+                    <td>{{action.completed|yesno:"Y,N"}}</td>
+                    <td>{{action.completed_on|date:"d/m/y"}}</td>
+                    {% if action.user_action_url %}
+                    <td><a href="{{action.user_action_url}}" target="_blank">link</a></td>
+                    {% else %}
+                    <td></td>
+                    {% endif %}
                     </tr>
-                    {% endfor %}
-                    <!-- DMcC removing the form tag below as believe it is redundant -->
-                <!-- </form> -->
+                {% endfor %}
             </table>
         </div> <!-- class = "table-responsive"-->
         {% endif %}
@@ -156,60 +162,57 @@
         <!-- DMcC 18/11/23 need to replace the button within an anchor tag by something whether a mini form or just a link -->
         <!-- <a href="{% url 'create_action' %}"><button class="btn btn-signup right" type="submit">Add new action</button></a>  -->
         <form style="display: inline"  action="{% url 'create_action' %}" method="get">
-            <button class="btn btn-signup right">Add new Action</button>
+            <button class="btn btn-signup right">Add new Task</button>
         </form>         
     </div> <!-- end id=actions-container -->
             <p></p>
 
     
-    {% if bookmarks %}
-    <strong id="my-bookmarks">My Reading List:</strong>
-    
-    <table class="table table-bordered table-hover table-responsive">
-        <thead class="table-success">
-            <tr>
-            <th>Article</th>
-            <th>Date</th>
-            </tr>
-        </thead>
-    
-        <!-- DMcC 18/11/23 removing the refernce to form below as believe it is redundant -->
-        <!-- <form method="post" style="margin-top:1.3em";> -->
+    <div class = "container-fluid hide-div" id="reading-container">
+        {% if bookmarks %}
+        <strong id="my-bookmarks">My Reading List:</strong>
+        
+        <table class="table table-bordered table-hover table-responsive">
+            <thead class="table-success">
+                <tr>
+                <th>Article</th>
+                <th>Date</th>
+                </tr>
+            </thead>
+        
             {% for bookmark in bookmarks %}
-            
             <tr class="text-muted">
-<!--                <td><a href="{% url 'delete_bookmark' bookmark.id %}">Delete</a></td> -->
                 <td><a href="../{{bookmark.slug}}">{{bookmark}}</a></td> 
                 <td class="date">{{bookmark.created_on|date:"d/m/y"}}</td>
             </tr>
             {% endfor %}
-        <!-- DMcC 18/11/23 removing the refernce to form below as believe it is redundant -->
-    <!-- </form> -->
-    </table>
-    {% endif %}
-    
-    {% if comments %}
-    <strong id="my-comments">My Comments:</strong>
-    <table class="table table-bordered table-hover table-responsive">
-        <thead class="table-success">
-            <tr>
-            <th>Article</th>
-            <th>Comment</th>
-            <th>Approved</th>
-            <th>Date</th>
+        </table>
+        {% endif %}
+    </div> <!-- end div reading-container -->
+
+    <div class = "container-fluid hide-div" id="comments-container">
+        {% if comments %}
+        <strong id="my-comments">My Comments:</strong>
+        <table class="table table-bordered table-hover table-responsive">
+            <thead class="table-success">
+                <tr>
+                <th>Article</th>
+                <th>Comment</th>
+                <th>Approved</th>
+                <th>Date</th>
+                </tr>
+            </thead>
+            {% for comment in comments %}
+            <tr class="text-muted">
+                <td><a href="../{{comment.article.slug}}">{{comment.article}}</a></td> 
+                <td>{{comment.body}}</td>
+                <td>{{comment.approved|yesno:"Y,N"}}</td>
+                <td class="date">{{comment.created_on|date:"d/m/y"}}</td>
             </tr>
-        </thead>
-        {% for comment in comments %}
-        <tr class="text-muted">
-<!--            <td><a href="{% url 'delete_comment' comment.id %}">Delete</a></td>  -->
-            <td><a href="../{{comment.article.slug}}">{{comment.article}}</a></td> 
-            <td>{{comment.body}}</td>
-            <td>{{comment.approved|yesno:"Y,N"}}</td>
-            <td class="date">{{comment.created_on|date:"d/m/y"}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div> <!--- end div id comments-container -->
 
 </div> <!-- end div class container bg-grey -->
 
@@ -234,7 +237,6 @@
     })
 </script>
 <script>
-
     const d = new Date();
     let curr_year= parseInt(d.getFullYear());
     var birth_year = document.getElementById("birth_year");
@@ -245,7 +247,58 @@
         let approx_age_calc = curr_year - int_birth_year;
         document.getElementById("age_approx").innerHTML = approx_age_calc;
     }
-</script>
+
+    function show_hide_actions() {
+        console.log("In function show_hide_actions()");
+        show_actions_button = document.getElementById("show-hide-actions-b");
+        console.log("current value of show/hide button is " + show_actions_button.value);
+        if (show_actions_button.value == "Show") {
+            document.getElementById("actions-container").classList.remove("hide-div");
+            console.log("Removed class hide-div from actions-container")
+            show_actions_button.value="Hide";
+            }  
+        else 
+            {
+            document.getElementById("actions-container").classList.add("hide-div");
+            console.log("Added class hide-div to actions-container")
+            show_actions_button.value="Show";
+            }  
+        }
+
+    function show_hide_reading() {
+        console.log("In function show_hide_reading()");
+        show_reading_button = document.getElementById("show-hide-reading-b");
+        console.log("current value of show/hide button is " + show_reading_button.value);
+        if (show_reading_button.value == "Show") {
+            document.getElementById("reading-container").classList.remove("hide-div");
+            console.log("Removed class hide-div from reading-container")
+            show_reading_button.value="Hide";
+            }  
+        else 
+            {
+            document.getElementById("reading-container").classList.add("hide-div");
+            console.log("Added class hide-div to reading-container")
+            show_reading_button.value="Show";
+            }  
+        }
         
+    function show_hide_comments() {
+        console.log("In function show_hide_comments()");
+        show_comments_button = document.getElementById("show-hide-comments-b");
+        console.log("current value of show/hide button is " + show_comments_button.value);
+        if (show_comments_button.value == "Show") {
+            document.getElementById("comments-container").classList.remove("hide-div");
+            console.log("Removed class hide-div from comments-container")
+            show_comments_button.value="Hide";
+            }  
+        else 
+            {
+            document.getElementById("comments-container").classList.add("hide-div");
+            console.log("Added class hide-div to comments-container")
+            show_comments_button.value="Show";
+            }  
+        }
+
+</script>
                                 
 {% endblock content %}

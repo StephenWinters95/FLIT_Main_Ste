@@ -209,9 +209,10 @@ tbody {
 }
 
 /* Below are some classes used for the user action form */
-/* These are used in conjuntion with some js code to set/unset element classes to pickup display attributes */
+/* These are used in conjucntion with some js code to set/unset element classes to pickup display attributes */
 
-.hide-field {
+.hide-field,
+.hide-div {
     display: none;
 }
 

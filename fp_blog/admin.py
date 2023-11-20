@@ -26,7 +26,7 @@ class ArticleAdmin(SummernoteModelAdmin):
 @admin.register(Action)
 class ActionAdmin(SummernoteModelAdmin):
     list_filter = ('article', 'action_seq', 'created_on')
-    list_display = ('article', 'action_seq', 'action_desc', 'action_url',
+    list_display = ('action_seq', 'action_desc', 'article', 'action_url',
                     'author', 'created_on')
     sortable_by = ['article', 'action_seq']
     search_fields = ['article', 'action_desc']

@@ -3,7 +3,7 @@ from datetime import date
 # Create your models here.
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-
+from taggit.managers import TaggableManager
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -23,6 +23,7 @@ class Article(models.Model):
                                    blank=True)
     favourites = models.ManyToManyField(User, related_name='article_favourite',
                                         blank=True)
+    tags = TaggableManager()
 
     class Meta:
         ordering = ['-created_on']

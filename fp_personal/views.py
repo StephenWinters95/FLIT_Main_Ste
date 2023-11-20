@@ -269,10 +269,11 @@ def deleteUserAction(request, pk):
 
     if request.method == 'POST':
         action.delete()
-        return redirect('my_planner')
         # DMcC 15/11/23 Add success message to confirm action is updated
         messages.add_message(request, messages.SUCCESS, "Personal Action # "
                              + str(action.user_action_seq) + " deleted")
+        return redirect('my_planner')
+
     # DMcC 15/11/23 what is the below line return redirect already done?
     return render(request, 'delete.html', {'object': 'action '
                                            + str(action.user_action_seq)})

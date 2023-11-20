@@ -25,9 +25,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DMcC 18/11/23 set to False to try deplooyed version of Heroku app 
-# DEBUG = False
-DEBUG = True
+# DMcC 20/11/23 set to False to try deplooyed version of Heroku app 
+DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ['8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu105.gitpod.io',
                  '8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu106.gitpod.io',
@@ -85,8 +85,8 @@ ROOT_URLCONF = 'django_financial_planner.urls'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
-# DMcC 18/11/23 this option added to test out deployed Heroku veersion"
-#XFRAME_OPTIONS = 'SAMEORIGIN'
+# DMcC 20/11/23 this option added to test out deployed Heroku veersion"
+XFRAME_OPTIONS = 'SAMEORIGIN'
 
 TEMPLATES = [
     {

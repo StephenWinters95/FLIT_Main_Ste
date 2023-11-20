@@ -18,7 +18,7 @@ class UserCommentForm(forms.ModelForm):
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ('title', 'slug', 'status', 'updated_on' )
+        fields = ('title', 'slug', 'status', )
 
 
 class ActionForm(forms.ModelForm):

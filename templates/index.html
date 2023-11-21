@@ -7,6 +7,11 @@
 
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
+            <!-- DMcC 21/11/23 the below search field text from stakoverflow.com re adding a search field-->
+            <form action="">
+                <input type="text" name="search" placeholder="Search by tag" value="{{request.GET.tag}}">
+                <input type="submit" value="Search">
+            </form>
             <div class="row">
                 {% for article in article_list %}
                 <!-- DMcC 15/11/23 Testing with col-md-3 rather than 4 to fit more articles onto a page -->

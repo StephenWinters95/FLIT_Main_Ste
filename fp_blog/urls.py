@@ -9,6 +9,8 @@ urlpatterns = [
     path('like/<slug:slug>', views.ArticleLike.as_view(), name='article_like'),
     path('comment/<slug:slug>', views.ArticleComment.as_view(),
          name='article_comment'),
+    path('search/', views.ArticleSearch.as_view(), name='search'),
+
 ]
 
 handler404 = 'fp_blog.views.error_404'

@@ -13,6 +13,17 @@ class ArticleList(generic.ListView):
     paginate_by = 8
 
 
+class ArticleSearch(generic.ListView):
+    # DMcC 21/11/23 the below search field text from stackoverflow.com re adding a search field #
+#    def dynamic_articles_view(request):
+#        context['object_list'] = article.objects.filter(tags__icontains=request.GET.get('search'))
+ #       Print("In dynamic_articles_view")
+#        return render(request, "index.html", context)
+    model = Article
+    queryset1 = Article.objects.filter(status=1).order_by('-updated_on')
+    queryset = queryset1.filter(tags=4)
+    template_name = 'index.html'
+    
 class ArticleDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Article.objects.filter(status=1)
@@ -116,6 +127,7 @@ class ArticleLike(View):
 class ArticleSummaryLike(View):
     def post(self, request, slug, *args, **kwargs):
         article = get_object_or_404(Article, slug=slug)
+        number_of_actions = article.actions.count()
         if article.likes.filter(id=request.user.id).exists():
             article.likes.remove(request.user)
         else:
@@ -134,6 +146,7 @@ class ArticleSummaryLike(View):
                            "comment_count": comments.count,
                            "commented": commented,
                            "actions": actions,
+                           "number_of_actions": number_of_actions,
                            "liked": liked,
                            "bookmarked": bookmarked,
                           },

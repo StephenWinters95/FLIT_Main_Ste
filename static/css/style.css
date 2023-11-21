@@ -232,6 +232,11 @@ tbody {
     padding: 20px;
   }
 
+  .input-text-area {
+    cols: 1;
+    rows: 3;
+  }
+
   /* Below are some settings for allauth fields.... the py code is not available so this is a workaround to highlight error messages which occur */
   .errorlist {
     color: red;

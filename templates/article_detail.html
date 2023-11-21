@@ -56,11 +56,10 @@
                 <!--  functionality for article actions-->
                 <div class="col-1">
                     <strong>
-                    <a href="#actions"><i class="fa fa-arrow-right red-o " data-bs-toggle="tooltip" data-bs-placement="top" title="Article Tasks"></i></a> 
-                    <span class="text-secondary">{{ article.number_of_actions| safe}}</span>
+                    <a href="#actions-container"><i class="fa fa-arrow-right red-o " data-bs-toggle="tooltip" data-bs-placement="top" title="Article Tasks"></i></a> 
+                    <span class="text-secondary">{{ article.number_of_actions| safe}} 4</span>
                     {% if actions %}
-                    <span class="text-secondary">{{ article.number_of_actions| safe}}</span>
-                    <input type="button" class="btn btn-signup right" id="show-hide-actions-b" value = "Show Tasks" onclick="show_hide_actions()">
+                    <input type="button" class="btn btn-signup right" id="show-hide-actions-b" value = " Tasks" onclick="show_hide_actions()">
                     {% endif %}
                     </strong>
                 </div> <!-- end div class col-1 -->
@@ -92,30 +91,20 @@
                     <strong class="text-secondary"><i class="far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="Responses"></i>
                     <!-- Our total_comments variable goes before the closing strong tag -->
                     {{ article.number_of_valid_comments| safe }}
-                    <input type="button" class="btn btn-signup right" id="show-hide-comments-b" value = "Show Resp" onclick="show_hide_comments()">
+                    <input type="button" class="btn btn-signup right" id="show-hide-comments-b" value = "Responses" onclick="show_hide_comments()">
                     </strong>
                                 
                 </div> <!-- end div class col-1 -->
             </div> <!-- end div class row -->
             
-            <div class="row"><strong>
+            <div class="row">
                 {% if not user.is_authenticated %}
                 <div class="alert alert-warning" role="alert">
                     To Like, Bookmark or Respond to an article, or to create personal Actions, you must <a href="{% url 'account_login' %}">Login</a>
                 </div>
-                </strong>
                 {% endif %}
             </div> <!-- end div class row -->
 
-            <div class="row">
-                <!-- The article content goes inside the card-text. -->
-                <!-- Use the | safe filter inside the template tags -->
-                <p class="card-text ">{{ article.content | safe }}</p>
-                <!-- want to view actions associated with the article before viewing comments -->
-                <!-- div class="col-md-8 card mb-4  mt-3 " -->
-                <!-- Need to allow for no actions, don't want to display table headings if so -->
-            </div>
-                            
             <div class = "container-fluid hide-div" id="actions-container">
                 {% if actions %}
                 <table class="table table-bordered table-hover table-responsive ">
@@ -146,6 +135,16 @@
                 <strong id="actions">No Actions for this article:</strong>
                 {% endif %}
             </div> <!-- end div actions-container -->
+
+            <div class="row">
+                <!-- The article content goes inside the card-text. -->
+                <!-- Use the | safe filter inside the template tags -->
+                <p class="card-text ">{{ article.content | safe }}</p>
+                <!-- want to view actions associated with the article before viewing comments -->
+                <!-- div class="col-md-8 card mb-4  mt-3 " -->
+                <!-- Need to allow for no actions, don't want to display table headings if so -->
+            </div>
+                            
         </div> <!-- end div card-body -->   
     </div> <!-- end div class col card mb-4  mt-3 left  top --> 
 </div> <!-- end div class container-->
@@ -153,7 +152,7 @@
 <div class = "container-fluid hide-div" id="comments-container">
     <div class="row">
         <div class="col-md-8 card mb-4 mt-3 ">
-            <h3>Responses:</h3>
+            <h3>Article Responses:</h3>
             <div class="card-body">
                 <div class="col-md-6 card mb-4 mt-3">
                     <div class="card-body">
@@ -207,23 +206,25 @@
         console.log("In function show_hide_actions()");
         show_actions_button = document.getElementById("show-hide-actions-b");
         console.log("current value of show/hide button is " + show_actions_button.value);
-        if (show_actions_button.value == "Show Tasks") {
-            document.getElementById("actions-container").classList.remove("hide-div");
-            console.log("Removed class hide-div from actions-container")
+        if (show_actions_button.value == " Tasks") {
+            actions_container = document.getElementById("actions-container"); 
+            actions_container.classList.remove("hide-div");
+            actions_container.focus();
+            console.log("Removed class hide-div from actions-container");
             show_actions_button.value="Hide Tasks";
             }  
         else 
             {
             document.getElementById("actions-container").classList.add("hide-div");
             console.log("Added class hide-div to actions-container")
-            show_actions_button.value="Show Tasks";
+            show_actions_button.value=" Tasks";
             }  
         }
         function show_hide_comments() {
         console.log("In function show_hide_comments()");
         show_comments_button = document.getElementById("show-hide-comments-b");
         console.log("current value of show/hide button is " + show_comments_button.value);
-        if (show_comments_button.value == "Show Resp") {
+        if (show_comments_button.value == "Responses") {
             document.getElementById("comments-container").classList.remove("hide-div");
             console.log("Removed class hide-div from comments-container")
             show_comments_button.value="Hide Resp";
@@ -232,7 +233,7 @@
             {
             document.getElementById("comments-container").classList.add("hide-div");
             console.log("Added class hide-div to comments-container")
-            show_comments_button.value="Show Resp";
+            show_comments_button.value="Responses";
             }  
         }
 

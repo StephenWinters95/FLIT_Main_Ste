@@ -472,182 +472,17 @@ An improved kanban view (developed mid-way through the project) is shown here, n
 At the time of seeing this I had already committed to using labels to represent EPICs, so I stayed with my original approach just to see how it would work in practice.
 * Use of a public project repo - I made the repo public early on, as I had assumed this was needed for assessment.  And about half way through I was surprised to see some comments on my tasks from another (unknown) github user offering assistance with development - kind of like an open source approach.  So they had commented on a couple of tasks.  I kept the repo public, but changed the settings so that only users who had previously committed to the repo could comment, and I blocked that particular user from the workspace....
 
-
 ## Features 
  
-### F01 
-<details><summary>Introduction screen</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f01_intro.jpg"></details>
-<br>
-On first using the game an introduction window is shown, the user can choose 'Play' or 'How to Play' buttons.  The intro page shows the current date, the Financial Planner day number, and some copyright and acknowledgement notices.
-This addresses user stories SO_01, SO_02, FTU_01, FTU_02, FTU_03
-<br>
-<br>
 
-### F02 'How To Play' Screen
-<details><summary>How To Play screen</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f02_help.jpg"></details>
-<br>
-A modal 'How to Play' explains how to play and some of the subtleties of the calculations.  Available from the 'how to play' button on the Intro screen, or from the navbar help icon on all screens.   The 'How to Play' window can be scrolled to see full text, and is closed by clicking on the X in top right hand corner, at which point it disappears from screen.
-<br>
-<br>      
-
-### F03 Play button
-The Play button ![Play button](./django_financial_planner/docs/readme_images/f03_play_button.jpg?raw=true "Image of Play button") allows the user to go directly to a game screen, and immediately play a game ('call to action').
-<br>
-<br>
-
-### F04 Randomly selected solution
-<details><summary>Array of potential solutions</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f04_solution_array.jpg"></details>
-(Dont look too closely or you will ruin the surprise of playing the game!)<br>
-An array of solutions is maintained, and, when the game starts, an entry is randomly chosen from this array.  At the time of development this array contained approx 20 entries, which is sufficient for demo purposes, it is envisioned that this will be extended in the future.
-<br>
-<br>
-
-### F05 Uncluttered game screen
-<details><summary>Initialised game screen</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f05_uncluttered_game_screen.jpg"></details>
-The game screen is presented to the user fully initialised (ie a target value has been set and populated to each grid row).  The screen is free of ads and supplemental displays, which allows the user to focus on the game.
-<br>
-<br>
-
-### F06 Consistent Navbar<br>
-The Navbar is consistent throughout the website, 404 and feedback pages.  (modals/pop-ups are used to show intro and help pages, which don't show the navbar but when they are closed, the navbar can be seen on the underlying page)  Contains icons for Help, Stats and Settings.
-![Navbar](./docs/readme_images/f06_navbar.jpg?raw=true "Navbar image")
-<br>
-<br>
-
-### F07 Game grid
-<details><summary>Game panel</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f07_game_grid_in_progress.jpg"></details>
-Interactive and responsive game panel which allows the user to record one set of guess tiles per attempt (the current attempt # is shown at top of screen).  The game grid is initially blank, and will be populated with successive user guesses.
-Interactivity/feedback:  when the user presses ENTER to submit a guess, the guessed tiles update as green(correct); orange(present) or grey(absent).
-<br>
-<br>
-
-### F08 Keyboard display
-<details><summary>Keyboard</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f08_keyboard_grid.jpg"></details>
-A pseudo-keyboard shows the permitted entries.  The user must click on the keys using a mouse pointer to select an entry.  When a keyboard key is pressed, its colour flickers to light blue, and the key value is loaded to the current guess row on the game grid.  So the keyboard is the main user control for the game, and each press of a keyboard key triggers an action.   (keys 1-20, */-+ populate the game grid).<br>
-When the user presses ENTER to submit a guess, the keyboard elements used within the guess also update as green(correct); orange(present) or grey(absent).
-<br>
-<br>
-
-### F09 DEL key
-A backspace key is provided which allows the user to remove the last keyed entry on the current grid row.
-<br>
-<br>
-
-### F10 ENTER key
-The ENTER key submits the current guess row for validation. 
-<br>
-<br>
-
-### F11 Equation validation
-When a guess is submitted, the equation which the user has submitted is parsed and validated as follows - the entries at the second and fourth columns are assessed to ensure these contain an operator (plus minus multiply divide); the guessed equation is then validated to check if it equates to the target value.  If not, an error message is shown, however the game (at this version) will still progress to individual element valuation.
-![If equation has wrong total](./assets/readme_images/f11_wrong_total.jpg?raw=true "Equation calculates to incorrect total")
-<br>
-<br>
-
-### F12  Individual guess element validation
-<details><summary>Feedback on keyboard re guessed solution</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f12_keyboard_interaction_feeback.jpg"></details>
-Each element of the guess is compared to the solution, and its tile colour amended according to whether the guessed tile is:
-* correct (green)- tile value is at this position in the solution;
-* present (orange)- tile value is at a different position in the solution;
-* absent (grey) - tile value is not in the solution.
-![Feedback on game panel re guessed solution](./docs/readme_images/f12_game_interaction_feeback.jpg?raw=true "Image of guessed tiles changing colour")
-
-The corresponding keyboard grid value is coloured on the lower part of the screen, e.g. '5' guessed correct; will colour both the row tile and the keyboard key green.  A (hidden) count of the number of correct elements is maintained.
-<br>
-<br>
-
-### F13 Success message
-<details><summary>Appropriate success message, content varies by # of attempts</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f13_attempt4_result.jpg"></details>
- This displays when all elements correctly guessed.  A pop-up message with the appropriate text appears.  This text mimics the Wordle site, so depending on the  number of attempts the successful user can get (Genius, Magnificent, Impressive, Splendid, Great, Phew).
-<br>
-<br>
-
-### F14 Solution display if exceeded 6 attempts
-<details><summary>Solution display if 6 unsuccessful guesses</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f14_exceeded_6attempts.jpg"></details>
-A pop-up message with the appropriate text appears if the user has matched the entire solution equation.  This text mimics the Wordle site, so depending on the  number of attempts the user can get (Genius, Magnificent, Impressive, Splendid, Great, Phew)
-<br>
-<br>
-
-### F15 User Statistics 
-<details><summary>User statistics</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f15_user_statistics.jpg"></details>
-
-This screen is really a placeholder for future functionality as would like to display some of the statistics for a player over a number of games<br>
-<br>
-
-### F16 Settings and Feedback
-<details><summary>User settings</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/f16_settings_feedback.jpg"></details>
-
-This allows the user to provide feedback and to choose to join a daily reminder mailing list.  There are placeholder questions here for future Limit to one game daily (preset to 'no limit');
-Difficulty levels: easy or difficult (preset to 'difficult').
-Share image of solution to clipboard (future)
-<br>
-<br>
-
-### F17 Responsiveness
-The site is designed to be fully responsive so it can be played on a range of convenient devices.
 
 ### Features in Scope 
 
-<details><summary>Mapping of user stories to features</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/user_stories_vs_features.jpg"></details>
-
-This website includes 3 pages and 16 features 
-The pages - which effectively bring the features lited in the previous section together - are:
-* Landing Page (see feature F01 Intro Screen)
-* Settings page (see feature F16 Feedback and settings )
-* 404 error page 
-
-- __404 Error Page__ 
-This allows graceful failure, where the header and footer are preserved, allowing the user to navigate away from an error page using the site navigation (rather than the back button).
-
-<details><summary>404 error page</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/p03_error_404_page.jpg"></details>
 
 ### Implementation Decisions
-Pre-defined calculations are stored in a multi-dimensional array as follows:
-Solution [
-[ 3, *,_ 7 * 2, 41_], // ie 3 * 7 * 2 = 41
-[2, + , 5 * 7, 41] //ie 2 + 5 * 7 = (7) * 7 = 41
-]
-Each day's equation can therefore be referenced as Solution[day#]
-Each days' elements can be referenced as solution[day#, element#]
-This is useful when comparing a user entry for a match.
-
-Daily user entries are stored in an array of 7 x 6 rows as follows:
-Attempt [(undef, green, orange), (undef/green/orange), (undef/green/orange), (underf/green/orange), (undef/green/orange), (success)]
-Attempt attempt#, element# can be compared to each of the entries in solution [day#, element#y] to search for a match - if found then if attempt.element# matches solution.element# then green, else orange.
-
-Break out of loop when success, or when 6 tries reached.
 <br>
 
 ### Features Left to Implement
-While Financial Planner, at the current version, provides the 'engine' for pattern matching and calculation, there are a number of desirable features which exist in the current version of Wordle and which would greatly add to the user experience for Numble.
-
-Choose difficulty level
-* Allow the user to choose difficulty level EASY (all numbers <= 10) or DIFFICULT (numbers <=20 included).  Note that this has been allowed for in the array of solutions, these are classified according to difficulty, so this may be an 'easy win' future feature.
-
-Allow the user to limit to one game daily
-* One of the beautiful features of wordle is its limited-release mode whereby only one puzzle is released daily ... this creates a sense of anticipation and the user wants more, they don't get the chance to become bored or tired with the game.  
-* Financial Planner at the current version, allows the user to play continuously by refreshing the browser.  This is useful when in testing and demonstration mode, but ideally the default would be one game per day.
-
-Preserve user statistics from one game to the next
-* This has been allowed for within the user interface by providing a statistics page, however the stats currently only relate to the latest game played.   Tracking of # of days 'winning streak' is very motivating to the user.
-
-Share results
-* Wordle has a feature whereby a user can share their pattern matching results without revealing the underlying solution.
-<br>
-<br>
                
 ## Technologies
 
@@ -655,13 +490,24 @@ Share results
 - HTML 
 - CSS
 - Javascript
+- Python
+- Django (initial v 3, now V4+)
+- Bootrap (V5)
 
 ### Frameworks & Tools
 * Github:  used to maintain the code repository, and for some readme edits and commits
 * Git
 * Gitpod:  used for editing and for tracking code commits back to Github
 * Balsamiq:  used for wireframing
-* Google Fonts: used to locate suitable fonts for website
+* Lucidchart: used for database diagramming
+* Canva: used to create some infographic content
+* Leonardo AI: used to create some of the site images
+
+### Python Libraries
+
+
+### Third-Party Libraries
+
 
 
 ## Validation 

@@ -74,12 +74,6 @@
                                 {% endif %}
                             </div> 
                             <div class="col-sm-3">
-                                <!-- DMcC 16/11/23 Replace 'Like' with 'handclap' icon (nopes didnt work, try thumbs-up) -->
-                                <!-- <i class = "large fa-solid fa-heart red-o" data-bs-toggle="tooltip" title="# Likes"></i> -->
-                                <i class="fas fa-thumbs-up btn-like" data-bs-toggle="tooltip" data-bs-placement="top" title="# Likes"></i> 
-                                <h6 class="text-muted">{{number_of_likes}}</h6>
-                            </div>
-                            <div class="col-sm-3">
                                 <a href="#my-bookmarks"><i class = "large fas fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Bookmarks"></i></a>
                                 <h6 class="text-muted">{{number_of_bookmarks}}</h6>
                                 {% if bookmarks %}
@@ -93,7 +87,12 @@
                                 <input type="button" class="btn btn-signup right" id="show-hide-comments-b" value = "Show" onclick="show_hide_comments()">
                                 {% endif %}
                              </div>
-                            
+                             <div class="col-sm-3">
+                                <!-- DMcC 16/11/23 Replace 'Like' with 'handclap' icon (nopes didnt work, try thumbs-up) -->
+                                <!-- <i class = "large fa-solid fa-heart red-o" data-bs-toggle="tooltip" title="# Likes"></i> -->
+                                <i class="fas fa-thumbs-up btn-like" data-bs-toggle="tooltip" data-bs-placement="top" title="# Likes"></i> 
+                                <h6 class="text-muted">{{number_of_likes}}</h6>
+                            </div>
                         </div> <!-- end class row -->
             
                         

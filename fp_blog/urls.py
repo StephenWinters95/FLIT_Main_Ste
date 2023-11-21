@@ -10,3 +10,8 @@ urlpatterns = [
     path('comment/<slug:slug>', views.ArticleComment.as_view(),
          name='article_comment'),
 ]
+
+handler404 = 'fp_blog.views.error_404'
+handler500 = 'fp_blog.views.error_500'
+handler403 = 'fp_blog.views.error_403'
+handler400 = 'fp_blog.views.error_400'

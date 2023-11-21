@@ -26,8 +26,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DMcC 21/11/23 set to True to try deployed version of Heroku app
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 # DMcC 20/11/23 Taggit caused uninstall of Django version 3.2 and a fresh install of Django 4.  
 # Ths caused CSRF errors on the site's admin page
@@ -93,8 +93,8 @@ ROOT_URLCONF = 'django_financial_planner.urls'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # DMcC 21/11/23 this option added to test out deployed Heroku version"
-# Auto deploy now deactivated so option commented out 20/11 after manual deploy
-XFRAME_OPTIONS = 'SAMEORIGIN'
+# Auto deploy now deactivated so option commented out 21/11 after manual deploy
+# XFRAME_OPTIONS = 'SAMEORIGIN'
 
 TEMPLATES = [
     {

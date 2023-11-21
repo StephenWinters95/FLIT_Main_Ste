@@ -360,3 +360,21 @@ class FeedbackList(generic.ListView):
     queryset = Feedback.objects.order_by('-created_on')
     template_name = 'about.html'
     paginate_by = 8
+
+
+
+def error_400(request, exception):
+        data = {}
+        return render(request,'fp_personal/400.html', data)
+
+def error_403(request, exception):
+        data = {}
+        return render(request,'fp_personal/403.html', data)
+
+def error_404(request, exception):
+        data = {}
+        return render(request,'fp_personal/404.html', data)
+
+
+def error_500(request, *args, **argv):
+    return render(request,'fp_personal/500.html', status=500)

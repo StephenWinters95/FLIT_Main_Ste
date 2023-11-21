@@ -1,0 +1,47 @@
+{% extends 'base.html' %} 
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container bg-grey">
+    <div class="row g-0">
+        <div class="row d-flex justify-content-center">
+                <div class = "row z-depth-3">
+                    <div class="profile-card col-sm-11 rounded">
+                        <h1 class="mt-3 text-center">About Us</h1>
+                        <hr class="mt-0 bg-info">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h5>Why?</h5>
+                            </div>
+                            <div class="col-sm-4">
+                                <form style="display: inline"  action="{% url 'create_action' %}" method="get">
+                                    <button class="btn btn-signup right">Submit feedback</button>
+                                </form>
+                                </div>  
+                            </div>
+                            <div class="col-sm-4">
+                                <h5>How?</h5>
+                            </div>
+  
+                            </div> <!-- end class row -->    
+                    
+                
+                </div> <!-- end div class col-sm-8 bg-info rounded-right -->    
+                
+            </div> <!-- end div class row z-depth-3 -->
+            
+        </div> <!-- end div class col-md-10 mt-5 pt-5-->
+        
+    </div> <!-- end div class row d-flex justify-content-center -->
+    
+</div> <!-- end div class row g-0 -->
+
+            
+</div> <!-- end id=actions-container -->
+        <p></p>
+
+
+
+</div> <!-- end div class container bg-grey -->
+                            
+{% endblock content %}

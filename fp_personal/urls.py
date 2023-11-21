@@ -18,3 +18,8 @@ urlpatterns = [
     path('about/', views.FeedbackList.as_view(), name='about'),
 
 ]
+
+handler404 = 'fp_personal.views.error_404'
+handler500 = 'fp_personal.views.error_500'
+handler403 = 'fp_personal.views.error_403'
+handler400 = 'fp_personal.views.error_400'

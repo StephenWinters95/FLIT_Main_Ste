@@ -70,21 +70,21 @@
                                 <a href="#my-actions"><i class="fa fa-arrow-right red-o " data-bs-toggle="tooltip" data-bs-placement="top" title="My Tasks"></i></a> 
                                 <h6 class="text-muted">{{number_of_actions}}</h6>
                                 {% if actions %}
-                                <input type="button" class="btn btn-signup right" id="show-hide-actions-b" value = "Show" onclick="show_hide_actions()">
+                                <input type="button" class="btn btn-signup right" id="show-hide-actions-b" value = "Show Tasks" onclick="show_hide_actions()">
                                 {% endif %}
                             </div> 
                             <div class="col-sm-3">
                                 <a href="#my-bookmarks"><i class = "large fas fa-bookmark" data-bs-toggle="tooltip" data-bs-placement="top" title="Bookmarks"></i></a>
                                 <h6 class="text-muted">{{number_of_bookmarks}}</h6>
                                 {% if bookmarks %}
-                                <input type="button" class="btn btn-signup right" id="show-hide-reading-b" value = "Show" onclick="show_hide_reading()">
+                                <input type="button" class="btn btn-signup right" id="show-hide-reading-b" value = "Show BMs" onclick="show_hide_reading()">
                                 {% endif %}
                             </div>
                             <div class="col-sm-3">
                                 <a href="#my-comments"><i class="far fa-comments" data-bs-toggle="tooltip" data-bs-placement="top" title="(Moderated) Comments"></i></a> 
                                 <h6 class="text-muted">{{ number_of_valid_comments }}</h6>
                                 {% if comments %}
-                                <input type="button" class="btn btn-signup right" id="show-hide-comments-b" value = "Show" onclick="show_hide_comments()">
+                                <input type="button" class="btn btn-signup right" id="show-hide-comments-b" value = "Show Resp" onclick="show_hide_comments()">
                                 {% endif %}
                              </div>
                              <div class="col-sm-3">
@@ -191,7 +191,7 @@
 
     <div class = "container-fluid hide-div" id="comments-container">
         {% if comments %}
-        <strong id="my-comments">My Comments:</strong>
+        <strong id="my-comments">My Responses:</strong>
         <table class="table table-bordered table-hover table-responsive">
             <thead class="table-success">
                 <tr>
@@ -251,16 +251,16 @@
         console.log("In function show_hide_actions()");
         show_actions_button = document.getElementById("show-hide-actions-b");
         console.log("current value of show/hide button is " + show_actions_button.value);
-        if (show_actions_button.value == "Show") {
+        if (show_actions_button.value == "Show Tasks") {
             document.getElementById("actions-container").classList.remove("hide-div");
             console.log("Removed class hide-div from actions-container")
-            show_actions_button.value="Hide";
+            show_actions_button.value="Hide Tasks";
             }  
         else 
             {
             document.getElementById("actions-container").classList.add("hide-div");
             console.log("Added class hide-div to actions-container")
-            show_actions_button.value="Show";
+            show_actions_button.value="Show Tasks";
             }  
         }
 
@@ -268,16 +268,16 @@
         console.log("In function show_hide_reading()");
         show_reading_button = document.getElementById("show-hide-reading-b");
         console.log("current value of show/hide button is " + show_reading_button.value);
-        if (show_reading_button.value == "Show") {
+        if (show_reading_button.value == "Show BMs") {
             document.getElementById("reading-container").classList.remove("hide-div");
             console.log("Removed class hide-div from reading-container")
-            show_reading_button.value="Hide";
+            show_reading_button.value="Hide BMs";
             }  
         else 
             {
             document.getElementById("reading-container").classList.add("hide-div");
             console.log("Added class hide-div to reading-container")
-            show_reading_button.value="Show";
+            show_reading_button.value="Show BMs";
             }  
         }
         
@@ -285,16 +285,16 @@
         console.log("In function show_hide_comments()");
         show_comments_button = document.getElementById("show-hide-comments-b");
         console.log("current value of show/hide button is " + show_comments_button.value);
-        if (show_comments_button.value == "Show") {
+        if (show_comments_button.value == "Show Resp") {
             document.getElementById("comments-container").classList.remove("hide-div");
             console.log("Removed class hide-div from comments-container")
-            show_comments_button.value="Hide";
+            show_comments_button.value="Hide Resp";
             }  
         else 
             {
             document.getElementById("comments-container").classList.add("hide-div");
             console.log("Added class hide-div to comments-container")
-            show_comments_button.value="Show";
+            show_comments_button.value="Show Resp";
             }  
         }
 

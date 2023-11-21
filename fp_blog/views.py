@@ -20,6 +20,8 @@ class ArticleDetail(View):
         comments = article.comments.filter(approved=True).order_by(
             '-created_on')
         actions = article.actions.order_by('action_seq')
+        number_of_actions = actions.count()
+
         liked = False
         if article.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -45,6 +47,7 @@ class ArticleDetail(View):
                        "commented": commented,
                        "commented_unapproved": commented_unapproved,
                        "actions": actions,
+                       "number_of_actions": number_of_actions,
                        "liked": liked,
                        "bookmarked": bookmarked,
                        "comment_form": CommentForm()
@@ -57,6 +60,7 @@ class ArticleDetail(View):
         comments = article.comments.filter(approved=True).order_by(
             '-created_on')
         actions = article.actions.order_by('action_seq')
+        number_of_actions = actions.count()
         liked = False
         if article.likes.filter(id=self.request.user.id).exists():
             liked = True
@@ -87,6 +91,8 @@ class ArticleDetail(View):
                         "liked": liked,
                         "bookmarked": bookmarked,
                         "actions": actions,
+                        "number_of_actions": number_of_actions,
+                       
                     },
                     )
 

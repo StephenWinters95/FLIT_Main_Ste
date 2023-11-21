@@ -8,12 +8,13 @@
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <!-- DMcC 21/11/23 the below search field text from stakoverflow.com re adding a search field-->
-            <form action="">
-                <input type="text" name="search" placeholder="Search by tag" value="{{request.GET.tag}}">
-                <input type="submit" value="Search">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'home' %}">
+                <input type="search"   placeholder="Search by tag" aria-label="Search" name="search">
+                <button class="btn btn-signup right" type="submit">Search</button>  
             </form>
             <div class="row">
-                {% for article in article_list %}
+                <!-- DMcC 21/11/23 method of pagination altered, now receiving data in 8-article paginated format page_obj-->
+                {% for article in page_obj %}
                 <!-- DMcC 15/11/23 Testing with col-md-3 rather than 4 to fit more articles onto a page -->
                 <div class="col-md-3">
                     <!-- similarly card mb-3 rather than md-4 -->
@@ -90,19 +91,17 @@
                 </div>
             </div>
         </div>
-    {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; </a></li>
             {% endif %}
+            <li class="page-link">PAGE {{page_obj.number}} </li>
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> &raquo;</a></li>
             {% endif %}
         </ul>
     </nav>
-    {% endif %}
 </div>
 <!-- DMcC 16/11/23 the following script needed to control tooltip display above the hovered element-->    
 <script>

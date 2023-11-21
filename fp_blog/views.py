@@ -2,16 +2,44 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.core.paginator import Paginator
+from django.db.models import Q
 from .models import Article, Comment, Action
 from .forms import CommentForm, UserCommentForm
 
+# 21/11/23 DMcC The below code no longer needed 
+#class ArticleList(generic.ListView):
+#    model = Article
+#    queryset = Article.objects.filter(status=1).order_by('-updated_on')
+#    template_name = 'index.html'
+#    paginate_by = 8
 
-class ArticleList(generic.ListView):
-    model = Article
+def ArticleList(request):
+    # DMcC 21/11/23 Function-based article retrieval to faciliate tag-search
+        
     queryset = Article.objects.filter(status=1).order_by('-updated_on')
-    template_name = 'index.html'
-    paginate_by = 8
+    
+    # DMcC 21/11/23 If the user has given a search term then check this filter
+    search_post = request.GET.get('search')
+    if search_post:
+        queryset = queryset.filter(Q(title__icontains=search_post) or
+                                   Q(content__icontains=search_post) or
+                                   Q(excerpt__icontains=search_post))
 
+#   DMcC 21/11/23 pagination text taken from testdrive.io/blog/django-pagination for fbv    
+    page_num = request.GET.get('page', 1)
+    paginator = Paginator(queryset, 4) #articles per page
+
+    try:
+        page_obj = paginator.page(page_num)
+    except PageNotAnInteger:
+        # if page is not an integer, deliver the first page
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        # if the page is our of range, deliver the last page
+        page_obj = paginator.page(paginator.num_pages)
+
+    return render(request, 'index.html', {'page_obj': page_obj})
 
 class ArticleSearch(generic.ListView):
     # DMcC 21/11/23 the below search field text from stackoverflow.com re adding a search field #
@@ -21,7 +49,7 @@ class ArticleSearch(generic.ListView):
 #        return render(request, "index.html", context)
     model = Article
     queryset1 = Article.objects.filter(status=1).order_by('-updated_on')
-    queryset = queryset1.filter(tags=4)
+    queryset = queryset1.filter(tags=3)
     template_name = 'index.html'
     
 class ArticleDetail(View):

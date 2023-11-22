@@ -163,9 +163,7 @@ From this screen the user can see article title, image suggestive of content, su
 ### F09 Article Details
 Article details may include infographics, text, in-frame video.  Text is set at a readable font size.
 
-![Article activity bar](./django_financial_planner/docs/readme_images/f09-activity-bar.png?raw=true "Article activity bar ex1")
-
-![Article activity bar](./django_financial_planner/docs/readme_images/f09-activity-bar-ex2.png?raw=true "Article activity bar")
+![Article activity bar](./django_financial_planner/docs/readme_images/f09-activity-bar.png?raw=true "Article activity bar ex2")
 
 ![Article content](./django_financial_planner/docs/readme_images/f09-article-content.png?raw=true "Article content")
 

@@ -337,3 +337,13 @@ The content loaded to this demonstration site illustrates some of this, and the 
 * FTU_01 As a first time user I want to access relevant information to increase my financial understanding/literacy on a specific topic
 * FTU_02 As a first-time user I about what this site does, and want to quickly understand this site's relevance to me, so I don't waste my time on useless engagement 
 
+### F16 Error Pages
+If, or when HTTP erorrs occur, a custom error page with a 'back to home' link displays.  This avoids the user needing to use the back button to get out of an error situation.
+
+The 404 page would most likely be seen when the user inadvertently types in something on the URL bar which doesn't exist on the site:
+
+![404 page](./django_financial_planner/docs/readme_images/f17-404.png?raw=true "HTTP error 404 error page with back button")
+
+The 500 page could be encountered if the user takes the option for example to reset their password - this link is not yet configured to communicate externally from the deployed FinancialPlanner site and will throw a 500 error.
+
+![500 page](./django_financial_planner/docs/readme_images/f17-500.png?raw=true "HTTP error 500 error page with back button")

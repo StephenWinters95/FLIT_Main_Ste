@@ -1,6 +1,5 @@
 # Financial Planner 
 (Developer:  Deirdre McCarthy, Nov 2023)
-![Projects - Rich Kanban board](./django_financial_planner/docs/readme_images/agile-issues-kanban-view-sp-epic-num-issues-per-col.png?raw=true "Improved kanban board with lots of information")
 # Features within the Financial Planner App:
 6. [Features](#features)
     1. [Included](#features-in-scope)
@@ -34,23 +33,33 @@ D = Delete
 As the Financial Planner site evolves, it is likely to become quite content-heavy.  Therfore it is important that users can navigate easily, with consistent use of buttons and screen aides across the site.  This has been implemented as:
 
 * Consistent navigation bar is shown at the top of each screen.  
-It shows the site logo to the left hand side, the site name to centre, a user Avatar logo and welcome message for logged-in users, and page links to the right hand side.   
+It shows the site branding to the left hand side, the site name to centre, a welcome message & Avatar/chosen profile photo for logged-in users.
+Page links are for MyPlanner dashboard, About and Logout.   
 ![Navbar-registered user](./django_financial_planner/docs/readme_images/f02-navbar-registered-usr.png?raw=true "Navbar reflecting logged in user")
 
-For first-time users in browsing mode the navigation bar is slightly different as it doesnt show a personalised welcome message, and the menu options are slightly different (particularly, no 'My Planner' option:
-![Navbar-unregistered user](./django_financial_planner/docs/readme_images/f02-navbar-un registered-user.png?raw=true "Navbar reflecting first-time or casual user")
+For first-time users in browsing mode the navigation bar doesn't show a personalised welcome message, and the menu options are different.
+Particularly, no 'My Planner' option as an unregistered user doesnt have access to this feature.
+![Navbar-unregistered user](./django_financial_planner/docs/readme_images/f02-navbar-unregistered-user.png?raw=true "Navbar reflecting first-time or casual user")
 
-* Dynamic Pagination of article content
+* Pagination of article content
+In order to make the site more usable, and to speed up page load times, the number of articles which load at once is currently set to 4; this may increase or decrease as the site matures.
+Page back/ page forward buttons appear below the article summaries.
 ![Current & next paging through content](./django_financial_planner/docs/readme_images/f02-site-nav-pagination.png?raw=true "Pagination of content")  
 
 * Icons 
 Certain icons and button styles appear consistently within the site, and their appearance may vary according to the user's security level.  
-For example, for an unregistered user the like button shows in grey (this user is not authorised to 'like' articles)
-For a signed-in user, who hasn't yet liked this particular article, it will appear in the article detail window as red outline.![like button](./django_financial_planner/docs/readme_images/f02-like-button.png?raw=true "Like button -- not activated")  
-For a signed-in user who has already liked the article, it will show as red solid.
 
-The like button can be seen from the index page, or from the article detail page, with a total number of likes per article.
-Similarly it appears on the user's MyPlanner ashboard, with the total number of likes the user has added.
+For an unregistered user, or from the article summary screen, the 'like' icon shows in grey (this user is not authorised to 'like' articles)
+For a logged-in user, who hasn't yet liked this particular article, it will appear in the article detail window as red outline.
+![like button](./django_financial_planner/docs/readme_images/f02-like-button.png?raw=true "Like button -- not activated")  
+
+For a logged-in user who has already liked the article, it will show as red solid.
+
+The button totals can be seen in different contexts.  Likes, bookmarks, comments, tasks are each represented by logos.
+If viewed on article summary (home page) or article detail, they show totals from the article perspective.
+If viewed on the user's dahshboard, the totals relate to the user's activity, ie how many tasks does this user have, how many articles on thir reading list, how many article Responses have they left, and how any articles have they liked.
+![User's MyPlanner dashbard](./django_financial_planner/docs/readme_images/f02-user-button-totals.png?raw=true "Like button -- not activated")  
+
 So, the symbology remains the same but the count varies by context.
 
 * Buttons
@@ -75,31 +84,13 @@ The User Experience is designed to be consistent across the app.
 * Feedback
 Feedback/ progress messages are shown when the user performs create, update or delete actions; and on signin and signout of the system.
 
-![tasks](./django_financial_planner/docs/readme_images/f02-task-button-expanded-article-view.png?raw=true "Task button") 
+![consistent UX](./django_financial_planner/docs/readme_images/f03-consistent-ux.png?raw=true "consistent UX")
 
+![consistent UX - errors](./django_financial_planner/docs/readme_images/f03-consistent-ux-errors.png?raw=true "consistent UX - errors")
 
+![consistent UX - message login](./django_financial_planner/docs/readme_images/f03-consistent-ux-message-login.png?raw=true "consistent UX - message-login")
 
-
-This is seen in the context of Article, and Users.   
-
-
-
-For example, a clickable icon for liking an article 
-* likes:  XX as seen by an unregistered user; XX as seen by a registered user; XX activated by registered user (article detail view)
-f02-like-button
-
-* Reading list:  YY unregistered user YY registered YY activated. 
-* Tasks : 
-
-Submit button
-Cancel link
-
-Copy icon
-Edit icon
-
-'view'/'hide' toggle buttons
-Some screens follow the concept of progressive reveal, where summary information is shown and the user can click to see more.  
-An example is the 'My Planner' screen for registered users,
+![consistent UX - message logout](./django_financial_planner/docs/readme_images/f03-consistent-ux-message-logout.png?raw=true "consistent UX - message-logout")
 
 Meaningful Error messges
 Confirmation messages (Feedback) when Create-Update-Delete actions are taken 
@@ -113,20 +104,25 @@ Confirmation messages (Feedback) when Create-Update-Delete actions are taken
 ### F04 Responsive
 The site is responsive and will re-draw based on the viewing device type, so can be used on a range of convenient devices.
 
-
-User stories XYZW are satisfied by features F01..F03, and the aim is to make using this site easy to learn with predictable, reliable navigation.
-
+This meets user requirments as follows:
 * SO_04 As site owner I want to provide straightforward, intuitive, consistent website navigation, (using graphical navigation where possible, even where the destination leads to text-based informataion)
 * SO_06 As site owner I want to provide a website, which meets current programming, performance and accessibility standards (html, css, javascript, responsive, accessibility, performance)
 * FTU_03 As a first time user I would like to be able to easily navigate the site and quickly learn its functionality 
 
 ### F05 About Page
+![About page](./django_financial_planner/docs/readme_images/f05-abouot-page.png?raw=true "about page")
+
 * FTU_04 As a first time user I would like to understand the acountability and trustability of information presented on the site - maybe via an 
 about page which clearly identifies information souces, information gathering/harvesting processes including moderation (flowchart would be good here).
 
 
 ### F06 Article Search/ Filter
 On the article libary page, article tags can be used to hone in on topics of interest.
+
+![article search](./django_financial_planner/docs/readme_images/f06-article-search.png?raw=true "Article search")
+
+
+![article search - result](./django_financial_planner/docs/readme_images/f06-article-search-result.png?raw=true "Article search - result")
 
 * SO_05 As site owner I want to allow users to 'chop and dice' complex information into small chunks 
 * FTU_01 As a first time user I want to access relevant information to increase my financial understanding/literacy on a specific topic
@@ -137,6 +133,15 @@ On the article libary page, article tags can be used to hone in on topics of int
 ### F07 Lifestage filter
 On first accessing the app, the lifestage link is shown.  This allows anyone to search based on themes, and to retrieve financial guidance articles relevant to that theme.
 
+Lifestages are created/maintained in the application back-end, and are assigned to articles by th site administrator.
+
+![lifestage tag maintnance](./django_financial_planner/docs/readme_images/f07-lifestage-filter-article-tags.png?raw=true "Article tags")
+
+![lifestage tag-article maintnance](./django_financial_planner/docs/readme_images/f07-lifestage-filter-linking-tag-to-article.png?raw=true "Article linking to tags")
+
+![lifestage tag-article maintnance2](./django_financial_planner/docs/readme_images/f07-lifestage-filter-linking-tag-to-article2.png?raw=true "Article linking to tags")
+
+
 * SO_05 As site owner I want to allow users to 'chop and dice' complex information into small chunks 
 * FTU_01 As a first time user I want to access relevant information to increase my financial understanding/literacy on a specific topic
 * FTU_02 As a first-time user I about what this site does, and want to quickly understand this site's relevance to me, so I don't waste my time on useless engagement 
@@ -145,6 +150,8 @@ On first accessing the app, the lifestage link is shown.  This allows anyone to 
 ### F08 Article Library
 The full set of articles is available from the Articles link on the navigation bar. 
 From this screen the user can see article title, image suggestive of content, summary/ excerpt, author, last updated, and gain an idea of article popularity, by seeing the number of likes, bookmarks and comments for the article.   'New' articles are flagged.
+
+![Homepage](./django_financial_planner/docs/readme_images/f08-article-library.png?raw=true "Article library")
 
 * SO_01 As site owner I want to provide a platform where users can directly access useful resources to help with real-life financial decision making
 * SO_02 As site owner I want to largely (but not entirely) re-use/ connect to information from authoritative sources 
@@ -156,6 +163,19 @@ From this screen the user can see article title, image suggestive of content, su
 ### F09 Article Details
 Article details may include infographics, text, in-frame video.  Text is set at a readable font size.
 
+![Article activity bar](./django_financial_planner/docs/readme_images/f09-activity-bar.png?raw=true "Article activity bar ex1")
+
+![Article activity bar](./django_financial_planner/docs/readme_images/f09-activity-bar-ex2.png?raw=true "Article activity bar")
+
+![Article content](./django_financial_planner/docs/readme_images/f09-article-content.png?raw=true "Article content")
+
+![Article content showing links and infographic](./django_financial_planner/docs/readme_images/f09-article-content-ex1.png?raw=true "Article content with infographic and links")
+
+![Article content with video](./django_financial_planner/docs/readme_images/f09-article-content-ex2.png?raw=true "Article content with video clip")
+
+![Article content zoom out](./django_financial_planner/docs/readme_images/f09-article-content-zoom-out.png?raw=true "Article content - zoom out")
+
+
 * SO_01 As site owner I want to provide a platform where users can directly access useful resources to help with real-life financial decision making
 * SO_02 As site owner I want to largely (but not entirely) re-use/ connect to information from authoritative sources 
 * SO_03 As site owner I want to avoid connecting to information which is opinion- rather than fact-based (ie perhaps from a less authoritative source) or at least highlight that the source is less authorative, or offered by a biased source.
@@ -165,6 +185,8 @@ Articles may contain one more suggested tasks.  Often these will include a link,
 - a URL connecting to a government website e.g. the Irish Revenue site
 - a link to a Google sheet which can be personalised e.g. household budget 
 
+![Article tasks](./django_financial_planner/docs/readme_images/f10-article-tasks.png?raw=true "Article tasks")
+
 Registered users have the option to copy individual tasks to a personal task tracker.  
 For registered users, a 'copy' icon is seen beside each action 
 * SO_11 As site owner, I would like to encourague users to engage with each article's content, by providing suggested actions and next steps for the user to take 
@@ -173,10 +195,16 @@ For registered users, a 'copy' icon is seen beside each action
 
 ### F11 Article Responses
 a.k.a. comments
+
+![Article responses example](./django_financial_planner/docs/readme_images/f11-responses-expanded-from-button.png?raw=true "Responses")
+
 * SO_11 As site owner, I would like to encourague users to engage with each article's content, by providing suggested actions and next steps for the user to take 
 
 ### F12 Reading List
-ability for a registered user to add an article to their reading list
+ability for a registered user to add an article to their reading list:
+
+![Reading list (bookmarks)](./django_financial_planner/docs/readme_images/f12-reading-list.png?raw=true "Reading List")
+
 * SO_11 As site owner, I would like to encourague users to engage with each article's content, by providing suggested actions and next steps for the user to take 
 * RU_01 As a returning user I want to mark information I find useful so I can quickly access it again (favourites)
 * RU_02 As a returning user I want to create a user profile so that I can personalise my site experience (profile image, bookmarks, actions/tasks)
@@ -186,6 +214,7 @@ Personalised view.
 From where personal tasks may be created, edited, or deleted.
 The users reading list can also be shown.
 As can the comments they've made on various articles.
+![y Planner](./django_financial_planner/docs/readme_images/f13-personalised-view-mplanner.png?raw=true "MyPlanner")
 
 Progressive reveal is used to hide information until the user requests it.
 Possible to maintain and edit personal tasks from here.
@@ -194,7 +223,11 @@ Possible to maintain and edit personal tasks from here.
 * RU_01 As a returning user I want to mark information I find useful so I can quickly access it again (favourites)
 * RU_02 As a returning user I want to create a user profile so that I can personalise my site experience (profile image, bookmarks, actions)
 
-### F14 Feedback
+### F14 My Tasks
+
+
+![Personal Tasks](./django_financial_planner/docs/readme_images/f14-my-tasks.png?raw=true "My Tasks")
+
 Feedback
 Customer Testimonials
 

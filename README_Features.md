@@ -225,8 +225,67 @@ Possible to maintain and edit personal tasks from here.
 
 ### F14 My Tasks
 
+* CREATE A USER TASK:
 
+  
+* READ TASKS:
+
+See user's task list
 ![Personal Tasks](./django_financial_planner/docs/readme_images/f14-my-tasks.png?raw=true "My Tasks")
+
+* UPDATE TASKS:
+To edit a task, click o the blue 'edit' icon on the grid.  Task 30 is selected for edit:
+![Personal Tasks - edit](./django_financial_planner/docs/readme_images/f14-my-tasks-update.png?raw=true "My Tasks - edit")
+
+A change is made (
+![Personal Tasks - update](./django_financial_planner/docs/readme_images/f14-my-tasks-update.png?raw=true "My Tasks - update")
+
+A confirmation message is shown to confirm th update:
+![Personal Tasks - update confirm](./django_financial_planner/docs/readme_images/f14-my-tasks-update-message.png?raw=true "My Tasks - update confirmed")
+
+The update can be seen when the user's task list is re-displayed:
+![Personal Tasks - updated](./django_financial_planner/docs/readme_images/f14-my-tasks-updated.png?raw=true "My Tasks - updated")
+
+
+* DELETE TASK:
+To delete a task, select the red 'bin' icon on the grid. Task 30 is selectd for delete:
+![Personal Tasks - delete confirm](./django_financial_planner/docs/readme_images/f14-confirm-delete.png?raw=true "Confirm delete")
+
+A confirmation message appears, the total number of tasks is decremented, the task no longer shows on the task list
+![Personal Tasks - delete confirmed](./django_financial_planner/docs/readme_images/f14-my-tasks-confirmed-delete-and-total-decremented.png?raw=true "Confirmed delete")
+
+
+### F15 Content Manaagement (Current and FUTURE)
+Done by an administrator (a user flagged as 'staff') using the application back-end.
+
+As the application has grown, this interface has increased in complexity.  It currently looks like this:
+![Content Mgt overview](./django_financial_planner/docs/readme_images/f15-content-management-overview.png?raw=true "Content Mgt")
+
+This administration portal has been adequate as a proof-of-concept whilst delivering the Finance Planner application.
+However as number of articles increase, so does the maintenance overhead.  
+The process for adding a new article is now:
+* Create draft article with appropriate imagery and content
+* Review the lifestage tags to determine which (if any) are most appropriate
+* Either append "exact lifestage text" to the article tags; or update the tag table with the article primary key record #.
+* Create any tasks (article actions) needed for the article and link them.  
+I would recommend developing an admin portal where an article and each of its related elements can be maintained.
+
+### F16 Content Management - Article Creation
+
+The main elements of an article which are needed for creation are:
+title, excerpt, body of article.
+Thrugh using summernote, there is reasonable editorial flexibility in creating article content.  
+In the example below, an infographic was created usng Canva, and the summernote form was setup with a 2-colum table structure.
+The infographic was inserted in the leftmost column and the text to the right.
+
+![Content Mgt detail](./django_financial_planner/docs/readme_images/f16-article-maintenance-content.png?raw=true "Content Mgt - detail")
+
+With initial user testing, users had some difficulty reading screen content, therefore the best approach seems to be Arial-16 font 
+(the number of fonts available within SummerNote is not extensive), with minimal tetx and good use of graphics or pictorial elements.
+Note that summernote supports in-frame video from a range of providers, e.g. it was possible to use Veemo video links to embed some of the CCPC 
+(consumer protection council of Ireland)'s video from the RTE 'how to be good with money' series. 
+
+
 
 Feedback
 Customer Testimonials

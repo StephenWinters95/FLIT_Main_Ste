@@ -47,23 +47,31 @@ Page back/ page forward buttons appear below the article summaries.
 
 ![Current & next paging through content](./django_financial_planner/docs/readme_images/f02-site-nav-pagination.png?raw=true "Pagination of content")
 
-* Icons 
+* Icons:
+   
 Certain icons and button styles appear consistently within the site, and their appearance may vary according to the user's security level.  
 
 For an unregistered user, or from the article summary screen, the 'like' icon shows in grey (this user is not authorised to 'like' articles)
 For a logged-in user, who hasn't yet liked this particular article, it will appear in the article detail window as red outline.
 ![like button](./django_financial_planner/docs/readme_images/f02-like-button.png?raw=true "Like button -- not activated")  
 
-For a logged-in user who has already liked the article, it will show as red solid.
+For a logged-in user who has already liked the article, it will show as red solid.  A similar example here is an activated bookmarks button, whch shows that the current user has added this article to their reading list.
+![bookmarks button](./django_financial_planner/docs/readme_images/f02-bookmark-button.png?raw=true "Bookmark button -- activated")  
 
+Clicking on the icon allows a logged-in user to toggle status on likes and bookmarks.
+
+* Totals:
+  
 The button totals can be seen in different contexts.  Likes, bookmarks, comments, tasks are each represented by logos.
 If viewed on article summary (home page) or article detail, they show totals from the article perspective.
-If viewed on the user's dahshboard, the totals relate to the user's activity, ie how many tasks does this user have, how many articles on thir reading list, how many article Responses have they left, and how any articles have they liked.
+If viewed on the user's dashboard, the totals relate to the user's activity, ie how many tasks does this user have, how many articles on thir reading list, how many article Responses have they left, and how any articles have they liked.
+
 ![User's MyPlanner dashbard](./django_financial_planner/docs/readme_images/f02-user-button-totals.png?raw=true "Like button -- not activated")  
 
 So, the symbology remains the same but the count varies by context.
 
-* Buttons
+* Buttons:
+  
 Where possible the principle of progresive reveal is followed.  With the awareness that this is a content-heavy site, the user can reveal or hide certain information - such as Article Responses (comments), Article Tasks, and Reading Lists.
 For example, Responses will default to hidden, but the user can see they exist on an Article, or on a user's MyPlanner dashboard, ![responses button](./django_financial_planner/docs/readme_images/f02-responses-icon.png?raw=true "Responses icon showing total")
 Clicking on that button shows the expaded view of Responses ![responses](./django_financial_planner/docs/readme_images/f11-responses-expanded-from-button.png?raw=true "Responses detil pane")

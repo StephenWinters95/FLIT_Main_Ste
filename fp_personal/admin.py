@@ -4,16 +4,17 @@ from django_summernote.admin import SummernoteModelAdmin
 from .models import Article
 from .models import User
 from .models import UserProfile, UserAction, Feedback
-# from .models import UserFavourite
 
 
-# Register your models here.
+# The UserProfile model is a custom extension of allauth User model
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'birth_year', 'profile_image', 'created_on')
     search_fields = ['user']
 
 
+# UserAction is a task instance that is applied to a user
+# and includes follow-up tracking fields
 @admin.register(UserAction)
 class ActionAdmin(SummernoteModelAdmin):
     list_display = ('user', 'user_action_seq', 'parent_article',
@@ -27,18 +28,5 @@ class ActionAdmin(SummernoteModelAdmin):
     actions = ['complete_actions']
 
     def complete_actions(self, request, queryset):
+        """ complete_actions is used to complete a user action """
         queryset.update(completed=True, completed_on=datetime.now())
-
-
-# @admin.register(Feedback)
-# class FeedbackAdmin(admin.ModelAdmin):
-#    list_display = ('person', 'email', 'created_on', 'completed')
-#    search_fields = ['person', 'feedback', 'completed', 'completed_on']
-
-
-# @admin.register(UserFavourite)
-# class FavouriteAdmin(admin.ModelAdmin):
-#    list_display = ('user', 'favourite_article', 'created_on')
-#    list_filter = ('created_on', 'use r', 'favourite_article')
-#    sortable_by = ['user', 'favourite_article']
-#    search_fields = ['user', 'favourite_article']

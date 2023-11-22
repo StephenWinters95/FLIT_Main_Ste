@@ -2,29 +2,22 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.core.paginator import Paginator
-from django.db.models import Q
+from django.core.paginator import Paginator  # Specifically imported 
+from django.db.models import Q  # This is a text search capability
 from .models import Article, Comment, Action
 from .forms import CommentForm, UserCommentForm
 
-# 21/11/23 DMcC The below code no longer needed 
-#class ArticleList(generic.ListView):
-#    model = Article
-#    queryset = Article.objects.filter(status=1).order_by('-updated_on')
-#    template_name = 'index.html'
-#    paginate_by = 8
 
+# DMcC 21/11/23 Function-based article retrieval to faciliate tag-search
 def ArticleList(request):
-    # DMcC 21/11/23 Function-based article retrieval to faciliate tag-search
-        
+    """ returns a list of articles after applying any user-entered search filter """   
     queryset = Article.objects.filter(status=1).order_by('-updated_on')
-    
-    # DMcC 21/11/23 If the user has given a search term then check this filter
+    # If the user has given a search term then check this filter
     search_post = request.GET.get('search')
     if search_post:
         queryset = queryset.filter(Q(content__icontains=search_post))
 
-#   DMcC 21/11/23 pagination text taken from testdrive.io/blog/django-pagination for fbv    
+#   pagination text based on testdrive.io/blog/django-pagination for fbv    
     page_num = request.GET.get('page', 1)
     paginator = Paginator(queryset, 4) #articles per page
 
@@ -39,17 +32,19 @@ def ArticleList(request):
 
     return render(request, 'index.html', {'page_obj': page_obj})
 
+
 class ArticleSearch(generic.ListView):
     # DMcC 21/11/23 the below search field text from stackoverflow.com re adding a search field #
 #    def dynamic_articles_view(request):
 #        context['object_list'] = article.objects.filter(tags__icontains=request.GET.get('search'))
- #       Print("In dynamic_articles_view")
+#       Print("In dynamic_articles_view")
 #        return render(request, "index.html", context)
     model = Article
     queryset1 = Article.objects.filter(status=1).order_by('-updated_on')
     queryset = queryset1.filter(tags=3)
     template_name = 'index.html'
     
+# Detailed Article View
 class ArticleDetail(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Article.objects.filter(status=1)
@@ -219,16 +214,16 @@ class ArticleComment(View):
 
 
 def error_400(request, exception):
-        data = {}
-        return render(request,'400.html', data)
+    data = {}
+    return render(request,'400.html', data)
 
 def error_403(request, exception):
-        data = {}
-        return render(request,'403.html', data)
+    data = {}
+    return render(request,'403.html', data)
 
 def error_404(request, exception):
-        data = {}
-        return render(request,'404.html', data)
+    data = {}
+    return render(request,'404.html', data)
 
 def error_500(request, *args, **argv):
     return render(request,'500.html', status=500)

@@ -8,9 +8,7 @@ from cloudinary.models import CloudinaryField
 from .models import UserProfile, UserAction, Feedback
 from fp_blog.forms import ActionForm
 from .forms import UserProfileForm, UserActionForm
-# from .models import UserFavourite
-# from .forms import UserProfileForm, UserFavouriteForm, UserActionForm
-from rest_framework import serializers
+# from rest_framework import serializers
 
 
 # This is the main view for user profile n the my_planner link/ page
@@ -87,6 +85,8 @@ class UserProfileView(View):
             console.log("User not logged in")
 
 
+# ArticleBookmark is designed to toggle on/off bookmark favourites for a user
+# and returns the user to the article detail view
 class ArticleBookmark(View):
     def post(self, request, slug, *args, **kwargs):
         article = get_object_or_404(Article, slug=slug)
@@ -97,6 +97,8 @@ class ArticleBookmark(View):
         return HttpResponseRedirect(reverse('article_detail', args=[slug]))
 
 
+# UserActionList retrieves the task list for the current logged-in user
+# and returns list of tasks, and count of tasks
 class UserActionList(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -115,33 +117,19 @@ class UserActionList(View):
             console.log("User not logged in")
 
 
-class UserActionList(View):
-    model = UserAction
-
-    def get(self, request, *args, **kwargs):
-        user_actions = request.user.user_actions.order_by('user_action_seq',
-                                                          'created_on')
-        number_of_actions = user_actions.count()
-
-        return render(
-                request,
-                "my_actions.html",
-                {
-                 "number of actions ": number_of_actions,
-                 "user_actions": user_actions, }
-                )
-
-
-# DMcC 11/11/23 the below not used as problems with composite dataset 11/11/23
+# class UserActionView is used to present and manipulate a User Task (Action)
 class UserActionView(View):
     queryset = UserAction.objects.all()
 
     def get(self, request):
+        """ returns a list of user actions for a particular user """
         user_actions_unorder = UserAction.objects.filter(user=request.user.id)
         user_actions = user_actions_unorder.order_by('user_action_seq',
                                                      'created_on')
 
     def next_seq(request):
+        """ This function retrieves the list of user actions for a user """
+        """ sorts by seq num, and increments highest valueby 10 """
         exist_acts = UserAction.objects.filter(user=request.user.id).exists()
         if exist_acts:
             queryset_unorder = UserAction.objects.filter(user=request.user.id)
@@ -154,6 +142,7 @@ class UserActionView(View):
         return next_seq
 
     def get(self, request, *args, **kwargs):
+        """" returns a list of user actions """
         if (UserAction.objects.filter(user=request.user.id).exists()):
             queryset_unsorted = UserAction.objects.filter(user=request.user.id)
             queryset = queryset.order_by('user_action_seq', 'created_on')
@@ -176,19 +165,11 @@ class UserActionView(View):
                 )
 
 
-# class UserActionSerializer(serializers.Serializer):
-#    class Meta:
-#        model = UserAction
-#        fields = ['user', 'user_action_seq', 'parent_article',
-#                  'user_action_desc', 'user_action_url', 'user_action_taken',
-#                  'observation', 'user_action_date', 'user_action_type',
-#                  'completed', 'created_on', 'completed_on']
-
-
-# This next set of code developed in parallel with Dennis Ivy videos
-#  so remember - Django 2021 Course Session #3 Models Forms & CRUD
+# This next set of code developed with inspriration from Dennis Ivy videos
+#  Django 2021 Course Session #3 Models Forms & CRUD
 # note function-based rather than class-cased coding
 def createUserAction(request):
+    """ Function createUserAction returns user action with next seq# """
     next_seq = UserActionView.next_seq(request)
     print('In CreateUserAction():  next_seq returned is: ', next_seq)
     form = UserActionForm(initial={"user": request.user.id,
@@ -210,7 +191,11 @@ def createUserAction(request):
     return render(request, 'my_actions.html', context)
 
 
+# Function copyUserAction is used to copy an Article-based task (action)
+# and create a new User-based task (action)
 def copyUserAction(request, pk):
+    """ parameters are request and article_pk"""
+    """ returns a new action rendered to actions.html page """
     action = Action.objects.get(id=pk)
     action_desc = action.action_desc
     print('In copyUserAction():  source action_id is ', action.id,
@@ -309,9 +294,6 @@ def addUserProfile(request):
     context = {'form': form}
     return render(request, 'my_user.html', context)
 
-#    context = {'form': form}
-#    return render(request, 'my_planner.html', context)
-
 
 # DMcC 17/11/23 update User Profile - adapted from Dennis Ivy training videos:
 def updateUserProfile(request, pk):
@@ -362,19 +344,24 @@ class FeedbackList(generic.ListView):
     paginate_by = 8
 
 
-
 def error_400(request, exception):
-        data = {}
-        return render(request,'fp_personal/400.html', data)
+    """"error handling 400"""
+    data = {}
+    return render(request, '400.html', data)
+
 
 def error_403(request, exception):
-        data = {}
-        return render(request,'fp_personal/403.html', data)
+    """"error handling 403"""
+    data = {}
+    return render(request, '403.html', data)
+
 
 def error_404(request, exception):
-        data = {}
-        return render(request,'fp_personal/404.html', data)
+    """"error handling 404"""
+    data = {}
+    return render(request, '404.html', data)
 
 
 def error_500(request, *args, **argv):
-    return render(request,'fp_personal/500.html', status=500)
+    """"error handling 500"""
+    return render(request, '500.html', status=500)

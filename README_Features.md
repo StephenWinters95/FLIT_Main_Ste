@@ -41,7 +41,8 @@ For first-time users in browsing mode the navigation bar doesn't show a personal
 Particularly, no 'My Planner' option as an unregistered user doesnt have access to this feature.
 ![Navbar-unregistered user](./django_financial_planner/docs/readme_images/f02-unregistered-user.png?raw=true "Navbar reflecting first-time or casual user")
 
-* Pagination of article content
+* Pagination of article content:
+  
 In order to make the site more usable, and to speed up page load times, the number of articles which load at once is currently set to 4; this may increase or decrease as the site matures.
 Page back/ page forward buttons appear below the article summaries.
 
@@ -51,11 +52,13 @@ Page back/ page forward buttons appear below the article summaries.
    
 Certain icons and button styles appear consistently within the site, and their appearance may vary according to the user's security level.  
 
-For an unregistered user, or from the article summary screen, the 'like' icon shows in grey (this user is not authorised to 'like' articles)
-For a logged-in user, who hasn't yet liked this particular article, it will appear in the article detail window as red outline.
+* For an unregistered user, or from the article summary screen, the 'like' icon shows in grey (this user is not authorised to 'like' articles).
+
+* For a logged-in user, who hasn't yet liked this particular article, it will appear in the article detail window as red outline.
 ![like button](./django_financial_planner/docs/readme_images/f02-like-button.png?raw=true "Like button -- not activated")  
 
-For a logged-in user who has already liked the article, it will show as red solid.  A similar example here is an activated bookmarks button, whch shows that the current user has added this article to their reading list.
+* For a logged-in user who has already liked the article, it will show as red solid.
+Similarly, an activated bookmarks button (solid icon), means the current user added this article to their reading list.
 ![bookmarks button](./django_financial_planner/docs/readme_images/f02-bookmark-button.png?raw=true "Bookmark button -- activated")  
 
 Clicking on the icon allows a logged-in user to toggle status on likes and bookmarks.
@@ -73,8 +76,12 @@ So, the symbology remains the same but the count varies by context.
 * Buttons:
   
 Where possible the principle of progresive reveal is followed.  With the awareness that this is a content-heavy site, the user can reveal or hide certain information - such as Article Responses (comments), Article Tasks, and Reading Lists.
-For example, Responses will default to hidden, but the user can see they exist on an Article, or on a user's MyPlanner dashboard, ![responses button](./django_financial_planner/docs/readme_images/f02-responses-icon.png?raw=true "Responses icon showing total")
-Clicking on that button shows the expaded view of Responses ![responses](./django_financial_planner/docs/readme_images/f11-responses-expanded-from-button.png?raw=true "Responses detil pane")
+For example, Responses will default to hidden, but the user can see they exist on an Article, or on a user's MyPlanner dashboard:
+
+![responses button](./django_financial_planner/docs/readme_images/f02-responses-icon.png?raw=true "Responses icon showing total")
+
+Clicking on that button shows the expanded view of Responses ![responses](./django_financial_planner/docs/readme_images/f11-responses-expanded-from-button.png?raw=true "Responses detil pane")
+
 The button toggles to ![hide responses](./django_financial_planner/docs/readme_images/f11-responses-button-toggle.png?raw=true "Responses toggle")
 
 The ![task button](./django_financial_planner/docs/readme_images/f02-task-button.png?raw=true "Task button") works in a similar way to initially hide the tasks panel, then reveal when clicked.

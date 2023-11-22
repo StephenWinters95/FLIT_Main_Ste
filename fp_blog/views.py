@@ -22,9 +22,7 @@ def ArticleList(request):
     # DMcC 21/11/23 If the user has given a search term then check this filter
     search_post = request.GET.get('search')
     if search_post:
-        queryset = queryset.filter(Q(title__icontains=search_post) or
-                                   Q(content__icontains=search_post) or
-                                   Q(excerpt__icontains=search_post))
+        queryset = queryset.filter(Q(content__icontains=search_post))
 
 #   DMcC 21/11/23 pagination text taken from testdrive.io/blog/django-pagination for fbv    
     page_num = request.GET.get('page', 1)

@@ -1,6 +1,6 @@
 # Financial Planner 
 (Developer:  Deirdre McCarthy, Nov 2023)
-
+![Projects - Rich Kanban board](./django_financial_planner/docs/readme_images/agile-issues-kanban-view-sp-epic-num-issues-per-col.png?raw=true "Improved kanban board with lots of information")
 # Features within the Financial Planner App:
 6. [Features](#features)
     1. [Included](#features-in-scope)
@@ -31,25 +31,63 @@ D = Delete
 
 
 ### F02 Site Navigation
-A consistent navigation bar is shown at the top of each screen.  It shows the site logo to the left hand side, the site name to centre, a user Avatar logo and welcome message for logged-in users, and page links to the right hand side.   
+As the Financial Planner site evolves, it is likely to become quite content-heavy.  Therfore it is important that users can navigate easily, with consistent use of buttons and screen aides across the site.  This has been implemented as:
 
-For first-time users in browsing mode the navigation bar looks like this:
+* Consistent navigation bar is shown at the top of each screen.  
+It shows the site logo to the left hand side, the site name to centre, a user Avatar logo and welcome message for logged-in users, and page links to the right hand side.   
+![Navbar-registered user](./django_financial_planner/docs/readme_images/f02-navbar-registered-usr.png?raw=true "Navbar reflecting logged in user")
 
-For returning users who have registered on the site the navigation bar is personalised with the user's name and profile photo/chosen Avatar.  The options to the right-hand-side now include 'My Planner' link and 'Logout' rather than 'Login'.
+For first-time users in browsing mode the navigation bar is slightly different as it doesnt show a personalised welcome message, and the menu options are slightly different (particularly, no 'My Planner' option:
+![Navbar-unregistered user](./django_financial_planner/docs/readme_images/f02-navbar-un registered-user.png?raw=true "Navbar reflecting first-time or casual user")
 
-For returning users who have created a profile, the navigation bar looks like this:
+* Dynamic Pagination of article content
+![Current & next paging through content](./django_financial_planner/docs/readme_images/f02-site-nav-pagination.png?raw=true "Pagination of content")  
 
+* Icons 
+Certain icons and button styles appear consistently within the site, and their appearance may vary according to the user's security level.  
+For example, for an unregistered user the like button shows in grey (this user is not authorised to 'like' articles)
+For a signed-in user, who hasn't yet liked this particular article, it will appear in the article detail window as red outline.![like button](./django_financial_planner/docs/readme_images/f02-like-button.png?raw=true "Like button -- not activated")  
+For a signed-in user who has already liked the article, it will show as red solid.
+
+The like button can be seen from the index page, or from the article detail page, with a total number of likes per article.
+Similarly it appears on the user's MyPlanner ashboard, with the total number of likes the user has added.
+So, the symbology remains the same but the count varies by context.
+
+* Buttons
+Where possible the principle of progresive reveal is followed.  With the awareness that this is a content-heavy site, the user can reveal or hide certain information - such as Article Responses (comments), Article Tasks, and Reading Lists.
+For example, Responses will default to hidden, but the user can see they exist on an Article, or on a user's MyPlanner dashboard, ![responses button](./django_financial_planner/docs/readme_images/f02-responses-icon.png?raw=true "Responses icon showing total")
+Clicking on that button shows the expaded view of Responses ![responses](./django_financial_planner/docs/readme_images/f11-responses-expanded-from-button.png?raw=true "Responses detil pane")
+The button toggles to ![hide responses](./django_financial_planner/docs/readme_images/f11-responses-button-toggle.png?raw=true "Responses toggle")
+
+The ![task button](./django_financial_planner/docs/readme_images/f02-task-button.png?raw=true "Task button") works in a similar way to initially hide the tasks panel, then reveal when clicked.
+![tasks](./django_financial_planner/docs/readme_images/f02-task-button-expanded-article-view.png?raw=true "Task button") 
+
+This addresses user stories 
 * SO_04 As site owner I want to provide straightforward, intuitive, consistent website navigation, (using graphical navigation where possible, even where the destination leads to text-based informataion)
 * SO_06 As site owner I want to provide a website, which meets current programming, performance and accessibility standards (html, css, javascript, responsive, accessibility, performance)
 * FTU_03 As a first time user I would like to be able to easily navigate the site and quickly learn its functionality 
 * FTU_06 As a first-time user I want clear, timely and unambiguous feedback and interaction
 * FTU_07 As a first-time user I expect links and functions that work as expected
 
-
-### F02 Consistent UX & Feedback
+### F03 Consistent UX & Feedback
 The User Experience is designed to be consistent across the app.
-Certain logos and button styles appear consistently within the site (need table style markdown here)
+
+* Feedback
+Feedback/ progress messages are shown when the user performs create, update or delete actions; and on signin and signout of the system.
+
+![tasks](./django_financial_planner/docs/readme_images/f02-task-button-expanded-article-view.png?raw=true "Task button") 
+
+
+
+
+This is seen in the context of Article, and Users.   
+
+
+
+For example, a clickable icon for liking an article 
 * likes:  XX as seen by an unregistered user; XX as seen by a registered user; XX activated by registered user (article detail view)
+f02-like-button
+
 * Reading list:  YY unregistered user YY registered YY activated. 
 * Tasks : 
 

@@ -69,7 +69,7 @@ The button totals can be seen in different contexts.  Likes, bookmarks, comments
 If viewed on article summary (home page) or article detail, they show totals from the article perspective.
 If viewed on the user's dashboard, the totals relate to the user's activity, ie how many tasks does this user have, how many articles on thir reading list, how many article Responses have they left, and how any articles have they liked.
 
-![User's MyPlanner dashbard](./django_financial_planner/docs/readme_images/f02-user-button-totals.png?raw=true "Like button -- not activated")  
+![User's MyPlanner dashboard](./django_financial_planner/docs/readme_images/f02-user-button-totals.png?raw=true "User's MyPlanner dashboard")  
 
 So, the symbology remains the same but the count varies by context.
 
@@ -80,11 +80,12 @@ For example, Responses will default to hidden, but the user can see they exist o
 
 ![responses button](./django_financial_planner/docs/readme_images/f02-responses-icon.png?raw=true "Responses icon showing total")
 
-Clicking on that button shows the expanded view of Responses ![responses](./django_financial_planner/docs/readme_images/f11-responses-expanded-from-button.png?raw=true "Responses detil pane")
+Clicking on that button shows the expanded view of Responses ![responses](./django_financial_planner/docs/readme_images/f11-responses-expanded-from-button.png?raw=true "Responses detail pane")
 
 The button toggles to ![hide responses](./django_financial_planner/docs/readme_images/f11-responses-button-toggle.png?raw=true "Responses toggle")
 
 The ![task button](./django_financial_planner/docs/readme_images/f02-task-button.png?raw=true "Task button") works in a similar way to initially hide the tasks panel, then reveal when clicked.
+
 ![tasks](./django_financial_planner/docs/readme_images/f02-task-button-expanded-article-view.png?raw=true "Task button") 
 
 This addresses user stories 
@@ -104,9 +105,9 @@ Feedback/ progress messages are shown when the user performs create, update or d
 
 ![consistent UX - errors](./django_financial_planner/docs/readme_images/f03-consistent-ux-errors.png?raw=true "consistent UX - errors")
 
-![consistent UX - message login](./django_financial_planner/docs/readme_images/f03-consistent-ux-message-login.png?raw=true "consistent UX - message-login")
+![consistent UX - message login](./django_financial_planner/docs/readme_images/f03-consistent-ux-messaging-login.png?raw=true "consistent UX - message-login")
 
-![consistent UX - message logout](./django_financial_planner/docs/readme_images/f03-consistent-ux-message-logout.png?raw=true "consistent UX - message-logout")
+![consistent UX - message logout](./django_financial_planner/docs/readme_images/f03-consistent-ux-messaging-logout.png?raw=true "consistent UX - message-logout")
 
 Meaningful Error messges
 Confirmation messages (Feedback) when Create-Update-Delete actions are taken 

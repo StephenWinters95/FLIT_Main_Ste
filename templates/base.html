@@ -36,8 +36,7 @@
             <span class="navbar-text text-muted">gathering Irish financial planning resources in one place    
 
             </span>
-            {% if user.is_authenticated %}
-            
+            {% if user.is_authenticated and request.user.userprofile %}
             <span class="navbar-text text-muted "><img class="navbar-image" src="{{request.user.userprofile.profile_image.url}}" alt="Users avatar logo"> Welcome, {{user.username}}!</span>
             <!-- <img href="{{user.user_profile.profile_image.url}}"> -->
             {% endif %}

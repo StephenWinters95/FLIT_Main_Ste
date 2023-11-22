@@ -182,20 +182,17 @@ From this screen the user can see article title, image suggestive of content, su
 * FTU_03 As a first time user I would like to be able to easily navigate the site and quickly learn its functionality 
 
 ### F09 Article Details
-Article details may include infographics, text, in-frame video.  Text is set at a readable font size.
-
-![Article activity bar](./django_financial_planner/docs/readme_images/f09-activity-bar.png?raw=true "Article activity bar ex2")
-
+Article details may include infographics, text, in-frame video.  Text is set at a readable font size (Arial 16 seems to work well).
 ![Article content](./django_financial_planner/docs/readme_images/f09-article-content.png?raw=true "Article content")
 
 Articles can, thanks to the Summernote Django add-in, contain a variety of content.  For example the article below holds a 2-column table with an infographic to the left and article text to the right. 
 ![Article content showing links and infographic](./django_financial_planner/docs/readme_images/f09-article-content-ex1.png?raw=true "Article content with infographic and links")
 
-In-frame video from certain providers (YouTuve, Veemo, and others) is also supported which gives a rich user experience.  For example, the article below contains a clip from the RTE 'How to be Good with Money' TV Series, with content funded by the Irish Competition & Consumer Protection body.
+In-frame video from certain providers (YouTuve, Vimeo, and others) is also supported which gives a rich user experience.  For example, the article below contains a clip from the RTE 'How to be Good with Money' TV Series, with content funded by the Irish Competition & Consumer Protection body.
 
 ![Article content with video](./django_financial_planner/docs/readme_images/f09-article-content-ex2.png?raw=true "Article content with video clip")
 
-![Article content zoom out](./django_financial_planner/docs/readme_images/f09-article-content-zoom-out.png?raw=true "Article content - zoom out")
+![Article content zoom out](./django_financial_planner/docs/readme_images/f09-article-details-zoom-out.png?raw=true "Article content - zoom out")
 
 
 * SO_01 As site owner I want to provide a platform where users can directly access useful resources to help with real-life financial decision making
@@ -209,7 +206,7 @@ Articles may contain one more suggested tasks.  Often these will include a link,
 
 ![Article tasks](./django_financial_planner/docs/readme_images/f10-article-tasks.png?raw=true "Article tasks")
 
-Registered users have the option to copy individual tasks to a personal task tracker.  
+N.B. For logged-in users, this is the expected step to create a new personal task, by coping an Article to a Personal task, from where the user can update the task as they progress with it.  
 For registered users, a 'copy' icon is seen beside each action 
 * SO_11 As site owner, I would like to encourague users to engage with each article's content, by providing suggested actions and next steps for the user to take 
 * FTU_06 As a first-time user I want clear, timely and unambiguous feedback and interaction
@@ -231,8 +228,10 @@ ability for a registered user to add an article to their reading list:
 * RU_01 As a returning user I want to mark information I find useful so I can quickly access it again (favourites)
 * RU_02 As a returning user I want to create a user profile so that I can personalise my site experience (profile image, bookmarks, actions/tasks)
 
-### F13 Personalised tasks - MyPlanner
-Personalised view.
+### F13 Personal Tasks - MyPlanner
+The MyPlanner dashboard gives access to the user's personal Task List.  
+This dashboard shows the number of tasks, amongst other information.
+
 From where personal tasks may be created, edited, or deleted.
 The users reading list can also be shown.
 As can the comments they've made on various articles.
@@ -277,7 +276,15 @@ A confirmation message appears, the total number of tasks is decremented, the ta
 
 
 ### F15 Content Manaagement (Current and FUTURE)
-Done by an administrator (a user flagged as 'staff') using the application back-end.
+Admin users ('staff' users) can access a backend portal which allows create, read, update and delete of:
+* Users (passwords are encrypted so an administrator can never read a users password)
+* User profiles
+* Articles
+* Article actions
+* Article-User Likes
+* Article-User Bookmarks
+* Article Comments
+Site maintenance, including creation and publication of Articles, Response Moderation, and search term maintenance, is done by an administrator (a user flagged as 'staff') using the application back-end.
 
 As the application has grown, this interface has increased in complexity.  It currently looks like this:
 ![Content Mgt overview](./django_financial_planner/docs/readme_images/f15-content-management-overview.png?raw=true "Content Mgt")
@@ -293,20 +300,10 @@ The process for adding a new article is now:
 As a next development step for the FinancialPlanner app, I would highly recommend developing an admin portal.  (FUTURE REQUIREMENT) 
 This would allow an Article and each of its related elements to be maintained in sync.  This wasn't intially a requirement as the standard Django-delivered Admin Console was considered adequate, however the data complexity and maintenance overhead have increased as the site has neared completion, and data has been added.  
 
+* SO-09 As site owner I would like to store a database of content to include url links, 
+* SO-10 As site owner, I would like to have the capability to organise the content by lifestage, theme, and other criteria (possibly hierarchical groupings, hashtags) to allow cross referncing of user needs to content 
+
 ### F16 Content Management - Article Creation
-
-The main elements of an article which are needed for creation are:
-title, excerpt, body of article.
-Through using summernote, there is reasonable editorial flexibility in creating article content.  
-In the example below, an infographic was created usng Canva, and the summernote form was setup with a 2-colum table structure.
-The infographic was inserted in the leftmost column and the text to the right.
-
-![Content Mgt detail](./django_financial_planner/docs/readme_images/f16-article-maintenance-content.png?raw=true "Content Mgt - detail")
-
-With initial user testing, users had some difficulty reading screen content, therefore the best approach seems to be Arial-16 font 
-(the number of fonts available within SummerNote is not extensive), with minimal tetx and good use of graphics or pictorial elements.
-Note that summernote supports in-frame video from a range of providers, e.g. it was possible to use Veemo video links to embed some of the CCPC 
-(consumer protection council of Ireland)'s video from the RTE 'how to be good with money' series. 
 
 
 
@@ -317,20 +314,20 @@ Customer Testimonials
 * SO-08 As site owner I want to acknowledge to the user that their feedback has been received
 * FTU_05  As a first-time user I would like to undertand the role of user feedback and user reviews 'X users found this useful or relevant',
 
-### F15 Content Management - overview
-Admin users ('staff' users) can access a backend portal which allows create, read, update and delete of:
-* Users (passwords are encrypted so an administrator can never read a users password)
-* User profiles
-* Articles
-* Article actions
-* Article-User Likes
-* Article-User Bookmarks
-* Article Comments
-
-* SO-09 As site owner I would like to store a database of content to include url links, 
-* SO-10 As site owner, I would like to have the capability to organise the content by lifestage, theme, and other criteria (possibly hierarchical groupings, hashtags) to allow cross referncing of user needs to content 
 
 ### F16 Content Management - Article creation
+The main elements of an article which are needed for creation are:
+title, excerpt, body of article.
+Through using summernote, there is reasonable editorial flexibility in creating article content.  
+In the example below, an infographic was created usng Canva, and the summernote form was setup with a 2-colum table structure.
+The infographic was inserted in the leftmost column and the text to the right.
+
+![Content Mgt detail](./django_financial_planner/docs/readme_images/f16-article-maintenance-content.png?raw=true "Content Mgt - detail")
+
+With initial user testing, users had some difficulty reading screen content, therefore the best approach seems to be Arial-16 font 
+(the number of fonts available within SummerNote is not extensive), with minimal text and good use of graphics or pictorial elements.
+Note that summernote supports in-frame video from a range of providers, e.g. it was possible to use Veemo video links to embed some video from the RTE 'how to be good with money' series. 
+
 The summernote Django extension is used to create article body.  It provides for 'rich' features such as a variety of fonts and text styles, the ability to incorporate images, video and URLs into content.  
 The content loaded to this demonstration site illustrates some of this, and the site would now benefit by additional effort in content creation.
 
@@ -340,37 +337,3 @@ The content loaded to this demonstration site illustrates some of this, and the 
 * FTU_01 As a first time user I want to access relevant information to increase my financial understanding/literacy on a specific topic
 * FTU_02 As a first-time user I about what this site does, and want to quickly understand this site's relevance to me, so I don't waste my time on useless engagement 
 
-
-### UX Design Scope User Requirements and Expectations
-<br>
-From the analysis of existing financial literacy/informational websites geared towards Ireland, a set of possible requirements was identified for a new portal.
-<br>
-The basic requirement is to provide a meta-portal which allows theme-based grouping of financial literacy resources.
-<br>    
-<ul>MVP Requirements:
-<li>Must be intuitive to use</li>
-<li>Must be easy to learn</li>
-<li>Good for first time or returning users</li>
-<li>Accessible - no ad display & no paywall</li>
-<li>Easy visbility of financial themes</li>
-<li> with ability to identify 'favourite' themes of interest and to hide themes not of interest (perhaps by have a 'my interests' page first and the main selection page second for returning users)</li>
-</ul>
-<br>
-<ul>Requirements - Desirable:
-<li>Should have administrator portal which allow for:</li>
-<li>  creation of themes/ catgories, with title and brief descriptor</li>
-<li>  ability to add resources to a theme, by resource type (link / tool / article/ blog post/ video clip)</li>
-<li> Ability to assign estimated reading time</li>
-  <li> ability to add one resoure to multiple themese?  Maybe using hashtags? </li>
-  
-<li>From a user perspective, should-haves and nice to haves include </li>li>
-<li> Ability to filter content to just items/articles of interest</li>
-<li> Distinguish between first time and returning user</li>li>
-<li> Ability to browse annonymously and only create a profile once trust has been established </li>li>
-<li> Guarantee of no ads or mis-use of information </li>li>
-<li> cookie-free? </li>
-<li> Ability to judge authenticity of informatio (possibly by upvotes?)</li>
-<li> Ability to comment? </li>li>
-<li> Ability to browse FAQ within a theme or topiic
-</ul>
-<br>

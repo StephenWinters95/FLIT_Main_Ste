@@ -46,7 +46,7 @@ Particularly, no 'My Planner' option as an unregistered user doesnt have access 
 In order to make the site more usable, and to speed up page load times, the number of articles which load at once is currently set to 4; this may increase or decrease as the site matures.
 Page back/ page forward buttons appear below the article summaries.
 
-![Current & next paging through content](./django_financial_planner/docs/readme_images/f02-site-nav-pagination.png?raw=true "Pagination of content")
+![Current & next paging through content](./django_financial_planner/docs/readme_images/f01-site-nav-pagination.png?raw=true "Pagination of content")
 
 * Icons:
    

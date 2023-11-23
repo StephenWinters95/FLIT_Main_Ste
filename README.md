@@ -514,13 +514,6 @@ HTML validation was performed for the various site pages as follows:  Render the
 
 - ![(Jigaw) CSS Validator)](./django_financial_planner/docs/readme_images/val-css.png?raw=true "CSS validator") 
 
-
-### Javascript Validation
-  - No errors returned, when javascript was pasted into the jshint validator - 
-<details><summary>jshint - no errors </summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/jshint_result.jpg">
-</details>
-
 ### Accessibility
 The site was tested using the WAVE WebAIM accessibility evaluation tool.
 All pages pass with 0 errors 
@@ -531,8 +524,16 @@ All pages pass with 0 errors
 ### Performance
 Performance for all pages was tested using the Lighthouse tool within Google Chrome.  Performance was at 98% for the index page (intro modal).
 
+
+- ![Performance - Lighthouse - index](./django_financial_planner/docs/readme_images/val-css.png?raw=true "CSS validator") 
+
 <details><summary>Performance: Index page</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/performance_lighthouse_intro_page_230602.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/validation-lighthouse-performance-index-html1.png">
+</details>
+
+
+<details><summary>Performance: article detail page</summary>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/validation-lighthouse-performance-article-detail.png">
 </details>
 
 

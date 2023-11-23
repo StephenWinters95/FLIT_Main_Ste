@@ -563,7 +563,11 @@ There are a number of smaller responsiveness issues still open at the time of wr
 
  The steps to setup are as follows:
  
- * 
+ * Install the Django environment in a workspace created with the CI template:
+ 
+- pip3 install 'django<4'gunicorn (installs Django 3.2)
+- pip3 install dj-database-url===0.5.0 psycopg2
+- 
   - In the GitHub repository, navigate to the Settings tab - pages 
   - From the source section drop-down menu, select the Master Branch
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 

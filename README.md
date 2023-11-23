@@ -80,7 +80,10 @@ Ideally, by the time development is completed, this site will include:
 * would absolutely love to have a game which takes the user from age 0 to their resting age and allows them to visualise the consequences of financial decisions
    
 ### Responsive Mockup
-https://ui.dev/amiresponsive?url=https://deemccart.github.io/CI_PP4_FinancePlanner/
+<details><summary>Responsive Mockup</summary>
+<img src="./django_financial_planner/docs/readme_images/val-responsive.png">
+</details>
+
 
 ### Live webpage link
 https://financial-planner-6a030328a9ac.herokuapp.com/
@@ -556,9 +559,9 @@ The website was tested on the following browsers:
 * Mozilla Firefox v112.1.0 (Motorola g(7) phone)
 
 ### Testing Features
-![Feature testing p1](./assets/readme_images/val-feature-p1.jpg?raw=true "testing features")
-![Feature testing p2](./assets/readme_images/val-feature-p2.jpg?raw=true "testing features")
-![Feature testing p3](./assets/readme_images/val-feature-p3.jpg?raw=true "testing features")
+![Feature testing p1](./assets/readme_images/val-feature-p1.png?raw=true "testing features")
+![Feature testing p2](./assets/readme_images/val-feature-p2.png?raw=true "testing features")
+![Feature testing p3](./assets/readme_images/val-feature-p3.png?raw=true "testing features")
 
 ### Bugs and issues
 Almost 70 issues were recorded, I used an excel spreadhseet to keep track.  At the time of writing, 9 issues remain open.

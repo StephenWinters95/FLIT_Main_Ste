@@ -590,6 +590,7 @@ There are a number of smaller responsiveness issues still open at the time of wr
 - In settings tab, reveal cofig vars and add newDATABASE_URL = save link
 
 #### Attach the database:
+
 In dev environment root dir add env.py
 import os
 os.environ['DATABASE_URL']=['pasted URL from elephant']
@@ -598,15 +599,54 @@ os.environ['SECRET_KEY']='some key"
 Add secret key to Heroku config vars
 
 #### Prepare environment and settings.py file
+settings.py:  
+if os.path.isfile("env.py"): import env
+SECRET_KEY = os.eviron.get(SECRET_KEY)
+DATABASES = {'default':dj-database-url,parse(os.environ.get("DATABASE_URL"))}
+Save all files and migrate
+
+#### Get our static and media files stored on Cloudinary
+
+Create cloudinary account (if not already done)
+Pickup the API config variable from the cloudinary dashboard
+env.py:
+add os.environ["CLOUDINARY_URL"]="urlpath"
+
+Heroku: add CLOUDINARY_RL to config vars
+add DISABLE_COLLECTSTATIC (for testing phase only)
+
+settings.py: Add Cloudinary to installeed apps
+STATICFILES_STORAGE = 'cloudinary-storage.storage.staticHashedCloudinaryStorage'
+STATICFILES_DIRS
+STATIC_ROOT
+MEDIA_URL
+DEFAULT_FILE_STORAGE
+BASEDIR..... TEMPLATES_DIR
+TEMPLATES
+ALLOWED_HOSTS
+
+create the following root-level folders: media, static, template
+
+Create a procfile (process file)
+commit
+From Heroku panel, deploy from main & test.
+
+#### Crack on with development
+Thereafter you are into building models, forms, templates etc
+
+### Deploy to Heroku
+If you wish the site CSS to be picked up by Heroku (it is possible to deploy without this, and the functionality will be loaded to Heroku app & database can be tested  -but the apperance will not be good)
+but anyway when you want to check appearance
+settings.py
+DEBUG = False
+Heroku
+remove the config var for static files 
 
 
-  - In the GitHub repository, navigate to the Settings tab - pages 
-  - From the source section drop-down menu, select the Master Branch
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
+#### To re-deploy
+Can set automatic redeployment in Heroku, this will refresh the app at every commit - useful for consistency checks
 
-The live link can be found here - https://deemccart.github.io/CI_PP4_Financial_Planner/index.html
-
-* To fork the repository:
+#### To fork the repository:
 - Go to the GitHub repository
 - Click on Fork button in the upper right hand corner
 
@@ -626,8 +666,8 @@ Multiple sources were used in assembling this site.
 
 ### Content - Financial Planner
 * Inspiration taken from many many sources
-* Existing sites and offerings towards financial literacy in Ireland:  (list below)
-* 
+* Ref the UX strategy section
+
 ### Financial Planner site ethos - authenticity
 https://nobsmarketplace.com/blog/how-do-you-know-if-website-authoritative/ offers a definition of an authoritative website as 'a trusted source that offers reliable information to users'
 https://nobsmarketplace.com/blog/how-do-you-know-if-website-authoritative/ factors to determine an authoritative website: site domain name/url; value offered to the user; reputable sources (with verifiable credentials); quality of inbound & outbound links; website UX, design & functionality; proven user trust & engagement (e.g. measured by organic comments, likes and shares given by customers/users, as well as the quality of the audience the website has attracted)
@@ -639,13 +679,8 @@ https://nobsmarketplace.com/blog/how-do-you-know-if-website-authoritative/ facto
 Dennis Ivy
 Multiple Code Institute PP4 projects used for reference
 
-### References
-The following sites were ued for research and better understanding while creating this website: 
-
  
 ### Acknowledgements
 * I would particularly like to thank Alan Bushell, our cohort facilitator who guided us through this partiularly diverse phase of the course, kept us on track with weekly standups, ensured we all stepped into the limelight and provided really useful advice.
 * I would like to sincerely thank my mentor, Mo Shami for his kindness, enthusiasm and support throughout.  Mo's ability to absorb the essence of a situation and to communicate a clear path ahead has been invaluable.
 * I would also like to thank Derek and my family for their personal support, and for their help with system testing.
-
-

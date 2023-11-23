@@ -428,7 +428,7 @@ Implemented features are fully documented in the Features readme, located at
 
 ### Features in Scope 
 
-<a href="https://github.com/DeeMcCart/CI_PP4_Financial_Planner/blob/main/README_Features.md" target="_blank">Site features</a>
+<a href="./django_financial_planner/docs/readme_images/README_Features.md" target="_blank">Site features</a>
 
 It was helpful to create this as a separate document, as it is also offered to users as a 'how to' guide.
 

@@ -379,14 +379,12 @@ As each weekly sprint progressed, I became more fluent with the insights/ burndo
 
 ### Issue Lifeycle
 An issue is set to progress through a number of stages, each represented by a status during its lifecycle.  
-Whilst an issue could be closed or deleted at any time, however best practice is to progress through:
+Issues progressed through:
 * Backlog 
 * To-do
 * In-progress
 * Review
 * Done
-(Can possibly add a flowchart here for visibility of lifecycle)
-(Might be worth discssing status of Wont_have here also).
 
 
 ### Tabular Projects View
@@ -426,15 +424,19 @@ At the time of seeing this I had already committed to using labels to represent 
 * Use of a public project repo - I made the repo public early on, as I had assumed this was needed for assessment.  And about half way through I was surprised to see some comments on my tasks from another (unknown) github user offering assistance with development - kind of like an open source approach.  So they had commented on a couple of tasks.  I kept the repo public, but changed the settings so that only users who had previously committed to the repo could comment, and I blocked that particular user from the workspace....
 
 ## Features 
-Implemented features are fully documented in the Features readme, located at https://github.com/DeeMcCart/CI_PP4_Financial_Planner/blob/main/README_Features.md 
-It was helpful to create this as a separate document, as it is also offered to users as a 'how to' guide.
+Implemented features are fully documented in the Features readme, located at  
 
 ### Features in Scope 
-Refer to the features guide above.
+
+<a href="https://github.com/DeeMcCart/CI_PP4_Financial_Planner/blob/main/README_Features.md" target="_blank">Site features</a>
+
+It was helpful to create this as a separate document, as it is also offered to users as a 'how to' guide.
 
 ### Implementation Decisions
-This project was somewhat unusual for me as I followed the Agile principle of not defining every feature fully at the start of a 8-week project process.  Instead, the project evolved and took its own shape over the duration.  I followed a principle of incremental delivery, deployed early and established the core structures pretty much as per the walkthrough training given.  
+This project was somewhat unusual for me as I followed the Agile principle of not defining every feature fully at the start of a 8-week project process.  Instead, the project evolved and took its own shape over the duration.  I followed a principle of incremental delivery, deployed early and established the core structures pretty much as per the walkthrough training given.
+<br>  
 Some of the site ideas and features needed only really became clear as I played with the site as it was delivered, and experienced frustration or spotted opportunites or elements that were worth adding. So the site grew organically as time went on.
+<br>
 And it would still be growing organically if I didn't have a project dealine to submit (sometimes deadlines are really useful!!!)
 
 ### Features Left to Implement
@@ -481,6 +483,7 @@ I would hope to develop FinancialPlanner further as a commercial app.
 * Leonardo AI: used to create some of the site images
 
 ### Python Libraries
+The following additional python libraries were used:
 
 
 ### Third-Party Libraries
@@ -500,11 +503,11 @@ HTML validation was performed for the various site pages as follows:  Render the
   - ![W3C Validator - index page](./django_financial_planner/docs/readme_images/validation-w3c-index-html.png?raw=true "W3C validator (index page)")
 
 
-  - [W3C validator - my_planner page](./django_financial_planner/docs/readme_images/validation-w3c-myplanner-html.png?raw=true "W3C validator (my planner page)")
+  - ![W3C validator - my_planner page](./django_financial_planner/docs/readme_images/validation-w3c-myplanner-html.png?raw=true "W3C validator (my planner page)")
 
-  - [W3C validator - my_actions page](./django_financial_planner/docs/readme_images/validation-w3c-myactions.png?raw=true "W3C validator (my actions page)") 
+  - ![W3C validator - my_actions page](./django_financial_planner/docs/readme_images/validation-w3c-myactions.png?raw=true "W3C validator (my actions page)") 
 
-   - [W3C validator - my_user page](./django_financial_planner/docs/readme_images/validation-w3c-myuser.png?raw=true "W3C validator (my actions page)") 
+   - ![W3C validator - my_user page](./django_financial_planner/docs/readme_images/validation-w3c-myuser.png?raw=true "W3C validator (my actions page)") 
   
   
   - [W3C validator - 404 page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2F404.html)

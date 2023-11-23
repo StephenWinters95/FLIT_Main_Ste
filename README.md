@@ -563,7 +563,7 @@ There are a number of smaller responsiveness issues still open at the time of wr
 
  The steps to setup are as follows:
  
- * Install the Django environment in a workspace created with the CI template:
+ #### Install the Django environment in a workspace created with the CI template:
 
 - pip3 install 'django<4'gunicorn (installs Django 3.2)
 - pip3 install dj-database-url===0.5.0 psycopg2
@@ -577,14 +577,27 @@ There are a number of smaller responsiveness issues still open at the time of wr
 - python3 manage.py runserver (1st run of server to test)
 - settings.py ALLOWED_HOSts = [...'8000-address'..]
 
-* Create a new external database:
+##### Create a new external database:
 
 - ElephantSQL - setup a/c if needed
 - create a new instance
 - Click on created database and copy URL
 
-* Create the Heroku app:
+#### Create the Heroku app:
 
+- login to Heroku
+- create a new app
+- In settings tab, reveal cofig vars and add newDATABASE_URL = save link
+
+#### Attach the database:
+In dev environment root dir add env.py
+import os
+os.environ['DATABASE_URL']=['pasted URL from elephant']
+os.environ['SECRET_KEY']='some key"
+
+Add secret key to Heroku config vars
+
+#### Prepare environment and settings.py file
 
 
   - In the GitHub repository, navigate to the Settings tab - pages 

@@ -578,6 +578,7 @@ There are a number of smaller responsiveness issues still open at the time of wr
 - settings.py ALLOWED_HOSts = [...'8000-address'..]
 
 * Create a new external database:
+
 - ElephantSQL - setup a/c if needed
 - create a new instance
 - Click on created database and copy URL

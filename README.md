@@ -505,9 +505,9 @@ HTML validation was performed for the various site pages as follows:  Render the
 
   - ![W3C validator - my_planner page](./django_financial_planner/docs/readme_images/validation-w3c-myplanner-html.png?raw=true "W3C validator (my planner page)")
 
-  - ![W3C validator - my_actions page](./django_financial_planner/docs/readme_images/validation-w3c-myactions.png?raw=true "W3C validator (my actions page)") 
+  - ![W3C validator - my_actions page](./django_financial_planner/docs/readme_images/validation-w3c-myactions-html.png?raw=true "W3C validator (my actions page)") 
 
-   - ![W3C validator - my_user page](./django_financial_planner/docs/readme_images/validation-w3c-myuser.png?raw=true "W3C validator (my actions page)") 
+   - ![W3C validator - my_user page](./django_financial_planner/docs/readme_images/validation-w3c-myuser-html.png?raw=true "W3C validator (my actions page)") 
   
   
   - [W3C validator - 404 page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2F404.html)

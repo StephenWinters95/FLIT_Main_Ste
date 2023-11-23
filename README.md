@@ -110,7 +110,10 @@ And abilty for the user to pickup content which is relevant to their needs.
 ### UX Design Strategy Analysis of Competitors
 Competitor/ similar site analysis was undertaken over a two-week period during September 2023 to analyse existing financial literacy education schemes and information resources, the target audience for same, and to identify gaps which might provide opportunities for a new solution.
 
-The survey details are <a href="https://docs.google.com/spreadsheets/d/15TBSmjT5cqSam1WWOrpNzkS8IpQ4hAMv8d7IEk12FX8/edit#gid=0" target="_blank" >here</a>
+The survey details are (here) [href= target="_blank" ]
+
+<a href="https://docs.google.com/spreadsheets/d/15TBSmjT5cqSam1WWOrpNzkS8IpQ4hAMv8d7IEk12FX8/edit#gid=0" target="_blank">Google sheet - competitor analysis</a>
+
 
 Based on analysing what was available it was found that, there are lots of informational, authoritative resources in Ireland and some very good government sites (such as Revenue, CCPC, citizens information, pensions authority).  These sites, however, are text-heavy and sometimes difficult to cross-reference.  A good understanding of complex english is needed to navigate the content.
 
@@ -138,7 +141,7 @@ More sophisticated users can be fearful of exposure to these sharks, and more vu
 
 ### Financial_Planner site authenticity - <br>
 Acting as a trusted source that offers reliable information to users - is paramount.  Financial_Planner must be a trusted source that offers reliable, verifiable information to users.<br>
-*  Information autenticity - information is primarily to be sourced from verifiable sources (primarily government or educational resources)
+*  Information authenticity - information is primarily to be sourced from verifiable sources (primarily government or educational resources)
 *  Users are to be able to indicate individual content relevance (likes & shares)
 *  ??? User comments, actively moderated before publishing, may be permitted in a future release - however there is a risk of thereby introducing opinion-based content ???
 

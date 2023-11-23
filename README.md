@@ -1,6 +1,9 @@
 # Financial Planner 
 (Developer:  Deirdre McCarthy, Nov 2023)
 
+![Site image](./django_financial_planner/docs/readme_images/val-responsive.png?raw=true "Site image (responsive view)")
+
+
 # Table of Contents:
 1. [About](#about)
 2. [Project Goals: ](#project-goals)
@@ -62,16 +65,15 @@
 
 ## About
 ---------
-Financial Planner is a system which aims to address the recognised gaps in financial literacy within Southern Irish society.
-Background statement of problem.
-Department of Finance initiatives commenced with survey of practitioners Sept 2023.
-Life experience of the developer, extensive reading and personal interest in the FIRE (Financial Independence Retire Early) community.
-Observation that seemingly small decisions taken at various life stages can have large consequences through out life.
+Financial Planner is a system which aims at adults in Ireland who wish to improve their financial literacy, keep up to date, and access resources to empower financial decision making.
+
+Ireland is recognised as having a low level of adult financial literacy by International standards.  The Department of Finance has recently (August 2023) launched an initiatve to being to address this problem.  This initiatve has commencced with a survey of practitioners Sept 2023.
+
+ Ths FinancialPlanner app is suggested as a resource which could quickly be made available and accessible to a large population.  This initial delivery deliberately includes content specific to Ireland and Irish taxation and legal systems, and thereby addresses a knowledge gap which more generic systems might not. 
 <br>
 Observaton that there are multiple sites in existence which address elements of financial planning, but a limited offering for whole-of-life planning, from cradle to grave  <br>
 Lots of individual useful websites but you need to work hard to link together the information.
 Difficult to get information specifically dealing with Irish government revenue and rules.
-
 <br>
 Ideally, by the time development is completed, this site will include:
 * life stage-themed links to useful information
@@ -387,13 +389,13 @@ For Financial_Planner a time-period of weekly sprints was chosen.  Loosely (give
 Initially when performing the design tasks (effectively the first four sprints), the timeboxing aspects were not fully respected.
 However from sprint5 onwards (the first programming sprint), it became easier to decide clearly what was to be included at the outset of each sprint, and to pull specific issues from the backlog and ensure that they were progressed during the planned sprint. 
 I started doing formal sprint reviews with burndown charts, at end of:
-[Sprint 5 retrospective]([Issue #24](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/24) )
+[Sprint 5 retrospective]([Issue #24](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/24 target="_blank") )
 
-[Sprint 6 retrospective]([Issue #33](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/33) )
+[Sprint 6 retrospective]([Issue #33](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/33 target="_blank") )
 
-[Sprint 7 retrospective]([Issue #35](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/35) )
+[Sprint 7 retrospective]([Issue #35](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/35 target="_blank") )
 
-[Sprint 8 retrospective]([Issue #47](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/47) )
+[Sprint 8 retrospective]([Issue #47](https://github.com/DeeMcCart/CI_PP4_Financial_Planner/issues/47 target="_blank") )
 
 As each weekly sprint progressed, I became more fluent with the insights/ burndown charts and started to develop to include actual time logged, a useful metric
 
@@ -460,24 +462,25 @@ And it would still be growing organically if I didn't have a project dealine to 
 
 ### Features Left to Implement
 
-F18 Write a custom app for Admin Console (FUTURE)
+#### F18 Write a custom app for Admin Console (FUTURE)
 The FinancialPlanner site as delivered is a good base site with strong core functionality in the areas of content and task management. It has a decent front-end and is depends strongly on a standard Django Admin console in the backend.  However, as the site has incrementally developed, the database model complexity has increase, so there are a number of tables which need to be manually synchrnised, for example articles vs structured search tags, these are maintained separately and require some overhead to ensure they remain well-designed and consistent.
 So this site would definitely benefit from a well-designed admin console to simplify the database maintanance overhead
 
-F19 Content Creation (ONGOING & FUTURE)
+#### F19 Content Creation (ONGOING & FUTURE)
 Development of the site has required considerable programming effort however to really make it flourish, well-designed, appropriate content is needed.  There is huge scope for worksheets, budgeting lists, and many other tools to be created and made available to users.  This is where the real site benefit lies, in practical, relevant content that is easily understood and convertible into actionable tasks.
 
-F20 Gamification (DEFINITELY FUTURE)
+#### F20 Gamification (DEFINITELY FUTURE)
 One of the original hopes for this site was to include a 'Game of Life' concept whereby a user could start with a notional financial health rating then take decisions and see the financial impact.  This is effectively a financial modelling exercise, the concept of a 'game' makes it less threatening to users, whereas, it could in fact act as a simulation providing 'what if' financial implications of life decisions.
 
-F21 Structured/Lifestage search (NEAR-FUTURE)
+#### F21 Structured/Lifestage search (NEAR-FUTURE)
 The use of the structured article tags to provide a lifestage search feature has been designed and is operational in the backend, but doesnt yet have a front end implementation. This is a key feature as it would allow much more granular content filtering and greatly assist users by filtering down to just articles aligned with the user's needs e.g. 'I want to.... get a mortgage', 'I want to.... move to Ireland', 'I want to.... plan for later life' 
 
-F22 UX and Integration features
+#### F22 UX and Integration features
 Would like a 'share' button on articles and the ability to connect to whatsapp and other social media portals.
 Would like to be able to send email notification for password reminders.
 Would like to improve appearance of task and response windows, they are functional now but could be more beautiful.
 
+#### Other features to be identified via target-user interaction
 There are lots of other features which could be useful.  The version of FinancialPlanner delivered today is really a proof-of-concept and ideally it would now be exposed to a wider group of potential users, and based on their feedback and real-life needs, a development road map coud be established.  In the absence of an app to show, it has been difficult to have the 'what would you like in a financial literacy app?' discussion with potential users, but the FinancialPlanner app as-is is fine for demo and discussion purposes.
 I would hope to develop FinancialPlanner further as a commercial app.  
                
@@ -513,12 +516,18 @@ I would hope to develop FinancialPlanner further as a commercial app.
 - HTML
 HTML validation was performed for the various site pages as follows:  Render the page via the app, right click on the page contents and take option to copy (rendered) source.  Paste this into a file and subject that file to the W3C validator.  
 
-  - All errors returned from the validator were pursued and resolved.
-  
+  - All errors returned from the validator were pursued and resolved.  Examples are shown below:
+ 
   on the index html pages when checked in the W3C validator:
-  - [W3C validator - index page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Fvalidation-w3c-index-html.png) 
-  - [W3C validator - my_planner page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Fvalidation-w3c-myplanner-html.png) 
-  - [W3C validator - my_actions page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Fvalidation-w3c-myactions-html.png) 
+
+  - ![W3C Validator - index page](./django_financial_planner/docs/readme_images/validation-w3c-index-html.png?raw=true "W3C validator (index page)")
+
+
+  - [W3C validator - my_planner page](./django_financial_planner/docs/readme_images/validation-w3c-myplanner-html.png?raw=true "W3C validator (my planner page)")
+
+  - [W3C validator - my_actions page](./django_financial_planner/docs/readme_images/validation-w3c-myactions.png?raw=true "W3C validator (my actions page)") 
+
+   - [W3C validator - my_user page](./django_financial_planner/docs/readme_images/validation-w3c-myuser.png?raw=true "W3C validator (my actions page)") 
   
   
   - [W3C validator - 404 page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2F404.html)

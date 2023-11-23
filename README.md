@@ -542,13 +542,10 @@ The website was tested on the following browsers:
 ### Testing Features
 ![Feature testing page1](./django_financial_planner/docs/readme_images/val-feature-p1.png?raw=true "Feature testing page1") 
 
+![Feature testing page2](./django_financial_planner/docs/readme_images/val-feature-p2.png?raw=true "Feature testing page2") 
 
+![Feature testing page3](./django_financial_planner/docs/readme_images/val-feature-p3.png?raw=true "Feature testing page3") 
 
-
-
-![Feature testing p1](./assets/readme_images/val-feature-p1.png?raw=true "testing features")
-![Feature testing p2](./assets/readme_images/val-feature-p2.png?raw=true "testing features")
-![Feature testing p3](./assets/readme_images/val-feature-p3.png?raw=true "testing features")
 
 ### Bugs and issues
 Almost 70 issues were recorded, I used an excel spreadhseet to keep track.  At the time of writing, 9 issues remain open.

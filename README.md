@@ -1,5 +1,5 @@
 # Financial Planner 
-(Developer:  Deirdre McCarthy, Nov 2023)
+Developer:  **Deirdre McCarthy**, Nov 2023
 
 ![Site image](./django_financial_planner/docs/readme_images/val-responsive.png?raw=true "Site image (responsive view)")
 
@@ -65,27 +65,29 @@
 
 ## About
 ---------
-Financial Planner is a system which aims at adults in Ireland who wish to improve their financial literacy, keep up to date, and access resources to empower financial decision making.
+Financial Planner is a system which aims at adults in Ireland who wish to improve their financial literacy, keep up to date, and access resources to **empower** financial decision making.
 
-Ireland is recognised as having a low level of adult financial literacy by International standards.  The Department of Finance has recently (August 2023) launched an initiatve to being to address this problem.  This initiatve has commencced with a survey of practitioners Sept 2023.
+Ireland is recognised as having a low level of adult financial literacy by International standards.  The Department of Finance has recently (August 2023) launched an initiative to address this problem, commencing with a survey of practitioners Sept 2023.
 
- Ths FinancialPlanner app is suggested as a resource which could quickly be made available and accessible to a large population.  This initial delivery deliberately includes content specific to Ireland and Irish taxation and legal systems, and thereby addresses a knowledge gap which more generic systems might not. 
+ Ths FinancialPlanner app is suggested as a resource which could quickly be made available and accessible to a large population.  This first version includes Ireland-specific content, and thereby addresses a knowledge gap, which is not covered in more generic systems. 
 <br>
-Observaton that there are multiple sites in existence which address elements of financial planning, but a limited offering for whole-of-life planning, from cradle to grave  <br>
+In conducting a survey of the resources available online to Irish users, it was noted that there are multiple sites exist which address elements of financial planning, but a limited offering for whole-of-life planning, from cradle to grave.
+<br>
 Lots of individual useful websites but you need to work hard to link together the information.
 Difficult to get information specifically dealing with Irish government revenue and rules.
 <br>
-Ideally, by the time development is completed, this site will include:
+Ideally, the site goals were to include:
 * life stage-themed links to useful information
 * content and theme management
 * ability for users to personalise their site experience by marking resources (articles and links) of interest as favourites, which are highlighted on their return (similar to bookmarks)
 * would absolutely love to have a game which takes the user from age 0 to their resting age and allows them to visualise the consequences of financial decisions
    
-### Responsive Mockup
+### Responsiveness
+The site is built, with the help of Bootstrap 5, to be fully responsive so it can be used on a range of devices.
+
 <details><summary>Responsive Mockup</summary>
 <img src="./django_financial_planner/docs/readme_images/val-responsive.png">
 </details>
-
 
 ### Live webpage link
 https://financial-planner-6a030328a9ac.herokuapp.com/
@@ -101,17 +103,20 @@ https://financial-planner-6a030328a9ac.herokuapp.com/
 7. And is accessible, responsive and relevant.
   
 ### UX Design Strategy
-To be described.
-But focus is on accessible content, for the naive or more sophisticated user.
+Focus is on accessible content, for the naive or more sophisticated user.
 And abilty for the user to pickup content which is relevant to their needs.
 
 
 ### UX Design Strategy Analysis of Competitors
 Competitor/ similar site analysis was undertaken over a two-week period during September 2023 to analyse existing financial literacy education schemes and information resources, the target audience for same, and to identify gaps which might provide opportunities for a new solution.
-The research methodology was initially Google searches (ideally to be followed up by user interviews with thought leaders in the area of financial literacy education).
 
-<details><summary>Summary of findings</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/strategy_competitive_analysis.jpg"></details>
+The survey details are here:  https://docs.google.com/spreadsheets/d/15TBSmjT5cqSam1WWOrpNzkS8IpQ4hAMv8d7IEk12FX8/edit#gid=0
+
+Based on analysing what was available it was found that, there are lots of informational, authoritative resources in Ireland and some very good government sites (such as Revenue, CCPC, citizens information, pensions authority).  These sites, however, are text-heavy and sometimes difficult to cross-reference.  A good understanding of complex english is needed to navigate the content.
+
+There are also a lot of opinion-based or payment-required portals, and these can be hard to distinguish.
+
+Overall, existing sites seem to be lacking in process-flows and graphical content. 
 
 ### UX Design Strategy Target Audience
 This **first** release of the Financial Planner portal is aimed at:

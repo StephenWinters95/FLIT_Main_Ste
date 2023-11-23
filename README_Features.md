@@ -1,9 +1,7 @@
 # Financial Planner 
 (Developer:  Deirdre McCarthy, Nov 2023)
 # Features within the Financial Planner App:
-6. [Features](#features)
-    1. [Included](#features-in-scope)
-    2. [Future Development](#features-left-to-implement)
+ [Features](#features)
 
 ## Features
 ----------------

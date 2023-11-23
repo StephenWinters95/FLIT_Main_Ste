@@ -508,14 +508,12 @@ HTML validation was performed for the various site pages as follows:  Render the
   - ![W3C validator - my_actions page](./django_financial_planner/docs/readme_images/validation-w3c-myactions-html.png?raw=true "W3C validator (my actions page)") 
 
    - ![W3C validator - my_user page](./django_financial_planner/docs/readme_images/validation-w3c-myuser-html.png?raw=true "W3C validator (my actions page)") 
-  
-  
-  - [W3C validator - 404 page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2F404.html)
-  
-  - [W3C validator - settings page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdeemccart.github.io%2FCI_PP4_Financial_Planner%2Fsettings.html)
 
 ### CSS Validation
-  - No errors returned when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https://deemccart.github.io/CI_PP4_Financial_Planner/&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) 
+  - No errors returned when passing through the official Jigawa validator.  
+
+- ![(Jigaw) CSS Validator)](./django_financial_planner/docs/readme_images/val-css.png?raw=true "CSS validator") 
+
 
 ### Javascript Validation
   - No errors returned, when javascript was pasted into the jshint validator - 

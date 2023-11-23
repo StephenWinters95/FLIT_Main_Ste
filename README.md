@@ -548,22 +548,22 @@ The website was tested on the following browsers:
 
 
 ### Bugs and issues
-Almost 70 issues were recorded, I used an excel spreadhseet to keep track.  At the time of writing, 9 issues remain open.
+Almost 70 issues were recorded, I used an excel spreadhseet to keep track.  
+
 The structure of the log is shown here:
 
-<details><summary>issue tracker</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/val-issues-sampleissue_tracker.jpg">
-</details>
+![Feature testing page3](./django_financial_planner/docs/readme_images/val-issuelog.png?raw=true "Feature testing page3") 
 
-And the remaining open issues are listed here:
-<details><summary>issue tracker</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/val-issues-open.png">
-</details>
+There are a number of smaller responsiveness issues still open at the time of writing (icon alignment on mobile phone)
 
 
 ## Deployment
 <br>
-* The site was deployed to GitHub pages. The steps to deploy are as follows: 
+* The site architecture requires git, Cloudinary, ElephantSQL to support PostGres database, Heroku and is therefore more complex.
+
+ The steps to setup are as follows:
+ 
+ * 
   - In the GitHub repository, navigate to the Settings tab - pages 
   - From the source section drop-down menu, select the Master Branch
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 

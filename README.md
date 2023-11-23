@@ -500,25 +500,20 @@ HTML validation was performed for the various site pages as follows:  Render the
  
   on the index html pages when checked in the W3C validator:
 
-  - ![W3C Validator - index page](./django_financial_planner/docs/readme_images/validation-w3c-index-html.png?raw=true "W3C validator (index page)")
+![W3C Validator - index page](./django_financial_planner/docs/readme_images/validation-w3c-index-html.png?raw=true "W3C validator (index page)")
 
 
-  - ![W3C validator - my_planner page](./django_financial_planner/docs/readme_images/validation-w3c-myplanner-html.png?raw=true "W3C validator (my planner page)")
+![W3C validator - my_planner page](./django_financial_planner/docs/readme_images/validation-w3c-myplanner-html.png?raw=true "W3C validator (my planner page)")
 
-  - ![W3C validator - my_actions page](./django_financial_planner/docs/readme_images/validation-w3c-myactions-html.png?raw=true "W3C validator (my actions page)") 
+![W3C validator - my_actions page](./django_financial_planner/docs/readme_images/validation-w3c-myactions-html.png?raw=true "W3C validator (my actions page)") 
 
-   - ![W3C validator - my_user page](./django_financial_planner/docs/readme_images/validation-w3c-myuser-html.png?raw=true "W3C validator (my actions page)") 
+![W3C validator - my_user page](./django_financial_planner/docs/readme_images/validation-w3c-myuser-html.png?raw=true "W3C validator (my actions page)") 
 
 ### CSS Validation
-  - No errors returned when passing through the official Jigawa validator.  
+
+No errors returned when passing through the official Jigsaw validator.  
 
 - ![(Jigaw) CSS Validator)](./django_financial_planner/docs/readme_images/val-css.png?raw=true "CSS validator") 
-
-### Accessibility
-The site was tested using the WAVE WebAIM accessibility evaluation tool.
-All pages pass with 0 errors 
-- [Accessibility: index page](https://wave.webaim.org/report#/https://deemccart.github.io/CI_PP4_Financial_Planner/)
-- [Accessibility: 404 page](https://wave.webaim.org/report#/https://deemccart.github.io/CI_PP4_Financial_Planner/404.html)
 
 
 ### Performance
@@ -542,6 +537,7 @@ The website was tested on the following devices:
 * HP laptop & associated widescreen monitor
 * Samsung Galaxy S10 tablet
 * Motorola G(7) android phone
+* Lenovo IdeaPad Flex3 (mini laptop)
 
 ### Multi-browser Testing
 The website was tested on the following browsers:

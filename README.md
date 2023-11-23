@@ -110,10 +110,9 @@ And abilty for the user to pickup content which is relevant to their needs.
 ### UX Design Strategy Analysis of Competitors
 Competitor/ similar site analysis was undertaken over a two-week period during September 2023 to analyse existing financial literacy education schemes and information resources, the target audience for same, and to identify gaps which might provide opportunities for a new solution.
 
-The survey details are (here) [href= target="_blank" ]
+The survey details are here:
 
 <a href="https://docs.google.com/spreadsheets/d/15TBSmjT5cqSam1WWOrpNzkS8IpQ4hAMv8d7IEk12FX8/edit#gid=0" target="_blank">Google sheet - competitor analysis</a>
-
 
 Based on analysing what was available it was found that, there are lots of informational, authoritative resources in Ireland and some very good government sites (such as Revenue, CCPC, citizens information, pensions authority).  These sites, however, are text-heavy and sometimes difficult to cross-reference.  A good understanding of complex english is needed to navigate the content.
 
@@ -162,17 +161,16 @@ In designing the site, then, particular emphasis is placed on accessibility, nav
 
 ### UX Design Scope User Requirements and Expectations
 <br>
-From the analysis of existing financial literacy/informational websites geared towards Ireland, a set of possible requirements was identified for a new portal.
-<br>
-The basic requirement is to provide a meta-portal which allows theme-based grouping of financial literacy resources.
+From the analysis of existing financial literacy/informational websites geared towards Ireland, a set of possible requirements was identified for a meta-portal which allows theme-based grouping of financial literacy resources.
 <br>    
+
 <ul>MVP Requirements:
 <li>Must be intuitive to use</li>
 <li>Must be easy to learn</li>
 <li>Good for first time or returning users</li>
 <li>Accessible - no ad display & no paywall</li>
 <li>Easy visbility of financial themes</li>
-<li> with ability to identify 'favourite' themes of interest and to hide themes not of interest (perhaps by have a 'my interests' page first and the main selection page second for returning users)</li>
+<li> with ability to identify 'favourite' themes of interest and to hide themes not of interest (reading list?)</li>
 </ul>
 <br>
 <ul>Requirements - Desirable:
@@ -180,35 +178,18 @@ The basic requirement is to provide a meta-portal which allows theme-based group
 <li>  creation of themes/ catgories, with title and brief descriptor</li>
 <li>  ability to add resources to a theme, by resource type (link / tool / article/ blog post/ video clip)</li>
 <li> Ability to assign estimated reading time</li>
-  <li> ability to add one resoure to multiple themese?  Maybe using hashtags? </li>
+<li> ability to add one resoure to multiple themese?  Maybe using hashtags? </li>
   
-<li>From a user perspective, should-haves and nice to haves include </li>li>
+From a **user perspective**, should-haves and nice to haves include: 
 <li> Ability to filter content to just items/articles of interest</li>
-<li> Distinguish between first time and returning user</li>li>
+<li> Distinguish between first time and returning user</li>
 <li> Ability to browse annonymously and only create a profile once trust has been established </li>li>
-<li> Guarantee of no ads or mis-use of information </li>li>
+<li> Guarantee of no ads or mis-use of information </li>
 <li> cookie-free? </li>
 <li> Ability to judge authenticity of informatio (possibly by upvotes?)</li>
-<li> Ability to comment? </li>li>
+<li> Ability to comment? </li>
 <li> Ability to browse FAQ within a theme or topic? </li>
 
-
-<li>bility to </li>Would like to be able to track user statistics (cookies)</li>
-<li>Would like to be able to auto-generate new equations</li>
-<li>Would like to be able to track equations already used</li>
-<li>Would like to be able to set difficulty levels</li>
-</ul>
-<br>
-<ul>To incorporate as many of the Wordle characteristics below as possible:
-<li>Simple interface with uncluttered screen</li>
-<li>clearly understood rules</li>
-<li>scarcity - user can only access one game per day</li>
-<li>reponsiveness - ability to play on small screens (convenient for user)</li>
-<li>no time-out - can fit into small pockets of time as game will remain on-screen until 6 guesses completed</li>
-<li>feedback and interaction - user immediately gets feedback for each guess</li>
-<li>statistic tracking - user can track # of attempts to solve, number of days solved, success rates</li>
-<li>peer-group communication - user can share their problem-solving pattern (without revealing any part of the solution) to friends who may also play</li>
-</ul>
 
 ### UX Design Scope - Data
 Initial themes loaded and displayed will be based on ROI (Republic of Ireland) datasets
@@ -229,7 +210,6 @@ Written in the format 'As a **role** I want to **action** to achieve **desired o
 * SO-10 As site owner, I would like to have the capability to organise the content by lifestage, theme, and other criteria (possibly hierarchical groupings, hashtags) to allow cross referncing of user needs to content 
 * SO_11 As site owner, I would like to encourague users to engage with each article's content, by providing suggested actions and next steps for the user to take 
 * SO_12 As site owner, I would like to provide a personal database where users can store their own actions and record their progress in following the steps
-* SO_13 As site owner, I would like to 
 * SO_14 As site owner, I would like to make the content of the database shareable and reusable to others (perhaps subject to signing a re-use agreement) by providing an API to the published database
 
 ### First-time User Goals
@@ -249,16 +229,10 @@ about page which clearly identifies information souces, information gathering/ha
 * RU_02 As a returning user I want to create a user profile so that I can personalise my site experience (profile image, bookmarks, actions)
 * RU_03 As a returning user want to build my knowledge in certain areas
 * RU_04 As a returning user I want to build the body of knowledge for other users (by adding credibility ratings).
-* RU_05 As a returning user I want to 
-* RU_06 As a returning user I
-* RU_07 As a returning user I 
-* RU_08 (FUTURE) As a returning user I 
-* RU_09 (FUTURE) As a returning user I 
-* RU_10 (FUTURE) As a returning user I 
 
 ### Other stakeholder Goals
-* OT_01 As an educator I  
-* OT_02 As The Department of Finance Ireland I want to use this site towards achieving financial literaccy objectives and address the deficit identified in report XXXXX of 20XX.
+* OT_01 As an educator I would like to be able to provide mied-media content and task-related elements such as worksheets  
+* OT_02 As The Department of Finance Ireland I want to use this site towards achieving financial literaccy objectives
 
 
 ## UX Design Decisions
@@ -293,11 +267,6 @@ The website itself is designed to be fairly unobtrusive.  Article fonts were som
 Again, designed to be fairly unobtrusive and not to draw attention to the background.  The articles themselves contain a colourful image and content may include images.  A green background colour and a default green-money logo have been used where possible on the site.
 
 ### Design Images
-This site has very few images as the focus is on the game content.
-A 'Wordle-type' logo is used on the Intro page.
-<details><summary>'Wordle-type' logo</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/numble_icon.jpg">
-</details>
 
 ### Design Images - Icons and Symbols
 

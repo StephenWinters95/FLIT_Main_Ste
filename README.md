@@ -520,16 +520,10 @@ No errors returned when passing through the official Jigsaw validator.
 Performance for all pages was tested using the Lighthouse tool within Google Chrome.  Performance was at 98% for the index page (intro modal).
 
 
-- ![Performance - Lighthouse - index](./django_financial_planner/docs/readme_images/val-css.png?raw=true "CSS validator") 
-
-<details><summary>Performance: Index page</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/validation-lighthouse-performance-index-html1.png">
-</details>
+![Performance - Lighthouse - index](./django_financial_planner/docs/readme_images/validation-lighthouse-performance-index-html1.png?raw=true "Lighthouse - index page") 
 
 
-<details><summary>Performance: article detail page</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/validation-lighthouse-performance-article-detail.png">
-</details>
+![Performance - article detail](./django_financial_planner/docs/readme_images/validation-lighthouse-performance-article-detail-html.png?raw=true "Lighthouse - index page") 
 
 
 ### Device Testing
@@ -546,6 +540,12 @@ The website was tested on the following browsers:
 * Mozilla Firefox v112.1.0 (Motorola g(7) phone)
 
 ### Testing Features
+![Feature testing page1](./django_financial_planner/docs/readme_images/val-feature-p1.png?raw=true "Feature testing page1") 
+
+
+
+
+
 ![Feature testing p1](./assets/readme_images/val-feature-p1.png?raw=true "testing features")
 ![Feature testing p2](./assets/readme_images/val-feature-p2.png?raw=true "testing features")
 ![Feature testing p3](./assets/readme_images/val-feature-p3.png?raw=true "testing features")

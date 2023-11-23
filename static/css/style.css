@@ -67,7 +67,7 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #23BBBB;
+    background-color: #1c9797;
 }
 
 .author {
@@ -131,18 +131,18 @@ body {
 }
 
 .btn-signup {
-    background-color: #23BBBB;
+    background-color: #1c9797;
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
     background-color: #fff;
-    color: #23BBBB;
+    color: #1c9797;
 }
 
 .btn-edit {
-    background-color: #23BBBB;
+    background-color: #1c9797;
     color: #fff;
 }
 
@@ -181,7 +181,7 @@ body {
 }
 
 .link {
-    color: #23BBBB;
+    color: #1c9797;
     text-decoration: none;
 }
 

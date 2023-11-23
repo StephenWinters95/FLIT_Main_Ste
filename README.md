@@ -77,14 +77,13 @@ Ideally, by the time development is completed, this site will include:
 * life stage-themed links to useful information
 * content and theme management
 * ability for users to personalise their site experience by marking resources (articles and links) of interest as favourites, which are highlighted on their return (similar to bookmarks)
-* quiz?  confirmation of understanding?  Might be a bit patronising?  who the 
 * would absolutely love to have a game which takes the user from age 0 to their resting age and allows them to visualise the consequences of financial decisions
    
 ### Responsive Mockup
 https://ui.dev/amiresponsive?url=https://deemccart.github.io/CI_PP4_FinancePlanner/
 
 ### Live webpage link
-https://deemccart.github.io/CI_PP4_Financial_Planner
+https://financial-planner-6a030328a9ac.herokuapp.com/
 
 ## Project Goals
 ----------------
@@ -106,38 +105,17 @@ And abilty for the user to pickup content which is relevant to their needs.
 Competitor/ similar site analysis was undertaken over a two-week period during September 2023 to analyse existing financial literacy education schemes and information resources, the target audience for same, and to identify gaps which might provide opportunities for a new solution.
 The research methodology was initially Google searches (ideally to be followed up by user interviews with thought leaders in the area of financial literacy education).
 
-Financial literarcy Content is, in many cases, rich, detailed and valualable.
-Government-funded websites such as CCPC, Citizens advice, Revenue offer clear and authoritive advice, and it is possible to determine when the advice was last updated.
-Consumer-led sites such as switcher.ie, bonkers.ie, cheapestoil.ie offer comparisons of specific services or products (electricity supplier, telecomms providers, fuel prices) . 
-However it is also quite dispersed, and topic searches can require considerable persistence to obtain a full picture.
-Truth verification can be difficult, opinion-based sources can appear to hold equal weight with authoritiative sources.  
-Vulnerable users researching can fall prey to information-gathering websites which then seek to market or target the customers for revenue-earning purposes, often recycling the customers own information as part of this exercise.
-Financial literacy programmes are taking shape in schools, however there does not seem to be entire-life financial educational focus
-Bank of Ireland in ther consumer study of XXXXXX, observed that many middle-class parents will gift their children, not only with financial resources, but with the knowledge and learning of how to manage and maintain these resources.
-People raised in humble circumstances neither benefit from inherited wealth, nor typically do they absorb this detailed knowledge within their home environment. 
-Retail banks, who traditionally prospered through relationship marketing, have since c. 2012 retreated into transactional processing, which reduces the opportunity for customers to learn from conversations with bank staff.  
-Post offices, offered as an alternative, are primarily transaction focussed, and reply on unqualified staff who can provide limited financial guidance to customers.
-People are being increasingly directed towards self-learning.
-
-But this is challenging because of the huge diversity of information sources and resources.
-
-Therefore, the gap to be adressed is navigational.... how does a user find information relevant to their needs? 
-.
-List of websites/pages analysed includes:
-..... to be listed here .......
-
-
 <details><summary>Summary of findings</summary>
 <img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/strategy_competitive_analysis.jpg"></details>
 
 ### UX Design Strategy Target Audience
 This **first** release of the Financial Planner portal is aimed at:
 
-a. Individuals (rather than companies or organisations)<br>
+a. Individuals (rather than companies or organisations)
 b. Who have financial agency (decision-making capacity)
 c. who reside or operate within the financial and legal boundaries of the Republic of Ireland (as financial content is specific to this territory)
 d. who are at various adult life stages (18 -> end of life) 
-3. who have internet access and the capacity to navigate a website
+e. who have internet access and the capacity to navigate a website
 f. with the ability to read engish-language content (some of the content may be translatable e.g. using Google translate, but this cannot be assumed or taken for granted)
 g. who wish to understand what financial information is relevant and important to a particular life stage/event.
 
@@ -296,20 +274,10 @@ about page which clearly identifies information souces, information gathering/ha
 </details>
   
 ### Fonts Chosen
-The fonts are deliberately chosen to mimic appearance of Wordle screen. 
-In real life, Wordle uses proprietary fonts (NYT Karnak Condensed), with Helventica Sans for the grid and button text.  A reasonably close match, which is widely available on a range of devices, was thought to be the Google bebas Neue font.
-
-However, when testing the site this did not present a good look, and so Roboto Slab was chosen as a better alternative.
-Fallback fronts are used in both cases
+The website itself is designed to be fairly unobtrusive.  Article fonts were somewhat limited with the standard range of Summernote (Article content creator) fonts, the best of the options seemed to be Arial 16.
 
 ### Colour Scheme 
-The colour combinations mimic Wordle's game (for consistency and to ease the user learning experience).
-   
-The choice of colours for Financial Planner is very much in accordance with user stories S_02 (closely emulate the Wordle look & feel); FTU_02 (first-time user to easily navigate and learn the site) - consistent with Wordle so as to speed the learning process and encourage the focus on the game content, rather than on how to use it.
-
-<details><summary>Colours- similar to Wordle</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/django_financial_planner/docs/readme_images/f07_game_grid_in_progress.jpg">
-</details>
+Again, designed to be fairly unobtrusive and not to draw attention to the background.  The articles themselves contain a colourful image and content may include images.  A green background colour and a default green-money logo have been used where possible on the site.
 
 ### Design Images
 This site has very few images as the focus is on the game content.
@@ -320,8 +288,7 @@ A 'Wordle-type' logo is used on the Intro page.
 
 ### Design Images - Icons and Symbols
 
-Certain icons and symbols (again based on Wordle look & feel) are used for quicklinks e.g. ? for About page, graphy symbol for Stats page, cog symbol for settings page. 
-
+Consistent icons and symbols are used throughout the site, and in multiple contexts - e.g. Certain icons for likes, bookmarks, tasks, and responses (comments) appear in both a user and an article context.  These are descibed more fully within the features section.
 
 ## Agile
 An Agile approach was followed in plannning this project.  This is somewhat in contrast to the developer's well-practised 'waterfall' habits and presented both a challenge and an opportunity to think in a different way about deliverables and incremental delivery.
@@ -329,7 +296,7 @@ It was helpful that the developer participated in a hackathon during Sept 2023, 
 This led to a much clearer understanding of User story and task breakdown, as well as how github can be tailored  to add value, rather than overhead(!), to programming work.
 * One precept which was difficult to master was respecting the timeboxing of each iteration.  Attempts to 'just finish' a task by extending the iteration by a day or two, needed to be curbed.  Instead, I had to (will have to) train myself to end the sprint, then assess which work had been completed or not.
 * Story points present another challenge.  A very natural interpretation of story points is to assign them a time value (rather than an 'effort' value).  So, at the outset, the most natural approach felt like assigning each task an estimated duration, and reflecting on story points as hours.  This allowed me to capacity plan the first couple of sprints/ iterations based on the time I had available..... I await to see if I will continue this as the project progresses, or whether I move to a more fluid interpretation of SPs.
-* However with the magic law of time (better check what magic law this is) creative tasks in which I am fully engaged make the time fly, meaning I can spend quite a bit of elapsed time but without feeling the straing, whereas less desirable tasks cause time to drag!  <- how does this reflect story points?
+* However with the magic law of time (better check what magic law this is) creative tasks in which I am fully engaged make the time fly, meaning I can spend quite a bit of elapsed time but without feeling the strain, whereas less desirable tasks cause time to drag!  <- how does this reflect story points?
 * Agile representation using github tools
 
    
@@ -353,6 +320,7 @@ At the outset, an issue template was created specifically for user stories.  Thi
 * Tasks:  Checkbox-marked list of tasks to address this user story.
 
 Mid-way through the project, I created a template to capture project bugs to facilitate separate tracking/reporting.
+I found this useful for 'larger' bugs although I maintained an issue logging spreadsheet for the project, and logged almost 70 issues in the 6 or so weeks of development.
 
 
 ### Project Issues
@@ -465,24 +433,47 @@ An improved kanban view (developed mid-way through the project) is shown here, n
  
 ### Agile Observations and learnings
 * Observation from hackathon - short user story names are best for visibility and tracking
-* Observation from hackathon - a user story is generally a fairly big block with a number of subtasks.  It is not advisable to have an entire user story which is longer than a sprint, as it will be carried forward in the 'to do' or 'in progress' bucket without clear visibility.  Therefore likely to try breaking a complex user story into subtasks.  Both the user story and the sub tasks will be listed as issues, the user story will remain in the 'to do' bucket after grooming, and its tasks will be ticked off when their individual issues are completed.  The individual issues will move through the kanban board lifecycle of backlog -> to do -> in progress -> review -> done.  The 'parent' user story will remain at 'to do' (or possibly 'in progress'???)
+* Observation from hackathon - a user story is generally a fairly big block with a number of subtasks.  It is not advisable to have an entire user story which is longer than a sprint, as it will be carried forward in the 'to do' or 'in progress' bucket without clear visibility.  Therefore likely to try breaking a complex user story into sub-stories/tasks.  Both the user story and the sub tasks will be listed as issues, the user story will remain in the 'to do' bucket after grooming, and its tasks will be ticked off when their individual issues are completed.  The individual issues will move through the kanban board lifecycle of backlog -> to do -> in progress -> review -> done.  The 'parent' user story will remain at 'to do' (or possibly 'in progress'???)
 * Observation from hackathon - when merging of PR (pull requests) was performed in a distributed development environment, it was possible to link the PR to a kanban issue, and to automatically update the issue status based on the PR.   I would be interested in exploring how ths might be done for a solo developr (possibly workflows?)
 * Observation - if I reference the issue # on a commit (but must be in the format #8 ) then I can hyperlink from that commit message back to the relevant user story or issue.
-* Use of EPIC as a label rather than as an issue - this was an early decisiion, although when reviewing our cohort leader Alan B's PP4 project, he showed how he had used Issues within Github to represent EPICS.  This seemed to work really well as it was possible to demonstrate a hierarchy of EPIC -> issues by including a link to the sub-issues within the EPIC 'issue' body.  Thus it was possible to click on the issues within the EPIC, check their status, then return to the EPIC.
+* Use of EPIC as a label rather than as an issue - this was an early decision, although when reviewing our cohort leader Alan Bushell's PP4 project, he showed how he had used Issues within Github to represent EPICS.  This seemed to work really well as it was possible to demonstrate a hierarchy of EPIC -> issues by including a link to the sub-issues within the EPIC 'issue' body.  Thus it was possible to click on the issues within the EPIC, check their status, then return to the EPIC.
 At the time of seeing this I had already committed to using labels to represent EPICs, so I stayed with my original approach just to see how it would work in practice.
 * Use of a public project repo - I made the repo public early on, as I had assumed this was needed for assessment.  And about half way through I was surprised to see some comments on my tasks from another (unknown) github user offering assistance with development - kind of like an open source approach.  So they had commented on a couple of tasks.  I kept the repo public, but changed the settings so that only users who had previously committed to the repo could comment, and I blocked that particular user from the workspace....
 
 ## Features 
- 
-
+Implemented features are fully documented in the Features readme, located at https://github.com/DeeMcCart/CI_PP4_Financial_Planner/blob/main/README_Features.md 
+It was helpful to create this as a separate document, as it is also offered to users as a 'how to' guide.
 
 ### Features in Scope 
-
+Refer to the features guide above.
 
 ### Implementation Decisions
-<br>
+This project was somewhat unusual for me as I followed the Agile principle of not defining every feature fully at the start of a 8-week project process.  Instead, the project evolved and took its own shape over the duration.  I followed a principle of incremental delivery, deployed early and established the core structures pretty much as per the walkthrough training given.  
+Some of the site ideas and features needed only really became clear as I played with the site as it was delivered, and experienced frustration or spotted opportunites or elements that were worth adding. So the site grew organically as time went on.
+And it would still be growing organically if I didn't have a project dealine to submit (sometimes deadlines are really useful!!!)
 
 ### Features Left to Implement
+
+F18 Write a custom app for Admin Console (FUTURE)
+The FinancialPlanner site as delivered is a good base site with strong core functionality in the areas of content and task management. It has a decent front-end and is depends strongly on a standard Django Admin console in the backend.  However, as the site has incrementally developed, the database model complexity has increase, so there are a number of tables which need to be manually synchrnised, for example articles vs structured search tags, these are maintained separately and require some overhead to ensure they remain well-designed and consistent.
+So this site would definitely benefit from a well-designed admin console to simplify the database maintanance overhead
+
+F19 Content Creation (ONGOING & FUTURE)
+Development of the site has required considerable programming effort however to really make it flourish, well-designed, appropriate content is needed.  There is huge scope for worksheets, budgeting lists, and many other tools to be created and made available to users.  This is where the real site benefit lies, in practical, relevant content that is easily understood and convertible into actionable tasks.
+
+F20 Gamification (DEFINITELY FUTURE)
+One of the original hopes for this site was to include a 'Game of Life' concept whereby a user could start with a notional financial health rating then take decisions and see the financial impact.  This is effectively a financial modelling exercise, the concept of a 'game' makes it less threatening to users, whereas, it could in fact act as a simulation providing 'what if' financial implications of life decisions.
+
+F21 Structured/Lifestage search (NEAR-FUTURE)
+The use of the structured article tags to provide a lifestage search feature has been designed and is operational in the backend, but doesnt yet have a front end implementation. This is a key feature as it would allow much more granular content filtering and greatly assist users by filtering down to just articles aligned with the user's needs e.g. 'I want to.... get a mortgage', 'I want to.... move to Ireland', 'I want to.... plan for later life' 
+
+F22 UX and Integration features
+Would like a 'share' button on articles and the ability to connect to whatsapp and other social media portals.
+Would like to be able to send email notification for password reminders.
+Would like to improve appearance of task and response windows, they are functional now but could be more beautiful.
+
+There are lots of other features which could be useful.  The version of FinancialPlanner delivered today is really a proof-of-concept and ideally it would now be exposed to a wider group of potential users, and based on their feedback and real-life needs, a development road map coud be established.  In the absence of an app to show, it has been difficult to have the 'what would you like in a financial literacy app?' discussion with potential users, but the FinancialPlanner app as-is is fine for demo and discussion purposes.
+I would hope to develop FinancialPlanner further as a commercial app.  
                
 ## Technologies
 
@@ -532,8 +523,8 @@ HTML validation was performed for the various site pages as follows:  Render the
   - No errors returned when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https://deemccart.github.io/CI_PP4_Financial_Planner/&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en) 
 
 ### Javascript Validation
-  - No errors returned, when javascript was pasted into the jshint validator - however 10 unused variables were identified, which are the function names.    
-<details><summary>jshint - no errors however the function names were identified as unused variables</summary>
+  - No errors returned, when javascript was pasted into the jshint validator - 
+<details><summary>jshint - no errors </summary>
 <img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/jshint_result.jpg">
 </details>
 
@@ -554,7 +545,7 @@ Performance for all pages was tested using the Lighthouse tool within Google Chr
 
 ### Device Testing
 The website was tested on the following devices:
-* HP laptop
+* HP laptop & associated widescreen monitor
 * Samsung Galaxy S10 tablet
 * Motorola G(7) android phone
 
@@ -564,14 +555,24 @@ The website was tested on the following browsers:
 * Google Chrome v112.0.5615.136 (Samsung Galaxy tablet)
 * Mozilla Firefox v112.1.0 (Motorola g(7) phone)
 
-### Testing User Stories
-![User story testing](./assets/readme_images/user-stories-checked-against-features.jpg?raw=true "testing user stories")
+### Testing Features
+![Feature testing p1](./assets/readme_images/val-feature-p1.jpg?raw=true "testing features")
+![Feature testing p2](./assets/readme_images/val-feature-p2.jpg?raw=true "testing features")
+![Feature testing p3](./assets/readme_images/val-feature-p3.jpg?raw=true "testing features")
 
 ### Bugs and issues
+Almost 70 issues were recorded, I used an excel spreadhseet to keep track.  At the time of writing, 9 issues remain open.
+The structure of the log is shown here:
+
 <details><summary>issue tracker</summary>
-<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/issue_tracker.jpg">
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/val-issues-sampleissue_tracker.jpg">
 </details>
-Quite a few calculation and display issues were encountered during development, the above lists the issues encountered and resolved.
+
+And the remaining open issues are listed here:
+<details><summary>issue tracker</summary>
+<img src="https://deemccart.github.io/CI_PP4_Financial_Planner/docs/readme_images/val-issues-open.png">
+</details>
+
 
 ## Deployment
 <br>
@@ -612,15 +613,16 @@ https://nobsmarketplace.com/blog/how-do-you-know-if-website-authoritative/ facto
 * https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-text-and-number-fields#adding-a-number-field to understand how story points might be represented in GitHub
  
 ### Code - Financial Planner
-* https://laracasts.com/series/wordle-workshop/episodes/2 for tips on building a wordle-like grid (using HTML or JS)
-* https://www.youtube.com/watch?v=j7OhcuZQ-q8 Build a Wordle clone using HTML, CSS & Javascript! : used for tips on keyboard panel building (but thereafter preferred to code independently as found that coding shortcuts proposed were not always comprehensible to a new JS developer!)
+Dennis Ivy
+Multiple Code Institute PP4 projects used for reference
 
 ### References
 The following sites were ued for research and better understanding while creating this website: 
 
  
 ### Acknowledgements
-* I would like to sincerely thank my mentor, Mo Shami for his enthusiasm and support throughout.
-* I would also like to thank Derek and my family for their personal support.
+* I would particularly like to thank Alan Bushell, our cohort facilitator who guided us through this partiularly diverse phase of the course, kept us on track with weekly standups, ensured we all stepped into the limelight and provided really useful advice.
+* I would like to sincerely thank my mentor, Mo Shami for his kindness, enthusiasm and support throughout.  Mo's ability to absorb the essence of a situation and to communicate a clear path ahead has been invaluable.
+* I would also like to thank Derek and my family for their personal support, and for their help with system testing.
 
 

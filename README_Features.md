@@ -338,7 +338,7 @@ The content loaded to this demonstration site illustrates some of this, and the 
 * FTU_02 As a first-time user I about what this site does, and want to quickly understand this site's relevance to me, so I don't waste my time on useless engagement 
 
 ### F16 Error Pages
-If, or when HTTP erorrs occur, a custom error page with a 'back to home' link displays.  This avoids the user needing to use the back button to get out of an error situation.
+If, or when HTTP erorrs occur, a custom error page with a 'back to home' link displays.  This avoids the user needing to use the back button to get out of an error situation.  Errors 400, 403, 404 and 500 are covered
 
 The 404 page would most likely be seen when the user inadvertently types in something on the URL bar which doesn't exist on the site:
 

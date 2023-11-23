@@ -110,7 +110,7 @@ And abilty for the user to pickup content which is relevant to their needs.
 ### UX Design Strategy Analysis of Competitors
 Competitor/ similar site analysis was undertaken over a two-week period during September 2023 to analyse existing financial literacy education schemes and information resources, the target audience for same, and to identify gaps which might provide opportunities for a new solution.
 
-The survey details are here:  https://docs.google.com/spreadsheets/d/15TBSmjT5cqSam1WWOrpNzkS8IpQ4hAMv8d7IEk12FX8/edit#gid=0
+The survey details are <a href="https://docs.google.com/spreadsheets/d/15TBSmjT5cqSam1WWOrpNzkS8IpQ4hAMv8d7IEk12FX8/edit#gid=0" target="_blank" >here</a>
 
 Based on analysing what was available it was found that, there are lots of informational, authoritative resources in Ireland and some very good government sites (such as Revenue, CCPC, citizens information, pensions authority).  These sites, however, are text-heavy and sometimes difficult to cross-reference.  A good understanding of complex english is needed to navigate the content.
 

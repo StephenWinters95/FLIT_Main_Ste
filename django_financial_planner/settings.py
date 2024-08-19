@@ -27,14 +27,16 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 # DMcC 21/11/23 set to True to try deployed version of Heroku app
 DEBUG = True
-# DEBUG = True
+# DEBUG = False
 
 # DMcC 20/11/23 Taggit caused uninstall of Djg 3.X, fresh install of Django 4
 # Below is to overcome resulting CSRF errors on the site's admin page
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu106.gitpod.io',
     'https://financial-planner-6a030328a9ac.herokuapp.com/',
-    'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io/']
+    'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io/',
+    'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io/',
+    'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io',]
 
 
 ALLOWED_HOSTS = ['8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu105.gitpod.io',

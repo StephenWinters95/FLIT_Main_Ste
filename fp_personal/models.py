@@ -72,12 +72,12 @@ class UserProfile(models.Model):
 # It includes user and parent article/action & progress-tracking fields
 class UserAction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,
-                             related_name="user_actions")
+                             related_name="user_actions", db_constraint=False)
     user_action_seq = models.IntegerField(default=10)
     parent_article = models.ForeignKey(Article, on_delete=models.CASCADE,
-                                       related_name="parent_article")
+                                       related_name="parent_article", db_constraint=False)
     user_action_desc = models.ForeignKey(Action, on_delete=models.CASCADE,
-                                         related_name="parent_action")
+                                         related_name="parent_action", db_constraint=False)
     user_action_url = models.URLField(blank=True)
     user_action_taken = models.CharField(max_length=200,
                                          default='Done so far:  ')

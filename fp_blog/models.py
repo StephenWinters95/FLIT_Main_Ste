@@ -16,7 +16,7 @@ class Article(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE,
-                               related_name="article_posts")
+                               related_name="article_posts", db_constraint=False)
     content = models.TextField(blank=True)
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
@@ -60,9 +60,9 @@ class Comment(models.Model):
     """ Comment is a secondary data structure, a comment ('Response')
     is created against an article """
     article = models.ForeignKey(Article, on_delete=models.CASCADE,
-                                related_name="comments")
+                                related_name="comments", db_constraint=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE,
-                             related_name="user_comments")
+                             related_name="user_comments", db_constraint=False)
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -87,12 +87,12 @@ class Comment(models.Model):
 # includes a sequence#, a task description, and possibly an associated URL
 class Action(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE,
-                                related_name="actions")
+                                related_name="actions", db_constraint=False)
     action_seq = models.IntegerField(default=10)
     action_desc = models.CharField(max_length=200, default='Action:  ')
     action_url = models.URLField(blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE,
-                               related_name="action_created_by")
+                               related_name="action_created_by", db_constraint=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:

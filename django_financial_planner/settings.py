@@ -34,6 +34,7 @@ DEBUG = True
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu106.gitpod.io',
     'https://financial-planner-6a030328a9ac.herokuapp.com/',
+    'https://flit-e60c994ef0ea.herokuapp.com',
     'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io/',
     'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io/',
     'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io',]
@@ -43,6 +44,7 @@ ALLOWED_HOSTS = ['8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu105.gitpod.io',
                  '8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu106.gitpod.io',
                  'financial-planner-6a030328a9ac.herokuapp.com',
                  '8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io',
+                 'flit-e60c994ef0ea.herokuapp.com'
                  ]
 
 

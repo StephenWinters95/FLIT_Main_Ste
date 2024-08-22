@@ -26,8 +26,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DMcC 21/11/23 set to True to try deployed version of Heroku app
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 # DMcC 20/11/23 Taggit caused uninstall of Djg 3.X, fresh install of Django 4
 # Below is to overcome resulting CSRF errors on the site's admin page

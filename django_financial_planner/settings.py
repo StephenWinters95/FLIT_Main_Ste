@@ -15,7 +15,8 @@ import os
 import dj_database_url
 from django.contrib.messages import constants as messages
 if os.path.isfile("env.py"):
-    import env
+        import env
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,8 +27,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DMcC 21/11/23 set to True to try deployed version of Heroku app
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 # DMcC 20/11/23 Taggit caused uninstall of Djg 3.X, fresh install of Django 4
 # Below is to overcome resulting CSRF errors on the site's admin page
@@ -35,16 +36,16 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu106.gitpod.io',
     'https://financial-planner-6a030328a9ac.herokuapp.com/',
     'https://flit-e60c994ef0ea.herokuapp.com',
-    'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io/',
-    'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io/',
-    'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io',]
+    'https://8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io',
+    'https://8000-deemccart-flitfpmerge-4jnbvxtlp9z.ws-eu116.gitpod.io',]
 
 
 ALLOWED_HOSTS = ['8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu105.gitpod.io',
                  '8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu106.gitpod.io',
                  'financial-planner-6a030328a9ac.herokuapp.com',
                  '8000-deemccart-flitfpmerge-uuv2t1vze42.ws-eu115.gitpod.io',
-                 'flit-e60c994ef0ea.herokuapp.com'
+                 'flit-e60c994ef0ea.herokuapp.com',
+                 '8000-deemccart-flitfpmerge-4jnbvxtlp9z.ws-eu116.gitpod.io'
                  ]
 
 
@@ -126,17 +127,18 @@ WSGI_APPLICATION = 'django_financial_planner.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # DMcC 19/08/24 uncommented as want to use local database for coding so I can build migrations 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': BASE_DIR / 'db.sqlite3',
-   }
-}
+# DMcC 09/09/24 commented out as want to try new database instance on ElephantSQL (initially)
+# DATABASES = {
+#   'default': {
+#       'ENGINE': 'django.db.backends.sqlite3',
+#       'NAME': BASE_DIR / 'db.sqlite3',
+#   }
+#}
 
 # DMcC 19/08/24 commented out as want to use local database for coding
-# DATABASES = {
-#   'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-#            }
+DATABASES = {
+  'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+           }
 
 
 # Password validation

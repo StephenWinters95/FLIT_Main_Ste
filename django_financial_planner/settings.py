@@ -49,6 +49,7 @@ ALLOWED_HOSTS = ['8000-deemccart-cipp4financia-vv93ot4q6wj.ws-eu105.gitpod.io',
                  'flit-e60c994ef0ea.herokuapp.com',
                  '8000-deemccart-flitfpmerge-4jnbvxtlp9z.ws-eu116.gitpod.io',
                  os.environ.get("ALLOWED_HOSTS"),
+                 
                  ]
 
 

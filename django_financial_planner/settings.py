@@ -183,12 +183,54 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 print('Staticfiles_dirs value is', STATICFILES_DIRS)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 print('STATIC_ROOT is', STATIC_ROOT)
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# DMcC 12/09/24 Insert alternative text for comparison
+# 
+#  Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+# dmcc 12/09/24@ Copied this line into code above
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+        }
+
+    # Bucket Config
+#    AWS_STORAGE_BUCKET_NAME = 'ci-pp5-jeweller'
+#    AWS_S3_REGION_NAME = 'eu-north-1'
+#    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+#    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+#    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+  #  STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+  #  STATICFILES_LOCATION = 'static'
+  #  DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+  #  MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+  #  STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+  #  MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+# Media Files (Images) - Cloudinary
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# # DMcC 12/09/24 end comparison
+#  
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

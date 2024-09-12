@@ -1,4 +1,5 @@
-body {
+/*Include comment at start as problems having this file picked up as CSS - getting an error on MIME type */
+.allauth-listyle {
     background-color: #F9FAFC;
     /* DMcC 18/08/24 Try font family INTER rather than Lato */
     font-family: Inter, sans-serif;
@@ -29,8 +30,8 @@ body {
     max-width: 150px;
     max-height: 50px;
     border-radius: 50%;
-
 }
+
 .red-o {
     color: #E84610;
 }
@@ -237,7 +238,6 @@ tbody {
     padding: 20px;
   }
 
-
   /* Below are some settings for allauth fields.... the py code is not available so this is a workaround to highlight error messages which occur */
   .errorlist {
     color: red;
@@ -250,3 +250,4 @@ tbody {
   .allauth-listyle {
     list-style-type:disc;
   }
+  

@@ -183,24 +183,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+
 # DMcC 13/09/24 turn off cloudinary
 # STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
-# DMcC 13/09/23 remove the condition:
-# if not DEBUG:
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
-print('STATIC_ROOT is', STATIC_ROOT)
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_DIRS = [
-                    os.path.join(BASE_DIR, 'static')
+                    os.path.join(BASE_DIR, 'static'),
                    ]
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'), )
 
 print('Staticfiles_dirs value is', STATICFILES_DIRS)
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
     print('STATIC_ROOT is', STATIC_ROOT)
+
+
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 

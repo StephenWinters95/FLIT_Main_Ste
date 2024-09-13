@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 # url patterns for overall site with links to 2 apps fp_blog, fp_personal
 urlpatterns = [
@@ -24,4 +26,4 @@ urlpatterns = [
     path('myplanner/', include('fp_personal.urls')),
     path('', include('fp_blog.urls')),
     path('about/', include('fp_personal.urls')),
-    ]
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

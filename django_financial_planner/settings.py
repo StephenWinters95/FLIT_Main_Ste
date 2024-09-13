@@ -187,7 +187,7 @@ STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 print('Staticfiles_dirs value is', STATICFILES_DIRS)
 if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/') 
     print('STATIC_ROOT is', STATIC_ROOT)
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

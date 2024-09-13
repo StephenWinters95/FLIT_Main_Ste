@@ -26,9 +26,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DMcC 21/11/23 set to True to try deployed version of Heroku app
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 # DMcC 20/11/23 Taggit caused uninstall of Djg 3.X, fresh install of Django 4
 # Below is to overcome resulting CSRF errors on the site's admin page
@@ -98,6 +97,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'django_financial_planner.urls'
@@ -186,8 +186,9 @@ STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 print('Staticfiles_dirs value is', STATICFILES_DIRS)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-print('STATIC_ROOT is', STATIC_ROOT)
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+    print('STATIC_ROOT is', STATIC_ROOT)
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 

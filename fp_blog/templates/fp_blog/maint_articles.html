@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_superuser %}
+    <div class="overlay"></div>
+    <div class="container-fluid" id="products-container">
+        <table class="table table-bordered table-hover ">
+            <thead class="table-secondary">
+                <tr>
+                <th></th>
+                <th></th>
+                <th>SKU</th>
+                <th>Hide?</th>
+                <th>Cat</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Promo</th>
+                <th>Source</th>
+                <th>Source</th>
+                <th>LT(days)</th>
+                <th>Rate</th>
+                <th>Added</th>
+                <th>Image</th>
+                </tr>
+            </thead>
+            <!-- Place one blank line at top of grid for Product Add-->
+            <tr class="text-muted {{order.ordeer_status}}">
+                <td><a href="{% url 'add_product' %}" title="Add new product"><i class="far fa-add icon-edit"></i></a></td>
+                <td><a href="{% url 'add_product' %}" title="Add new product">Add</a></td>
+                <td></td>
+                <td></td>
+                <td class="p-3"></td>
+                <td></td>
+                <td></td>
+                <td>{% if product.promotion %}
+                        {{product.promotion}}
+                    {% endif %}
+                </td>
+                <td></td>
+                <td></td>
+                <td>{% if product.rating %}
+                        {{product.rating}}
+                    {% endif %}
+                </td>
+                <td class="date"></td>
+                <td class="p-0 align-middle">
+                    {% if product.image %}
+                        <img class="img-thumbnail rounded-circle img-zoom" src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %} 
+                        <img class="img-thumbnail rounded-circle img-zoom" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                    {% endif %}
+                </td>
+            </tr>
+            {% for product in products %}
+                <tr class="text-muted">
+                    <td><a href="{% url 'edit_product' product.id %}" title="Edit existing product"><i class="far fa-edit icon-edit"></i></a></td>
+                    <td><a href="{% url 'delete_confirm' product.id %}" title="Delete existing product"><i class='far fa-trash-alt icon-delete text-danger'></i></a></td>
+                    <td><a class="text-muted" href="{% url 'product_detail' product.id %}" target="_blank">{{product.sku}}</a></td>
+                    <td>{{product.hide_display|yesno:"Y,N"}}</td>
+                    <td class="p-3">{{product.category}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{% if product.promotion %}
+                            {{product.promotion}}
+                        {% endif %}
+                    </td>
+                    <td>{% if product.cat6_value %}
+                        {{product.cat6_value}}
+                        {% endif %}
+                    </td>
+                    <td>{% if product.source %}
+                        {{product.source}}
+                        {% endif %}
+                    </td>
+                    <td>{% if product.lead_time %}
+                        {{product.lead_time}}
+                        {% endif %}
+                    </td>
+                    <td>{% if product.rating %}
+                            {{product.rating}}
+                        {% endif %}
+                    </td>
+                    <td class="date">{{product.created_on|date:"d/m/y"}}</td>
+                    <td class="p-0 align-middle">
+                        {% if product.image %}
+                            <img class="img-thumbnail rounded-circle img-zoom" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% else %} 
+                            <img class="img-thumbnail rounded-circle img-zoom" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div> <!-- end class container-fluid -->
+
+    <!-- DMcC 13/02/24 scroll-up button at end of reviews -->
+    <div class="btt-button shadow-sm rounded-0 border border-black">
+        <a class="btt-link d-flex h-100">
+            <i class="scroll-arrow fas fa-arrow-up text-black mx-auto my-auto"></i>
+        </a>	
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <!-- JS to permit page upscroll to top of page -->
+    <script type="text/javascript">
+		$('.btt-link').click(function(e) {
+			window.scrollTo(0,0)
+		})
+	</script>
+    <!-- JS to prevent display of delivery-banner-->
+    <script>    
+        document.getElementById("delivery-banner").classList.add("hide-div");
+    </script>
+{% endblock %}

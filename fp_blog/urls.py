@@ -10,6 +10,8 @@ urlpatterns = [
     path('like/<slug:slug>', views.ArticleLike.as_view(), name='article_like'),
     path('comment/<slug:slug>', views.ArticleComment.as_view(),
          name='article_comment'),
+    path('maint/', views.maint_articles, name='maint_articles'),
+    path('edit/<int:article_id>/', views.edit_article, name='edit_article'),
 ]
 
 # Error handlers for site errors

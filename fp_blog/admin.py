@@ -29,10 +29,11 @@ class ActionAdmin(SummernoteModelAdmin):
     # These action tasks act as a template for user tasks which are
     # later created within the fp_personal app
     list_filter = ('article', 'action_seq', 'created_on')
-    list_display = ('action_seq', 'action_desc', 'article', 'action_url',
-                    'author', 'created_on')
+    list_display = ('article','action_seq', 'action_desc')
+    raw_id_fields=['article']
     sortable_by = ['article', 'action_seq']
     search_fields = ['article', 'action_desc']
+    ordering = ['article', 'action_seq']
 
 
 @admin.register(Comment)

@@ -44,28 +44,10 @@ body
     color: #4A4A4F;
 }
 
-/* navbar styling */
 #navbarText {
     justify-content: end;
     flex-grow: 0;
-}
 
-.navbar-image,
-.reviewer-image {
-    display: inline-block;
-    max-width: 40px;
-    max-height: 30px;
-    border-radius: 50%;
-    padding: 0;
-}
-
-.navbar {
-    padding: 0;
-}
-
-/* Override colour of nav links to dark grey */
-.nav-link {
-    color: var(--color-text-color);
 }
 
 .logo { /* DMcC retained 31/01/24 even though not aligned with walkthrough */
@@ -84,7 +66,7 @@ body
 .navbar-image {
     display: inline-block;
     max-width: 150px;
-    max-height: 40px;
+    max-height: 50px;
     border-radius: 50%;
 }
 
@@ -196,28 +178,6 @@ body
     margin-left: 5%;
     color: lightgray;
 }
-
-.btn-black {
-    background: var(--color-button-background);
-    color: var(--color-button-foreground);
-}
-
-.btn-outline-black {
-    background: white;
-    color: black !important; /* use important to override link colors for <a> elements */
-    border: 1px solid black;
-}
-
-.btn-outline-black:hover, /* DMcC 31/01/24 added to align with walkthrough styling */
-.btn-outline-black:active,
-.btn-outline-black:focus {
-    background: grey;
-    color: white !important;
-}
-
-
-
-
 
 .btn-signup {
     background-color: #1c9797;

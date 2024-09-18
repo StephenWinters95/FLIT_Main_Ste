@@ -1,9 +1,39 @@
-/*Renamed to style1 as problems accessing Include comment at start as problems having this file picked up as CSS - getting an error on MIME type */
+/* Define variables (which will apply across multiple styles) */
+:root {
+    --border: 1px solid black !important;
+    --color-background: beige;
+    --color-text-color: #555;
+    --color-banner-background: gray;   
+    --color-red: #E84610;
+    --color-blue: blue;
+    --color-green: green;
+    --color-danger: #dc3545;
+    --color-button-foreground: white;
+    --color-button-background: black; 
+    --product-detail-rating: 5;
+    --font-percent: 20;
+}
+
+body  
+ {
+    background-color: var(--color-background);
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: #555;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    /* filter: grayscale(0.7); */
+}
+
 .allauth-listyle {
-    background-color: #F9FAFC;
+    background-color: var(--color-background);
     /* DMcC 18/08/24 Try font family INTER rather than Lato */
     font-family: Inter, sans-serif;
-    font-size: 400;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 .brand {
@@ -14,15 +44,38 @@
     color: #4A4A4F;
 }
 
+/* navbar styling */
 #navbarText {
     justify-content: end;
     flex-grow: 0;
-
 }
+
+.navbar-image,
+.reviewer-image {
+    display: inline-block;
+    max-width: 50px;
+    max-height: 30px;
+    border-radius: 50%;
+    padding: 0;
+}
+
+.navbar {
+    padding: 0;
+}
+
+
 
 .logo { /* DMcC retained 31/01/24 even though not aligned with walkthrough */
     max-width: 100px;
     max-height: 50px;
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+.main-logo-link {
+    width: fit-content;
 }
 
 .navbar-image {
@@ -141,6 +194,28 @@
     color: lightgray;
 }
 
+.btn-black {
+    background: var(--color-button-background);
+    color: var(--color-button-foreground);
+}
+
+.btn-outline-black {
+    background: white;
+    color: black !important; /* use important to override link colors for <a> elements */
+    border: 1px solid black;
+}
+
+.btn-outline-black:hover, /* DMcC 31/01/24 added to align with walkthrough styling */
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: grey;
+    color: white !important;
+}
+
+
+
+
+
 .btn-signup {
     background-color: #1c9797;
     color: #fff;
@@ -162,16 +237,26 @@
     color: #fff;
 }
 
+/* from Bulma */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+    z-index:5;
+}
+
 .icon-delete {
-    color: red;
+    color: var(--color-red);
 }
 
 .icon-edit {
-    color: blue;
+    color: var(--color-blue);
 }
 
 .icon-copy {
-    color: green;
+    color: var(--color-green);
 }
 
 .btn-cancel {

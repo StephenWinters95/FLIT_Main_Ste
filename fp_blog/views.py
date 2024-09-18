@@ -213,6 +213,56 @@ class ArticleComment(View):
             )
 
 
+def maint_articles(request):
+    """ This is a sysadmin view to show all articles,
+    and allow the sysadmin to edit/delete """
+    print('In view maint_article')
+    articles = Article.objects.all()
+
+    # sort by SKU in order asc/desc
+    articles = article.order_by('id')
+    context = {
+        'articles': articles,
+    }
+
+    return render(request, 'fp_blog/maint_articles.html', context)
+
+
+# DMcC 09/02/24 Add @login_required decorator to ensure user logged in
+# @login_required
+def edit_article(request, article_id):
+    """ Edit an article  """
+    # If not a superuser kick user out of function
+    if not request.user.is_superuser:
+        messages.error(request, 'Restricted: Must have SysAdmin rights '
+                       + 'to edit Articles!')
+        return redirect(reverse('home'))
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+
+        if form.is_valid():
+            form.save()
+            stringy = f'Successfully updated article{article.id }, {article.title}'
+            messages.success(request, stringy)
+            return redirect(reverse('article_detail', args=[article.id]))
+        else:
+            messages.error(request, 'Failed to update article.'
+                           + ' Please ensure the form is valid.')
+    else:
+        form = ArticleForm(instance=article)
+        messages.info(request, f'You are editing {article.title}')
+
+    template = 'fp_blog/edit_article.html'
+    context = {
+        'form': form,
+        'article': article,
+    }
+
+    return render(request, template, context)
+
+
+
 def error_400(request, exception):
     data = {}
     return render(request,'400.html', data)

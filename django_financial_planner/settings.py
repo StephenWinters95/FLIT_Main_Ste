@@ -26,8 +26,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 # DMcC 20/11/23 Taggit caused uninstall of Djg 3.X, fresh install of Django 4
 # Below is to overcome resulting CSRF errors on the site's admin page
@@ -197,9 +197,9 @@ STATICFILES_DIRS = [
                    ]
 
 print('Staticfiles_dirs value is', STATICFILES_DIRS)
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
-    print('STATIC_ROOT is', STATIC_ROOT)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+print('STATIC_ROOT is', STATIC_ROOT)
 
 
 MEDIA_URL = '/media/'

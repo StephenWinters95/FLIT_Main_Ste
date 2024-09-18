@@ -17,6 +17,7 @@ urlpatterns = [
     path('create_user/', views.addUserProfile, name='create_user'),
     path('update_user/<int:pk>/', views.updateUserProfile, name='update_user'),
     path('about/', views.FeedbackList.as_view(), name='about'),
+    path('<int:profile_id>/', views.profile_detail, name='profile_detail'),
 ]
 
 

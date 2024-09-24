@@ -561,11 +561,10 @@ There are a number of smaller responsiveness issues still open at the time of wr
 <br>
 * The site architecture requires git, Cloudinary, ElephantSQL to support PostGres database, Heroku and is therefore more complex.
 
- The steps to setup are as follows:
  
  #### Install the Django environment in a workspace created with the CI template:
-
-- pip3 install 'django<4'gunicorn (installs Django 3.2)
+The steps to setup from scratch  are as follows:
+ - pip3 install 'django<4'gunicorn (installs Django 3.2)
 - pip3 install dj-database-url===0.5.0 psycopg2
 - pip3 install dj3-cloudinary-storage
 - pip3 install urllib==1.26.15
@@ -577,6 +576,16 @@ There are a number of smaller responsiveness issues still open at the time of wr
 - python3 manage.py runserver (1st run of server to test)
 - settings.py ALLOWED_HOSts = [...'8000-address'..]
 
+If installation to a fresh (non code institute) environment:
+- From the GitHub repo, take the 'Code' button
+- in your IDE:
+- git clone 'pasted link from above'
+- (if applicable) ensure you cd into the project folder  
+- pip install requirements.txt
+- ... check port 8000, will fail on invalid HOSTNAME
+- Add the identified HOSTNAME into the ALLOWED_HOSTNAMES section of settings.py
+- Add it also into CSRF_TRUSTED_ORIGINS section
+ 
 ##### Create a new external database:
 
 - ElephantSQL - setup a/c if needed

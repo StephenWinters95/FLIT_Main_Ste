@@ -8,17 +8,22 @@
     --color-blue: blue;
     --color-green: green;
     --color-danger: #dc3545;
+    --color-card-background: #ede9e9;
+    --color-card-border: #dddcdc;
     --color-button-foreground: white;
     --color-button-background: black; 
+    --color-border: #bbb7b7;
     --product-detail-rating: 5;
     --font-percent: 20;
 }
 
 body  
  {
+    padding-top:56px;
     background-color: var(--color-background);
     background-size: cover;
-    height: calc(100vh - 164px);
+    height: calc(100vh - 164px); 
+    
     color: #555;
     font-family: Inter, sans-serif;
     font-size: 1rem;
@@ -113,12 +118,21 @@ body
 }
 
 .card {
-    border: none;
-    background-color: transparent;
+    border: solid;
+    border-color: var(--color-card-border);
+    background-color: var(--color-card-background);
+    border-radius: 15px;
 }
 
 .card-img-top {
-    opacity: 75%;
+    opacity: 75%; 
+    width: 250px;
+    height: 180px;
+}
+
+.card-title {
+/*    font-size: calc(1.325rem + .9vw); */
+    font-size: calc(1rem + .9vw);
 }
 
 .profile-card {

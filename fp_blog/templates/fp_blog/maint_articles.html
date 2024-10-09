@@ -12,91 +12,44 @@
 {% block content %}
 {% if request.user.is_superuser %}
     <div class="overlay"></div>
-    <div class="container-fluid" id="products-container">
+    <div class="container-fluid" id="articles-container">
         <table class="table table-bordered table-hover ">
             <thead class="table-secondary">
                 <tr>
                 <th></th>
                 <th></th>
-                <th>SKU</th>
-                <th>Hide?</th>
-                <th>Cat</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Promo</th>
-                <th>Source</th>
-                <th>Source</th>
-                <th>LT(days)</th>
-                <th>Rate</th>
-                <th>Added</th>
-                <th>Image</th>
+                <th>Field1</th>
+                <th>Field2</th>
+                <th>Field3</th>
+                <th>Created</th>
+                <th>Updated</th>
                 </tr>
             </thead>
             <!-- Place one blank line at top of grid for Product Add-->
-            <tr class="text-muted {{order.ordeer_status}}">
-                <td><a href="{% url 'add_product' %}" title="Add new product"><i class="far fa-add icon-edit"></i></a></td>
-                <td><a href="{% url 'add_product' %}" title="Add new product">Add</a></td>
+            <tr class="text-muted {{order.order_status}}">
+                <td><a href="{% url 'add_article' %}" title="Add new article"><i class="far fa-add icon-edit"></i></a></td>
+                <td><a href="{% url 'add_article' %}" title="Add new article">Add</a></td>
                 <td></td>
                 <td></td>
                 <td class="p-3"></td>
                 <td></td>
                 <td></td>
-                <td>{% if product.promotion %}
-                        {{product.promotion}}
-                    {% endif %}
-                </td>
                 <td></td>
                 <td></td>
-                <td>{% if product.rating %}
-                        {{product.rating}}
-                    {% endif %}
-                </td>
                 <td class="date"></td>
                 <td class="p-0 align-middle">
-                    {% if product.image %}
-                        <img class="img-thumbnail rounded-circle img-zoom" src="{{ product.image.url }}" alt="{{ product.name }}">
-                    {% else %} 
-                        <img class="img-thumbnail rounded-circle img-zoom" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                    {% endif %}
                 </td>
             </tr>
-            {% for product in products %}
+            {% for article in articles %}
                 <tr class="text-muted">
-                    <td><a href="{% url 'edit_product' product.id %}" title="Edit existing product"><i class="far fa-edit icon-edit"></i></a></td>
-                    <td><a href="{% url 'delete_confirm' product.id %}" title="Delete existing product"><i class='far fa-trash-alt icon-delete text-danger'></i></a></td>
-                    <td><a class="text-muted" href="{% url 'product_detail' product.id %}" target="_blank">{{product.sku}}</a></td>
-                    <td>{{product.hide_display|yesno:"Y,N"}}</td>
-                    <td class="p-3">{{product.category}}</td>
-                    <td>{{product.name}}</td>
-                    <td>{{product.price}}</td>
-                    <td>{% if product.promotion %}
-                            {{product.promotion}}
-                        {% endif %}
-                    </td>
-                    <td>{% if product.cat6_value %}
-                        {{product.cat6_value}}
-                        {% endif %}
-                    </td>
-                    <td>{% if product.source %}
-                        {{product.source}}
-                        {% endif %}
-                    </td>
-                    <td>{% if product.lead_time %}
-                        {{product.lead_time}}
-                        {% endif %}
-                    </td>
-                    <td>{% if product.rating %}
-                            {{product.rating}}
-                        {% endif %}
-                    </td>
-                    <td class="date">{{product.created_on|date:"d/m/y"}}</td>
-                    <td class="p-0 align-middle">
-                        {% if product.image %}
-                            <img class="img-thumbnail rounded-circle img-zoom" src="{{ product.image.url }}" alt="{{ product.name }}">
-                        {% else %} 
-                            <img class="img-thumbnail rounded-circle img-zoom" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                        {% endif %}
-                    </td>
+                    <td><a href="" title="Edit existing article"><i class="far fa-edit icon-edit"></i></a></td>
+                    <td><a href="" title="Delete existing article"><i class='far fa-trash-alt icon-delete text-danger'></i></a></td>
+                    <td><a class="text-muted" href="" target="_blank">{{article.article_id}}</a></td>
+                    <td>{{article.published|yesno:"Y,N"}}</td>
+                    <td class="p-3">{{article.title}}</td>
+                    <td>{{article.slug}}</td>
+                    
+                    
                 </tr>
             {% endfor %}
         </table>

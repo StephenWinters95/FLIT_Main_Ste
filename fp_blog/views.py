@@ -5,7 +5,8 @@ from django.contrib import messages
 from django.core.paginator import Paginator  # Specifically imported 
 from django.db.models import Q  # This is a text search capability
 from .models import Article, Comment, Action
-from .forms import CommentForm, UserCommentForm
+from .forms import CommentForm, UserCommentForm, ArticleForm
+from django.contrib.auth.decorators import login_required
 
 
 # DMcC 21/11/23 Function-based article retrieval to faciliate tag-search
@@ -216,16 +217,77 @@ class ArticleComment(View):
 def maint_articles(request):
     """ This is a sysadmin view to show all articles,
     and allow the sysadmin to edit/delete """
-    print('In view maint_article')
+    print('In view maint_articles')
     articles = Article.objects.all()
 
     # sort by SKU in order asc/desc
-    articles = article.order_by('id')
+    articles = articles.order_by('created_on')
     context = {
         'articles': articles,
     }
 
     return render(request, 'fp_blog/maint_articles.html', context)
+
+
+# DMcC 09/10/24 inserted the below code modified from jeweller add_product
+# Add @login_required decorator to ensure user logged in
+# before executing the view (otherwise redirects them to login)
+@login_required
+def add_article(request):
+    """ Sysadmin:  Add a article to the store """
+    # If not a superuser kick user out of function
+    if not request.user.is_superuser:
+        messages.error(request, 'Restricted: Must have SysAdmin rights'
+                       + ' to Add articles!')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            article = form.save()
+            stringy = (f'Successfully added article SKU { article.sku },'
+                       + f'{ article.name }.')
+            messages.success(request, stringy)
+
+            # return redirect(reverse('add_article'))
+            # go to the new article detail - sysadmin can check result
+            return redirect(reverse('article_detail', args=[article.id]))
+        else:
+            messages.error(request, 'Failed to add article.'
+                           + ' Please ensure the form is valid.')
+    else:
+        form = ArticleForm()
+    template = 'articles/add_article.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
+
+
+
+
+
+
+
+
+
+def article_detail(request, article_id):
+    """ A view to show individual article details """
+
+    article = get_object_or_404(Article, pk=article_id)
+    
+
+    # getting all aspects of the article (this will be added to later to include article tags, bookmarks etc)
+    context = {
+            'article': article,
+            }
+
+    return render(request, 'fp_blog/article_detail.html', context)
+
+
 
 
 # DMcC 09/02/24 Add @login_required decorator to ensure user logged in
@@ -235,11 +297,11 @@ def edit_article(request, article_id):
     # If not a superuser kick user out of function
     if not request.user.is_superuser:
         messages.error(request, 'Restricted: Must have SysAdmin rights '
-                       + 'to edit Articles!')
+                       + 'to edit articles!')
         return redirect(reverse('home'))
-    product = get_object_or_404(Product, pk=product_id)
+    article = get_object_or_404(Article, pk=article_id)
     if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES, instance=product)
+        form = ArticleForm(request.POST, request.FILES, instance=article)
 
         if form.is_valid():
             form.save()

@@ -46,8 +46,13 @@ class ArticleSearch(generic.ListView):
     template_name = 'index.html'
     
 # Detailed Article View
+# DMcC 09/10/24:  Note this will only return published articles (status=1)
+# Unpublished articles may only be previewed by sys administrator within a different class in this views.py
+#
+
 class ArticleDetail(View):
     def get(self, request, slug, *args, **kwargs):
+        mode = 'Published'
         queryset = Article.objects.filter(status=1)
         article = get_object_or_404(queryset, slug=slug)
         comments = article.comments.filter(approved=True).order_by(
@@ -76,6 +81,7 @@ class ArticleDetail(View):
                       "article_detail.html",
                       {
                        "article": article,
+                       "mode": mode,
                        "comments": comments,
                        "commented": commented,
                        "commented_unapproved": commented_unapproved,
@@ -83,8 +89,8 @@ class ArticleDetail(View):
                        "number_of_actions": number_of_actions,
                        "liked": liked,
                        "bookmarked": bookmarked,
-                       "comment_form": CommentForm()
-                      },
+                       "comment_form": CommentForm(),
+                       },
                      )
 
     def post(self, request, slug, *args, **kwargs):
@@ -245,8 +251,8 @@ def add_article(request):
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             article = form.save()
-            stringy = (f'Successfully added article SKU { article.sku },'
-                       + f'{ article.name }.')
+            stringy = (f'Successfully added article title { article.slug },'
+                       + f'{ article.title }.')
             messages.success(request, stringy)
 
             # return redirect(reverse('add_article'))
@@ -266,31 +272,21 @@ def add_article(request):
 
 
 
-
-
-
-
-
-
-
-
-def article_detail(request, article_id):
+# DMcC 09/10/24:  Preview articles (regardless of published status)
+def article_preview(request, article_id):
     """ A view to show individual article details """
-
+    mode = 'Preview'
     article = get_object_or_404(Article, pk=article_id)
-    
-
+            
     # getting all aspects of the article (this will be added to later to include article tags, bookmarks etc)
     context = {
             'article': article,
+            'mode': mode,
             }
+    return render(request, 'article_detail.html', context)
 
-    return render(request, 'fp_blog/article_detail.html', context)
-
-
-
-
-# DMcC 09/02/24 Add @login_required decorator to ensure user logged in
+# DMcC 09/10/24 Recycled code (was originally used for product edit in jeweller project)
+# Add @login_required decorator to ensure user logged in
 # @login_required
 def edit_article(request, article_id):
     """ Edit an article  """

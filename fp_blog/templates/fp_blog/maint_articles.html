@@ -9,6 +9,9 @@
     </div>
 {% endblock %}
 
+<!-- This template is used to control the sys admin maintenance screen for multiple articles -->
+<!-- Articles are displayed in tabular form with the ability to add new -->
+<!-- At row level, can click to maintain, delete, toggle published flag, or preview an article -->
 {% block content %}
 {% if request.user.is_superuser %}
     <div class="overlay"></div>
@@ -46,10 +49,10 @@
             </tr>
             {% for article in articles %}
                 <tr class="text-muted">
-                    <td><a href="" title="Edit existing article"><i class="far fa-edit icon-edit"></i></a></td>
+                    <td><a href="{% url 'edit_article' article.id %}" title="Edit existing article"><i class="far fa-edit icon-edit"></i></a></td>
                     <td><a href="" title="Delete existing article"><i class='far fa-trash-alt icon-delete text-danger'></i></a></td>
                     <!--- DMcC 09/10/24 Table details from Stephen -->    
-                    <td><a class="text-muted" href="" target="_blank">{{article.title}}</a></td>
+                    <td><a href="{% url 'article_preview' article.id %}" title="PreView article (new tab)" class="text-muted"  target="_blank">{{article.title}}</a></td>
                     <td>{{article.status|yesno:"Y,N"}}</td>
                     <td>{{article.author}}</td>
                     <td>{{article.created_on}}</td>

@@ -15,26 +15,27 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <hr>
-                <h2 class="logo-font mb-4">Product Management</h2>
-                <h5 class="text-muted">Edit a Product</h5>
+                <h2 class="logo-font mb-4">Article Management</h2>
+                <h5 class="text-muted">Edit an Article</h5>
                 <hr>
             </div>
         </div>
 
         <div class="row">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
+                <form method="POST" action="{% url 'edit_article' article.id %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
                         {% if field.name != 'image' %}
-                            {{ field | as_crispy_field }}
+                        <!-- DMcC 09/10/24  remove reference to | as_crispy_field -->
+                          {{ field }}
                         {% else %}
                             {{ field }}
                         {% endif %}
                     {% endfor %}
                     <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Update Product</button>
+                        <a class="btn btn-outline-black rounded-0" href="{% url 'maint_articles' %}">Cancel</a>
+                        <button class="btn btn-black rounded-0" type="submit">Update Article</button>
                     </div>
                 </form>
             </div> <!-- "col-12 col-md-6" -->           

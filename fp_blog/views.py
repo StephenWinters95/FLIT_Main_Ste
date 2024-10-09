@@ -257,7 +257,7 @@ def add_article(request):
                            + ' Please ensure the form is valid.')
     else:
         form = ArticleForm()
-    template = 'articles/add_article.html'
+    template = 'fp_blog/add_article.html'
     context = {
         'form': form,
     }

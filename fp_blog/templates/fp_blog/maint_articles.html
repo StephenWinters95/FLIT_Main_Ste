@@ -15,14 +15,15 @@
     <div class="container-fluid" id="articles-container">
         <table class="table table-bordered table-hover ">
             <thead class="table-secondary">
+                <!-- DMcC 09/10/24:  table headings from stephen -->    
                 <tr>
                 <th></th>
                 <th></th>
-                <th>Field1</th>
-                <th>Field2</th>
-                <th>Field3</th>
-                <th>Created</th>
-                <th>Updated</th>
+                <th>TITLE</th>
+                <th>PUBLISHED?</th>
+                <th>AUTHOR</th>
+                <th>DATE CREATED</th>
+                <th>LAST UPDATED</th>
                 </tr>
             </thead>
             <!-- Place one blank line at top of grid for Product Add-->
@@ -39,17 +40,20 @@
                 <td class="date"></td>
                 <td class="p-0 align-middle">
                 </td>
+
+
+                
             </tr>
             {% for article in articles %}
                 <tr class="text-muted">
                     <td><a href="" title="Edit existing article"><i class="far fa-edit icon-edit"></i></a></td>
                     <td><a href="" title="Delete existing article"><i class='far fa-trash-alt icon-delete text-danger'></i></a></td>
-                    <td><a class="text-muted" href="" target="_blank">{{article.article_id}}</a></td>
-                    <td>{{article.published|yesno:"Y,N"}}</td>
-                    <td class="p-3">{{article.title}}</td>
-                    <td>{{article.slug}}</td>
-                    
-                    
+                    <!--- DMcC 09/10/24 Table details from Stephen -->    
+                    <td><a class="text-muted" href="" target="_blank">{{article.title}}</a></td>
+                    <td>{{article.status|yesno:"Y,N"}}</td>
+                    <td>{{article.author}}</td>
+                    <td>{{article.created_on}}</td>
+                    <td>{{article.updated_on}}</td>
                 </tr>
             {% endfor %}
         </table>

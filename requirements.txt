@@ -8,6 +8,7 @@ django-crispy-forms==1.14.0
 django-summernote==0.8.20.0
 django-taggit==5.0.1
 djangorestframework==3.14.0
+django-crispy-forms==2.1
 gunicorn==21.2.0
 oauthlib==3.2.2
 psycopg2==2.9.9

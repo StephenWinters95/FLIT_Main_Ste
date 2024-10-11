@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -27,8 +28,8 @@
                     {% csrf_token %}
                     {% for field in form %}
                         {% if field.name != 'image' %}
-                        <!-- DMcC 09/10/24  remove reference to | as_crispy_field -->
-                          {{ field }}
+                        <!-- DMcC 09/10/24  problems with reference to | as_crispy_field -->
+                          {{ field | as_crispy_field }}
                         {% else %}
                             {{ field }}
                         {% endif %}

@@ -2,7 +2,7 @@ from .models import Comment, Article, User, Action
 from fp_personal.models import UserProfile
 from django import forms
 from .widgets import CustomClearableFileInput
-
+from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
 
 class CommentForm(forms.ModelForm):
     # this class provides a comment form for new comment creation
@@ -23,8 +23,10 @@ class ArticleForm(forms.ModelForm):
     # this class gives article visibility
     class Meta:
         model = Article
-        # fields = ('title', 'slug', 'status', )
         fields = '__all__'
+        widgets = {
+            'bar': SummernoteInplaceWidget(),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

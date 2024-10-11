@@ -257,7 +257,20 @@ def add_article(request):
 
             # return redirect(reverse('add_article'))
             # go to the new article detail - sysadmin can check result
-            return redirect(reverse('article_detail', args=[article.id]))
+            # return redirect(reverse('article_detail', args=[article.id]))
+
+            # DMcC 11/10/24 - go back to the maintenance screen (as article may not yet be 'published'
+            # and therefore wont appear on the 'normal' article view 
+            # - success message should also pop up at top of screen
+            # return HttpResponseRedirect(reverse('article_detail', args=[article.slug]))
+            articles = Article.objects.all()
+
+            # sort by article in desc order (most recent on top)
+            articles = articles.order_by('-created_on')
+            context = {
+                'articles': articles,
+            }
+            return render(request, 'fp_blog/maint_articles.html', context)
         else:
             messages.error(request, 'Failed to add article.'
                            + ' Please ensure the form is valid.')
@@ -303,7 +316,16 @@ def edit_article(request, article_id):
             form.save()
             stringy = f'Successfully updated article{article.id }, {article.title}'
             messages.success(request, stringy)
-            return redirect(reverse('article_detail', args=[article.id]))
+            
+            # DMcC 11/10/4: The piece of code below (which is duplicated elsewhere and will need to be refactored ) is to redisplay the maintenance screen
+            articles = Article.objects.all()
+
+            # sort by article in desc order (most recent on top)
+            articles = articles.order_by('-updated_on')
+            context = {
+                'articles': articles,
+            }
+            return render(request, 'fp_blog/maint_articles.html', context)
         else:
             messages.error(request, 'Failed to update article.'
                            + ' Please ensure the form is valid.')

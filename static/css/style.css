@@ -211,6 +211,23 @@ body
     color: lightgray;
 }
 
+/* DMcC 12/10/24:  Article maintenance grid - Reduce image size */
+.img-thumbnail.rounded-circle {
+    width: 40px; 
+    height: 40px;
+  }
+
+/* DMcC 12/10/24: Article maintenance grid - make thumbnail zoom when hovered over */
+.img-zoom {
+    transition: transform 0.3s ease-in-out; /* Smooth transition effect */
+  }
+
+  
+/* DMcC 12/10/24: Article maintenance grid - make thumbnail zoom when hovered over */
+.img-zoom:hover {
+    transform: scale(5); /* Increase image size on hover */
+  }
+
 .btn-black {
     background: var(--color-button-background);
     color: var(--color-button-foreground);

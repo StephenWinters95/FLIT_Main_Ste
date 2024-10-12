@@ -27,6 +27,7 @@
                 <th>AUTHOR</th>
                 <th>DATE CREATED</th>
                 <th>LAST UPDATED</th>
+                <th>Image</th>
                 </tr>
             </thead>
             <!-- Place one blank line at top of grid for Product Add-->
@@ -35,17 +36,10 @@
                 <td><a href="{% url 'add_article' %}" title="Add new article">Add</a></td>
                 <td></td>
                 <td></td>
-                <td class="p-3"></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td class="date"></td>
-                <td class="p-0 align-middle">
-                </td>
-
-
-                
+                <td></td>              
             </tr>
             {% for article in articles %}
                 <tr class="text-muted">
@@ -62,15 +56,17 @@
                         </form>
                     </td>
                     <td><a href="{% url 'article_preview' article.id %}" title="PreView article (new tab)" class="text-muted"  target="_blank">{{article.title}}</a></td>
-                    
-              
-              
-              
-              
                     <td>{{article.status|yesno:"Y,N"}}</td>
-                    <td>{{article.author}}</td>
-                    <td>{{article.created_on}}</td>
-                    <td>{{article.updated_on}}</td>
+                    <td class="align-middle">{{article.author}}</td>
+                    <td class="date">{{article.created_on|date:"d M y"}}</td>
+                    <td class="date">{{article.updated_on|date:"d M y"}}</td>
+                    <td class="p-0 align-middle">
+                        {% if article.featured_image %}
+                            <img class="img-thumbnail rounded-circle img-zoom" src="{{ article.featured_image.url }}" alt="Image">
+                        {% else %} 
+                            <img class="img-thumbnail rounded-circle img-zoom" src="{{ MEDIA_URL }}placeholder.png" alt="Image">
+                        {% endif %}
+                    </td>
                 </tr>
             {% endfor %}
         </table>

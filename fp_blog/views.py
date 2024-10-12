@@ -227,7 +227,7 @@ def maint_articles(request):
     articles = Article.objects.all()
 
     # sort by SKU in order asc/desc
-    articles = articles.order_by('created_on')
+    articles = articles.order_by('-updated_on')
     context = {
         'articles': articles,
     }
@@ -263,14 +263,8 @@ def add_article(request):
             # and therefore wont appear on the 'normal' article view 
             # - success message should also pop up at top of screen
             # return HttpResponseRedirect(reverse('article_detail', args=[article.slug]))
-            articles = Article.objects.all()
-
-            # sort by article in desc order (most recent on top)
-            articles = articles.order_by('-created_on')
-            context = {
-                'articles': articles,
-            }
-            return render(request, 'fp_blog/maint_articles.html', context)
+            
+            return redirect('maint_articles')  # Redirect to your articles list page
         else:
             messages.error(request, 'Failed to add article.'
                            + ' Please ensure the form is valid.')

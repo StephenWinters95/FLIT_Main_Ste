@@ -15,6 +15,7 @@ urlpatterns = [
     path('comment/<slug:slug>', views.ArticleComment.as_view(),
          name='article_comment'),
     path('edit/<int:article_id>/', views.edit_article, name='edit_article'),
+    path('delete_article/<int:id>/', views.delete_article, name='delete_article'),
     ]
 
 # Error handlers for site errors

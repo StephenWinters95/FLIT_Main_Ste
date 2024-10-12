@@ -26,7 +26,8 @@
         <a class="text-black nav-link user-options" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="text-center">
                 <!-- display profile image -->
-                <span class="text-muted navbar-image-text"><img class="navbar-image" src="{{ request.user.userprofile.profile_image.url }}" alt="Users avatar logo"></span>
+                <span class="text-muted navbar-image-text"><img class="navbar-image" 
+                    src="{{ request.user.userprofile.profile_image.url }}" alt="Users avatar logo"></span>
                 <p class="my-0">Hi, {{ request.user }}!</p>    
             </div>
         </a>

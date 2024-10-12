@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
@@ -341,6 +341,14 @@ def edit_article(request, article_id):
 
     return render(request, template, context)
 
+#cretaed by ste 11/10/24 4:06am 
+# made as to allow deletion of articles as I see no code to this prior. very basic => needs login permission etc added.
+
+def delete_article(request, id):
+    article = get_object_or_404(Article, id=id)
+    if request.method == 'POST':
+        article.delete()
+        return redirect('maint_articles')  # Redirect to your articles list page
 
 
 def error_400(request, exception):

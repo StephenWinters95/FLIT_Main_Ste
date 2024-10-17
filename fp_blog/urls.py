@@ -9,6 +9,7 @@ urlpatterns = [
     path('add_user/', views.add_user, name='add_user'), # added Ste 16/10/24
     path('edit_user/<int:user_id>/', views.edit_user, name='edit_user'),  # added Ste 16/10/24
     path('delete_user/<int:id>/', views.delete_user, name='delete_user'), # added Ste 16/10/24
+    path('toggle_activate_user/<int:user_id>/', views.toggle_activate_user, name='toggle_activate_user'), # added DMcC 17/10/24 so deactivate rather than delete users
     path('preview_user/<int:user_id>/', views.user_preview, name='user_preview'), # added Ste 16/10/24
     path('add/', views.add_article, name='add_article'),
     path('edit/<int:article_id>/', views.edit_article, name='edit_article'),
@@ -19,7 +20,7 @@ urlpatterns = [
          name='article_bookmark'),
     path('like/<slug:slug>', views.ArticleLike.as_view(), name='article_like'),
     path('comment/<slug:slug>', views.ArticleComment.as_view(),
-         name='article_comment'),
+         name='article_comment'),     
     ]
 
 # Error handlers for site errors

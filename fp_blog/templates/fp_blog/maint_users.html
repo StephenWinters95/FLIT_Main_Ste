@@ -26,9 +26,12 @@
                 <th></th>
                 <th>USERNAME</th>
                 <th>EMAIL</th>
-                <th>PASSWORD</th>
+                <th>Active?</th>
+                <th>Staff?</th>
+                <th>Superuser?</th>
                 <th>FIRST NAME</th>
                 <th>LAST NAME</th>
+                <th>Social Account</th>
                 <th>PROFILE PICTURE</th>
                 <th>DATE JOINED</th>
                 <th>LAST LOGIN</th>
@@ -43,24 +46,32 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
+                <td></td>
                 <td></td>              
             </tr>
             {% for user in users %}
                 <tr class="text-muted">
                     <td><a href="{% url 'edit_user' user.id %}" title="Edit existing user"><i class="far fa-edit icon-edit"></i></a></td> 
                     <td>
-                        <form action="{% url 'delete_user' user.id %}" method="POST" style="display:inline;">
+                        {% if not user.is_superuser %}
+                        <!-- do not allow superuser accounts to be deactivated -->
+                        <form action="{% url 'toggle_activate_user' user.id %}" method="POST" style="display:inline;">
                             {% csrf_token %}
-                            <button type="submit" title="Delete existing user" style="background:none; border:none; padding:0;">
-                                <i class='far fa-trash-alt icon-delete text-danger'></i>
+                            <button type="submit" title="Activate/Deactivate user" style="background:none; border:none; padding:0;">
+                                <i class='fa-solid fa-lock text-danger'></i>
                             </button>
                         </form>
+                        {% endif %}
                     </td>
                     <td><a href="{% url 'user_preview' user.id %}" title="PreView user (new tab)" class="text-muted"  target="_blank">{{user.username}}</a></td>
                     <td class="align-middle">{{user.email}}</td>
-                    <td class="align-middle">{{user.password}}</td>
+                    <td class="align-middle">{{user.is_active|yesno:"Y,N"}}</td>
+                    <td class="align-middle">{{user.is_staff|yesno:"Y,N"}}</td>
+                    <td class="align-middle">{{user.is_superuser|yesno:"Y,N"}}</td>
                     <td class="align-middle">{{user.first_name}}</td>
                     <td class="align-middle">{{user.last_name}}</td>
+                    <td class="align-middle">{{user.socialaccount}}</td>
                     <td class="p-0 align-middle">
                         {% if user.featured_image %}
                             <img class="img-thumbnail rounded-circle img-zoom" src="{{ user.featured_image.url }}" alt="Image">
@@ -68,8 +79,8 @@
                             <img class="img-thumbnail rounded-circle img-zoom" src="{{ MEDIA_URL }}placeholder.png" alt="Image">
                         {% endif %}
                     </td>
-                    <td class="align-middle">{{user.date_joined}}</td>
-                    <td class="align-middle">{{user.last.login}}</td>
+                    <td class="align-middle">{{user.date_joined|date:"d M y"}}</td>
+                    <td class="align-middle">{{user.last_login|date:"d M y"}}</td>
                     
                 </tr>
             {% endfor %}

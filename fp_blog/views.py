@@ -335,7 +335,7 @@ def edit_article(request, article_id):
 
     return render(request, template, context)
 
-#cretaed by ste 11/10/24 4:06am 
+# created by Ste 11/10/24 4:06am 
 # made as to allow deletion of articles as I see no code to this prior. very basic => needs login permission etc added.
 
 def delete_article(request, id):
@@ -361,7 +361,7 @@ def maint_users(request):
     print('Users:  ', users)
 
     # sort by ??? in order asc/desc
-    users = users.order_by('username')
+    users = users.order_by('date_joined')
     context = {
         'users': users,
     }
@@ -387,15 +387,7 @@ def edit_user(request, user_id):
             stringy = f'Successfully updated user{user.id }, {user.username}'
             messages.success(request, stringy)
             
-            # DMcC 11/10/4: The piece of code below (which is duplicated elsewhere and will need to be refactored ) is to redisplay the maintenance screen
-            users = User.objects.all()
-
-            # sort by article in desc order (most recent on top)
-            
-            context = {
-                'user': user,
-            }
-            return render(request, 'fp_blog/maint_users.html', {'users': users})
+            return redirect('maint_users')  # Redirect to your users list page
         else:
             messages.error(request, 'Failed to update user.'
                            + ' Please ensure the form is valid.')
@@ -450,6 +442,35 @@ def add_user(request):
     }
 
     return render(request, template, context)
+
+def toggle_activate_user(request, user_id):
+    """ Deactiveate / reactivate User accounts """
+    # DMcC 17/10/24  added as an alterative to deleting accounts as there 
+    # could be assocated information (articles etc) which would like to preserve rather than deleting entire user
+
+    # If not a superuser kick user out of function
+    if not request.user.is_superuser:
+        messages.error(request, 'Restricted: Must have SysAdmin rights '
+                       + 'to activate/deactivate users!')
+        return redirect(reverse('home'))
+    user = get_object_or_404(User, pk=user_id)
+    print('User active setting ', user.is_active)
+    new_active = not(user.is_active)
+    user.is_active = new_active
+    print('New user active setting ', user.is_active)
+
+    user.save()
+    stringy_action=''
+    if not user.is_active:
+        stringy_action = 'de'
+    
+
+    stringy = f'Successfully ' + stringy_action + 'activated user{user.id }, {user.username}'
+    messages.success(request, stringy)
+            
+    return redirect('maint_users')  # Redirect to your users list page
+    
+
 
 def delete_user(request, id):
     user = get_object_or_404(User, id=id)

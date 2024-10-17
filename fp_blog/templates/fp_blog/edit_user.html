@@ -35,6 +35,12 @@
                             {{ field }}
                         {% endif %}
                     {% endfor %}
+                    {% if not user.is_superuser %}
+                        <div class = "text-left">
+                            <!-- DMcC 17/10/24:  Change password function not yet activated-->
+                            <a class="btn btn-outline-black rounded-0" href="">Change password</a>
+                        </div>
+                    {% endif %}
                     <div class="text-right">
                         <a class="btn btn-outline-black rounded-0" href="{% url 'maint_users' %}">Cancel</a>
                         <button class="btn btn-black rounded-0" type="submit">Update user</button>

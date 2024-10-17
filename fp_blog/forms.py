@@ -46,3 +46,23 @@ class ActionForm(forms.ModelForm):
     class Meta:
         model = Action
         fields = ('article', 'action_desc',)
+
+#added 16/10/24
+
+class UserForm(forms.ModelForm):
+    # Ste 16/10/24 8this class gives article visibility
+    class Meta:
+        model = User  # Assuming 'User' is your user model
+        fields = ['username', 'email', 'first_name', 'last_name','password']   # You can specify specific fields if needed
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'border-black rounded-0'}),
+            'email': forms.EmailInput(attrs={'class': 'border-black rounded-0'}),
+            # Add other fields as necessary
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'border-black rounded-0'
+
+

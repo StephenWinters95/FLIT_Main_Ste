@@ -5,9 +5,9 @@ from django.contrib import messages
 from django.core.paginator import Paginator  # Specifically imported 
 from django.db.models import Q  # This is a text search capability
 from .models import Article, Comment, Action
-from .forms import CommentForm, UserCommentForm, ArticleForm
+from .forms import CommentForm, UserCommentForm, ArticleForm, UserForm
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import User
 
 # DMcC 21/11/23 Function-based article retrieval to faciliate tag-search
 def ArticleList(request):
@@ -343,6 +343,136 @@ def delete_article(request, id):
     if request.method == 'POST':
         article.delete()
         return redirect('maint_articles')  # Redirect to your articles list page
+
+
+#created Ste 14/10/24 
+# made for maint_users html page. 
+# def maint_users(request):
+#       users = User.objects.all()
+#       return render(request, 'fp_blog/maint_users.html', {'users': users})
+#
+#
+def maint_users(request):
+    """ This is a sysadmin view to show all users,
+    and allow the sysadmin to edit/delete """
+    print('In view maint_users')
+    users = User.objects.all()
+
+    print('Users:  ', users)
+
+    # sort by ??? in order asc/desc
+    users = users.order_by('username')
+    context = {
+        'users': users,
+    }
+
+    return render(request, 'fp_blog/maint_users.html', context)
+
+
+#created 16/10/24 1am
+   
+def edit_user(request, user_id):
+    """ Edit an article  """
+    # If not a superuser kick user out of function
+    if not request.user.is_superuser:
+        messages.error(request, 'Restricted: Must have SysAdmin rights '
+                       + 'to edit users!')
+        return redirect(reverse('home'))
+    user = get_object_or_404(User, pk=user_id)
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance=user)
+
+        if form.is_valid():
+            form.save()
+            stringy = f'Successfully updated user{user.id }, {user.username}'
+            messages.success(request, stringy)
+            
+            # DMcC 11/10/4: The piece of code below (which is duplicated elsewhere and will need to be refactored ) is to redisplay the maintenance screen
+            users = User.objects.all()
+
+            # sort by article in desc order (most recent on top)
+            
+            context = {
+                'user': user,
+            }
+            return render(request, 'fp_blog/maint_users.html', {'users': users})
+        else:
+            messages.error(request, 'Failed to update user.'
+                           + ' Please ensure the form is valid.')
+    else:
+        form = UserForm(instance=user)
+        messages.info(request, f'You are editing {user.username}')
+
+    template = 'fp_blog/edit_user.html'
+    context = {
+        'form': form,
+        'user': user,
+    }
+
+    return render(request, template, context)
+
+   
+@login_required
+def add_user(request):
+    """ Sysadmin:  Add a User to the db """
+    # If not a superuser kick user out of function
+    if not request.user.is_superuser:
+        messages.error(request, 'Restricted: Must have SysAdmin rights'
+                       + ' to Add articles!')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save()
+            stringy = (f'Successfully added article title { user.username },'
+                       + f'{ user.username }.')
+            messages.success(request, stringy)
+
+            # return redirect(reverse('add_article'))
+            # go to the new article detail - sysadmin can check result
+            # return redirect(reverse('article_detail', args=[article.id]))
+
+            # DMcC 11/10/24 - go back to the maintenance screen (as article may not yet be 'published'
+            # and therefore wont appear on the 'normal' article view 
+            # - success message should also pop up at top of screen
+            # return HttpResponseRedirect(reverse('article_detail', args=[article.slug]))
+            
+            return redirect('maint_users')  # Redirect to your articles list page
+        else:
+            messages.error(request, 'Failed to add user.'
+                           + ' Please ensure the form is valid.')
+    else:
+        form = UserForm()
+    template = 'fp_blog/add_user.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+def delete_user(request, id):
+    user = get_object_or_404(User, id=id)
+    if request.method == 'POST':
+        user.delete()
+    return redirect('maint_users')  # Redirect to your users list page
+    
+def user_preview(request, user_id):
+    """ A view to show individual user details """
+    mode = 'Preview'
+    user = get_object_or_404(user, pk=user_id)
+            
+    # getting all aspects of the user (this will be added to later to include user tags, bookmarks etc)
+    context = {
+            'user': user,
+            'mode': mode,
+            }
+    return render(request, 'user_detail.html', context)
+    
+    
+#
+#
+
 
 
 def error_400(request, exception):

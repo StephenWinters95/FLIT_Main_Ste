@@ -11,11 +11,10 @@
             <p class="my-0">SysMaint</p>
         </div>
         </a>
-        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+        <div class="dropdown-menu border-0" aria-labelledby="admin-user-options">
             <a href="{% url 'maint_articles' %}"  class="dropdown-item">Articles-admin</a>
-            <!-- DMcC 15/02/24:  Temporarily hide these options as not yet functional -->
-            <!-- <a href="{% url 'maint_users' }" class="dropdown-item">Users-admin</a>
-            <a href="" class="dropdown-item">Promotions-admin</a> -->
+        <div class="dropdown-menu border-0" aria-labelledby="admin-user-options">
+            <a href="{% url 'maint_users' %}"  class="dropdown-item">Users-admin</a>
         </div>
     </li>
 {% endif %}

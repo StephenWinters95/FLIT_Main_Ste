@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator  # Specifically imported 
 from django.db.models import Q  # This is a text search capability
 from .models import Article, Comment, Action
-from .forms import CommentForm, UserCommentForm, ArticleForm, UserForm
+from .forms import CommentForm, UserCommentForm, ArticleForm, UserForm, surveyForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -493,6 +493,19 @@ def user_preview(request, user_id):
     
 #
 #
+#
+# 23/10/24 - ste first Survey set up.
+@login_required
+def survey1(request):
+    if request.method == 'POST':
+        form = surveyForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save()
+            return render(request, 'success_template.html', {'user': user})  # Change to your success template
+    else:
+        form = surveyForm()  # Initialize the form for GET requests
+
+    return render(request, 'fp_blog/survey1.html', {'form': form})
 
 
 

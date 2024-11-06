@@ -495,13 +495,29 @@ def user_preview(request, user_id):
 #
 #
 # 23/10/24 - ste first Survey set up.
-@login_required
 def survey1(request):
     if request.method == 'POST':
         form = surveyForm(request.POST, request.FILES)
         if form.is_valid():
-            user = form.save()
-            return render(request, 'success_template.html', {'user': user})  # Change to your success template
+            age = form.cleaned_data['age']
+            income = form.cleaned_data['income']
+            income_type = form.cleaned_data['income_type']
+            main_income_source = form.cleaned_data['main_income_source']
+            other_income_sources = form.cleaned_data['other_income_sources']
+            marital_status = form.cleaned_data['marital_status']
+            accommodation_status = form.cleaned_data['accommodation_status']
+            accommodation_cost = form.cleaned_data['accommodation_cost']
+            financial_admin_for = form.cleaned_data['financial_admin_for']
+            life_stage = form.cleaned_data['life_stage']
+            life_events = form.cleaned_data['life_events']
+            welfare_schemes = form.cleaned_data['welfare_schemes']
+            
+            message = " Results ="
+            
+            if age >= 18:
+                message = message + " You are old enough to apply for welfare."
+
+            return render(request, 'fp_blog/success_template.html',{'message': message})  # Change to your success template
     else:
         form = surveyForm()  # Initialize the form for GET requests
 

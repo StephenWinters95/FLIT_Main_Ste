@@ -3,6 +3,7 @@ from datetime import date
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField  # needed for images
 from taggit.managers import TaggableManager  # needed for Article tags
+from django.core.validators import MinValueValidator, MaxValueValidator # added 01/11/24
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -100,3 +101,24 @@ class Action(models.Model):
 
     def __str__(self):
         return self.action_desc
+
+
+
+# created 01/11/24 by ste
+# made as a replacement for UserProfile Model 
+# will allow a webiste user to fill out form without needing to be logged in
+# form is unique and currently a better layout than userProfile.
+
+class Survey(models.Model):
+    age = models.IntegerField(validators=[MinValueValidator(15), MaxValueValidator(120)])
+    income = models.CharField(max_length=100)  # Consider using choices for radio boxes
+    income_type = models.CharField(max_length=100)
+    main_income_source = models.CharField(max_length=100)
+    other_income_sources = models.TextField(blank=True)
+    marital_status = models.CharField(max_length=50)
+    accommodation_status = models.CharField(max_length=50)
+    accommodation_cost = models.DecimalField(max_digits=10, decimal_places=2)
+    financial_admin_for = models.CharField(max_length=100)
+    life_stage = models.CharField(max_length=100)
+    life_events = models.TextField(blank=True)
+    welfare_schemes = models.CharField(max_length=100)

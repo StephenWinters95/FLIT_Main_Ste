@@ -1,4 +1,4 @@
-from .models import Comment, Article, User, Action
+from .models import Comment, Article, User, Action, Survey
 from fp_personal.models import UserProfile
 from django import forms
 from .widgets import CustomClearableFileInput
@@ -70,7 +70,7 @@ class UserForm(forms.ModelForm):
 
 class surveyForm(forms.ModelForm):
     class Meta:
-        model = UserProfile 
+        model =  Survey
         fields = '__all__'  
         
 

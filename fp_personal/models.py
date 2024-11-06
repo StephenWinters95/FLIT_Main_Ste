@@ -14,6 +14,7 @@ class UserProfile(models.Model):
     age_approx = models.PositiveIntegerField()
     age_exact = models.PositiveIntegerField()
     created_on = models.DateTimeField(auto_now_add=True)
+    family_size = models.PositiveIntegerField()
 
     class Meta:
         """ set ordering of user profiles to most recent first """

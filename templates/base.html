@@ -142,6 +142,21 @@
                 </li>
                 {% endif %}
                 
+                <!-- Ste 26/10/24 add button to take survey -->
+                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'survey1' %}">Take Survey?</a>
+                    </li>
+                </ul>
+            </div>
+
+
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

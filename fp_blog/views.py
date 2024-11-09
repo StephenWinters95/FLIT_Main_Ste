@@ -9,6 +9,7 @@ from .forms import CommentForm, UserCommentForm, ArticleForm, UserForm, surveyFo
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import pandas as pd
+import numpy as np
 
 # DMcC 21/11/23 Function-based article retrieval to faciliate tag-search
 def ArticleList(request):
@@ -590,6 +591,21 @@ def planner(request):
             # return HttpResponse('CSV file uploaded and processed successfully!')
             stringy = f'Successfully uploaded ' + csv_file.name
             messages.success(request, stringy)
+            print(df)
+            # DMcC 09/11/24 trying to understand dataframe structure and manipulation
+            # print('That was all the data, now for a subset:')
+            # df.iloc[0:0,2:2] = 'hello'
+            # print(df.iloc[0:1, :])
+            # print('length of dataframe is ', len(df))
+
+            # get section headers
+            # columns = []
+            #count_n = 0
+            #for i in range(0, len(df)-1):
+            #    if (df.iloc[i]['Introduction'] == 'HouseHold Income'):
+            #        print('Household Income header identified at row ', i)
+                    
+
 
             return render(request, 'fp_blog/planner.html')  # Render the upload form template
             

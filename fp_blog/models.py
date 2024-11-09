@@ -30,6 +30,14 @@ FIN_DEC_MAKING_CHOICES = [
     ('seot', 'for me and other people outside my immediate family'),
 ]
 
+AGE_BRACKET_CHOICES = [
+    ('15-30', '15-30'),
+    ('31-45', '31-45'),
+    ('45-60','46-60'),
+    ()
+
+
+]
 
 # model Article is the 'engine' of this site, articles are designed
 # to hold source information which is referenced in other models

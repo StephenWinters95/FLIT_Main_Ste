@@ -1,29 +1,73 @@
 <!-- success_template.html -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success</title>
-</head>
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <br>
+                <h1 class="logo-font mb-4">Thank You!</h1>
+                <br>
+                <p>Your survey has been submitted successfully.</p>
+
+                <hr>
+                <h2 class="logo-font mb-4"> Results </h2>
+                <h5 class="text-muted"> </h5>
+                <hr>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="grid-container">
+                    <div class="square"> 
+                        {% for item in surv_messages %}
+                            {% if item.binary == 1 %}
+                                <div class="square">✔️ {{ item.message }} : {{ item.result }}</div>
+                            {% else %}
+                                <div class="square">❌ {{ item.message }} : {{ item.result }}</div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <div class="btt-button shadow-sm rounded-0 border border-black">
+        <a class="btt-link d-flex h-100">
+            <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+        </a>    
+    </div>
+{% endblock %}
 <body>
-    <h1>Thank You!</h1>
-    <p>Your survey has been submitted successfully.</p>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success</title>
-</head>
-<body>
-    <h1>Thank You!</h1>
-    <p>Your survey has been submitted successfully.</p>
-    <br>
-    <br>
-    <p>{{ message }}</p> <!-- Properly close the <p> tag -->
+    
+    
     <a href="{% url 'home' %}">Return to Home</a>
 </body>
+
+
+{% block postloadjs %}
+    {{ block.super }}
+<!-- script to improve image handling -->
+    <script type="text/javascript">
+        $('#new-image').change(function() {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(`Image will be set to: ${file.name}`);
+        });
+    </script>
+
+<!-- script to control 'return to top' arrow -->
+    <script type="text/javascript">
+        $('.btt-link').click(function(e) {
+            window.scrollTo(0,0)
+        })
+    </script>
+
+{% endblock %}
 </html>
-
-

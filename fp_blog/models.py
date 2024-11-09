@@ -6,6 +6,29 @@ from taggit.managers import TaggableManager  # needed for Article tags
 from django.core.validators import MinValueValidator, MaxValueValidator # added 01/11/24
 
 STATUS = ((0, "Draft"), (1, "Published"))
+GENDER_CHOICES = (('M', "Male"), ("F", "Female"), ("N", "Non-binary"), ("O", "Other"), ("U", "Unanswered"))
+# Marital status
+MARITAL_STATUS_CHOICES = [
+    ('single', 'Single'),
+    ('married', 'Married'),
+    ('divorced', 'Divorced'),
+    ('widowed', 'Widowed'),
+]
+# Accomodation status
+ACCOMMODATION_CHOICES = [
+    ('homeless', 'Homeless'),
+    ('renting', 'Renting'),
+    ('living_with_family', 'Living with Family'),
+    ('own_home_mortgage', 'Own my own home but paying mortgage'),
+    ('own_home_no_mortgage', 'Own my own home and not paying mortgage'),
+]
+# Accomodation status
+FIN_DEC_MAKING_CHOICES = [
+    ('self', 'for me'),
+    ('sepa', 'for me and my partner'),
+    ('sefa', 'for me and my family'),
+    ('seot', 'for me and other people outside my immediate family'),
+]
 
 
 # model Article is the 'engine' of this site, articles are designed
@@ -110,15 +133,35 @@ class Action(models.Model):
 # form is unique and currently a better layout than userProfile.
 
 class Survey(models.Model):
-    age = models.IntegerField(validators=[MinValueValidator(15), MaxValueValidator(120)])
-    income = models.CharField(max_length=100)  # Consider using choices for radio boxes
+    gender = models.CharField(
+        max_length=1,
+        choices=GENDER_CHOICES,
+        )
+     
+    age = models.IntegerField(validators=[MinValueValidator(16), MaxValueValidator(120)])
+    income = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(1000000)]) # Consider using choices for radio boxes
+    number_children = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(30)])
     income_type = models.CharField(max_length=100)
     main_income_source = models.CharField(max_length=100)
     other_income_sources = models.TextField(blank=True)
-    marital_status = models.CharField(max_length=50)
-    accommodation_status = models.CharField(max_length=50)
+    
+    marital_status = models.CharField(
+        max_length=50,
+        choices=MARITAL_STATUS_CHOICES,
+        default='single',  # You can set a default value if you want
+    )
+    accommodation_status = models.CharField(
+        max_length=50,
+        choices=ACCOMMODATION_CHOICES,
+        default='available',  # Set a default value if needed
+    )
+    ##
     accommodation_cost = models.DecimalField(max_digits=10, decimal_places=2)
+    number_of_adults_living_with = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(45)])
     financial_admin_for = models.CharField(max_length=100)
     life_stage = models.CharField(max_length=100)
     life_events = models.TextField(blank=True)
     welfare_schemes = models.CharField(max_length=100)
+    
+
+

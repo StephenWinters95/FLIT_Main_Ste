@@ -490,11 +490,7 @@ def user_preview(request, user_id):
             }
     return render(request, 'user_detail.html', context)
     
-    
-#
-#
-#
-# 23/10/24 - ste first Survey set up.
+
 def survey1(request):
     if request.method == 'POST':
         form = surveyForm(request.POST, request.FILES)
@@ -502,26 +498,111 @@ def survey1(request):
             age = form.cleaned_data['age']
             income = form.cleaned_data['income']
             income_type = form.cleaned_data['income_type']
+            number_children = form.cleaned_data['number_children']
             main_income_source = form.cleaned_data['main_income_source']
             other_income_sources = form.cleaned_data['other_income_sources']
             marital_status = form.cleaned_data['marital_status']
             accommodation_status = form.cleaned_data['accommodation_status']
             accommodation_cost = form.cleaned_data['accommodation_cost']
+            number_of_adults_living_with = form.cleaned_data['number_of_adults_living_with']
             financial_admin_for = form.cleaned_data['financial_admin_for']
             life_stage = form.cleaned_data['life_stage']
             life_events = form.cleaned_data['life_events']
             welfare_schemes = form.cleaned_data['welfare_schemes']
             
-            message = " Results ="
+            value = []
+             
+            messages = [
+            {"message": "Message 1", "binary": 0, "result": " 0 "},
+            {"message": "Medical Card", "binary": 0, "result":""},
+            {"message": "Test Filed", "binary": 1, "result": "€ Big Bucks"},
+            ]   
             
-            if age >= 18:
-                message = message + " You are old enough to apply for welfare."
+            weekly_income = income / 52
+            
+            # Main part of code. this is where the computation begins. messages only has three 3 indexes in its array to establish it, the 4th index will appended to it. using "messages.append({"message": "New Message", "binary": 1})"
+            
+            #child Benefit.
+            if number_children > 0:
+                messages[0]["message"] = "Child Benefit"
+                messages[0]["binary"] = 1
+                messages[0]["result"] = number_children * 140 
+            else:
+                messages[0]["message"] = "Child Benefit"
+                messages[0]["binary"] = 0
+                messages[0]["result"] = number_children * 140
+                 
+            #Medical Card  / NEEDS WORK 
+            
+            if number_of_adults_living_with == 0 and weekly_income <= 184 and age < 66:
+                messages[1]["message"] = "Medical Card"
+                messages[1]["binary"] = 1
+                messages[1]["result"] = "Medical Card"
+            else:
+                if accommodation_status == "living_with_family" and weekly_income <= 164 and age < 66:
+                    messages[1]["message"] = "Medical Card"
+                    messages[1]["binary"] = 1
+                    messages[1]["result"] = "Medical Card"
+                else:
+                    if marital_status == "Married" and age < 66 and weekly_income < 266.50:
+                        messages[1]["message"] = "Medical Card"
+                        messages[1]["binary"] = 1
+                        messages[1]["result"] = "Medical Card"
+                    else:
+                        if number_of_adults_living_with == 0 and weekly_income <= 304 and age < 66:
+                            messages[1]["message"] = "Medical Card"
+                            messages[1]["binary"] = 1
+                            messages[1]["result"] = "GP Visit Card"
+                        else:
+                            if accommodation_status == "living_with_family" and weekly_income <= 271 and age < 66:
+                                messages[1]["message"] = "GP Visit Card"
+                                messages[1]["binary"] = 1
+                                messages[1]["result"] = "GP Visit Card"
+                            
+            #Job Seekers Allowance.
+                
+            messages.sort(key=lambda x: x['binary'], reverse=True) 
 
-            return render(request, 'fp_blog/success_template.html',{'message': message})  # Change to your success template
+            return render(request, 'fp_blog/success_template.html',{'surv_messages': messages})  # Change to your success template
     else:
         form = surveyForm()  # Initialize the form for GET requests
 
     return render(request, 'fp_blog/survey1.html', {'form': form})
+
+
+
+
+#
+#
+#
+# 23/10/24 - ste first Survey set up.
+#def survey1(request):
+#    if request.method == 'POST':
+#        form = surveyForm(request.POST, request.FILES)
+#        if form.is_valid():
+#            age = form.cleaned_data['age']
+#            income = form.cleaned_data['income']
+#            income_type = form.cleaned_data['income_type']
+#            main_income_source = form.cleaned_data['main_income_source']
+#            other_income_sources = form.cleaned_data['other_income_sources']
+#            marital_status = form.cleaned_data['marital_status']
+#            accommodation_status = form.cleaned_data['accommodation_status']
+#            accommodation_cost = form.cleaned_data['accommodation_cost']
+#            financial_admin_for = form.cleaned_data['financial_admin_for']
+#            life_stage = form.cleaned_data['life_stage']
+#            life_events = form.cleaned_data['life_events']
+#            welfare_schemes = form.cleaned_data['welfare_schemes']
+            
+#            message = " Results ="
+            
+#            if age >= 18:
+#                message = message + " You are old enough to apply for welfare."
+
+#            return render(request, 'fp_blog/success_template.html',{'message': message})  # Change to your success template
+#    else:
+#        form = surveyForm()  # Initialize the form for GET requests
+
+#    return render(request, 'fp_blog/survey1.html', {'form': form})
 
 
 

@@ -246,7 +246,8 @@ def copyUserAction(request, pk):
     """ returns a new action rendered to actions.html page """
     action = Action.objects.get(id=pk)
     action_desc = action.action_desc
-    print('In copyUserAction():  source action_id is ', action.id,
+    
+    ('In copyUserAction():  source action_id is ', action.id,
           ' desc is ', action_desc)
     slug = action.article.slug
     form = ActionForm(instance=action)
@@ -383,6 +384,9 @@ def deleteBookmark(request, pk):
 
     return render(request, 'delete.html', {'object': 'bookmark to '
                   + str(bookmark)})
+
+
+
 
 
 class FeedbackList(generic.ListView):

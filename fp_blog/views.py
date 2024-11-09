@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.core.paginator import Paginator  # Specifically imported 
 from django.db.models import Q  # This is a text search capability
@@ -8,6 +8,7 @@ from .models import Article, Comment, Action
 from .forms import CommentForm, UserCommentForm, ArticleForm, UserForm, surveyForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+import pandas as pd
 
 # DMcC 21/11/23 Function-based article retrieval to faciliate tag-search
 def ArticleList(request):
@@ -570,39 +571,39 @@ def survey1(request):
     return render(request, 'fp_blog/survey1.html', {'form': form})
 
 
+# created 09/11/24. by ste. a basic planner that will redirect user to mabs where they will
+#   fill out info and download a csv.
 
-
-#
-#
-#
-# 23/10/24 - ste first Survey set up.
-#def survey1(request):
-#    if request.method == 'POST':
-#        form = surveyForm(request.POST, request.FILES)
-#        if form.is_valid():
-#            age = form.cleaned_data['age']
-#            income = form.cleaned_data['income']
-#            income_type = form.cleaned_data['income_type']
-#            main_income_source = form.cleaned_data['main_income_source']
-#            other_income_sources = form.cleaned_data['other_income_sources']
-#            marital_status = form.cleaned_data['marital_status']
-#            accommodation_status = form.cleaned_data['accommodation_status']
-#            accommodation_cost = form.cleaned_data['accommodation_cost']
-#            financial_admin_for = form.cleaned_data['financial_admin_for']
-#            life_stage = form.cleaned_data['life_stage']
-#            life_events = form.cleaned_data['life_events']
-#            welfare_schemes = form.cleaned_data['welfare_schemes']
+def planner(request):
+    df={}
+    if request.method == 'POST':
+        csv_file = request.FILES['file']  # Assuming the input field in your form is named 'file'
+        
+        if csv_file.name.endswith('.csv') and csv_file.name!="":
+            # Read the CSV file using pandas
             
-#            message = " Results ="
+            df = pd.read_csv(csv_file, on_bad_lines='skip')
+            # Process your data here
+            # print(df[0]) doesnt work as data file is not directly referenceable?
+            # print(df[1])
+            # DMcC 09/11/24 need to replace the below with a message file 
+            # return HttpResponse('CSV file uploaded and processed successfully!')
+            stringy = f'Successfully uploaded ' + csv_file.name
+            messages.success(request, stringy)
+
+            return render(request, 'fp_blog/planner.html')  # Render the upload form template
             
-#            if age >= 18:
-#                message = message + " You are old enough to apply for welfare."
+        else:
+            stringy = f'Cannot upload file ' + csv_file.name
+            messages.error(request, stringy)
 
-#            return render(request, 'fp_blog/success_template.html',{'message': message})  # Change to your success template
-#    else:
-#        form = surveyForm()  # Initialize the form for GET requests
+            # return HttpResponse('Please upload a valid CSV file.')
+    
+    return render(request, 'fp_blog/planner.html')  # Render the upload form template
 
-#    return render(request, 'fp_blog/survey1.html', {'form': form})
+
+
+
 
 
 

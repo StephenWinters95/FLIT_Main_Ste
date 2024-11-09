@@ -1,0 +1,63 @@
+<!-- planner.html -->
+<!-- Created by Ste 09/11/24 -->
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<br>
+<br>
+<h2> Budgeting </h2>
+<br>
+<h3>1. Gather data</h3>
+<p> We recommend the MABS budget creation tool for detailed data collection, 
+    it can be accessed <a href="https://www.mabs.ie/en/money-tools/my-budget/">HERE</a> 
+    (Opens in a new tab) once you have filled out the figures, take the 'Save' option, 
+    this will create a CSV file download. Return to this tab and click on 
+    the 'Upload CSV' button below to upload. </p>
+
+
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="file" accept=".csv">
+    <!-- DMcC 09/11/24 need to put something here when the user forgets to select a file -->
+    <button type="submit">Upload CSV</button>
+</form>
+<br>
+<h3>2. Analyse data</h3>
+<p> View your budgeting data on a weekly, monthly or annual basis </p>
+<p> You can refine to get a clearer view of when some expenses come due (e.g. car tax due in particular month)</p>
+
+
+<br>
+<!-- View data weekly -->
+<!-- show current date at top of table in table header -->
+<!-- show expenditure titles -->
+<!-- allow show/ hide of different expenditure sections -->
+<!-- initially show titles as buttons -->
+<!-- clicking on a button expands that section -->
+
+    
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+<!-- script to improve image handling -->
+    <script type="text/javascript">
+        $('#new-image').change(function() {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(`Image will be set to: ${file.name}`);
+        });
+    </script>
+
+<!-- script to control 'return to top' arrow -->
+    <script type="text/javascript">
+        $('.btt-link').click(function(e) {
+            window.scrollTo(0,0)
+        })
+    </script>
+
+{% endblock %}
+</html>

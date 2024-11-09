@@ -64,7 +64,7 @@
 <!-- DMcC 16/09/24 take styling from jeweller 
  <body class="d-flex flex-column h-100 main-bg"> -->
 <body>
-<!-- DMcC 16/09/24 insert entire topnav code from Jeweller -->
+<!-- DMcC 16/09/24 insert entire topnav code from another project (Jeweller) -->
     <header class="container-fluid fixed-top">
             
         <!-- Navigation -->
@@ -96,38 +96,44 @@
                     </form>  <!-- end search form -->
                 </div> <!-- end div search-field -->
 
-                {% if user.is_authenticated and request.user.userprofile %}
-                    {% if user.is_superuser %}
-                    <li class="list-inline-item dropdown" id="sysmaint-link">
-                        <a class="text-black nav-link" href="#" id="sysmaint-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="text-center">
-                            <div><i class="fas fa-gear fa-lg"></i></div>
-                            <p class="my-0">SysMaint</p>
-                        </div>
-                        </a>
-                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                            <a href="{% url 'maint_articles' %}"  class="dropdown-item">Articles-admin</a>
-                            <a href="{% url 'maint_users' %}"  class="dropdown-item">Users-admin</a>
-                        </div>
-                    </li>
-                    {% endif %}
-                    <li class="list-inline-item dropdown profile-link">
-                    <a id="" class="nav-link text-black" href="#" data-toggle="dropdown" area-haspopup="true"  aria-expanded="false">
-                        <img class="navbar-image" 
-                        src="{{request.user.userprofile.profile_image.url}}" alt="Users avatar logo">Hi, {{user.username}}!</a>
-                    <ul class="dropdown-menu border-0" aria-labelledby="user-options1">
-                        <li><a class="dropdown-item nav-link" href="{% url 'my_planner' %}">Account</a></li>
-                        <li><a class="dropdown-item nav-link" href="{% url 'my_planner' %}">My Planner</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
-                    </ul>
-                    </li>
-                    <li class="list-inline-item dropdown profile-link">
-                        <a id="" class="text-black nav-link" href="#" data-toggle="dropdown" area-haspopup="true"  aria-expanded="false">
+                {% if user.is_authenticated %}
+                    {% if request.user.userprofile %}
+                        {% if user.is_superuser %}
+                        <li class="list-inline-item dropdown" id="sysmaint-link">
+                            <a class="text-black nav-link" href="#" id="sysmaint-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="text-center">
+                                <div><i class="fas fa-gear fa-lg"></i></div>
+                                <p class="my-0">SysMaint</p>
+                            </div>
                             </a>
-                    </li>
-                    <!-- <img href="{{user.user_profile.profile_image.url}}"> -->
+                            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                                <a href="{% url 'maint_articles' %}"  class="dropdown-item">Articles-admin</a>
+                                <a href="{% url 'maint_users' %}"  class="dropdown-item">Users-admin</a>
+                            </div>
+                        </li>
+                        {% endif %}
+                        <li class="list-inline-item dropdown profile-link">
+                        <a id="" class="nav-link text-black" href="#" data-toggle="dropdown" area-haspopup="true"  aria-expanded="false">
+                            <img class="navbar-image" 
+                            src="{{request.user.userprofile.profile_image.url}}" alt="User ">Hi, {{user.username}}!</a>
+                        <ul class="dropdown-menu border-0" aria-labelledby="user-options1">
+                            <li><a class="dropdown-item nav-link" href="{% url 'my_planner' %}">Account</a></li>
+                            <li><a class="dropdown-item nav-link" href="{% url 'my_planner' %}">My Planner</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
+                        </ul>
+                        </li>
+                        <li class="list-inline-item dropdown profile-link">
+                            <a id="" class="text-black nav-link" href="#" data-toggle="dropdown" area-haspopup="true"  aria-expanded="false">
+                                </a>
+                        </li>
+                        <!-- <img href="{{user.user_profile.profile_image.url}}"> -->
+                    {% else %}
+                    <p> user is authenticated but no userprofile</p>
+                    {% endif %}
+                    
                 {% else %}
+                <p> user not authenticated or doesnt have a userprofile</p>
                 <li class="nav-item list-inline-item dropdown profile-link ">
                     <a id="user-options-large-display" class="text-black nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
@@ -146,16 +152,23 @@
                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-right">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'survey1' %}">Take Survey?</a>
-                    </li>
-                </ul>
-            </div>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'survey1' %}">Take Survey?</a>
+                        </li>
+                    </ul>
+                </div>
 
-
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-right">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'planner' %}">Make Planner</a>
+                        </li>
+                    </ul>
+                </div>
+    
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                     aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -168,7 +181,7 @@
                         </li>
                     </ul>
                 </div>
-            <!-- </div> --> <!-- end div class container-fluid-->
+            </div>  <!-- end div class container-fluid-->
         </nav> 
     </header>
 <!-- DMcC 16/09/24 end insert -->
@@ -205,7 +218,7 @@
             making any financial decisions. Your use of this information 
             is at your own risk.</p>
             <br>
-            <p class="m-0 text-center text-white">Copyright AllSkills Tech</p>
+            <p class="m-0 text-center text-white"><i class="fa fa-copyright" aria-hidden="true"></i>AllSkills Tech</p>
         <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
             <i class="fab fa-twitter-square ms-3"></i>
             <i class="fab fa-instagram-square ms-3"></i>

@@ -24,24 +24,22 @@
                 <tr>
                 <th></th>
                 <th></th>
-                <th>USERNAME</th>
-                <th>EMAIL</th>
+                <th>User</th>
                 <th>Active?</th>
-                <th>Staff?</th>
-                <th>Superuser?</th>
-                <th>FIRST NAME</th>
-                <th>LAST NAME</th>
-                <th>Social Account</th>
-                <th>PROFILE PICTURE</th>
-                <th>DATE JOINED</th>
-                <th>LAST LOGIN</th>
+                <th>Super?</th>
+                <th>Profile?</th>
+                <th>Email</th>
+                <th></th>
+                <th></th>
+                <th>Avatar</th>
+                <th>Created</th>
+                <th>Last Login</th>
                 </tr>
             </thead>
             <!-- Place one blank line at top of grid for Product Add-->
             <tr class="text-muted {{order.order_status}}">
                 <td><a href="{% url 'add_user' %}" title="Add new User"><i class="far fa-add icon-edit"></i></a></td>
                 <td><a href="{% url 'add_user' %}" title="Add new User">Add</a></td>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -64,14 +62,13 @@
                         </form>
                         {% endif %}
                     </td>
-                    <td><a href="{% url 'user_preview' user.id %}" title="PreView user (new tab)" class="text-muted"  target="_blank">{{user.username}}</a></td>
-                    <td class="align-middle">{{user.email}}</td>
+                    <td>{{user.username}}</td>
                     <td class="align-middle">{{user.is_active|yesno:"Y,N"}}</td>
-                    <td class="align-middle">{{user.is_staff|yesno:"Y,N"}}</td>
                     <td class="align-middle">{{user.is_superuser|yesno:"Y,N"}}</td>
+                    <td class="align-middle">{{user.has_profile|yesno:"Y,N"}}</td>
+                    <td class="align-middle">{{user.email}}</td>
                     <td class="align-middle">{{user.first_name}}</td>
                     <td class="align-middle">{{user.last_name}}</td>
-                    <td class="align-middle">{{user.socialaccount}}</td>
                     <td class="p-0 align-middle">
                         {% if user.featured_image %}
                             <img class="img-thumbnail rounded-circle img-zoom" src="{{ user.featured_image.url }}" alt="Image">

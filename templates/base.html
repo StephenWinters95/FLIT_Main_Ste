@@ -33,10 +33,13 @@
     
     {% endblock %}
 
-   {% block extra_css %}
-   {% endblock %}
+    {% block extra_css %}
+    <!-- DMcC 09/11/24:  Include summernote css/js -->
+    <!-- include summernote css/js-->
+    <link href="summernote-lite.min.css" rel="stylesheet">
+    {% endblock %}
 
-   {% block corejs %}
+    {% block corejs %}
         <!-- DMcC 02/02/24 added in this extra link as my js functions are not being picked up.  I used this on BA walkthrough -->
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>  
@@ -230,6 +233,14 @@
             let alert = new bootstrap.Alert(messages);
             alert.close();
         }, 2500);
+    </script>
+    <script src="summernote-lite.min.js">
+    </script>
+    <!-- DMcC 09/11/24 - add summernote -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+        $('#summernote').summernote();
+        });
     </script>
 </body>
 

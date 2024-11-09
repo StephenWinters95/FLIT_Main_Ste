@@ -8,6 +8,7 @@ from .models import Article, Comment, Action
 from .forms import CommentForm, UserCommentForm, ArticleForm, UserForm, surveyForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from datetime import date
 import pandas as pd
 import numpy as np
 
@@ -242,7 +243,7 @@ def maint_articles(request):
 # before executing the view (otherwise redirects them to login)
 @login_required
 def add_article(request):
-    """ Sysadmin:  Add a article to the store """
+    """ Sysadmin:  Add a article to the site """
     # If not a superuser kick user out of function
     if not request.user.is_superuser:
         messages.error(request, 'Restricted: Must have SysAdmin rights'
@@ -306,11 +307,13 @@ def edit_article(request, article_id):
         return redirect(reverse('home'))
     article = get_object_or_404(Article, pk=article_id)
     if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES, instance=article)
-
-        if form.is_valid():
-            form.save()
-            stringy = f'Successfully updated article{article.id }, {article.title}'
+        article_form = ArticleForm(request.POST, request.FILES, instance=article)
+        # DMcC 09/11/24 - Set updated_on field to today
+        if article_form.is_valid():
+            article = article_form.save(commit=False)
+            article.updated_on = date.today()
+            article.save()
+            stringy = f'Successfully updated article {article.id }, {article.title}'
             messages.success(request, stringy)
             
             # DMcC 11/10/4: The piece of code below (which is duplicated elsewhere and will need to be refactored ) is to redisplay the maintenance screen
@@ -326,12 +329,12 @@ def edit_article(request, article_id):
             messages.error(request, 'Failed to update article.'
                            + ' Please ensure the form is valid.')
     else:
-        form = ArticleForm(instance=article)
+        article_form = ArticleForm(instance=article)
         messages.info(request, f'You are editing {article.title}')
 
     template = 'fp_blog/edit_article.html'
     context = {
-        'form': form,
+        'form': article_form,
         'article': article,
     }
 
@@ -349,10 +352,6 @@ def delete_article(request, id):
 
 #created Ste 14/10/24 
 # made for maint_users html page. 
-# def maint_users(request):
-#       users = User.objects.all()
-#       return render(request, 'fp_blog/maint_users.html', {'users': users})
-#
 #
 def maint_users(request):
     """ This is a sysadmin view to show all users,
@@ -386,7 +385,7 @@ def edit_user(request, user_id):
 
         if form.is_valid():
             form.save()
-            stringy = f'Successfully updated user{user.id }, {user.username}'
+            stringy = f'Successfully updated user' + user.username
             messages.success(request, stringy)
             
             return redirect('maint_users')  # Redirect to your users list page
@@ -432,7 +431,7 @@ def add_user(request):
             # - success message should also pop up at top of screen
             # return HttpResponseRedirect(reverse('article_detail', args=[article.slug]))
             
-            return redirect('maint_users')  # Redirect to your articles list page
+            return redirect('maint_users')  # Redirect to your users list page
         else:
             messages.error(request, 'Failed to add user.'
                            + ' Please ensure the form is valid.')
@@ -464,10 +463,11 @@ def toggle_activate_user(request, user_id):
     user.save()
     stringy_action=''
     if not user.is_active:
-        stringy_action = 'de'
+        stringy_action = 'De'
+    else:
+        stringy_action = 'Re'
     
-
-    stringy = f'Successfully ' + stringy_action + 'activated user{user.id }, {user.username}'
+    stringy = 'Success: ' + stringy_action + 'activated ' + str(user.username)
     messages.success(request, stringy)
             
     return redirect('maint_users')  # Redirect to your users list page
@@ -483,14 +483,14 @@ def delete_user(request, id):
 def user_preview(request, user_id):
     """ A view to show individual user details """
     mode = 'Preview'
-    user = get_object_or_404(user, pk=user_id)
+    user = get_object_or_404(User, pk=user_id)
             
     # getting all aspects of the user (this will be added to later to include user tags, bookmarks etc)
     context = {
             'user': user,
             'mode': mode,
             }
-    return render(request, 'user_detail.html', context)
+    return render(request, 'fp_blog/user_detail.html', context)
     
 
 def survey1(request):

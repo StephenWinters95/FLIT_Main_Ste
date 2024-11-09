@@ -28,10 +28,12 @@
                     {% csrf_token %}
                     {% load crispy_forms_tags %}
                     {% for field in form %}
-                        {% if field.name != 'image' %}
-                            {{ field | as_crispy_field }}
-                        {% else %}
-                            {{ field }}
+                        {% if field.name != 'status' and field.name != 'likes' and field.name != 'favourites' %}
+                            {% if field.name != 'featured_image'  %}
+                                {{ field | as_crispy_field }}
+                            {% else %}
+                                {{ field }}
+                            {% endif %}
                         {% endif %}
                     {% endfor %}
                     <div class="text-right">

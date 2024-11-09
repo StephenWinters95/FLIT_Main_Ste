@@ -3,7 +3,6 @@ from fp_personal.models import UserProfile
 from django import forms
 from .widgets import CustomClearableFileInput
 from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
-
 class CommentForm(forms.ModelForm):
     # this class provides a comment form for new comment creation
     class Meta:
@@ -35,6 +34,7 @@ class ArticleForm(forms.ModelForm):
 
         # permit only the friendly names for the choices in product category
         # self.fields['category'].choices = friendly_names
+        self.fields['author']
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
 

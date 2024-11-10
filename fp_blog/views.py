@@ -250,14 +250,20 @@ def add_article(request):
                        + ' to Add articles!')
         return redirect(reverse('home'))
 
-    if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES)
-        if form.is_valid():
-            article = form.save()
-            stringy = (f'Successfully added article title { article.slug },'
-                       + f'{ article.title }.')
-            messages.success(request, stringy)
+       
 
+    if request.method == 'POST':
+        article_form = ArticleForm(request.POST, request.FILES)
+        if article_form.is_valid():
+            article = article_form.save(commit=False)
+            article.slug = article.title
+            article.author = request.user
+            article.updated_on = date.today()
+            article.save()
+            stringy = f'Successfully added article {article.id }, {article.title}'
+            messages.success(request, stringy)
+   
+   
             # return redirect(reverse('add_article'))
             # go to the new article detail - sysadmin can check result
             # return redirect(reverse('article_detail', args=[article.id]))

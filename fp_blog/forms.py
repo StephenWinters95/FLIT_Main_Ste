@@ -22,7 +22,8 @@ class ArticleForm(forms.ModelForm):
     # this class gives article visibility
     class Meta:
         model = Article
-        fields = '__all__'
+        # fields = '__all__'
+        fields = ('title', 'author', 'content', 'featured_image', 'excerpt', )
         widgets = {
             'bar': SummernoteInplaceWidget(),
         }
@@ -32,9 +33,9 @@ class ArticleForm(forms.ModelForm):
         # categories = Category.objects.all()
         # friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
 
-        # permit only the friendly names for the choices in product category
+        # permit only the friendly names for the choices in product category 
         # self.fields['category'].choices = friendly_names
-        self.fields['author']
+        # self.fields['author'].initial = initial.author
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
 

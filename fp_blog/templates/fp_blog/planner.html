@@ -30,7 +30,9 @@
 <p> View your budgeting data on a weekly, monthly or annual basis </p>
 <p> You can refine to get a clearer view of when some expenses come due (e.g. car tax due in particular month)</p>
 
-
+{% for row in newarray %}
+    <p>{{ row }}</p>
+{% endfor %}
 <br>
 <!-- View data weekly -->
 <!-- show current date at top of table in table header -->

@@ -611,9 +611,36 @@ def planner(request):
             #    if (df.iloc[i]['Introduction'] == 'HouseHold Income'):
             #        print('Household Income header identified at row ', i)
                     
+            newarray =[
+                ["Context", "Description", "Frequency", "Amount"]
+            ]
+            i = 0
+               
+            Context = "Household Income"
 
+            for i in range(len(df) - 1):
+                if df.iloc[i, 0] == "Household Income":
+                    context = "Household Income"
+                    multiplier = 1
+                else:
+                    if df.iloc[i, 0] == "Household Expenditure":
+                        context = "Household Expenditure"
+                        multiplier = -1
+                    else:
+                        newarray.append([
+                        [i, context],
+                        df.iloc[i, 0],
+                        df.iloc[i, 1],
+                        df.iloc[i, 2] * multiplier
+                    ])
 
-            return render(request, 'fp_blog/planner.html')  # Render the upload form template
+            
+            print(newarray)
+            
+            context = {
+               'newarray': newarray,
+            }
+            return render(request, 'fp_blog/planner.html', context)  # Render the upload form template
             
         else:
             stringy = f'Cannot upload file ' + csv_file.name
@@ -623,6 +650,9 @@ def planner(request):
     
     return render(request, 'fp_blog/planner.html')  # Render the upload form template
 
+
+            
+        
 
 
 

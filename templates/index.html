@@ -81,12 +81,12 @@
                             </div>
                         </div>
                     </div>
-                <!-- DMcC 15/11/23 change the default row break to divisible by 4 rather than by 3 -->
-                {% if forloop.counter|divisibleby:4 %}
-                </div>
-                <div class = "row">
+                    <!-- DMcC 15/11/23 change the default row break to divisible by 4 rather than by 3 -->
+                    {% if forloop.counter|divisibleby:4 %}
+                    </div>
+                    <div class = "row">
                     {% endif %}
-                    {% endfor %}
+                {% endfor %}
                     
                 </div>
             </div>

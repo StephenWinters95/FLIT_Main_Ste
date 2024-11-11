@@ -594,51 +594,46 @@ def planner(request):
             # print(df[0]) doesnt work as data file is not directly referenceable?
             # print(df[1])
             # DMcC 09/11/24 need to replace the below with a message file 
-            # return HttpResponse('CSV file uploaded and processed successfully!')
             stringy = f'Successfully uploaded ' + csv_file.name
             messages.success(request, stringy)
-            print(df)
-            # DMcC 09/11/24 trying to understand dataframe structure and manipulation
-            # print('That was all the data, now for a subset:')
-            # df.iloc[0:0,2:2] = 'hello'
-            # print(df.iloc[0:1, :])
-            # print('length of dataframe is ', len(df))
-
-            # get section headers
-            # columns = []
-            #count_n = 0
-            #for i in range(0, len(df)-1):
-            #    if (df.iloc[i]['Introduction'] == 'HouseHold Income'):
-            #        print('Household Income header identified at row ', i)
-                    
+            
+            # Ste and DMcC 11/11/24 - process the dataframe into header and detail arrays:
             newarray =[
-                ["Context", "Description", "Frequency", "Amount"]
+                ["Classification", "Description", "Frequency", "Amount", "Weekly", "Monthly", "Quarterly", "Annually"]
             ]
             i = 0
                
-            Context = "Household Income"
+            classif = "Household Income"
 
             for i in range(len(df) - 1):
                 if df.iloc[i, 0] == "Household Income":
-                    context = "Household Income"
+                    classif = "Income"
                     multiplier = 1
                 else:
                     if df.iloc[i, 0] == "Household Expenditure":
-                        context = "Household Expenditure"
+                        classif = "Expenditure"
                         multiplier = -1
                     else:
+                        freq = df.iloc[i, 1]
+                        amount=df.iloc[i, 2] * multiplier
+                        amt_weekly = amount if freq == "Weekly" else 0 
+                        amt_monthly = amount if freq == "Monthly" else 0 
+                        amt_quarterly = amount if freq == "Quarterly" else 0 
+                        amt_annually = amount if freq == "Yearly" else 0 
+                        
                         newarray.append([
-                        [i, context],
+                        classif,
                         df.iloc[i, 0],
                         df.iloc[i, 1],
-                        df.iloc[i, 2] * multiplier
-                    ])
-
-            
-            print(newarray)
-            
+                        amount,
+                        amt_weekly,
+                        amt_monthly,
+                        amt_quarterly,
+                        amt_annually,])
+                        
             context = {
-               'newarray': newarray,
+               'budget_header': newarray[0:],
+               'budget_array': newarray[1:],
             }
             return render(request, 'fp_blog/planner.html', context)  # Render the upload form template
             

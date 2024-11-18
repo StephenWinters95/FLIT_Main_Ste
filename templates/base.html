@@ -36,7 +36,8 @@
     {% block extra_css %}
     <!-- DMcC 09/11/24:  Include summernote css/js -->
     <!-- include summernote css/js-->
-    <link href="summernote-lite.min.css" rel="stylesheet">
+    <!-- link href="..\summernote-lite.min.css" rel="stylesheet" -->
+    <link rel="stylesheet" href="{% static 'summernote/summernote-lite.min.css' %}">
     {% endblock %}
 
     {% block corejs %}
@@ -234,7 +235,7 @@
             alert.close();
         }, 2500);
     </script>
-    <script src="summernote-lite.min.js">
+    <script src="{% static 'summernote/summernote-lite.min.js' %}">
     </script>
     <!-- DMcC 09/11/24 - add summernote -->
     <script type="text/javascript">

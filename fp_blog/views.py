@@ -81,7 +81,7 @@ class ArticleDetail(View):
                 commented_unapproved = True
         return render(
                       request,
-                      "article_detail.html",
+                      "fp_blog/article_detail.html",
                       {
                        "article": article,
                        "mode": mode,
@@ -123,9 +123,10 @@ class ArticleDetail(View):
 
         return render(
                     request,
-                    "article_detail.html",
+                    "fp_blog/article_detail.html",
                     {
                         "article": article,
+                        "mode": mode,
                         "comments": comments,
                         "commented": True,
                         "commented_unapproved": True,
@@ -299,7 +300,7 @@ def article_preview(request, article_id):
             'article': article,
             'mode': mode,
             }
-    return render(request, 'article_detail.html', context)
+    return render(request, 'fp_blog/article_detail.html', context)
 
 # DMcC 09/10/24 Recycled code (was originally used for product edit in jeweller project)
 # Add @login_required decorator to ensure user logged in

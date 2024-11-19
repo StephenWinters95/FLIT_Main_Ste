@@ -27,14 +27,13 @@
                 <form method="POST" action="{% url 'edit_article' article.id %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
-                        {% if field.name != "featured_image" and field.name != "content" %}
-                        <!-- DMcC 09/10/24  problems with reference to | as_crispy_field -->
-                            {{ field | as_crispy_field }}
+                        {% if field.name == 'content' %}
+                            <div id="summernote" name="content">{{ field }}</div>
                         {% else %}
-                            {% if field.name == 'content' %}
-                                <div id="summernote" name="content">{{ field }}</div>
-                            {% else %}
+                            {% if field.name == "featured_image" %}
                                 {{ field }}
+                            {% else %}    
+                                {{ field | as_crispy_field }}
                             {% endif %}
                         {% endif %}
                     {% endfor %}
@@ -74,7 +73,7 @@
     </script>
 
 
-    $(document).ready(function() {
+    <!-- DMcC 19/11/24:  removed this bit of orphaned code  $(document).ready(function() { -->
     
 <!-- script to control 'return to top' arrow -->
     <script type="text/javascript">

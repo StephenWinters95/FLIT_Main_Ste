@@ -631,10 +631,54 @@ def planner(request):
                         amt_monthly,
                         amt_quarterly,
                         amt_annually,])
-                        
+
+            # this part of the code fills out the rest of the table. / array. and makes it easier to add up the toal at the end. 
+            i = 1
+            for i in range(len(newarray)):
+                if newarray[i][2] == "Weekly":
+                    newarray[i][5] = newarray[i][4] * 4.34
+                    newarray[i][6] = newarray[i][4] * 13
+                    newarray[i][7] = newarray[i][4] * 52
+                else:
+                    if newarray[i][2] == "Monthly":
+                        newarray[i][4] = newarray[i][5] / 4.33
+                        newarray[i][6] = newarray[i][5] * 3
+                        newarray[i][7] = newarray[i][5] * 12
+                    else:
+                        if newarray[i][2] == "Quarterly":
+                            newarray[i][4] = newarray[i][6] / 13
+                            newarray[i][5] = newarray[i][6] / 3
+                            newarray[i][7] = newarray[i][6] * 4
+                        else:
+                            if newarray[i][2] == "Yearly":
+                                newarray[i][4] = newarray[i][7] / 52
+                                newarray[i][5] = newarray[i][7] / 12
+                                newarray[i][6] = newarray[i][7] / 3
+            # ste added 20/11/24.
+            # adds total of the array to display at the bottom.
+            total = [0,0,0,0,0,0,0,0]
+            # i will always be 0 at the start of a for loop even if u assign it as 1, the line beforehand.
+            for i in range(1,len(newarray)):
+                #if newarray[i][4].isdigit():
+                    total[0] += newarray[i][4]
+                    total[1] += newarray[i][5]
+                    total[2] += newarray[i][6]
+                    total[3] += newarray[i][7]
+            
+            total[4] = total[0]
+            total[5] = total[1]
+            total[6] = total[2]
+            total[7] = total[3]
+            
+            total[0] = "TOTAL"
+            total[1] = " "
+            total[2] = " "
+            total[3] = " "
+            
             context = {
                'budget_header': newarray[0:],
                'budget_array': newarray[1:],
+               'budget_total': total[0:],
             }
             return render(request, 'fp_blog/planner.html', context)  # Render the upload form template
             
@@ -646,6 +690,11 @@ def planner(request):
     
     return render(request, 'fp_blog/planner.html')  # Render the upload form template
 
+# made by ste 20/11/24
+def courses():
+    
+    
+    return render('fp_blog/course.html')
 
             
         

@@ -30,6 +30,41 @@
 <p> View your budgeting data on a weekly, monthly or annual basis </p>
 <p> You can refine to get a clearer view of when some expenses come due (e.g. car tax due in particular month)</p>
 
+
+<button onclick="toggleTable()">Toggle Table</button>
+
+<div id="collapsibleTable" style="display: block;">
+    <table class="table table-bordered table-hover ">
+        <thead class="table-secondary">
+            <tr>
+                {% for cell in budget_header.0 %}
+                <th>{{ cell }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        
+        {% for row in budget_array %}
+        <tr class="text-muted">
+            {% for cell in row %}
+                <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %} 
+
+        <thead class="table-secondary">    
+            <tr>
+                {% for cell in budget_total %}
+                <th>{{ cell }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+    </table>
+</div>
+
+
+
+
+
 <table class="table table-bordered table-hover ">
     <thead class="table-secondary">
         <!-- DMcC 09/10/24:  table headings from first row of budgetarray -->    
@@ -75,6 +110,19 @@
             window.scrollTo(0,0)
         })
     </script>
+
+<!-- Ste 20/11/24 script to toggle table display -->
+    <script>
+        function toggleTable() {
+            var table = document.getElementById("collapsibleTable");
+            if (table.style.display === "none") {
+                table.style.display = "block";
+            } else {
+                table.style.display = "none";
+            }
+        }
+    </script>
+    
 
 {% endblock %}
 </html>

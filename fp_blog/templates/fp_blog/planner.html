@@ -49,7 +49,7 @@
                 <td>{{ cell }}</td>
             {% endfor %}
         </tr>
-        {% endfor %} 
+        {% endfor %} 1
 
         <thead class="table-secondary">    
             <tr>
@@ -64,11 +64,11 @@
 
 
 
-
+<!-- This is the older version of budget display 
 <table class="table table-bordered table-hover ">
-    <thead class="table-secondary">
+    <thead class="table-secondary"> -->
         <!-- DMcC 09/10/24:  table headings from first row of budgetarray -->    
-        <tr>
+        <!-- <tr>
             {% for cell in budget_header.0 %}
             <th>{{ cell }}</th>
             {% endfor %}
@@ -82,7 +82,7 @@
         {% endfor %}
     </tr>
     {% endfor %} 
-</table>   
+</table>  --> 
 <br>
 <!-- View data weekly -->
 <!-- show current date at top of table in table header -->
@@ -112,7 +112,7 @@
     </script>
 
 <!-- Ste 20/11/24 script to toggle table display -->
-    <script>
+    <script type="text/javascript">
         function toggleTable() {
             var table = document.getElementById("collapsibleTable");
             if (table.style.display === "none") {

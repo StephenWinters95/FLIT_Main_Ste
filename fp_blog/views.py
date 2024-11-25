@@ -600,8 +600,13 @@ def planner(request):
             
             # Ste and DMcC 11/11/24 - process the dataframe into header and detail arrays:
             newarray =[
-                ["Classification", "Description", "Frequency", "Amount", "Weekly", "Monthly", "Quarterly", "Annually"]
+                ["Classification", "Description", "Frequency", "Amount", "Weekly", "Monthly", "Quarterly", "Annually", "DayOfWeek", "DayOfMonth", "MonthOfYear"]
             ]
+            
+            dow = 1
+            dom = 1
+            moy = 1
+
             i = 0
                
             classif = "Household Income"
@@ -630,46 +635,54 @@ def planner(request):
                         amt_weekly,
                         amt_monthly,
                         amt_quarterly,
-                        amt_annually,])
+                        amt_annually,
+                        dow,
+                        dom,
+                        moy])
 
-            # this part of the code fills out the rest of the table. / array. and makes it easier to add up the toal at the end. 
-            i = 1
-            for i in range(len(newarray)):
+
+            # Ste 20/11/24 this part of the code fills out the rest of the table. / array. and makes it easier to add up the total at the end.
+            # Include DOW (day of week) in col8 for weekly payments; DOM (day of month) in col9 for monthly  payments; and DOM (day of month) and MOY (Month of year) for annual payments)
+            
+            
+            
+            for i in range(1, len(newarray)):
                 if newarray[i][2] == "Weekly":
-                    newarray[i][5] = newarray[i][4] * 4.34
-                    newarray[i][6] = newarray[i][4] * 13
-                    newarray[i][7] = newarray[i][4] * 52
+                    newarray[i][5] = round(newarray[i][4] * 4.34, 2)
+                    newarray[i][6] = round(newarray[i][4] * 13, 2)
+                    newarray[i][7] = round(newarray[i][4] * 52, 2)
                 else:
                     if newarray[i][2] == "Monthly":
-                        newarray[i][4] = newarray[i][5] / 4.33
-                        newarray[i][6] = newarray[i][5] * 3
-                        newarray[i][7] = newarray[i][5] * 12
+                        newarray[i][4] = round(newarray[i][5] / 4.33, 2)
+                        newarray[i][6] = round(newarray[i][5] * 3, 2)
+                        newarray[i][7] = round(newarray[i][5] * 12, 2)
                     else:
                         if newarray[i][2] == "Quarterly":
-                            newarray[i][4] = newarray[i][6] / 13
-                            newarray[i][5] = newarray[i][6] / 3
-                            newarray[i][7] = newarray[i][6] * 4
+                            newarray[i][4] = round(newarray[i][6] / 13, 2)
+                            newarray[i][5] = round(newarray[i][6] / 3, 2)
+                            newarray[i][7] = round(newarray[i][6] * 4, 2)
                         else:
                             if newarray[i][2] == "Yearly":
-                                newarray[i][4] = newarray[i][7] / 52
-                                newarray[i][5] = newarray[i][7] / 12
-                                newarray[i][6] = newarray[i][7] / 3
+                                newarray[i][4] = round(newarray[i][7] / 52, 2)
+                                newarray[i][5] = round(newarray[i][7] / 12, 2)
+                                newarray[i][6] = round(newarray[i][7] / 3,2)
+                
             # ste added 20/11/24.
             # adds total of the array to display at the bottom.
             total = [0,0,0,0,0,0,0,0]
             # i will always be 0 at the start of a for loop even if u assign it as 1, the line beforehand.
             for i in range(1,len(newarray)):
                 #if newarray[i][4].isdigit():
-                    total[0] += newarray[i][4]
-                    total[1] += newarray[i][5]
-                    total[2] += newarray[i][6]
-                    total[3] += newarray[i][7]
+                    total[4] += newarray[i][4]
+                    total[5] += newarray[i][5]
+                    total[6] += newarray[i][6]
+                    total[7] += newarray[i][7]
             
-            total[4] = total[0]
-            total[5] = total[1]
-            total[6] = total[2]
-            total[7] = total[3]
-            
+           
+            # DMcC 25/11/24 Add rounding cleannup as calculations introduce more decimal places
+            for j in range(4, 7):
+                total[j] = round(total[j],2)
+                
             total[0] = "TOTAL"
             total[1] = " "
             total[2] = " "
@@ -691,17 +704,26 @@ def planner(request):
     return render(request, 'fp_blog/planner.html')  # Render the upload form template
 
 # made by ste 20/11/24
-def courses():
+def courses(request):
+    # courses need to link to articles and have a questionaire after them. possibly multiple questions.
+    # so maybe is we had a 2d array where each column had the article and then multiple choice questions after them. 
+    # courses Structure => courses[ Course ID, Course ID, Course ID,]    Main = [ID , Article ID , Quiz ID , Quiz ID , Quiz ID , Quiz ID]     Quiz[] =[Quiz ID , Q1 , ANS1 , ANS2 , ANS3 , ANS4 ,]  x several times etc. and that will be the course ANS1 will always be correct answer but the html will be told to randomize the order. 
+    # List of Article ID's 
+    # need to make a diffrent array for users scores and add it to their profile.
+    # need to make a menu to display all courses.
+    # need to make a page to allow an admin to make a custome test / course.
     
+    courses = []
+    queryset = Article.objects.filter(status=1).order_by('-updated_on')
+    print(queryset)
     
-    return render('fp_blog/course.html')
+    return render(request, 'fp_blog/course1.html')
 
-            
-        
+def journal(request):
+    return render(request, 'fp_blog/journal1.html')
 
-
-
-
+def grant(request):
+    return render(request, 'fp_blog/grant1.html')
 
 
 def error_400(request, exception):

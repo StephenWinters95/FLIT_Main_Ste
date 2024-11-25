@@ -133,11 +133,11 @@
                         </li>
                         <!-- <img href="{{user.user_profile.profile_image.url}}"> -->
                     {% else %}
-                    <p> user is authenticated but no userprofile</p>
+                    <!-- user is authenticated but no userprofile -->
                     {% endif %}
                     
                 {% else %}
-                <p> user not authenticated or doesnt have a userprofile</p>
+                <!--  user not authenticated or doesnt have a userprofile -->
                 <li class="nav-item list-inline-item dropdown profile-link ">
                     <a id="user-options-large-display" class="text-black nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
@@ -151,26 +151,33 @@
                     </ul>
                 </li>
                 {% endif %}
-                
+
+                <li class="nav-item list-inline-item dropdown profile-link">
+                    <a id="user-options-large-display" class="text-black nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="text-center">
+                            <div><i class="fas fa-cog"></i></div>
+                            <p class="my-0">Menu</p>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu border-0" aria-labelledby="user-options-large-display">
+                        <li><a class="dropdown-item" href="{% url 'survey1' %}">Take Survey</a></li>
+                        <li><a class="dropdown-item" href="{% url 'planner' %}">Make Planner</a></li>
+
+                        <li><a class="dropdown-item" href="{% url 'course1' %}">Take Course</a></li>
+                        <li><a class="dropdown-item" href="{% url 'journal1' %}">Add to journal</a></li>
+                        <li><a class="dropdown-item" href="{% url 'grant1' %}">Grant Survey</a></li>
+                    </ul>
+                </li>
+          
                 <!-- Ste 26/10/24 add button to take survey -->
                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-right">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'survey1' %}">Take Survey?</a>
-                        </li>
-                    </ul>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-right">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'planner' %}">Make Planner</a>
-                        </li>
-                    </ul>
                 </div>
     
 

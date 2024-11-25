@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'fp_blog',
     'fp_personal',
+    'fp_courses',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

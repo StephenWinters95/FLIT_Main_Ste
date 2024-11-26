@@ -1,8 +1,7 @@
 from django.contrib import admin
 from datetime import datetime
 from .models import User
-from .models import Course, CourseContent, Cohort, CohortUser
-
+from .models import Course, CourseContent, Cohort
 # Register your models here.
 # The UserProfile model is a custom extension of allauth User model
 @admin.register(Course)
@@ -19,8 +18,4 @@ class CourseContentAdmin(admin.ModelAdmin):
 class CohortAdmin(admin.ModelAdmin):
     list_display=('cohort_code', 'title', 'subtitle')
     search_fields=['cohort_code']
-
-@admin.register(CohortUser)
-class CohortUser(admin.ModelAdmin):
-    list_display = ('cohort_code', 'user',)
-    search_fields=['cohort_code']
+    

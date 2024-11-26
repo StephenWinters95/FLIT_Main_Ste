@@ -7,6 +7,12 @@ from fp_blog.models import Article, Comment, Action
 STATUS = ((0, "Inactive"), (1, "Active"))
 CONTENT_TYPE = ((0, "Article"), (1, "Quiz"))
 
+def today_plus_one_year():
+    return date.today() + timedelta(years=1)
+
+def today_plus_10_years():
+    return date.today() + timedelta(years=10)
+
 # Create your models here.
 class Course(models.Model):
     """ Course is a set of articles delivered in a particular sequence
@@ -19,10 +25,10 @@ class Course(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name="courses", db_constraint=False)
     featured_image = CloudinaryField('image', default='placeholder')
-    effective_from = models.DateTimeField(auto_now_add=True)
-    effective_to = models.DateTimeField(default=datetime.today() + timedelta(days=3652))
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now_add=True)
+    effective_from = models.DateField(auto_now_add=True)
+    effective_to = models.DateField(default=today_plus_10_years)
+    created_on = models.DateField(auto_now_add=True)
+    updated_on = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     
     class Meta:
@@ -35,6 +41,11 @@ class Course(models.Model):
         """ returns course code """
         print (self.course_code)
         return self.course_code 
+
+    def is_valid_today(self):
+        """ returns True or False based on effectivedate and status """
+        valid_today = (( date.today >= self.effective_from) and (date.today <= date.effective_to) and (self.status))
+        return (valid_today)
 
 class CourseContent(models.Model):
     """ Course is a set of articles delivered in a particular sequence
@@ -58,6 +69,12 @@ class CourseContent(models.Model):
         return f"{self.course_code} {self.version} {self.seq_num}" 
     
 
+    def is_valid(self):
+        """ Returns True or False based on CourseContent status """
+        valid_today = (self.status)
+        return (valid_today)
+
+
 class Cohort(models.Model):
     """ Cohort refers to a group of users who will be assigned to a common course of learning """
     cohort_code = models.CharField(max_length = 25, primary_key = True)
@@ -66,11 +83,12 @@ class Cohort(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name="admin_cohorts", db_constraint=False)
     featured_image = CloudinaryField('image', default='placeholder')
-    effective_from = models.DateTimeField(auto_now_add=True)
-    effective_to = models.DateTimeField(default=datetime.today() + timedelta(days=365))
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now_add=True)
+    effective_from = models.DateField(auto_now_add=True)
+    effective_to = models.DateField(default=today_plus_one_year)
+    created_on = models.DateField(auto_now_add=True)
+    updated_on = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    members = models.ManyToManyField(User, related_name='cohort_user', blank=True)
     
     class Meta:
         """ returns an overall list """
@@ -79,19 +97,8 @@ class Cohort(models.Model):
     def __str__(self):
         """ returns course title """
         return f"{self.cohort_code}: {self.title}"
-
-
-class CohortUser(models.Model):
-    cohort_code = models.ForeignKey(Cohort, on_delete=models.CASCADE,
-                                     related_name="cohort_users" )
-    user=models.ForeignKey(User, on_delete=models.CASCADE,
-                               related_name="learner_cohorts", db_constraint=False)
-
-    class Meta:
-        unique_together = ('cohort_code', 'user') 
-        """ returns an overall list """
-        ordering = ['cohort_code', 'user']
-
-    def __str__(self):
-        """ returns course title """
-        return f"{self.cohort_code} {self.user}"
+    
+    def is_valid_today(self):
+        """ returns True or False based on effectivedate and status """
+        valid_today = (( date.today >= self.effective_from) and (date.today <= date.effective_to) and (self.status))
+        return (valid_today)

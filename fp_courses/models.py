@@ -11,6 +11,7 @@ CONTENT_TYPE = ((0, "Article"), (1, "Quiz"))
 class Course(models.Model):
     """ Course is a set of articles delivered in a particular sequence
     fields: course_code, title1, slug, title2, version, author, featured_image, effective_from, effective_to"""
+    disp_seq = models.IntegerField(default=10)
     course_code = models.CharField(max_length = 15, primary_key = True)
     version = models.CharField(max_length = 3)
     title = models.CharField(max_length=200)
@@ -28,32 +29,33 @@ class Course(models.Model):
         unique_together = (('course_code', 'version'),)
         
         """ returns an overall list """
-        ordering = ['course_code', 'version']
+        ordering = ['disp_seq', 'course_code', 'version']
 
     def __str__(self):
-        """ returns course title """
-        return self.title
+        """ returns course code """
+        print (self.course_code)
+        return self.course_code 
 
 class CourseContent(models.Model):
     """ Course is a set of articles delivered in a particular sequence
     fields: course_code, title1, slug, title2, version, author, featured_image, effective_from, effective_to"""
     course_code = models.ForeignKey(Course, on_delete=models.CASCADE,
-                               related_name="contents", db_constraint=False)
-    version = models.ForeignKey(Course, on_delete=models.DO_NOTHING, related_name="version_contents")
+                               related_name="course_contents", db_constraint=False)
+    version = models.CharField(max_length = 3)
     seq_num = models.IntegerField(default=10)
     content_type = models.IntegerField(choices=CONTENT_TYPE, default=0) 
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="course_article", db_constraint=False)
     status = models.IntegerField(choices=STATUS, default=0)    
     
     class Meta:
-        unique_together = (('course_code', 'version', 'seq_num'),)
+        unique_together = ('course_code', 'version', 'seq_num')
         
         """ returns an overall list """
         ordering = ['course_code', 'version', 'seq_num']
 
     def __str__(self):
         """ returns course title """
-        return self.course_code, self.version, self.seq_num 
+        return f"{self.course_code} {self.version} {self.seq_num}" 
     
 
 class Cohort(models.Model):
@@ -76,10 +78,10 @@ class Cohort(models.Model):
 
     def __str__(self):
         """ returns course title """
-        return self.title, self.effective_from, self.effective_to
+        return f"{self.cohort_code}: {self.title}"
 
 
-class CohortUsers:
+class CohortUser(models.Model):
     cohort_code = models.ForeignKey(Cohort, on_delete=models.CASCADE,
                                      related_name="cohort_users" )
     user=models.ForeignKey(User, on_delete=models.CASCADE,
@@ -87,10 +89,9 @@ class CohortUsers:
 
     class Meta:
         unique_together = ('cohort_code', 'user') 
-        
         """ returns an overall list """
-        ordering = ['course_code', 'version']
+        ordering = ['cohort_code', 'user']
 
     def __str__(self):
         """ returns course title """
-        return self.cohort_code, self.user
+        return f"{self.cohort_code} {self.user}"

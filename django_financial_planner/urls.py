@@ -26,4 +26,6 @@ urlpatterns = [
     path('myplanner/', include('fp_personal.urls')),
     path('', include('fp_blog.urls')),
     path('about/', include('fp_personal.urls')),
+    path('courses/', include('fp_courses.urls')),
+    
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

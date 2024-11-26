@@ -102,3 +102,24 @@ class Cohort(models.Model):
         """ returns True or False based on effectivedate and status """
         valid_today = (( date.today >= self.effective_from) and (date.today <= date.effective_to) and (self.status))
         return (valid_today)
+
+class Quiz(models.Model):
+    """ Quiz is a multichoice set of questions related to a particle topic or article
+        fields: course_code, title1, slug, title2, version, author, featured_image, effective_from, effective_to"""
+    quiz_code = models.CharField(max_length=25, primary_key = True)
+    question_text = models.CharField(max_length = 200, default='Question text goes here?')
+    ans1_text = models.CharField(max_length=200, default="Answer1 goes here")
+    ans2_text = models.CharField(max_length=200, default="Answer2 goes here")
+    ans3_text = models.CharField(max_length=200, default="Answer3 goes here")
+    ans4_text = models.CharField(max_length=200, default="Answer4 goes here")
+    correct_ans = models.IntegerField()
+    explanation = models.CharField(max_length=300, default="Correct answer is X:  This is because ......")
+    status = models.IntegerField(choices=STATUS, default=0)    
+    
+    class Meta:
+        """ returns an overall list """
+        ordering = ['quiz_code',]
+
+    def __str__(self):
+        """ returns quiz question """
+        return f"{self.quiz_code} {self.question_text}" 

@@ -1,7 +1,9 @@
+from . import views
+from django.urls import path
+
 # paths within the fp_courses app
 urlpatterns = [
-    path('', views.CourseList, name='home'),
-    path('my_courses/', views.my_courses, name='my_courses'),   #added Ste 22/11/24
+    path('my_courses/', views.my_courses, name='my_courses'),   #added DMcC 26/11/24
     ]
 
 # Error handlers for site errors

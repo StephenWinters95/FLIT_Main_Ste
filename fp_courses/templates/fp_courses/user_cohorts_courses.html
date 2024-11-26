@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-12 mt-3 left">
+            <!-- DMcC 21/11/23 the below search field text from stackoverflow.com re adding a search field-->
+            <form class="form-inline my-2 my-lg-0" action="{% url 'home' %}">
+                <input type="search"   placeholder="Search by tag" aria-label="Search" name="search">
+                <button class="btn btn-signup right" type="submit">Search</button>  
+            </form>
+            <div class="row">
+                {% if cohorts %}
+                    <ul>
+                        {% for cohort in cohorts %}
+                        <li>
+                            <h3>{{ cohort.name }}</h3>  <p>Courses:</p>
+                            <ul>
+                            {% for course in courses %}
+                                {% if course.cohort == cohort %}  <li>{{ course.title }}</li>  {% endif %}
+                            {% endfor %}
+                            </ul>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p>You are not currently enrolled in any cohorts.</p>
+                    {% endif %}
+            </div>
+        </div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; </a></li>
+            {% endif %}
+            <li class="page-link">PAGE {{page_obj.number}} </li>
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+<!-- DMcC 16/11/23 the following script needed to control tooltip display above the hovered element-->    
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
+
+{%endblock%}

@@ -7,6 +7,9 @@ from fp_blog.models import Article, Comment, Action
 STATUS = ((0, "Inactive"), (1, "Active"))
 CONTENT_TYPE = ((0, "Article"), (1, "Quiz"))
 
+def today_date():
+    return date.today()
+
 def today_plus_one_year():
     return date.today() + timedelta(years=1)
 
@@ -83,7 +86,7 @@ class Cohort(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name="admin_cohorts", db_constraint=False)
     featured_image = CloudinaryField('image', default='placeholder')
-    effective_from = models.DateField(auto_now_add=True)
+    effective_from = models.DateField(default=today_date)
     effective_to = models.DateField(default=today_plus_one_year)
     created_on = models.DateField(auto_now_add=True)
     updated_on = models.DateField(auto_now_add=True)
@@ -96,12 +99,16 @@ class Cohort(models.Model):
 
     def __str__(self):
         """ returns course title """
-        return f"{self.cohort_code}: {self.title}"
+        return f"{self.cohort_code}"
     
     def is_valid_today(self):
         """ returns True or False based on effectivedate and status """
         valid_today = (( date.today >= self.effective_from) and (date.today <= date.effective_to) and (self.status))
         return (valid_today)
+
+    def is_a_member(self, user):
+        return(user in self.members)
+
 
 class Quiz(models.Model):
     """ Quiz is a multichoice set of questions related to a particle topic or article

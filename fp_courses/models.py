@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import timedelta, datetime
+from datetime import timedelta, datetime, date
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from fp_blog.models import Article, Comment, Action
@@ -11,10 +11,10 @@ def today_date():
     return date.today()
 
 def today_plus_one_year():
-    return date.today() + timedelta(years=1)
+       return date.today() + timedelta(days=365)
 
 def today_plus_10_years():
-    return date.today() + timedelta(years=10)
+       return date.today() + timedelta(days=3650)
 
 # Create your models here.
 class Course(models.Model):

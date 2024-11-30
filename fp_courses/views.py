@@ -6,6 +6,9 @@ from django.contrib import messages
 from django.core.paginator import Paginator  # Specifically imported 
 from django.db.models import Q  # This is a text search capability
 from .models import Course, Cohort, CourseContent, Quiz
+
+from .forms import CourseForm   # Cuasing all the issues. 
+
 from fp_personal.models import UserProfile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -58,4 +61,74 @@ def user_cohorts_courses(request):
       'cohorts': cohorts,
       'courses': courses,
   }
-  return render(request, 'user_cohorts_courses.html', context)
+  return render(request, 'fp_courses/user_cohorts_courses.html', context)
+
+
+def maint_courses(request):
+    """ This is a sysadmin view to show all Courses,
+    and allow the sysadmin to edit/delete """
+    print('In view maint_courses')
+    courses = Course.objects.all()
+
+    # sort by SKU in order asc/desc
+    courses = courses.order_by('-updated_on')
+    context = {
+        'courses': courses,
+    }
+   
+    print("part 2")
+    return render(request, 'fp_courses/maint_courses.html', context)
+
+@login_required
+def add_course(request):
+    """ Sysadmin: Add a course to the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Restricted: Must have SysAdmin rights to Add courses!')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        course_form = CourseForm(request.POST, request.FILES)
+        if course_form.is_valid():
+            course = course_form.save(commit=False)
+            course.slug = course.title
+            course.author = request.user
+            course.updated_on = date.today()
+            course.save()
+            stringy = f'Successfully added course {course.id}, {course.title}'
+            messages.success(request, stringy)
+            return redirect('success_url')  # Redirect after successful submission
+    else:
+        course_form = CourseForm()  # Initialize form for GET request
+
+    return render(request, 'fp_courses/add_course.html', {'form': course_form})
+
+
+def edit_course(request):
+    courses = Course.objects.all()
+
+    # sort by SKU in order asc/desc
+    courses = courses.order_by('-updated_on')
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'fp_courses/maint_courses.html', context)
+
+def delete_course(request):
+    courses = Course.objects.all()
+
+    # sort by SKU in order asc/desc
+    courses = courses.order_by('-updated_on')
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'fp_courses/maint_courses.html', context)
+
+def course_preview(request):
+    courses = Course.objects.all()
+
+    # sort by SKU in order asc/desc
+    courses = courses.order_by('-updated_on')
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'fp_courses/maint_courses.html', context)

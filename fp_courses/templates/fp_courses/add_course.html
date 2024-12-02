@@ -16,8 +16,8 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <hr>
-                <h2 class="logo-font mb-4">Article Management</h2>
-                <h5 class="text-muted">Add an Article</h5>
+                <h2 class="logo-font mb-4">Course Management</h2>
+                <h5 class="text-muted">Add an Course</h5>
                 <hr>
             </div>
         </div>
@@ -28,7 +28,7 @@
                     {% csrf_token %}
                     {% load crispy_forms_tags %}
                     {% for field in form %}
-                        {% if field.name != 'status' and field.name != 'likes' and field.name != 'favourites' %}
+                        {% if field.name != 'likes' and field.name != 'favourites' %}
                             {% if field.name != 'featured_image'  %}
                                 {{ field | as_crispy_field }}
                             {% else %}
@@ -38,7 +38,7 @@
                     {% endfor %}
                     <div class="text-right">
                         <a class="btn btn-outline-black rounded-0" href="{% url 'maint_courses' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Add Article</button>
+                        <button class="btn btn-black rounded-0" type="submit">Add Course</button>
                     </div>
                 </form>
             </div>            

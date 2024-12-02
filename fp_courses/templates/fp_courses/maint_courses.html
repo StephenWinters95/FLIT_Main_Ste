@@ -23,8 +23,9 @@
                 <th></th>
                 <th></th>
                 <th>Title/Slug</th>
+                <th>Course Code</th>
                 <th>Published?</th>
-                <th>Auth</th>
+                <th>Author</th>
                 <th>Created</th>
                 <th>Updated</th>
                 <th>Image</th>
@@ -43,23 +44,24 @@
             </tr>
             {% for course in courses %}
                 <tr class="text-muted">
-                    <td><a href="{% url 'edit_course' course.id %}" title="Edit existing course"><i class="far fa-edit icon-edit"></i></a></td>
+                    <td><a href="{% url 'edit_course' course.course_code %}" title="Edit existing course"><i class="far fa-edit icon-edit"></i></a></td>
                     <!-- see subform used instead of this
                      <td><a href="" title="Delete existing course"><i class='far fa-trash-alt icon-delete text-danger'></i></a></td> -->
                     <!--- Ste 11/10/24 Table details from Stephen -->    
                     <td>
-                        <form action="{% url 'delete_course' course.id %}" method="POST" style="display:inline;">
+                        <form action="{% url 'delete_course' course.course_code %}" method="POST" style="display:inline;">
                             {% csrf_token %}
                             <button type="submit" title="Delete existing course" style="background:none; border:none; padding:0;">
                                 <i class='far fa-trash-alt icon-delete text-danger'></i>
                             </button>
                         </form>
                     </td>
-                    <td><a href="{% url 'course_preview' course.id %}" title="PreView course (new tab)" class="text-muted"  target="_blank">{{course.title}}</a></td>
-                    <td>{{course.status|yesno:"Y,N"}}</td>
-                    <td class="align-middle">{{course.author}}</td>
-                    <td class="date">{{course.created_on|date:"d M y"}}</td>
-                    <td class="date">{{course.updated_on|date:"d M y"}}</td>
+                    <td><a href="{% url 'course_preview' course.course_code %}" title="PreView course (new tab)" class="text-muted"  target="_blank">{{course.title}}</a></td>
+                    <td>{{ course.course_code }}</td>
+                    <td>{{ course.status|yesno:"Y,N" }}</td>
+                    <td class="align-middle">{{ course.author }}</td>
+                    <td class="date">{{ course.created_on|date:"d M y" }}</td>
+                    <td class="date">{{ course.updated_on|date:"d M y" }}</td>
                     <td class="p-0 align-middle">
                         {% if course.featured_image %}
                             <img class="img-thumbnail rounded-circle img-zoom" src="{{ course.featured_image.url }}" alt="Image">

@@ -18,11 +18,9 @@ def today_plus_10_years():
 
 # Create your models here.
 class Course(models.Model):
-    """ Course is a set of articles delivered in a particular sequence
-    fields: course_code, title1, slug, title2, version, author, featured_image, effective_from, effective_to"""
     disp_seq = models.IntegerField(default=10)
-    course_code = models.CharField(max_length = 15, primary_key = True)
-    version = models.CharField(max_length = 3)
+    course_code = models.IntegerField( primary_key=True)
+    version = models.CharField(max_length=3)
     title = models.CharField(max_length=200)
     subtitle = models.CharField(max_length=200)
     author = models.ForeignKey(User, on_delete=models.CASCADE,
@@ -31,24 +29,19 @@ class Course(models.Model):
     effective_from = models.DateField(auto_now_add=True)
     effective_to = models.DateField(default=today_plus_10_years)
     created_on = models.DateField(auto_now_add=True)
-    updated_on = models.DateField(auto_now_add=True)
+    updated_on = models.DateField(auto_now=True)  # Change to auto_now
     status = models.IntegerField(choices=STATUS, default=0)
-    
+
     class Meta:
         unique_together = (('course_code', 'version'),)
-        
-        """ returns an overall list """
         ordering = ['disp_seq', 'course_code', 'version']
 
     def __str__(self):
-        """ returns course code """
-        print (self.course_code)
-        return self.course_code 
+        return self.course_code  # Removed print statement
 
     def is_valid_today(self):
-        """ returns True or False based on effectivedate and status """
-        valid_today = (( date.today >= self.effective_from) and (date.today <= date.effective_to) and (self.status))
-        return (valid_today)
+        # You can implement your validation logic here
+        pass
 
 class CourseContent(models.Model):
     """ Course is a set of articles delivered in a particular sequence

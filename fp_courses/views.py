@@ -75,8 +75,7 @@ def maint_courses(request):
     context = {
         'courses': courses,
     }
-   
-    print("part 2")
+    
     return render(request, 'fp_courses/maint_courses.html', context)
 
 @login_required
@@ -88,40 +87,74 @@ def add_course(request):
 
     if request.method == 'POST':
         course_form = CourseForm(request.POST, request.FILES)
+        print(" made it past first if statement")
         if course_form.is_valid():
             course = course_form.save(commit=False)
             course.slug = course.title
             course.author = request.user
             course.updated_on = date.today()
             course.save()
-            stringy = f'Successfully added course {course.id}, {course.title}'
+            print(" course form is valid")
+            stringy = f'Successfully added course {course.course_code}, {course.title}'
             messages.success(request, stringy)
-            return redirect('success_url')  # Redirect after successful submission
+            return redirect('maint_courses')  # Redirect after successful submission
     else:
         course_form = CourseForm()  # Initialize form for GET request
+        print(" else statement for failsafe.")
 
+    print(course_form.errors)
     return render(request, 'fp_courses/add_course.html', {'form': course_form})
 
 
-def edit_course(request):
-    courses = Course.objects.all()
+def edit_course(request, id):
+     
+    
+    if not request.user.is_superuser:
+        print("Not user")
+        messages.error(request, 'Restricted: Must have SysAdmin rights '
+                       + 'to edit a course!')
+        return redirect(reverse('home'))
+    course = get_object_or_404(Course, pk=id)
+    if request.method == 'POST':
+        print("got this far")
+        course_form = CourseForm(request.POST, request.FILES, instance=course)
+        # DMcC 09/11/24 - Set updated_on field to today
+        if course_form.is_valid():
+            course = course_form.save(commit=False)
+            course.updated_on = date.today()
+            course.save()
+            stringy = f'Successfully updated Course { course.course_code }, {course.title}'
+            messages.success(request, stringy)
+            
+            # DMcC 11/10/4: The piece of code below (which is duplicated elsewhere and will need to be refactored ) is to redisplay the maintenance screen
+            courses = Course.objects.all()
 
-    # sort by SKU in order asc/desc
-    courses = courses.order_by('-updated_on')
+            # sort by article in desc order (most recent on top)
+            courses = courses.order_by('-updated_on')
+            context = {
+                'courses': courses,
+            }
+            return render(request, 'fp_courses/maint_courses.html', context)
+        else:
+            messages.error(request, 'Failed to update course.'
+                           + ' Please ensure the form is valid.')
+    else:
+        course_form = CourseForm(instance=course)
+        messages.info(request, f'You are editing {course.title}')
+
+    template = 'fp_courses/edit_course.html'
     context = {
-        'courses': courses,
+        'form': course_form,
+        'course': course,
     }
-    return render(request, 'fp_courses/maint_courses.html', context)
 
-def delete_course(request):
-    courses = Course.objects.all()
+    return render(request, template, context)
 
-    # sort by SKU in order asc/desc
-    courses = courses.order_by('-updated_on')
-    context = {
-        'courses': courses,
-    }
-    return render(request, 'fp_courses/maint_courses.html', context)
+def delete_course(request, id):
+    course = get_object_or_404(Course, course_code=id)
+    if request.method == 'POST':
+        course.delete()
+        return redirect('maint_courses')  # Redirect to your articles list page
 
 def course_preview(request):
     courses = Course.objects.all()

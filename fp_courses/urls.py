@@ -7,9 +7,9 @@ urlpatterns = [
     path('maint_courses/', views.maint_courses, name='maint_courses'), 
     
     path('add_course/', views.add_course, name='add_course'),
-    path('edit_course/<int:course_id>/', views.edit_course, name='edit_course'),
+    path('edit_course/<int:id>/', views.edit_course, name='edit_course'),
     path('delete_course/<int:id>/', views.delete_course, name='delete_course'),
-    path('preview/<int:course_id>/', views.course_preview, name='course_preview'),
+    path('preview/<int:course_code>/', views.course_preview, name='course_preview'),
     ]
 
 # Error handlers for site errors

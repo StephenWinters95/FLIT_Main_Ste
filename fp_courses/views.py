@@ -21,10 +21,10 @@ import numpy as np
 
 # Create your views here.
 def MyCourses(request):
-    # courses need to link to articles and have a questionaire after them. possibly multiple questions.
-    # so maybe is we had a 2d array where each column had the article and then multiple choice questions after them. 
-    # courses Structure => courses[ Course ID, Course ID, Course ID,]    Main = [ID , Article ID , Quiz ID , Quiz ID , Quiz ID , Quiz ID]     Quiz[] =[Quiz ID , Q1 , ANS1 , ANS2 , ANS3 , ANS4 ,]  x several times etc. and that will be the course ANS1 will always be correct answer but the html will be told to randomize the order. 
-    # List of Article ID's 
+    # courses need to link to courses and have a questionaire after them. possibly multiple questions.
+    # so maybe is we had a 2d array where each column had the course and then multiple choice questions after them. 
+    # courses Structure => courses[ Course ID, Course ID, Course ID,]    Main = [ID , course ID , Quiz ID , Quiz ID , Quiz ID , Quiz ID]     Quiz[] =[Quiz ID , Q1 , ANS1 , ANS2 , ANS3 , ANS4 ,]  x several times etc. and that will be the course ANS1 will always be correct answer but the html will be told to randomize the order. 
+    # List of course ID's 
     # need to make a diffrent array for users scores and add it to their profile.
     # need to make a menu to display all courses.
     # need to make a page to allow an admin to make a custome test / course.
@@ -129,7 +129,7 @@ def edit_course(request, id):
             # DMcC 11/10/4: The piece of code below (which is duplicated elsewhere and will need to be refactored ) is to redisplay the maintenance screen
             courses = Course.objects.all()
 
-            # sort by article in desc order (most recent on top)
+            # sort by course in desc order (most recent on top)
             courses = courses.order_by('-updated_on')
             context = {
                 'courses': courses,
@@ -154,14 +154,45 @@ def delete_course(request, id):
     course = get_object_or_404(Course, course_code=id)
     if request.method == 'POST':
         course.delete()
-        return redirect('maint_courses')  # Redirect to your articles list page
+        return redirect('maint_courses')  # Redirect to your courses list page
 
-def course_preview(request):
-    courses = Course.objects.all()
+def course_preview(request, course_code):
+    """ A view to show individual course details """
+    mode = 'Preview'
+    course = get_object_or_404(Course, pk=course_code)
+            
+    # getting all aspects of the course (this will be added to later to include course tags, bookmarks etc)
+    context = {
+            'course': course,
+            'mode': mode,
+            }
+    return render(request, 'fp_courses/course_preview.html', context)
+
+def maint_quizzes(request):
+    """ This is a sysadmin view to show all Quizzes,
+    and allow the sysadmin to edit/delete """
+    quiz = Quiz.objects.all()
 
     # sort by SKU in order asc/desc
-    courses = courses.order_by('-updated_on')
+    quiz = quiz.order_by('quiz_code')
     context = {
-        'courses': courses,
+        'quiz': quiz,
     }
-    return render(request, 'fp_courses/maint_courses.html', context)
+    
+    return render(request, 'fp_courses/maint_quizzes.html', context)
+
+def add_quiz(request):
+    
+    return render(request, 'fp_courses/add_quiz.html')
+
+def edit_quiz(request):
+    
+    return render(request, 'fp_courses/edit_quiz.html')
+
+def delete_quiz(request):
+    
+    return render(request, 'fp_courses/delete_quiz.html')
+
+def quiz_preview(request):
+    
+    return render(request, 'fp_courses/quiz_preview.html')

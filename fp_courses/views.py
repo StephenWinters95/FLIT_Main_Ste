@@ -7,7 +7,7 @@ from django.core.paginator import Paginator  # Specifically imported
 from django.db.models import Q  # This is a text search capability
 from .models import Course, Cohort, CourseContent, Quiz
 
-from .forms import CourseForm   # Cuasing all the issues. 
+from .forms import CourseForm, QuizForm  # Cuasing all the issues. 
 
 from fp_personal.models import UserProfile
 from django.contrib.auth.decorators import login_required
@@ -181,15 +181,87 @@ def maint_quizzes(request):
     
     return render(request, 'fp_courses/maint_quizzes.html', context)
 
-def add_quiz(request):
+@login_required
+def add_quiz(request): # content has been copied from add course. needs editing. 
     
-    return render(request, 'fp_courses/add_quiz.html')
+    """ Sysadmin: Add a quiz to the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Restricted: Must have SysAdmin rights to Add quizzes!')
+        return redirect(reverse('home'))
 
-def edit_quiz(request):
+    if request.method == 'POST':
+        quiz_form = QuizForm(request.POST, request.FILES)
+        if quiz_form.is_valid():
+            quiz = quiz_form.save(commit=False)
+            quiz.slug = quiz.question_text
+            quiz.author = request.user
+            quiz.updated_on = date.today()
+            quiz.save()
+            print(" quiz form is valid")
+            stringy = f'Successfully added course {quiz.quiz_code}, {quiz.question_text}'
+            messages.success(request, stringy)
+            return redirect('maint_quizzes')  # Redirect after successful submission
+    else:
+        quiz_form = QuizForm()  # Initialize form for GET request
+        print(" else statement for failsafe.")
+
+    print(quiz_form.errors)
+
+    return render(request, 'fp_courses/add_quiz.html', {'form': quiz_form} )
+
+
+
+
+def edit_quiz(request, id):
     
-    return render(request, 'fp_courses/edit_quiz.html')
+    if not request.user.is_superuser:
+        print("Not user")
+        messages.error(request, 'Restricted: Must have SysAdmin rights '
+                       + 'to edit a quiz!')
+        return redirect(reverse('home'))
+    quiz = get_object_or_404(Quiz, pk=id)
+    if request.method == 'POST':
+        print("got this far")
+        quiz_form = QuizForm(request.POST, request.FILES, instance=quiz)
+        # DMcC 09/11/24 - Set updated_on field to today
+        if quiz_form.is_valid():
+            quiz = quiz_form.save(commit=False)
+            quiz.updated_on = date.today()
+            quiz.save()
+            stringy = f'Successfully updated quiz { quiz.quiz_code }, {quiz.question_text}'
+            messages.success(request, stringy)
+            
+            # DMcC 11/10/4: The piece of code below (which is duplicated elsewhere and will need to be refactored ) is to redisplay the maintenance screen
+            quiz = Quiz.objects.all()
+
+            # sort by quiz in desc order (most recent on top)
+            quiz = quiz.order_by('-updated_on')
+            context = {
+                'quiz': quiz,
+            }
+            return render(request, 'fp_courses/maint_quizzes.html', context)
+        else:
+            messages.error(request, 'Failed to update quiz.'
+                           + ' Please ensure the form is valid.')
+    else:
+        quiz_form = QuizForm(instance=quiz)
+        messages.info(request, f'You are editing {quiz.question_text}')
+
+    template = 'fp_courses/edit_quiz.html'
+    context = {
+        'form': quiz_form,
+        'quiz': quiz,
+    }
+
+    return render(request, template, context)
+
 
 def delete_quiz(request):
+    
+    quiz = get_object_or_404(Quiz, course_code=id)
+    if request.method == 'POST':
+        quiz.delete()
+        return redirect('maint_quizzes')  # Redirect to your courses list page
     
     return render(request, 'fp_courses/delete_quiz.html')
 

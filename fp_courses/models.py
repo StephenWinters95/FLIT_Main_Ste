@@ -104,9 +104,11 @@ class Cohort(models.Model):
 
 
 class Quiz(models.Model):
+    """ Quiz is a multichoice set of questions related to a particle topic or article
+        fields: course_code, title1, slug, title2, version, author, featured_image, effective_from, effective_to"""
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name="quiz", db_constraint=False)
-    quiz_code = models.CharField(max_length=25, primary_key = True)
+    quiz_code = models.IntegerField( primary_key = True)
     question_text = models.CharField(max_length = 200, default='Question text goes here?')
     ans1_text = models.CharField(max_length=200, default="Answer1 goes here")
     ans2_text = models.CharField(max_length=200, default="Answer2 goes here")

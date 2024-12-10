@@ -115,12 +115,16 @@ def edit_course(request, id):
                        + 'to edit a course!')
         return redirect(reverse('home'))
     course = get_object_or_404(Course, pk=id)
+    original_course_code = course.course_code
     if request.method == 'POST':
         print("got this far")
         course_form = CourseForm(request.POST, request.FILES, instance=course)
         # DMcC 09/11/24 - Set updated_on field to today
         if course_form.is_valid():
             course = course_form.save(commit=False)
+            if course.course_code != original_course_code:
+                # course code has been changed, delete the original instance
+                Course.objects.filter(pk=id).delete()
             course.updated_on = date.today()
             course.save()
             stringy = f'Successfully updated Course { course.course_code }, {course.title}'
@@ -220,12 +224,16 @@ def edit_quiz(request, id):
                        + 'to edit a quiz!')
         return redirect(reverse('home'))
     quiz = get_object_or_404(Quiz, pk=id)
+    original_quiz_code = quiz.quiz_code
     if request.method == 'POST':
         print("got this far")
         quiz_form = QuizForm(request.POST, request.FILES, instance=quiz)
         # DMcC 09/11/24 - Set updated_on field to today
         if quiz_form.is_valid():
             quiz = quiz_form.save(commit=False)
+            if quiz.quiz_code != original_quiz_code:
+                # course code has been changed, delete the original instance
+                Quiz.objects.filter(pk=id).delete()
             quiz.updated_on = date.today()
             quiz.save()
             stringy = f'Successfully updated quiz { quiz.quiz_code }, {quiz.question_text}'
@@ -256,9 +264,9 @@ def edit_quiz(request, id):
     return render(request, template, context)
 
 
-def delete_quiz(request):
+def delete_quiz(request, id):
     
-    quiz = get_object_or_404(Quiz, course_code=id)
+    quiz = get_object_or_404(Quiz, quiz_code=id)
     if request.method == 'POST':
         quiz.delete()
         return redirect('maint_quizzes')  # Redirect to your courses list page

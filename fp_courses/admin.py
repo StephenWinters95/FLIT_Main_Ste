@@ -1,7 +1,7 @@
 from django.contrib import admin
 from datetime import datetime
 from .models import User
-from .models import Course, CourseContent, Cohort, Quiz
+from .models import Course, CourseContent, Cohort, Quiz , Progress
 
 # Register your models here.
 # The UserProfile model is a custom extension of allauth User model
@@ -24,3 +24,9 @@ class CohortAdmin(admin.ModelAdmin):
 class QuizAdmin(admin.ModelAdmin):
     list_display=('quiz_code', 'question_text')    
     search_fields=['quiz_code']
+    
+@admin.register(Progress)
+class ProgressAdmin(admin.ModelAdmin):
+    list_display=('user', 'course' , 'sequence_number' , 'completed')    
+    search_fields=['user','course']
+    
